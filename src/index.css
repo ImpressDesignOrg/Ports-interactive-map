@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.react-app {
+  padding: 10px;
+}
+.map-wrapper {
+  height: 100vh;
+}

@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import Map from './components/Map';
+
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+
+// TODO check whether best to use esri-loader or webpack with Drupal (https://developers.arcgis.com/javascript/latest/guide/react/)
+
+const App = () => (
+  <div className='react-app'>
+    <Map />
+  </div>
+);
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,8 +19,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

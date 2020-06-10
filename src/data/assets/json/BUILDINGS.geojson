@@ -1,0 +1,868 @@
+{
+  "type": "FeatureCollection",
+  "name": "BUILDINGS",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B104AMEN",
+        "ASS_NAME": "B104 Amenities Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.893452657567622, -34.455632083661413]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B104SHED",
+        "ASS_NAME": "B104 Security Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.893253024284263, -34.453897070673158]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B104SUB",
+        "ASS_NAME": "B104 Substation",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.893400752913919, -34.453315981414917]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B105CARGO",
+        "ASS_NAME": "B105 MPB130 Cargo Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.892622183109012, -34.455169526796873]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B105SUB1",
+        "ASS_NAME": "B105 MPB130 Substation 1",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.892067202581302, -34.454939070463247]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B105SUB2",
+        "ASS_NAME": "B105 MPB130 Substation 2",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.889887207127288, -34.454112714666643]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B201AMEN",
+        "ASS_NAME": "B201 Amenities Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.906980807012786, -34.463235097777392]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B201PUMP",
+        "ASS_NAME": "B201 Pumphouse",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.906663390092291, -34.463184073144774]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B206SHED1",
+        "ASS_NAME": "B206 Shed 1",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.911650229509974, -34.472135127042435]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-B206SHED2",
+        "ASS_NAME": "B206 Shed 2",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.911308856595497, -34.471720389479756]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-BATT",
+        "ASS_NAME": "Breakwater Battery Military Museum",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.9128989356972, -34.475607650357944]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-ENG",
+        "ASS_NAME": "Engineering Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.899975675100592, -34.466094896277212]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-GHOUSE",
+        "ASS_NAME": "Tom Thumb Rd Gatehouse",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.88698753368692, -34.443053246001355]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-HER",
+        "ASS_NAME": "Heritage Park Warehouse",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.91310555614541, -34.476338343022164]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-MAR",
+        "ASS_NAME": "Maritime Centre",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.912943853185936, -34.475311421779345]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-SSTN",
+        "ASS_NAME": "Signal Station",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.913175427794584, -34.475431559051877]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-NO4FUEL",
+        "ASS_NAME": "No.4 Jetty Fuel Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.91178897464178, -34.473548428554793]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-NO4WORK",
+        "ASS_NAME": "No.4 Jetty Workshop",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.911778992977617, -34.473729461080296]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-NO4PAINT",
+        "ASS_NAME": "No.4 Jetty Paint Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.91179496364029, -34.473661162491808]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-NO4AMEN",
+        "ASS_NAME": "No.4 Jetty Amenities",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.911745055319471, -34.473679265737566]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-NBWSHED",
+        "ASS_NAME": "Northern Breakwater Compound Security Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.901276285941492, -34.46290549456031]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-NWING",
+        "ASS_NAME": "Christy Drive North Wing Building (No.6 Jetty)",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.900470765643234, -34.468587984555008]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-SWING",
+        "ASS_NAME": "Christy Drive Jetty South Wing Building (No.6 Jetty)",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.900744263241393, -34.469404322083271]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-NSHED",
+        "ASS_NAME": "Christy Drive Jetty North Warehouse (No.6 Jetty)",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.899676225175568, -34.468188042085742]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-SSHED",
+        "ASS_NAME": "Christy Drive Jetty South Warehouse (No.6 Jetty)",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.899662250845722, -34.468541900746771]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-PN",
+        "ASS_NAME": "Pacific National buildings",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.88939111841816, -34.443369756805168]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-T&C",
+        "ASS_NAME": "T&C Centre",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.9114336273974, -34.475410576184522]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PK-BLDG-TTSHED",
+        "ASS_NAME": "Tom Thumb Rd Shed (adjacent to PKCT boundary gates)",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Kembla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.896047391167571, -34.448484800227668]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BH",
+        "ASS_NAME": "Brotherson House",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.220309744560012, -33.967403612392147]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB1ADMN",
+        "ASS_NAME": "BLB1 Admin Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.212708707085255, -33.974256153616466]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB1CAR",
+        "ASS_NAME": "BLB1 Carport",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.212572956448781, -33.974343896999926]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB1AMEN",
+        "ASS_NAME": "BLB1 Amenities Building & Operations Shelter",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.212198644032128, -33.973509503425774]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB1FORK",
+        "ASS_NAME": "BLB1 Forklift Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.212403268153338, -33.974502000415143]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB1STOR",
+        "ASS_NAME": "BLB1 Storage Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.212297462510179, -33.974458956582531]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB1FIRE",
+        "ASS_NAME": "BLB1 Fire Pump House",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.212104816386386, -33.97406659448837]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB1SHED",
+        "ASS_NAME": "BLB1 Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.212525543542768, -33.974257395268758]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB1IT",
+        "ASS_NAME": "BLB1 IT Building (Demountable 1)",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.212488112301088, -33.974295886480569]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB1LAB",
+        "ASS_NAME": "BLB1 Laboratory (Demountable 2)",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.212650314348338, -33.974462681530447]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB2AMEN",
+        "ASS_NAME": "BLB2 Amenities Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.211743979216777, -33.977005541224699]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB2STOR",
+        "ASS_NAME": "BLB2 Storage Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.211834812363207, -33.977226547898809]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-BLB2FIRE",
+        "ASS_NAME": "BLB2 Fire Pumphouse",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.210748807271614, -33.978161888136086]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-FMC",
+        "ASS_NAME": "Fatigue Mgmt Centre",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.219628495961643, -33.965680456588515]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-FTS",
+        "ASS_NAME": "Fork truck shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.220126081934211, -33.967020737888326]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-RAM",
+        "ASS_NAME": "Rail Amenities Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.218323393335481, -33.96514442094054]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-SURV",
+        "ASS_NAME": "PANSW survey compound",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.219522191235257, -33.965372495208292]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-TMAADMN",
+        "ASS_NAME": "TMA Admin Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.224727130160005, -33.972769882831557]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "PB-BLDG-TMAAMEN",
+        "ASS_NAME": "TMA Amenities Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Port Botany"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.224585390524851, -33.972787266265748]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "CR-BLDG-ADMN",
+        "ASS_NAME": "Admin Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Cooks River IMT"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.174982008688488, -33.916778042880622]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-ADMN2",
+        "ASS_NAME": "Two Storey Admin Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.071760616410927, -33.893295049164081]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-ADMN1",
+        "ASS_NAME": "Single Storey Admin Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.071950268030122, -33.893591671528831]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-DSHED",
+        "ASS_NAME": "Precinct D Warehouse",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.073025293260798, -33.897827127501046]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-DMX",
+        "ASS_NAME": "Precinct D Maintenance Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.073274834864947, -33.898048339784829]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-DAMEN",
+        "ASS_NAME": "Precinct D Amenities Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.072987362936971, -33.898189186258264]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-IMTGATE",
+        "ASS_NAME": "IMT Gate House",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.07181052473166, -33.895827077283307]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-IMTAMEN",
+        "ASS_NAME": "IMT Amenities Building",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.071705717257885, -33.896515583709224]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-TARP",
+        "ASS_NAME": "Tarpaulin Shed",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.07797919318665, -33.905594897489173]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHC1",
+        "ASS_NAME": "Warehouse C1",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.074561471376029, -33.898642378920641]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHC2",
+        "ASS_NAME": "Warehouse C2",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.074122278152657, -33.89766142503985]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHF1",
+        "ASS_NAME": "Warehouse F1",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.071742649415341, -33.895063168341643]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHF2",
+        "ASS_NAME": "Warehouse F2",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.071431221493356, -33.894572672225095]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHF3",
+        "ASS_NAME": "Warehouse F3",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.070856277637347, -33.893657955715113]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHH1",
+        "ASS_NAME": "Warehouse H1",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.070744482998691, -33.8920538639453]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHH2",
+        "ASS_NAME": "Warehouse H2",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.070464996402023, -33.891550093362724]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHH3",
+        "ASS_NAME": "Warehouse H3",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.069945949865343, -33.890383455326571]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHE1",
+        "ASS_NAME": "Warehouse E1",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.073898688875346, -33.896514755184967]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ASSET_NO": "EN-BLDG-WHE2",
+        "ASS_NAME": "Warehouse E2",
+        "ASS_CLASS": "Buildings",
+        "ASS_LOC": "Enfield ILC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.073243891706028, -33.895175849483444]
+      }
+    }
+  ]
+}
