@@ -108,7 +108,7 @@ export default function Map() {
         container: mapRef.current,
         map: map,
         center: [149.577774, -33.419998],
-        zoom: 7,
+        zoom: 9,
       });
 
       /* API data */
@@ -176,26 +176,13 @@ export default function Map() {
         });
         map.add(localGovernmentAreaLayers);
       }
-      if (railNetwork) {
-        const railNetworkLayer = new GeoJSONLayer({
-          url:
-            'https://raw.githubusercontent.com/darcydev/react-ship-map/master/src/data/assets/json/RAILNETWORK.geojson?token=AJEXFSBT2IP7DBRY4IKUHHS64CTYG',
-          renderer: {
-            type: 'simple', // autocasts as new SimpleRenderer()
-            symbol: {
-              // autocasts as new SimpleMarkerSymbol()
-              type: 'simple-marker',
-              color: '#102A44',
-              outline: {
-                // autocasts as new SimpleLineSymbol()
-                color: '#598DD8',
-                width: 2,
-              },
-            },
-          },
-        });
-        map.add(railNetworkLayer);
-      }
+      /*       if (railNetwork) {
+        map.add(
+          new GeoJSONLayer({
+            url: `https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BREAKWATERSREVETMENTS.geojson`,
+          })
+        );
+      } */
 
       return () => {
         if (view) {
