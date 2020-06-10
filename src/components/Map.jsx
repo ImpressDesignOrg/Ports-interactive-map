@@ -19,6 +19,8 @@ export default function Map() {
     rail: false,
     suburbs: false,
     localGovAreas: false,
+    // data/assets/json
+    railNetwork: false,
   });
 
   // TODO combine into one util function
@@ -67,6 +69,12 @@ export default function Map() {
       localGovAreas: !activeLayers.localGovAreas,
     });
 
+  const handleRailNetwork = () =>
+    setActiveLayers({
+      ...activeLayers,
+      railNetwork: !activeLayers.railNetwork,
+    });
+
   const {
     airport,
     seaport,
@@ -77,6 +85,7 @@ export default function Map() {
     rail,
     suburbs,
     localGovAreas,
+    railNetwork,
   } = activeLayers;
 
   useEffect(() => {
@@ -167,6 +176,26 @@ export default function Map() {
         });
         map.add(localGovernmentAreaLayers);
       }
+      if (railNetwork) {
+        const railNetworkLayer = new GeoJSONLayer({
+          url:
+            'https://raw.githubusercontent.com/darcydev/react-ship-map/master/src/data/assets/json/RAILNETWORK.geojson?token=AJEXFSBT2IP7DBRY4IKUHHS64CTYG',
+          renderer: {
+            type: 'simple', // autocasts as new SimpleRenderer()
+            symbol: {
+              // autocasts as new SimpleMarkerSymbol()
+              type: 'simple-marker',
+              color: '#102A44',
+              outline: {
+                // autocasts as new SimpleLineSymbol()
+                color: '#598DD8',
+                width: 2,
+              },
+            },
+          },
+        });
+        map.add(railNetworkLayer);
+      }
 
       return () => {
         if (view) {
@@ -235,6 +264,13 @@ export default function Map() {
             </ActiveButton>
           ) : (
             <button onClick={handleLocalGovArea}>Local Gov Areas</button>
+          )}
+          {railNetwork ? (
+            <ActiveButton onClick={handleRailNetwork}>
+              Rail Network
+            </ActiveButton>
+          ) : (
+            <button onClick={handleRailNetwork}>Rail Network</button>
           )}
         </div>
       </LegendContainer>
