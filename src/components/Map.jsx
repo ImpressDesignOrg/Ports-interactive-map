@@ -8,6 +8,8 @@ import { Button, Select } from 'antd';
 // the script that you're loading from the CDN
 setDefaultOptions({ css: true });
 
+const { Option, OptGroup } = Select;
+
 export default function Map() {
   const mapRef = useRef();
 
@@ -32,22 +34,49 @@ export default function Map() {
     npwsReserve: false,
     federalElectoral: false,
   });
-
-  const [activeLayers, setActiveLayers] = useState({
-    airport: false,
-    seaport: false,
-    intermodal: false,
-    roadTrainAssembly: false,
-    road: false,
-    secondaryRoad: false,
-    rail: false,
-    suburbs: false,
-    localGovAreas: false,
-    // data/assets/json
+  // Property
+  const [activeProperty, setActiveProperty] = useState({
+    pbBerth: false,
+    pbGate: false,
+    pkBerth: false,
+    leaseBoundary: false,
+    tenancyLeaseAreas: false,
+    tenancyUnits: false,
+  });
+  // Asset Management
+  const [activeAssetMgt, setActiveAssetMgt] = useState({
+    breakwatersRevetments: false,
+    buildings: false,
+    heritage: false,
+    maritimeStructures: false,
     railNetwork: false,
+    roadNetwork: false,
+    pbLabels: false,
+    pbLines: false,
+    pkLabels: false,
+    pkLines: false,
   });
 
-  const { suburbs, localGovAreas } = activeLayers;
+  const handleFreightRoutes = (selected) => {
+    // TODO set all to false
+
+    selected.map((v) => setActiveKFR({ ...activeKFR, [v]: true }));
+  };
+  const handleNSWAdmin = (selected) => {
+    // TODO set all to false
+
+    selected.map((v) => setActiveNSWAB({ ...activeNSWAB, [v]: true }));
+  };
+  const handleProperty = (selected) => {
+    // TODO set all to false
+
+    selected.map((v) => setActiveProperty({ ...activeProperty, [v]: true }));
+  };
+  const handleAssetMgt = (selected) => {
+    // TODO set all to false
+
+    selected.map((v) => setActiveAssetMgt({ ...activeAssetMgt, [v]: true }));
+  };
 
   useEffect(() => {
     // lazy load the required ArcGIS API for JavaScript modules and CSS
@@ -480,13 +509,182 @@ export default function Map() {
           })
         );
       }
-      /*       if (railNetwork) {
+      // Property
+      if (activeProperty.pbBerth) {
         map.add(
           new GeoJSONLayer({
-            url: `https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BREAKWATERSREVETMENTS.geojson`,
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_BERTH.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Port Botany Berth',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'TextString',
+                      label: 'Name',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
           })
         );
-      } */
+      }
+      if (activeProperty.pbGate) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_GATENO.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Port Botany Gate Number',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'GATE_NUM',
+                      label: 'Gate Number',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
+      }
+      if (activeProperty.pkBerth) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PK_BERTH.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Port Kembla Berth',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'TextString',
+                      label: 'Name',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
+      }
+      if (activeProperty.leaseBoundary) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/leaseboundary/json/LEASEBOUNDARY.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Lease Boundary',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'PORT',
+                      label: 'Name',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
+      }
+      if (activeProperty.tenancyLeaseAreas) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/tenancydata/json/TENANCY_LEASE_AREAS.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Tenancy Lease Areas',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'LEASE',
+                      label: 'Lease Name',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'LEASE_TYPE',
+                      label: 'Lease Type',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
+      }
+      if (activeProperty.tenancyUnits) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/tenancydata/json/TENANCY_UNITS.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Tenancy Units',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'PORT',
+                      label: 'Port Name',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'UNITTYPE',
+                      label: 'Unit Type',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
+      }
+      // Asset Management
+      if (activeProperty.breakwatersRevetments) {
+      }
+      if (activeProperty.buildings) {
+      }
+      if (activeProperty.heritage) {
+      }
+      if (activeProperty.maritimeStructures) {
+      }
+      if (activeProperty.railNetwork) {
+      }
+      if (activeProperty.roadNetwork) {
+      }
+      if (activeProperty.pbLabels) {
+      }
+      if (activeProperty.pbLines) {
+      }
+      if (activeProperty.pkLabels) {
+      }
+      if (activeProperty.pkLines) {
+      }
 
       return () => {
         if (view) {
@@ -501,231 +699,89 @@ export default function Map() {
     <div className='map-wrapper' ref={mapRef}>
       <LegendContainer>
         <div className='content'>
-          <h4>Key Freight Routes</h4>
-          {activeKFR.airport ? (
-            <ActiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, airport: false })}
+          <div className='category'>
+            <h4>Key Freight Routes</h4>
+            <Select
+              mode='tags'
+              style={{ width: 300 }}
+              onChange={(e) => handleFreightRoutes(e)}
             >
-              Airports
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, airport: true })}
+              <Option value='airport'>Airports</Option>
+              <Option value='seaport'>Seaports</Option>
+              <Option value='intermodal'>Intermodal Terminals</Option>
+              <Option value='roadTrainAssembly'>Road Train Assembly</Option>
+              <Option value='keyRoad'>Key Freight Road Routes</Option>
+              <Option value='keyRail'>Key Freight Rail Routes</Option>
+              <Option value='secondaryRoad'>
+                Secondary Freight Road Routes
+              </Option>
+            </Select>
+          </div>
+          <div className='category'>
+            <h4>NSW Administrative Boundaries</h4>
+            <Select
+              mode='tags'
+              style={{ width: 300 }}
+              onChange={(e) => handleNSWAdmin(e)}
             >
-              Airports
-            </InactiveButton>
-          )}
-          {activeKFR.seaport ? (
-            <ActiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, seaport: false })}
+              <Option value='suburb'>Suburbs</Option>
+              <Option value='county'>County</Option>
+              <Option value='parish'>Parish</Option>
+              <Option value='stateForest'>State Forest</Option>
+              <Option value='npwsReserve'>NPWS Reserve</Option>
+              <Option value='localElectoral'>Local Government Areas</Option>
+              <Option value='stateElectoral'>State Electoral Districts</Option>
+              <Option value='federalElectoral'>
+                Federal Electoral Divison
+              </Option>
+            </Select>
+          </div>
+          <div className='category'>
+            <h4>Property</h4>
+            <Select
+              mode='tags'
+              style={{ width: 300 }}
+              onChange={(e) => handleProperty(e)}
             >
-              Seaports
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, seaport: true })}
+              <OptGroup label='Gate Numbers'>
+                <Option value='pbBerth'>Port Botany Berth Numbers</Option>
+                <Option value='pbGate'>Port Botany Gate Numbers</Option>
+                <Option value='pkBerth'>Port Kembla Berth Numbers</Option>
+              </OptGroup>
+              <OptGroup label='Lease Areas'>
+                <Option value='tenancyLeaseAreas'>Tenancy Lease Areas</Option>
+                <Option value='tenancyUnits'>Tenancy Units</Option>
+              </OptGroup>
+              <OptGroup label='Lease Boundary'>
+                <Option value='leaseBoundary'>Lease Boundary</Option>
+              </OptGroup>
+            </Select>
+          </div>
+          <div className='category'>
+            <h4>Asset Management</h4>
+            <Select
+              mode='tags'
+              style={{ width: 300 }}
+              onChange={(e) => handleAssetMgt(e)}
             >
-              Seaports
-            </InactiveButton>
-          )}
-          {activeKFR.intermodal ? (
-            <ActiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, intermodal: false })}
-            >
-              Intermodal Terminals
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, intermodal: true })}
-            >
-              Intermodal Terminals
-            </InactiveButton>
-          )}
-          {activeKFR.roadTrainAssembly ? (
-            <ActiveButton
-              onClick={() =>
-                setActiveKFR({ ...activeKFR, roadTrainAssembly: false })
-              }
-            >
-              Road Train Assembly
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() =>
-                setActiveKFR({ ...activeKFR, roadTrainAssembly: true })
-              }
-            >
-              Road Train Assembly
-            </InactiveButton>
-          )}
-          {activeKFR.keyRoad ? (
-            <ActiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, keyRoad: false })}
-            >
-              Key Freight Road Routes
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, keyRoad: true })}
-            >
-              Key Freight Road Routes
-            </InactiveButton>
-          )}
-          {activeKFR.keyRail ? (
-            <ActiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, keyRail: false })}
-            >
-              Key Freight Rail Routes
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() => setActiveKFR({ ...activeKFR, keyRail: true })}
-            >
-              Key Freight Rail Routes
-            </InactiveButton>
-          )}
-          {activeKFR.secondaryRoad ? (
-            <ActiveButton
-              onClick={() =>
-                setActiveKFR({ ...activeKFR, secondaryRoad: false })
-              }
-            >
-              Secondary Freight Road Routes
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() =>
-                setActiveKFR({ ...activeKFR, secondaryRoad: true })
-              }
-            >
-              Secondary Freight Road Routes
-            </InactiveButton>
-          )}
-          <h4>NSW Administrative Boundaries</h4>
-          {activeNSWAB.suburb ? (
-            <ActiveButton
-              onClick={() => setActiveNSWAB({ ...activeNSWAB, suburb: false })}
-            >
-              Suburbs
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() => setActiveNSWAB({ ...activeNSWAB, suburb: true })}
-            >
-              Suburbs
-            </InactiveButton>
-          )}
-          {activeNSWAB.localElectoral ? (
-            <ActiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, localElectoral: false })
-              }
-            >
-              Local Government Areas
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, localElectoral: true })
-              }
-            >
-              Local Government Areas
-            </InactiveButton>
-          )}
-          {activeNSWAB.stateElectoral ? (
-            <ActiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, stateElectoral: false })
-              }
-            >
-              State Electoral Districts
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, stateElectoral: true })
-              }
-            >
-              State Electoral Districts
-            </InactiveButton>
-          )}
-          {activeNSWAB.county ? (
-            <ActiveButton
-              onClick={() => setActiveNSWAB({ ...activeNSWAB, county: false })}
-            >
-              County
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() => setActiveNSWAB({ ...activeNSWAB, county: true })}
-            >
-              County
-            </InactiveButton>
-          )}
-          {activeNSWAB.parish ? (
-            <ActiveButton
-              onClick={() => setActiveNSWAB({ ...activeNSWAB, parish: false })}
-            >
-              Parish
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() => setActiveNSWAB({ ...activeNSWAB, parish: true })}
-            >
-              Parish
-            </InactiveButton>
-          )}
-          {activeNSWAB.stateForest ? (
-            <ActiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, stateForest: false })
-              }
-            >
-              State Forest
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, stateForest: true })
-              }
-            >
-              State Forest
-            </InactiveButton>
-          )}
-          {activeNSWAB.npwsReserve ? (
-            <ActiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, npwsReserve: false })
-              }
-            >
-              NPWS Reserve
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, npwsReserve: true })
-              }
-            >
-              NPWS Reserve
-            </InactiveButton>
-          )}
-          {activeNSWAB.federalElectoral ? (
-            <ActiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, federalElectoral: false })
-              }
-            >
-              Federal Electoral Division
-            </ActiveButton>
-          ) : (
-            <InactiveButton
-              onClick={() =>
-                setActiveNSWAB({ ...activeNSWAB, federalElectoral: true })
-              }
-            >
-              Federal Electoral Division
-            </InactiveButton>
-          )}
+              <OptGroup label='Asset Locations'>
+                <Option value='breakwatersRevetments'>
+                  Breakwaters Revetments
+                </Option>
+                <Option value='buildings'>Buildings</Option>
+                <Option value='heritage'>Heritage</Option>
+                <Option value='maritimeStructures'>Maritime Structures</Option>
+                <Option value='railNetwork'>Rail Network</Option>
+                <Option value='roadNetwork'>Road Network</Option>
+              </OptGroup>
+              <OptGroup label='Channel Plans'>
+                <Option value='pbLabels'>Port Botany Labels</Option>
+                <Option value='pbLines'>Port Botany Lines</Option>
+                <Option value='pkLabels'>Port Kembla Labels</Option>
+                <Option value='pkLines'>Port Kembla Lines</Option>
+              </OptGroup>
+            </Select>
+          </div>
         </div>
       </LegendContainer>
     </div>
@@ -735,7 +791,7 @@ export default function Map() {
 const LegendContainer = styled.div`
   border: 2px dotted blue;
 
-  width: 300px;
+  width: 500px;
   height: 100vh;
 
   .content {
@@ -752,5 +808,8 @@ const LegendContainer = styled.div`
 
 const ActiveButton = styled(Button)`
   border: 1px solid green;
+  height: 20px;
 `;
-const InactiveButton = styled(Button)``;
+const InactiveButton = styled(Button)`
+  height: 20px;
+`;
