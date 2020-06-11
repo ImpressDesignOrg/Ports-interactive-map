@@ -1237,12 +1237,6 @@ export default function Map() {
           )}
           {activeProperty.pbBerth && (
             <LegendItem
-              title='Port Botany Perth'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeProperty.pbBerth && (
-            <LegendItem
               title='Port Botany Berth'
               iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
             />
