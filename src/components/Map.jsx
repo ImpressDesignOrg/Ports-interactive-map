@@ -126,7 +126,7 @@ export default function Map() {
         view.ui.add(basemapToggle, 'bottom-left');
 
         const featureLayerUrl =
-          'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0';
+          'https://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0';
 
         esriConfig.request.interceptors.push({
           // set the `urls` property to the URL of the FeatureLayer so that this
@@ -147,7 +147,7 @@ export default function Map() {
           map.add(
             new FeatureLayer({
               url:
-                'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0',
+                'https://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0',
               objectIdField: 'ObjectID',
               popupTemplate: {
                 title: 'Airport',
