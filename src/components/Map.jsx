@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { loadModules, setDefaultOptions } from 'esri-loader';
 import styled from 'styled-components';
-import { Button, Select } from 'antd';
+import { Select } from 'antd';
+import LegendItem from './LegendItem';
 
 // before loading the modules for the first time,
 // also lazy load the CSS for the version of
@@ -58,23 +59,27 @@ export default function Map() {
   });
 
   const handleFreightRoutes = (selected) => {
-    // TODO set all to false
-
+    // set all to false
+    setActiveKFR({});
+    // set all selected options to true
     selected.map((v) => setActiveKFR({ ...activeKFR, [v]: true }));
   };
   const handleNSWAdmin = (selected) => {
-    // TODO set all to false
-
+    // set all to false
+    setActiveNSWAB({});
+    // set all selected options to true
     selected.map((v) => setActiveNSWAB({ ...activeNSWAB, [v]: true }));
   };
   const handleProperty = (selected) => {
-    // TODO set all to false
-
+    // set all to false
+    setActiveProperty({});
+    // set all selected options to true
     selected.map((v) => setActiveProperty({ ...activeProperty, [v]: true }));
   };
   const handleAssetMgt = (selected) => {
-    // TODO set all to false
-
+    // set all to false
+    setActiveAssetMgt({});
+    // set all selected options to true
     selected.map((v) => setActiveAssetMgt({ ...activeAssetMgt, [v]: true }));
   };
 
@@ -665,25 +670,335 @@ export default function Map() {
         );
       }
       // Asset Management
-      if (activeProperty.breakwatersRevetments) {
+      if (activeAssetMgt.breakwatersRevetments) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BREAKWATERSREVETMENTS.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Breakwaters Revetments',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'ASSET_NO',
+                      label: 'Asset Number',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_NAME',
+                      label: 'Asset Name',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_CLASS',
+                      label: 'Asset Class',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_LOC',
+                      label: 'Asset Location',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
-      if (activeProperty.buildings) {
+      if (activeAssetMgt.buildings) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BUILDINGS.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Buildings',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'ASSET_NO',
+                      label: 'Asset Number',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_NAME',
+                      label: 'Asset Name',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_CLASS',
+                      label: 'Asset Class',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_LOC',
+                      label: 'Asset Location',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
-      if (activeProperty.heritage) {
+      if (activeAssetMgt.heritage) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/HERITAGE.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Buildings',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'Asset_No',
+                      label: 'Asset Number',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_NAME',
+                      label: 'Asset Name',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_CLASS',
+                      label: 'Asset Class',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_LOC',
+                      label: 'Asset Location',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
-      if (activeProperty.maritimeStructures) {
+      if (activeAssetMgt.maritimeStructures) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/MARITIMESTRUCTURES.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Maritime <Structures></Structures>',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'ASSET_NO',
+                      label: 'Asset Number',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_NAME',
+                      label: 'Asset Name',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_CLASS',
+                      label: 'Asset Class',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_LOC',
+                      label: 'Asset Location',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
-      if (activeProperty.railNetwork) {
+      if (activeAssetMgt.railNetwork) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/RAILNETWORK.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Rail Network',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'ASSET_NO',
+                      label: 'Asset Number',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_NAME',
+                      label: 'Asset Name',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_CLASS',
+                      label: 'Asset Class',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_LOC',
+                      label: 'Asset Location',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
-      if (activeProperty.roadNetwork) {
+      if (activeAssetMgt.roadNetwork) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/ROADNETWORK.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Road Network',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'ASSET_NO',
+                      label: 'Asset Number',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_NAME',
+                      label: 'Asset Name',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_CLASS',
+                      label: 'Asset Class',
+                      visible: true,
+                    },
+                    {
+                      fieldName: 'ASS_LOC',
+                      label: 'Asset Location',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
-      if (activeProperty.pbLabels) {
+      if (activeAssetMgt.pbLabels) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PB_LABELS.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Port Botany Labels',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'TextString',
+                      label: 'Name',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
-      if (activeProperty.pbLines) {
+      if (activeAssetMgt.pbLines) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PB_LINES.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Port Botany Lines',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'autocad_la',
+                      label: 'Type',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
-      if (activeProperty.pkLabels) {
+      if (activeAssetMgt.pkLabels) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PK_LABELS.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Port Kembla Labels',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'TextString',
+                      label: 'Name',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
-      if (activeProperty.pkLines) {
+      if (activeAssetMgt.pkLines) {
+        map.add(
+          new GeoJSONLayer({
+            url:
+              'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PK_LINES.geojson',
+            objectIdField: 'ObjectID',
+            popupTemplate: {
+              title: 'Port Kembla Lines',
+              content: [
+                {
+                  type: 'fields',
+                  fieldInfos: [
+                    {
+                      fieldName: 'autocad_la',
+                      label: 'Type',
+                      visible: true,
+                    },
+                  ],
+                },
+              ],
+            },
+          })
+        );
       }
 
       return () => {
@@ -697,7 +1012,7 @@ export default function Map() {
 
   return (
     <div className='map-wrapper' ref={mapRef}>
-      <LegendContainer>
+      <SideWrapper>
         <div className='content'>
           <div className='category'>
             <h4>Key Freight Routes</h4>
@@ -783,33 +1098,79 @@ export default function Map() {
             </Select>
           </div>
         </div>
-      </LegendContainer>
+        <div className='legend'>
+          <h2>Legend</h2>
+          {activeKFR.airport && (
+            <LegendItem
+              title='Airport'
+              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+            />
+          )}
+          {activeKFR.seaport && (
+            <LegendItem
+              title='Seaport'
+              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+            />
+          )}
+          {activeKFR.intermodal && (
+            <LegendItem
+              title='Intermodal Terminals'
+              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+            />
+          )}
+          {activeKFR.roadTrainAssembly && (
+            <LegendItem
+              title='Road Train Assembly'
+              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+            />
+          )}
+          {activeKFR.keyRoad && (
+            <LegendItem
+              title='Key Road Routes'
+              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+            />
+          )}
+          {activeKFR.keyRail && (
+            <LegendItem
+              title='Key Rail Routes'
+              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+            />
+          )}
+          {activeKFR.secondaryRoad && (
+            <LegendItem
+              title='Secondary Road Routes'
+              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+            />
+          )}
+        </div>
+      </SideWrapper>
     </div>
   );
 }
 
-const LegendContainer = styled.div`
+const SideWrapper = styled.div`
   border: 2px dotted blue;
+  padding: 30px;
+  position: relative;
 
   width: 500px;
   height: 100vh;
 
   .content {
-    padding: 30px;
+    border: 1px dotted black;
     display: flex;
     flex-direction: column;
 
-    button {
+    .category {
       margin: 10px 0;
-      width: 150px;
     }
   }
-`;
 
-const ActiveButton = styled(Button)`
-  border: 1px solid green;
-  height: 20px;
-`;
-const InactiveButton = styled(Button)`
-  height: 20px;
+  .legend {
+    border: 1px dotted green;
+    position: absolute;
+    bottom: 20px;
+    width: 200px;
+    height: 400px;
+  }
 `;
