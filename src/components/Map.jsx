@@ -104,7 +104,6 @@ export default function Map() {
         FeatureLayer,
         GeoJSONLayer,
         BasemapToggle,
-        SceneView,
       ]) => {
         const map = new ArcGISMap({
           basemap: 'hybrid',
@@ -126,17 +125,26 @@ export default function Map() {
         view.ui.add(basemapToggle, 'bottom-left');
 
         const featureLayerUrl =
-          'https://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0';
+          'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0';
 
         esriConfig.request.interceptors.push({
           // set the `urls` property to the URL of the FeatureLayer so that this
           // interceptor only applies to requests made to the FeatureLayer URL
           urls: featureLayerUrl,
+          // use the BeforeInterceptorCallback to check if the query of the
+          // FeatureLayer has a maxAllowableOffset property set.
+          // if so, then set the maxAllowableOffset to 0
+          before: function (params) {
+            if (params.requestOptions.query.maxAllowableOffset) {
+              params.requestOptions.query.maxAllowableOffset = 0;
+            }
+          },
           // use the AfterInterceptorCallback to check if `ssl` is set to 'true'
           // on the response to the request, if it's set to 'false', change
           // the value to 'true' before returning the response
           after: function (response) {
             if (!response.ssl) {
+              console.log('not ssl');
               response.ssl = true;
             }
           },
@@ -147,7 +155,7 @@ export default function Map() {
           map.add(
             new FeatureLayer({
               url:
-                'https://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0',
+                'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0',
               objectIdField: 'ObjectID',
               popupTemplate: {
                 title: 'Airport',
