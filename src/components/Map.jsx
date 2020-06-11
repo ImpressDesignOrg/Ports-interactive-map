@@ -1059,7 +1059,7 @@ export default function Map() {
     <div className='map-wrapper' ref={mapRef}>
       <SideWrapper>
         <div className='content'>
-          <div className='category'>
+          {/* <div className='category'> 
             <h4>Key Freight Routes</h4>
             <Select
               mode='tags'
@@ -1076,7 +1076,7 @@ export default function Map() {
                 Secondary Freight Road Routes
               </Option>
             </Select>
-          </div>
+          </div>*/}
           <div className='category'>
             <h4>NSW Administrative Boundaries</h4>
             <Select
