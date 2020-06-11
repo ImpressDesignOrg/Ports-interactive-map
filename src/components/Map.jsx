@@ -88,6 +88,7 @@ export default function Map() {
     // lazy load the required ArcGIS API
     loadModules(
       [
+        'esri/config',
         'esri/Map',
         'esri/views/MapView',
         'esri/layers/FeatureLayer',
@@ -97,6 +98,7 @@ export default function Map() {
       { css: true }
     ).then(
       ([
+        esriConfig,
         ArcGISMap,
         MapView,
         FeatureLayer,
@@ -122,6 +124,23 @@ export default function Map() {
         });
 
         view.ui.add(basemapToggle, 'bottom-left');
+
+        const featureLayerUrl =
+          'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0';
+
+        esriConfig.request.interceptors.push({
+          // set the `urls` property to the URL of the FeatureLayer so that this
+          // interceptor only applies to requests made to the FeatureLayer URL
+          urls: featureLayerUrl,
+          // use the AfterInterceptorCallback to check if `ssl` is set to 'true'
+          // on the response to the request, if it's set to 'false', change
+          // the value to 'true' before returning the response
+          after: function (response) {
+            if (!response.ssl) {
+              response.ssl = true;
+            }
+          },
+        });
 
         // Key Freight Routes
         if (activeKFR.airport) {
