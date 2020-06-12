@@ -14,6 +14,7 @@ const { Option, OptGroup } = Select;
 
 export default function Map() {
   const mapRef = useRef();
+  const [legendVisible, setLegendVisible] = useState(true);
 
   // key freight routes
   const [activeKFR, setActiveKFR] = useState({
@@ -59,29 +60,27 @@ export default function Map() {
     pkLines: false,
   });
 
-  const handleFreightRoutes = (selected) => {
-    // set all to false
-    setActiveKFR({});
-    // set all selected options to true
-    selected.map((v) => setActiveKFR({ ...activeKFR, [v]: true }));
+  const selectedOptionsIntoObject = (obj, selectedArray) => {
+    let tempState = {};
+
+    Object.keys(obj).forEach((v) => {
+      tempState[v] = selectedArray.includes(v) ? true : false;
+    });
+
+    return tempState;
   };
-  const handleNSWAdmin = (selected) => {
-    // set all to false
-    setActiveNSWAB({});
-    // set all selected options to true
-    selected.map((v) => setActiveNSWAB({ ...activeNSWAB, [v]: true }));
+
+  const handleFreightRoutes = (selectedArray) => {
+    setActiveKFR(selectedOptionsIntoObject(activeKFR, selectedArray));
   };
-  const handleProperty = (selected) => {
-    // set all to false
-    setActiveProperty({});
-    // set all selected options to true
-    selected.map((v) => setActiveProperty({ ...activeProperty, [v]: true }));
+  const handleNSWAdmin = (selectedArray) => {
+    setActiveNSWAB(selectedOptionsIntoObject(activeNSWAB, selectedArray));
   };
-  const handleAssetMgt = (selected) => {
-    // set all to false
-    setActiveAssetMgt({});
-    // set all selected options to true
-    selected.map((v) => setActiveAssetMgt({ ...activeAssetMgt, [v]: true }));
+  const handleProperty = (selectedArray) => {
+    setActiveProperty(selectedOptionsIntoObject(activeProperty, selectedArray));
+  };
+  const handleAssetMgt = (selectedArray) => {
+    setActiveAssetMgt(selectedOptionsIntoObject(activeAssetMgt, selectedArray));
   };
 
   useEffect(() => {
@@ -117,12 +116,14 @@ export default function Map() {
           zoom: 11,
         });
 
-        var basemapToggle = new BasemapToggle({
-          view: view,
-          nextBasemap: 'topo-vector', // Allows for toggling to the "hybrid" basemap
-        });
-
-        view.ui.add(basemapToggle, 'bottom-left');
+        // add map toggle
+        view.ui.add(
+          new BasemapToggle({
+            view: view,
+            nextBasemap: 'topo-vector',
+          }),
+          'bottom-left'
+        );
 
         const featureLayerUrl =
           'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0';
@@ -149,6 +150,9 @@ export default function Map() {
             }
           },
         });
+
+        console.log('activeNSWAB :>> ', activeNSWAB);
+        console.log('activeAssetMgt :>> ', activeAssetMgt);
 
         // Key Freight Routes
         if (activeKFR.airport) {
