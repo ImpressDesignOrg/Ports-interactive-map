@@ -5,9 +5,7 @@ import { Button, Select } from 'antd';
 
 import LegendItem from './LegendItem';
 
-// before loading the modules for the first time,
-// also lazy load the CSS for the version of
-// the script that you're loading from the CDN
+// lazy load the CSS for the version of the script that you're loading from the CDN
 setDefaultOptions({ css: true });
 
 const { Option, OptGroup } = Select;
@@ -1160,7 +1158,6 @@ export default function Map() {
             </div>
           </div>
           <div className='legend-wrapper'>
-            <h2>Legend</h2>
             {activeKFR.airport && (
               <LegendItem
                 title='Airport'
