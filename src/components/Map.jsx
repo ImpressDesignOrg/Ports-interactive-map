@@ -1362,7 +1362,7 @@ const Container = styled.div`
 const ToggleWrapper = styled.div`
   position: absolute;
   z-index: 3;
-  right: ${(props) => (props.visible ? '346px' : '0px')};
+  right: 0px;
   top: 50%;
 `;
 
