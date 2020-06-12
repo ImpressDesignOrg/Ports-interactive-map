@@ -10,6 +10,7 @@
     "esri-loader": "^2.14.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-motion": "^0.5.2",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1"
   },

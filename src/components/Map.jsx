@@ -14,7 +14,7 @@ const { Option, OptGroup } = Select;
 
 export default function Map() {
   const mapRef = useRef();
-  const [legendVisible, setLegendVisible] = useState(true);
+  const [siderVisible, setSiderVisible] = useState(true);
 
   // key freight routes
   const [activeKFR, setActiveKFR] = useState({
@@ -1059,12 +1059,19 @@ export default function Map() {
     );
   });
 
+  console.log('legendVisible :>> ', siderVisible);
+
   return (
     <div className='map-wrapper' ref={mapRef}>
       <SideWrapper>
-        <div className='content'>
-          {/* <div className='category'> 
-            <h4>Key Freight Routes</h4>
+        <div className='button-wrapper'>
+          <button onClick={() => setSiderVisible(false)}>Close</button>
+        </div>
+        {siderVisible && (
+          <div className='content'>
+            <div className='controls-wrapper'>
+              <div className='category'>
+                {/* <h4>Key Freight Routes</h4>
             <Select
               mode='tags'
               style={{ width: 300 }}
@@ -1079,263 +1086,271 @@ export default function Map() {
               <Option value='secondaryRoad'>
                 Secondary Freight Road Routes
               </Option>
-            </Select>
-          </div>*/}
-          <div className='category'>
-            <h4>NSW Administrative Boundaries</h4>
-            <Select
-              mode='tags'
-              style={{ width: 300 }}
-              onChange={(e) => handleNSWAdmin(e)}
-            >
-              <Option value='suburb'>Suburbs</Option>
-              <Option value='county'>County</Option>
-              <Option value='parish'>Parish</Option>
-              <Option value='stateForest'>State Forest</Option>
-              <Option value='npwsReserve'>NPWS Reserve</Option>
-              <Option value='localElectoral'>Local Government Areas</Option>
-              <Option value='stateElectoral'>State Electoral Districts</Option>
-              <Option value='federalElectoral'>
-                Federal Electoral Divison
-              </Option>
-            </Select>
+            </Select> */}
+              </div>
+              <div className='category'>
+                <h4>NSW Administrative Boundaries</h4>
+                <Select
+                  mode='tags'
+                  style={{ width: 300 }}
+                  onChange={(e) => handleNSWAdmin(e)}
+                >
+                  <Option value='suburb'>Suburbs</Option>
+                  <Option value='county'>County</Option>
+                  <Option value='parish'>Parish</Option>
+                  <Option value='stateForest'>State Forest</Option>
+                  <Option value='npwsReserve'>NPWS Reserve</Option>
+                  <Option value='localElectoral'>Local Government Areas</Option>
+                  <Option value='stateElectoral'>
+                    State Electoral Districts
+                  </Option>
+                  <Option value='federalElectoral'>
+                    Federal Electoral Divison
+                  </Option>
+                </Select>
+              </div>
+              <div className='category'>
+                <h4>Property</h4>
+                <Select
+                  mode='tags'
+                  style={{ width: 300 }}
+                  onChange={(e) => handleProperty(e)}
+                >
+                  <OptGroup label='Gate Numbers'>
+                    <Option value='pbBerth'>Port Botany Berth Numbers</Option>
+                    <Option value='pbGate'>Port Botany Gate Numbers</Option>
+                    <Option value='pkBerth'>Port Kembla Berth Numbers</Option>
+                  </OptGroup>
+                  <OptGroup label='Lease Areas'>
+                    <Option value='tenancyLeaseAreas'>
+                      Tenancy Lease Areas
+                    </Option>
+                    <Option value='tenancyUnits'>Tenancy Units</Option>
+                  </OptGroup>
+                  <OptGroup label='Lease Boundary'>
+                    <Option value='leaseBoundary'>Lease Boundary</Option>
+                  </OptGroup>
+                </Select>
+              </div>
+              <div className='category'>
+                <h4>Asset Management</h4>
+                <Select
+                  mode='tags'
+                  style={{ width: 300 }}
+                  onChange={(e) => handleAssetMgt(e)}
+                >
+                  <OptGroup label='Asset Locations'>
+                    <Option value='breakwatersRevetments'>
+                      Breakwaters Revetments
+                    </Option>
+                    <Option value='buildings'>Buildings</Option>
+                    <Option value='heritage'>Heritage</Option>
+                    <Option value='maritimeStructures'>
+                      Maritime Structures
+                    </Option>
+                    <Option value='railNetwork'>Rail Network</Option>
+                    <Option value='roadNetwork'>Road Network</Option>
+                  </OptGroup>
+                  <OptGroup label='Channel Plans'>
+                    <Option value='pbLabels'>Port Botany Labels</Option>
+                    <Option value='pbLines'>Port Botany Lines</Option>
+                    <Option value='pkLabels'>Port Kembla Labels</Option>
+                    <Option value='pkLines'>Port Kembla Lines</Option>
+                  </OptGroup>
+                </Select>
+              </div>
+            </div>
+            <div className='legend-wrapper'>
+              <h2>Legend</h2>
+              {activeKFR.airport && (
+                <LegendItem
+                  title='Airport'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeKFR.seaport && (
+                <LegendItem
+                  title='Seaport'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeKFR.intermodal && (
+                <LegendItem
+                  title='Intermodal Terminals'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeKFR.roadTrainAssembly && (
+                <LegendItem
+                  title='Road Train Assembly'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeKFR.keyRoad && (
+                <LegendItem
+                  title='Key Road Routes'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeKFR.keyRail && (
+                <LegendItem
+                  title='Key Rail Routes'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeKFR.secondaryRoad && (
+                <LegendItem
+                  title='Secondary Road Routes'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeNSWAB.suburb && (
+                <LegendItem
+                  title='Suburb'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeNSWAB.county && (
+                <LegendItem
+                  title='County'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeNSWAB.parish && (
+                <LegendItem
+                  title='Parish'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeNSWAB.stateForest && (
+                <LegendItem
+                  title='State Forest'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeNSWAB.npwsReserve && (
+                <LegendItem
+                  title='NPWS Reserve'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeNSWAB.localElectoral && (
+                <LegendItem
+                  title='Local Government Areas'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeNSWAB.stateElectoral && (
+                <LegendItem
+                  title='State Government Districts'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeNSWAB.federalElectoral && (
+                <LegendItem
+                  title='Federal Government Divisions'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeProperty.pbBerth && (
+                <LegendItem
+                  title='Port Botany Berth'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeProperty.pbGate && (
+                <LegendItem
+                  title='Port Botany Gate'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeProperty.pkBerth && (
+                <LegendItem
+                  title='Port Kembla Berth'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeProperty.tenancyLeaseAreas && (
+                <LegendItem
+                  title='Tenancy Lease Areas'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeProperty.tenancyUnits && (
+                <LegendItem
+                  title='Tenancy Units'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeProperty.leaseBoundary && (
+                <LegendItem
+                  title='Lease Boundary'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.breakwatersRevetments && (
+                <LegendItem
+                  title='Breakwaters Revetments'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.buildings && (
+                <LegendItem
+                  title='Buildings'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.heritage && (
+                <LegendItem
+                  title='Heritage'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.maritimeStructures && (
+                <LegendItem
+                  title='Maritime Structures'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.railNetwork && (
+                <LegendItem
+                  title='Rail Network'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.roadNetwork && (
+                <LegendItem
+                  title='Road Network'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.pkLabels && (
+                <LegendItem
+                  title='Port Botany Labels'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.pbLines && (
+                <LegendItem
+                  title='Port Botany Lines'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.pkLabels && (
+                <LegendItem
+                  title='Port Kembla Labels'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+              {activeAssetMgt.pkLines && (
+                <LegendItem
+                  title='Port Kembla Lines'
+                  iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                />
+              )}
+            </div>
           </div>
-          <div className='category'>
-            <h4>Property</h4>
-            <Select
-              mode='tags'
-              style={{ width: 300 }}
-              onChange={(e) => handleProperty(e)}
-            >
-              <OptGroup label='Gate Numbers'>
-                <Option value='pbBerth'>Port Botany Berth Numbers</Option>
-                <Option value='pbGate'>Port Botany Gate Numbers</Option>
-                <Option value='pkBerth'>Port Kembla Berth Numbers</Option>
-              </OptGroup>
-              <OptGroup label='Lease Areas'>
-                <Option value='tenancyLeaseAreas'>Tenancy Lease Areas</Option>
-                <Option value='tenancyUnits'>Tenancy Units</Option>
-              </OptGroup>
-              <OptGroup label='Lease Boundary'>
-                <Option value='leaseBoundary'>Lease Boundary</Option>
-              </OptGroup>
-            </Select>
-          </div>
-          <div className='category'>
-            <h4>Asset Management</h4>
-            <Select
-              mode='tags'
-              style={{ width: 300 }}
-              onChange={(e) => handleAssetMgt(e)}
-            >
-              <OptGroup label='Asset Locations'>
-                <Option value='breakwatersRevetments'>
-                  Breakwaters Revetments
-                </Option>
-                <Option value='buildings'>Buildings</Option>
-                <Option value='heritage'>Heritage</Option>
-                <Option value='maritimeStructures'>Maritime Structures</Option>
-                <Option value='railNetwork'>Rail Network</Option>
-                <Option value='roadNetwork'>Road Network</Option>
-              </OptGroup>
-              <OptGroup label='Channel Plans'>
-                <Option value='pbLabels'>Port Botany Labels</Option>
-                <Option value='pbLines'>Port Botany Lines</Option>
-                <Option value='pkLabels'>Port Kembla Labels</Option>
-                <Option value='pkLines'>Port Kembla Lines</Option>
-              </OptGroup>
-            </Select>
-          </div>
-        </div>
-        <div className='legend'>
-          <h2>Legend</h2>
-          {activeKFR.airport && (
-            <LegendItem
-              title='Airport'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeKFR.seaport && (
-            <LegendItem
-              title='Seaport'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeKFR.intermodal && (
-            <LegendItem
-              title='Intermodal Terminals'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeKFR.roadTrainAssembly && (
-            <LegendItem
-              title='Road Train Assembly'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeKFR.keyRoad && (
-            <LegendItem
-              title='Key Road Routes'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeKFR.keyRail && (
-            <LegendItem
-              title='Key Rail Routes'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeKFR.secondaryRoad && (
-            <LegendItem
-              title='Secondary Road Routes'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeNSWAB.suburb && (
-            <LegendItem
-              title='Suburb'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeNSWAB.county && (
-            <LegendItem
-              title='County'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeNSWAB.parish && (
-            <LegendItem
-              title='Parish'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeNSWAB.stateForest && (
-            <LegendItem
-              title='State Forest'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeNSWAB.npwsReserve && (
-            <LegendItem
-              title='NPWS Reserve'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeNSWAB.localElectoral && (
-            <LegendItem
-              title='Local Government Areas'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeNSWAB.stateElectoral && (
-            <LegendItem
-              title='State Government Districts'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeNSWAB.federalElectoral && (
-            <LegendItem
-              title='Federal Government Divisions'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeProperty.pbBerth && (
-            <LegendItem
-              title='Port Botany Berth'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeProperty.pbGate && (
-            <LegendItem
-              title='Port Botany Gate'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeProperty.pkBerth && (
-            <LegendItem
-              title='Port Kembla Berth'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeProperty.tenancyLeaseAreas && (
-            <LegendItem
-              title='Tenancy Lease Areas'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeProperty.tenancyUnits && (
-            <LegendItem
-              title='Tenancy Units'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeProperty.leaseBoundary && (
-            <LegendItem
-              title='Lease Boundary'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.breakwatersRevetments && (
-            <LegendItem
-              title='Breakwaters Revetments'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.buildings && (
-            <LegendItem
-              title='Buildings'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.heritage && (
-            <LegendItem
-              title='Heritage'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.maritimeStructures && (
-            <LegendItem
-              title='Maritime Structures'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.railNetwork && (
-            <LegendItem
-              title='Rail Network'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.roadNetwork && (
-            <LegendItem
-              title='Road Network'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.pkLabels && (
-            <LegendItem
-              title='Port Botany Labels'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.pbLines && (
-            <LegendItem
-              title='Port Botany Lines'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.pkLabels && (
-            <LegendItem
-              title='Port Kembla Labels'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-          {activeAssetMgt.pkLines && (
-            <LegendItem
-              title='Port Kembla Lines'
-              iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-            />
-          )}
-        </div>
+        )}
       </SideWrapper>
     </div>
   );
@@ -1343,27 +1358,36 @@ export default function Map() {
 
 const SideWrapper = styled.div`
   border: 2px dotted blue;
-  padding: 30px;
-  position: relative;
 
+  position: relative;
   width: 500px;
   height: 100vh;
 
-  .content {
-    border: 1px dotted black;
-    display: flex;
-    flex-direction: column;
-
-    .category {
-      margin: 10px 0;
-    }
+  .button-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 0;
   }
 
-  .legend {
-    border: 1px dotted green;
-    position: absolute;
-    bottom: 20px;
-    width: 200px;
-    height: 400px;
+  .content {
+    padding: 30px;
+
+    .controls-wrapper {
+      border: 1px dotted black;
+      display: flex;
+      flex-direction: column;
+
+      .category {
+        margin: 10px 0;
+      }
+    }
+
+    .legend-wrapper {
+      border: 1px dotted green;
+      position: absolute;
+      bottom: 20px;
+      width: 200px;
+      height: 400px;
+    }
   }
 `;
