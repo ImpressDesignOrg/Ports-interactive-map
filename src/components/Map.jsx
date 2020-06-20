@@ -58,6 +58,11 @@ export default function Map() {
     pkLines: false,
   });
 
+  /**
+   * Util function to update state of active locations from selected options from sidebar
+   * @param {object} obj - an object of all locations
+   * @param {array} selectedArray - an array of selected options from <select>
+   */
   const selectedOptionsIntoObject = (obj, selectedArray) => {
     let tempState = {};
 
@@ -106,12 +111,17 @@ export default function Map() {
           basemap: 'hybrid',
         });
 
+        let mapSettings = {
+          zoom: 11,
+          center: [151.28, -33.976],
+        };
+
         // load the map view at the ref's DOM node
         const view = new MapView({
           container: mapRef.current,
           map: map,
-          center: [151.218, -33.976],
-          zoom: 11,
+          center: mapSettings.center,
+          zoom: mapSettings.zoom,
         });
 
         // add map toggle
@@ -148,9 +158,6 @@ export default function Map() {
             }
           },
         });
-
-        console.log('activeNSWAB :>> ', activeNSWAB);
-        console.log('activeAssetMgt :>> ', activeAssetMgt);
 
         // Key Freight Routes
         if (activeKFR.airport) {
