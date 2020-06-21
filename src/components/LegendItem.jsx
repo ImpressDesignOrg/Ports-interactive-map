@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function LegendItem({ title, iconSrc }) {
+export default function LegendItem({ title, iconSrc, dotColor }) {
   return (
     <Container>
       <p>{title}</p>
-      <img src={iconSrc} alt={title} />
+      {iconSrc ? (
+        <img src={iconSrc} alt={title} />
+      ) : (
+        <LegendDot color={dotColor} />
+      )}
     </Container>
   );
 }
@@ -16,8 +20,6 @@ const Container = styled.div`
   justify-content: space-between;
   margin: 5px 0;
 
-  border: 1px dotted red;
-
   p {
     margin: 0;
   }
@@ -25,4 +27,11 @@ const Container = styled.div`
   img {
     max-width: 20px;
   }
+`;
+
+const LegendDot = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: ${(props) => props.color};
 `;

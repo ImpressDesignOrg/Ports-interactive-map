@@ -111,6 +111,7 @@ export default function Map() {
           basemap: 'hybrid',
         });
 
+        // TODO ensure that zoom level doesn't change when layers are updated
         let mapSettings = {
           zoom: 11,
           center: [151.28, -33.976],
@@ -132,32 +133,6 @@ export default function Map() {
           }),
           'bottom-left'
         );
-
-        const featureLayerUrl =
-          'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0';
-
-        esriConfig.request.interceptors.push({
-          // set the `urls` property to the URL of the FeatureLayer so that this
-          // interceptor only applies to requests made to the FeatureLayer URL
-          urls: featureLayerUrl,
-          // use the BeforeInterceptorCallback to check if the query of the
-          // FeatureLayer has a maxAllowableOffset property set.
-          // if so, then set the maxAllowableOffset to 0
-          before: function (params) {
-            if (params.requestOptions.query.maxAllowableOffset) {
-              params.requestOptions.query.maxAllowableOffset = 0;
-            }
-          },
-          // use the AfterInterceptorCallback to check if `ssl` is set to 'true'
-          // on the response to the request, if it's set to 'false', change
-          // the value to 'true' before returning the response
-          after: function (response) {
-            if (!response.ssl) {
-              console.log('not ssl');
-              response.ssl = true;
-            }
-          },
-        });
 
         // Key Freight Routes
         if (activeKFR.airport) {
@@ -1064,8 +1039,6 @@ export default function Map() {
     );
   });
 
-  console.log('legendVisible :>> ', siderVisible);
-
   return (
     <Container>
       <ToggleWrapper visible={siderVisible}>
@@ -1208,51 +1181,42 @@ export default function Map() {
               />
             )}
             {activeNSWAB.suburb && (
-              <LegendItem
-                title='Suburb'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
+              <LegendItem title='Suburbs' dotColor='rgba(169, 0, 230, 255)' />
             )}
             {activeNSWAB.county && (
-              <LegendItem
-                title='County'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
+              <LegendItem title='County' dotColor='rgba(170, 255, 0, 255)' />
             )}
             {activeNSWAB.parish && (
-              <LegendItem
-                title='Parish'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
+              <LegendItem title='Parish' dotColor='rgba(230, 152, 0, 255)' />
             )}
             {activeNSWAB.stateForest && (
               <LegendItem
                 title='State Forest'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                dotColor='rgba(76, 115, 0, 255)'
               />
             )}
             {activeNSWAB.npwsReserve && (
               <LegendItem
                 title='NPWS Reserve'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                dotColor='rgba(115, 223, 255, 255)'
               />
             )}
             {activeNSWAB.localElectoral && (
               <LegendItem
                 title='Local Government Areas'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                dotColor='rgba(209, 255, 115, 255)'
               />
             )}
             {activeNSWAB.stateElectoral && (
               <LegendItem
                 title='State Government Districts'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                dotColor='rgba(247, 242, 210, 255)'
               />
             )}
             {activeNSWAB.federalElectoral && (
               <LegendItem
                 title='Federal Government Divisions'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
+                dotColor='rgba(122, 142, 245, 255)'
               />
             )}
             {activeProperty.pbBerth && (
@@ -1377,12 +1341,15 @@ const SideWrapper = styled.div`
   z-index: 2;
   right: 0;
   top: 0;
+  background: #efefef;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
   visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.visible ? '1' : '0')};
   transition: visibility 1s, opacity 0.5s linear;
 
   .content {
-    padding: 10px;
+    padding: 30px;
 
     .controls-wrapper {
       display: flex;
@@ -1392,7 +1359,7 @@ const SideWrapper = styled.div`
         margin: 10px 0;
 
         h4 {
-          color: #fff;
+          color: #000;
         }
       }
     }
@@ -1405,7 +1372,7 @@ const SideWrapper = styled.div`
 
       h2,
       p {
-        color: #fff;
+        color: #000;
       }
     }
   }

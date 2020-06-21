@@ -15,3 +15,6 @@ code {
 .map-wrapper {
   height: 100vh;
 }
+.esri-attribution {
+  display: none;
+}
