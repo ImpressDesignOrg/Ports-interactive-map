@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { loadModules, setDefaultOptions } from 'esri-loader';
+import { loadModules } from 'esri-loader';
 import styled from 'styled-components';
 import { Button, Select } from 'antd';
+import { FaBuilding, FaRegBuilding } from 'react-icons/fa';
 
 import LegendItem from './LegendItem';
 
-// lazy load the CSS for the version of the script that you're loading from the CDN
-setDefaultOptions({ css: true });
+import selectedOptionsIntoObject from '../utils/selectedOptionsIntoObject';
 
 const { Option, OptGroup } = Select;
 
@@ -57,21 +57,6 @@ export default function Map() {
     pkLabels: false,
     pkLines: false,
   });
-
-  /**
-   * Util function to update state of active locations from selected options from sidebar
-   * @param {object} obj - an object of all locations
-   * @param {array} selectedArray - an array of selected options from <select>
-   */
-  const selectedOptionsIntoObject = (obj, selectedArray) => {
-    let tempState = {};
-
-    Object.keys(obj).forEach((v) => {
-      tempState[v] = selectedArray.includes(v) ? true : false;
-    });
-
-    return tempState;
-  };
 
   const handleFreightRoutes = (selectedArray) => {
     setActiveKFR(selectedOptionsIntoObject(activeKFR, selectedArray));
@@ -773,6 +758,10 @@ export default function Map() {
                   },
                 ],
               },
+              renderer: {
+                type: 'simple',
+                symbol: <FaBuilding />,
+              },
             })
           );
         }
@@ -1224,10 +1213,7 @@ export default function Map() {
               />
             )}
             {activeProperty.pbBerth && (
-              <LegendItem
-                title='Port Botany Berth'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
+              <LegendItem title='Port Botany Berth' icon={<FaRegBuilding />} />
             )}
             {activeProperty.pbGate && (
               <LegendItem
@@ -1266,16 +1252,10 @@ export default function Map() {
               />
             )}
             {activeAssetMgt.buildings && (
-              <LegendItem
-                title='Buildings'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
+              <LegendItem title='Buildings' icon={<FaRegBuilding />} />
             )}
             {activeAssetMgt.heritage && (
-              <LegendItem
-                title='Heritage'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
+              <LegendItem title='Heritage' icon={<FaBuilding />} />
             )}
             {activeAssetMgt.maritimeStructures && (
               <LegendItem

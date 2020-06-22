@@ -1,15 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function LegendItem({ title, iconSrc, dotColor }) {
+export default function LegendItem({ title, icon, iconSrc, dotColor }) {
+  // order of priority:
+  // 1) icon
+  // 2) iconSrc
+  // 3) dotColor
+
+  const KEY_MARKUP = () => {
+    if (icon) return icon;
+    else if (iconSrc) return <img src={iconSrc} alt={title} />;
+    else if (dotColor) return <LegendDot color={dotColor} />;
+  };
+
   return (
     <Container>
       <p>{title}</p>
-      {iconSrc ? (
-        <img src={iconSrc} alt={title} />
-      ) : (
-        <LegendDot color={dotColor} />
-      )}
+      {KEY_MARKUP()}
     </Container>
   );
 }
