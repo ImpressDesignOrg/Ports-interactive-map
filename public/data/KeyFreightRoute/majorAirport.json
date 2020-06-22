@@ -1,5 +1,6 @@
 {
   "type": "FeatureCollection",
+  "name": "MAJOR_AIRPORTS",
   "crs": {
     "type": "name",
     "properties": {
@@ -10,18 +11,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Avalon Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>1</td></tr><tr><td>name</td><td>Avalon Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Avalon Airport"
       },
       "geometry": {
         "type": "Point",
@@ -31,18 +21,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Melbourne International Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>2</td></tr><tr><td>name</td><td>Melbourne International Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Melbourne International Airport"
       },
       "geometry": {
         "type": "Point",
@@ -52,18 +31,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Hobart International Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>3</td></tr><tr><td>name</td><td>Hobart International Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Hobart International Airport"
       },
       "geometry": {
         "type": "Point",
@@ -73,18 +41,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Launceston Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>4</td></tr><tr><td>name</td><td>Launceston Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Launceston Airport"
       },
       "geometry": {
         "type": "Point",
@@ -94,18 +51,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Perth Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>5</td></tr><tr><td>name</td><td>Perth Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Perth Airport"
       },
       "geometry": {
         "type": "Point",
@@ -115,18 +61,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Darwin International Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>6</td></tr><tr><td>name</td><td>Darwin International Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Darwin International Airport"
       },
       "geometry": {
         "type": "Point",
@@ -136,18 +71,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Adelaide Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>7</td></tr><tr><td>name</td><td>Adelaide Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Adelaide Airport"
       },
       "geometry": {
         "type": "Point",
@@ -157,18 +81,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Sydney International Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>8</td></tr><tr><td>name</td><td>Sydney International Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Sydney International Airport"
       },
       "geometry": {
         "type": "Point",
@@ -178,18 +91,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Newcastle Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>9</td></tr><tr><td>name</td><td>Newcastle Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Newcastle Airport"
       },
       "geometry": {
         "type": "Point",
@@ -199,18 +101,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Cairns Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>10</td></tr><tr><td>name</td><td>Cairns Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Cairns Airport"
       },
       "geometry": {
         "type": "Point",
@@ -220,18 +111,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Brisbane Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>11</td></tr><tr><td>name</td><td>Brisbane Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Brisbane Airport"
       },
       "geometry": {
         "type": "Point",
@@ -241,18 +121,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Gold Coast Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>12</td></tr><tr><td>name</td><td>Gold Coast Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Gold Coast Airport"
       },
       "geometry": {
         "type": "Point",
@@ -262,18 +131,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Charlton-Wellcamp",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>13</td></tr><tr><td>name</td><td>Charlton-Wellcamp</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Charlton-Wellcamp"
       },
       "geometry": {
         "type": "Point",
@@ -283,18 +141,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Canberra International Airport",
-        "description": "<html><body><table border=\"1\"><tr><th>Field Name</th><th>Field Value</th></tr><tr><td>OBJECTID</td><td>14</td></tr><tr><td>name</td><td>Canberra International Airport</td></tr></table></body></html>",
-        "timestamp": null,
-        "begin": null,
-        "end": null,
-        "altitudeMode": "clampToGround",
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1,
-        "drawOrder": null,
-        "icon": null,
-        "snippet": ""
+        "Name": "Canberra International Airport"
       },
       "geometry": {
         "type": "Point",

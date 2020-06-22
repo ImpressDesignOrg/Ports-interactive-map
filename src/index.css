@@ -13,5 +13,5 @@ code {
   height: 100vh;
 }
 .esri-attribution {
-  display: none;
+  display: none !important;
 }

@@ -1055,6 +1055,7 @@ export default function Map() {
                 mode='tags'
                 style={{ width: 300 }}
                 onChange={(e) => handleFreightRoutes(e)}
+                allowClear
               >
                 <Option value='airport'>Airports</Option>
                 <Option value='seaport'>Seaports</Option>
@@ -1073,6 +1074,7 @@ export default function Map() {
                 mode='tags'
                 style={{ width: 300 }}
                 onChange={(e) => handleNSWAdmin(e)}
+                allowClear
               >
                 <Option value='suburb'>Suburbs</Option>
                 <Option value='county'>County</Option>
@@ -1094,6 +1096,7 @@ export default function Map() {
                 mode='tags'
                 style={{ width: 300 }}
                 onChange={(e) => handleProperty(e)}
+                allowClear
               >
                 <OptGroup label='Gate Numbers'>
                   <Option value='pbBerth'>Port Botany Berth Numbers</Option>
@@ -1115,6 +1118,7 @@ export default function Map() {
                 mode='tags'
                 style={{ width: 300 }}
                 onChange={(e) => handleAssetMgt(e)}
+                allowClear
               >
                 <OptGroup label='Asset Locations'>
                   <Option value='breakwatersRevetments'>
@@ -1354,6 +1358,10 @@ const SideWrapper = styled.div`
     .controls-wrapper {
       display: flex;
       flex-direction: column;
+
+      .reset-wrapper {
+        text-align: right;
+      }
 
       .category {
         margin: 10px 0;
