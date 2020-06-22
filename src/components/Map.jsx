@@ -8,6 +8,8 @@ import LegendItem from './LegendItem';
 
 import selectedOptionsIntoObject from '../utils/selectedOptionsIntoObject';
 
+import majorAirport from '../data/KeyFreightRoute/majorAirport.json';
+
 const { Option, OptGroup } = Select;
 
 export default function Map() {
@@ -122,9 +124,9 @@ export default function Map() {
         // Key Freight Routes
         if (activeKFR.airport) {
           map.add(
-            new FeatureLayer({
+            new GeoJSONLayer({
               url:
-                'https://f399e9-5fsa23.netlify.app/data/keyfreightroute/majorairport.json',
+                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/majorAirports.geojson',
               objectIdField: 'ObjectID',
               popupTemplate: {
                 title: 'Airport',
