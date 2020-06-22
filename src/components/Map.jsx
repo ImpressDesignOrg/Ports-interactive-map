@@ -139,7 +139,7 @@ export default function Map() {
           map.add(
             new FeatureLayer({
               url:
-                'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/0',
+                'https://f399e9-5fsa23.netlify.app/data/keyfreightroute/majorairport.json',
               objectIdField: 'ObjectID',
               popupTemplate: {
                 title: 'Airport',
