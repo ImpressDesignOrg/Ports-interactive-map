@@ -8,8 +8,6 @@ import LegendItem from './LegendItem';
 
 import selectedOptionsIntoObject from '../utils/selectedOptionsIntoObject';
 
-import majorAirport from '../data/KeyFreightRoute/majorAirport.json';
-
 const { Option, OptGroup } = Select;
 
 export default function Map() {
