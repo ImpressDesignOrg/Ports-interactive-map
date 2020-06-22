@@ -99,7 +99,14 @@ export default function Map() {
       ],
       { css: true }
     ).then(
-      ([ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
+      ([
+        esriConfig,
+        ArcGISMap,
+        MapView,
+        FeatureLayer,
+        GeoJSONLayer,
+        BasemapToggle,
+      ]) => {
         const map = new ArcGISMap({
           basemap: 'hybrid',
         });
