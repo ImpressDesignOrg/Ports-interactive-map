@@ -1,0 +1,147 @@
+{
+  "displayFieldName": "name",
+  "fieldAliases": {
+    "name": "name"
+  },
+  "geometryType": "esriGeometryPoint",
+  "spatialReference": {
+    "wkid": 102100,
+    "latestWkid": 3857
+  },
+  "fields": [
+    {
+      "name": "name",
+      "type": "esriFieldTypeString",
+      "alias": "name",
+      "length": 1073741822
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "name": "Avalon Airport"
+      },
+      "geometry": {
+        "x": 16082604.243100002,
+        "y": -4584910.8051999994
+      }
+    },
+    {
+      "attributes": {
+        "name": "Melbourne International Airport"
+      },
+      "geometry": {
+        "x": 16123740.691100001,
+        "y": -4532298.1995999999
+      }
+    },
+    {
+      "attributes": {
+        "name": "Hobart International Airport"
+      },
+      "geometry": {
+        "x": 16420739.199600004,
+        "y": -5287144.3060000017
+      }
+    },
+    {
+      "attributes": {
+        "name": "Launceston Airport"
+      },
+      "geometry": {
+        "x": 16387899.950000003,
+        "y": -5093064.4576000012
+      }
+    },
+    {
+      "attributes": {
+        "name": "Perth Airport"
+      },
+      "geometry": {
+        "x": 12907597.000399999,
+        "y": -3754626.1680000015
+      }
+    },
+    {
+      "attributes": {
+        "name": "Darwin International Airport"
+      },
+      "geometry": {
+        "x": 14568070.065499999,
+        "y": -1391375.3414000012
+      }
+    },
+    {
+      "attributes": {
+        "name": "Adelaide Airport"
+      },
+      "geometry": {
+        "x": 15419690.144599997,
+        "y": -4154931.4626000002
+      }
+    },
+    {
+      "attributes": {
+        "name": "Sydney International Airport"
+      },
+      "geometry": {
+        "x": 16827859.439300001,
+        "y": -4019967.8757000007
+      }
+    },
+    {
+      "attributes": {
+        "name": "Newcastle Airport"
+      },
+      "geometry": {
+        "x": 16902750.591499999,
+        "y": -3869342.7386999987
+      }
+    },
+    {
+      "attributes": {
+        "name": "Cairns Airport"
+      },
+      "geometry": {
+        "x": 16225263.955399998,
+        "y": -1906426.6501999982
+      }
+    },
+    {
+      "attributes": {
+        "name": "Brisbane Airport"
+      },
+      "geometry": {
+        "x": 17044978.829499997,
+        "y": -3173283.1906999983
+      }
+    },
+    {
+      "attributes": {
+        "name": "Gold Coast Airport"
+      },
+      "geometry": {
+        "x": 17089021.495399997,
+        "y": -3269938.4563999996
+      }
+    },
+    {
+      "attributes": {
+        "name": "Charlton-Wellcamp"
+      },
+      "geometry": {
+        "x": 16897742.104999997,
+        "y": -3193437.7243000008
+      }
+    },
+    {
+      "attributes": {
+        "name": "Canberra International Airport"
+      },
+      "geometry": {
+        "x": 16608000.857000001,
+        "y": -4205389.5659000017
+      }
+    }
+  ]
+}

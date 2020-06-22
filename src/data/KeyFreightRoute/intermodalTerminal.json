@@ -1,0 +1,363 @@
+{
+  "displayFieldName": "name",
+  "fieldAliases": {
+    "name": "name"
+  },
+  "geometryType": "esriGeometryPoint",
+  "spatialReference": {
+    "wkid": 102100,
+    "latestWkid": 3857
+  },
+  "fields": [
+    {
+      "name": "name",
+      "type": "esriFieldTypeString",
+      "alias": "name",
+      "length": 1073741822
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "name": "Dooen"
+      },
+      "geometry": {
+        "x": 15837191.631399997,
+        "y": -4387777.0212999992
+      }
+    },
+    {
+      "attributes": {
+        "name": "Altona"
+      },
+      "geometry": {
+        "x": 16118076.866700001,
+        "y": -4557641.2617000006
+      }
+    },
+    {
+      "attributes": {
+        "name": "Brighton Transport Hub"
+      },
+      "geometry": {
+        "x": 16389931.201899998,
+        "y": -5269430.5740999989
+      }
+    },
+    {
+      "attributes": {
+        "name": "Burnie Freight Hub"
+      },
+      "geometry": {
+        "x": 16242406.934299998,
+        "y": -5020264.5976999998
+      }
+    },
+    {
+      "attributes": {
+        "name": "Somerton"
+      },
+      "geometry": {
+        "x": 16134930.081,
+        "y": -4528749.3603000008
+      }
+    },
+    {
+      "attributes": {
+        "name": "Dynon"
+      },
+      "geometry": {
+        "x": 16132673.412299998,
+        "y": -4551948.8913999982
+      }
+    },
+    {
+      "attributes": {
+        "name": "Donald"
+      },
+      "geometry": {
+        "x": 15915599.069399998,
+        "y": -4349276.8489999995
+      }
+    },
+    {
+      "attributes": {
+        "name": "Merbein"
+      },
+      "geometry": {
+        "x": 15814092.391800001,
+        "y": -4051664.8293000013
+      }
+    },
+    {
+      "attributes": {
+        "name": "Maryvale"
+      },
+      "geometry": {
+        "x": 16302286.022399999,
+        "y": -4606189.1462000012
+      }
+    },
+    {
+      "attributes": {
+        "name": "Esperance"
+      },
+      "geometry": {
+        "x": 13568532.358999997,
+        "y": -4008864.7481999993
+      }
+    },
+    {
+      "attributes": {
+        "name": "Picton"
+      },
+      "geometry": {
+        "x": 12877441.352200001,
+        "y": -3942863.8704000004
+      }
+    },
+    {
+      "attributes": {
+        "name": "West Kalgoorlie"
+      },
+      "geometry": {
+        "x": 13517627.2051,
+        "y": -3603549.1215000004
+      }
+    },
+    {
+      "attributes": {
+        "name": "Fremantle"
+      },
+      "geometry": {
+        "x": 12884335.701099999,
+        "y": -3769924.2076999992
+      }
+    },
+    {
+      "attributes": {
+        "name": "Kewdale-Welshpool"
+      },
+      "geometry": {
+        "x": 12909777.169500001,
+        "y": -3762227.5304000005
+      }
+    },
+    {
+      "attributes": {
+        "name": "Forrestfield"
+      },
+      "geometry": {
+        "x": 12911923.573199999,
+        "y": -3759147.3984999992
+      }
+    },
+    {
+      "attributes": {
+        "name": "Kwinana"
+      },
+      "geometry": {
+        "x": 12888901.933899999,
+        "y": -3794352.9673000015
+      }
+    },
+    {
+      "attributes": {
+        "name": "Warrnambool"
+      },
+      "geometry": {
+        "x": 15858353.132600002,
+        "y": -4632136.1779000014
+      }
+    },
+    {
+      "attributes": {
+        "name": "Islington"
+      },
+      "geometry": {
+        "x": 15426394.323899999,
+        "y": -4145710.7851999998
+      }
+    },
+    {
+      "attributes": {
+        "name": "Penfield"
+      },
+      "geometry": {
+        "x": 15427852.386600003,
+        "y": -4122523.2620999999
+      }
+    },
+    {
+      "attributes": {
+        "name": "Gillman"
+      },
+      "geometry": {
+        "x": 15419668.8455,
+        "y": -4140821.1977999993
+      }
+    },
+    {
+      "attributes": {
+        "name": "Bowmans"
+      },
+      "geometry": {
+        "x": 15392508.448200002,
+        "y": -4051317.9761000015
+      }
+    },
+    {
+      "attributes": {
+        "name": "Chullora"
+      },
+      "geometry": {
+        "x": 16814165.8803,
+        "y": -4013791.6983999982
+      }
+    },
+    {
+      "attributes": {
+        "name": "Enfield"
+      },
+      "geometry": {
+        "x": 16817425.203699999,
+        "y": -4014915.3709999993
+      }
+    },
+    {
+      "attributes": {
+        "name": "Yennora"
+      },
+      "geometry": {
+        "x": 16805532.497199997,
+        "y": -4009981.6348999999
+      }
+    },
+    {
+      "attributes": {
+        "name": "Macarthur Intermodal Shipping Terminal"
+      },
+      "geometry": {
+        "x": 16791620.566500001,
+        "y": -4033525.072900001
+      }
+    },
+    {
+      "attributes": {
+        "name": "Rockhampton (Pacific National)"
+      },
+      "geometry": {
+        "x": 16754095.434,
+        "y": -2681195.3889999986
+      }
+    },
+    {
+      "attributes": {
+        "name": "Rockhampton (Aurizon)"
+      },
+      "geometry": {
+        "x": 16755501.6219,
+        "y": -2679062.9376000017
+      }
+    },
+    {
+      "attributes": {
+        "name": "Mackay (Aurizon)"
+      },
+      "geometry": {
+        "x": 16604268.638999999,
+        "y": -2412034.9125999995
+      }
+    },
+    {
+      "attributes": {
+        "name": "Mackay (Pacific National)"
+      },
+      "geometry": {
+        "x": 16604364.151100002,
+        "y": -2412992.803199999
+      }
+    },
+    {
+      "attributes": {
+        "name": "Townsville (Aurizon)"
+      },
+      "geometry": {
+        "x": 16343944.336199999,
+        "y": -2186466.8361000009
+      }
+    },
+    {
+      "attributes": {
+        "name": "Acacia Ridge"
+      },
+      "geometry": {
+        "x": 17035291.028099999,
+        "y": -3195680.2736000009
+      }
+    },
+    {
+      "attributes": {
+        "name": "Cairns (Pacific National)"
+      },
+      "geometry": {
+        "x": 16224660.826399997,
+        "y": -1916149.7498000003
+      }
+    },
+    {
+      "attributes": {
+        "name": "Mt Miller (Aurizon)"
+      },
+      "geometry": {
+        "x": 16827413.456299998,
+        "y": -2735193.4032000005
+      }
+    },
+    {
+      "attributes": {
+        "name": "Cairns (Aurizon)"
+      },
+      "geometry": {
+        "x": 16226291.2117,
+        "y": -1914525.3647000007
+      }
+    },
+    {
+      "attributes": {
+        "name": "Stuart (Pacific National)"
+      },
+      "geometry": {
+        "x": 16345048.736900002,
+        "y": -2193665.1237000003
+      }
+    },
+    {
+      "attributes": {
+        "name": "Brisbane Multimodal Terminal"
+      },
+      "geometry": {
+        "x": 17051505.268600002,
+        "y": -3170274.436900001
+      }
+    },
+    {
+      "attributes": {
+        "name": "Moolabin"
+      },
+      "geometry": {
+        "x": 17032045.063100003,
+        "y": -3189585.1284000017
+      }
+    },
+    {
+      "attributes": {
+        "name": "Emerald"
+      },
+      "geometry": {
+        "x": 16493421.6994,
+        "y": -2696063.7179999985
+      }
+    }
+  ]
+}

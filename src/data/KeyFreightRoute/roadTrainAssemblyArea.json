@@ -1,0 +1,84 @@
+{
+  "displayFieldName": "name",
+  "fieldAliases": {
+    "name": "name"
+  },
+  "geometryType": "esriGeometryPoint",
+  "spatialReference": {
+    "wkid": 102100,
+    "latestWkid": 3857
+  },
+  "fields": [
+    {
+      "name": "name",
+      "type": "esriFieldTypeString",
+      "alias": "name",
+      "length": 1073741822
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "name": "Northam"
+      },
+      "geometry": {
+        "x": 12994630.5964,
+        "y": -3715776.2727999985
+      }
+    },
+    {
+      "attributes": {
+        "name": "Wubin"
+      },
+      "geometry": {
+        "x": 12983172.861000001,
+        "y": -3516925.3145000003
+      }
+    },
+    {
+      "attributes": {
+        "name": "Bedfordale"
+      },
+      "geometry": {
+        "x": 12922361.838,
+        "y": -3787429.9290000014
+      }
+    },
+    {
+      "attributes": {
+        "name": "Carnarvon"
+      },
+      "geometry": {
+        "x": 12657148.8638,
+        "y": -2861174.1052000001
+      }
+    },
+    {
+      "attributes": {
+        "name": "Exmouth"
+      },
+      "geometry": {
+        "x": 12703293.0348,
+        "y": -2514173.9719000012
+      }
+    },
+    {
+      "attributes": {
+        "name": "Broome"
+      },
+      "geometry": {
+        "x": 13607605.488300003,
+        "y": -2029558.0152000003
+      }
+    },
+    {
+      "attributes": {
+        "name": "Apple Street"
+      },
+      "geometry": {
+        "x": 12916597.385400001,
+        "y": -3732369.2608000003
+      }
+    }
+  ]
+}
