@@ -146,9 +146,9 @@ export default function Map() {
         }
         if (activeKFR.seaport) {
           map.add(
-            new FeatureLayer({
+            new GeoJSONLayer({
               url:
-                'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/1',
+                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/majorSeaports.geojson',
               objectIdField: 'ObjectID',
               popupTemplate: {
                 title: 'Seaport',
