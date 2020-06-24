@@ -20,6 +20,9 @@ export default function Sidebar() {
     zoom: 12,
     center: [151.1111, -33.333],
   });
+  const [active, setActive] = useState({});
+
+  console.log('active :>> ', active);
 
   return (
     <>
@@ -45,15 +48,77 @@ export default function Sidebar() {
           <StyledControls>
             <div className='controls-content'>
               <div className='category'>
-                <h2>Category 1</h2>
+                <h2>Category 2</h2>
                 <div className='switch-wrapper'>
                   <div className='switch'>
-                    <p>Roads</p>
-                    <Switch />
+                    <p>Suburbs</p>
+                    <Switch
+                      onClick={() =>
+                        setActive({ ...active, suburbs: !active.suburbs })
+                      }
+                    />
                   </div>
                   <div className='switch'>
-                    <p>Rail</p>
-                    <Switch />
+                    <p>Parish</p>
+                    <Switch
+                      onClick={() =>
+                        setActive({ ...active, parish: !active.parish })
+                      }
+                    />
+                  </div>
+                  <div className='switch'>
+                    <p>County</p>
+                    <Switch
+                      onClick={() =>
+                        setActive({ ...active, county: !active.county })
+                      }
+                    />
+                  </div>
+                  <div className='switch'>
+                    <p>State Forest</p>
+                    <Switch
+                      onClick={() =>
+                        setActive({
+                          ...active,
+                          stateForest: !active.stateForest,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className='switch'>
+                    <p>NPWS Reserve</p>
+                    <Switch
+                      onClick={() =>
+                        setActive({
+                          ...active,
+                          npwsReserve: !active.npwsReserve,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className='switch'>
+                    <p>Local Government</p>
+                    <Switch
+                      onClick={() =>
+                        setActive({ ...active, localGov: !active.localGov })
+                      }
+                    />
+                  </div>
+                  <div className='switch'>
+                    <p>State Government</p>
+                    <Switch
+                      onClick={() =>
+                        setActive({ ...active, stateGov: !active.stateGov })
+                      }
+                    />
+                  </div>
+                  <div className='switch'>
+                    <p>Federal Government</p>
+                    <Switch
+                      onClick={() =>
+                        setActive({ ...active, federalGov: !active.federalGov })
+                      }
+                    />
                   </div>
                 </div>
               </div>
@@ -62,7 +127,7 @@ export default function Sidebar() {
         </StyledContainer>
       </div>
       <div className='map-wrapper'>
-        <Map viewport={viewport} />
+        <Map viewport={viewport} active={active} />
       </div>
     </>
   );
@@ -81,7 +146,7 @@ const StyledControls = styled.div`
       align-items: center;
       width: 200px;
       justify-content: space-between;
-      margin: 5px 0;
+      margin: 10px 0;
 
       p {
         margin: 0;

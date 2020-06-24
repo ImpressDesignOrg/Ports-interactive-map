@@ -1,12 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { loadModules } from 'esri-loader';
 import styled from 'styled-components';
-import { Button, Select } from 'antd';
 import { FaBuilding } from 'react-icons/fa';
 
 import selectedOptionsIntoObject from '../utils/selectedOptionsIntoObject';
 
-export default function Map({ viewport }) {
+// layers
+import suburbLayer from '../data/layers/suburb';
+import localGovLayer from '../data/layers/localGov';
+import stateGovLayer from '../data/layers/stateGov';
+import parishLayer from '../data/layers/parish';
+import countyLayer from '../data/layers/county';
+import stateForestLayer from '../data/layers/stateForest';
+import PB_labelsLayer from '../data/layers/PB_labels';
+import PK_labelsLayer from '../data/layers/PK_labels';
+
+export default function Map({ viewport, active }) {
   const mapRef = useRef();
 
   // key freight routes
@@ -18,17 +27,6 @@ export default function Map({ viewport }) {
     secondaryRoad: false,
     keyRoad: false,
     keyRail: false,
-  });
-  // NSW admin boundaries
-  const [activeNSWAB, setActiveNSWAB] = useState({
-    suburb: false,
-    localElectoral: false,
-    stateElectoral: false,
-    county: false,
-    parish: false,
-    stateForest: false,
-    npwsReserve: false,
-    federalElectoral: false,
   });
   // Property
   const [activeProperty, setActiveProperty] = useState({
@@ -53,18 +51,16 @@ export default function Map({ viewport }) {
     pkLines: false,
   });
 
-  const handleFreightRoutes = (selectedArray) => {
-    setActiveKFR(selectedOptionsIntoObject(activeKFR, selectedArray));
-  };
-  const handleNSWAdmin = (selectedArray) => {
-    setActiveNSWAB(selectedOptionsIntoObject(activeNSWAB, selectedArray));
-  };
-  const handleProperty = (selectedArray) => {
-    setActiveProperty(selectedOptionsIntoObject(activeProperty, selectedArray));
-  };
-  const handleAssetMgt = (selectedArray) => {
-    setActiveAssetMgt(selectedOptionsIntoObject(activeAssetMgt, selectedArray));
-  };
+  const {
+    suburbs,
+    county,
+    parish,
+    localGov,
+    stateGov,
+    federalGov,
+    npwsReserve,
+    stateForest,
+  } = active;
 
   useEffect(() => {
     // lazy load the required ArcGIS API
@@ -90,8 +86,6 @@ export default function Map({ viewport }) {
         const map = new ArcGISMap({
           basemap: 'hybrid',
         });
-
-        // TODO ensure that zoom level doesn't change when layers are updated
 
         // load the map view at the ref's DOM node
         const view = new MapView({
@@ -281,186 +275,14 @@ export default function Map({ viewport }) {
         }
 
         // NSW Administrative Boundaries
-        if (activeNSWAB.suburb) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/0',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Suburbs',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'suburbname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'postcode',
-                        label: 'Postcode',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.localElectoral) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/1',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Local Government Area',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'lganame',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.stateElectoral) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/2',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'State Electoral District',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'districtname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.county) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/3',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'County',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'countyname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.parish) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/4',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Parish',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'parishname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.stateForest) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/5',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'State Forest',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'stateforestname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.npwsReserve) {
+        if (suburbs) map.add(new FeatureLayer(suburbLayer));
+        if (localGov) map.add(new FeatureLayer(localGovLayer));
+        if (stateGov) map.add(new FeatureLayer(stateGovLayer));
+        if (county) map.add(new FeatureLayer(countyLayer));
+        if (parish) map.add(new FeatureLayer(parishLayer));
+        if (stateForest) map.add(new FeatureLayer(stateForestLayer));
+
+        if (npwsReserve) {
           map.add(
             new FeatureLayer({
               url:
@@ -489,7 +311,7 @@ export default function Map({ viewport }) {
             })
           );
         }
-        if (activeNSWAB.federalElectoral) {
+        if (federalGov) {
           map.add(
             new FeatureLayer({
               url:
@@ -912,30 +734,8 @@ export default function Map({ viewport }) {
             })
           );
         }
-        if (activeAssetMgt.pbLabels) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PB_LABELS.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Port Botany Labels',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'TextString',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
+        if (activeAssetMgt.pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer));
+
         if (activeAssetMgt.pbLines) {
           map.add(
             new GeoJSONLayer({
@@ -960,30 +760,8 @@ export default function Map({ viewport }) {
             })
           );
         }
-        if (activeAssetMgt.pkLabels) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PK_LABELS.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Port Kembla Labels',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'TextString',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
+        if (activeAssetMgt.pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer));
+
         if (activeAssetMgt.pkLines) {
           map.add(
             new GeoJSONLayer({
@@ -1021,15 +799,6 @@ export default function Map({ viewport }) {
 
   return <div className='map-wrapper' ref={mapRef}></div>;
 }
-
-const Container = styled.div``;
-
-const ToggleWrapper = styled.div`
-  position: absolute;
-  z-index: 3;
-  right: 0px;
-  top: 50%;
-`;
 
 const SideWrapper = styled.div`
   position: absolute;
