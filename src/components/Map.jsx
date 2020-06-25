@@ -12,13 +12,13 @@ import stateForestLayer from '../data/layers/NSWAdminBoundaries/stateForest';
 import npwsReserveLayer from '../data/layers/NSWAdminBoundaries/npwsReserve';
 import PB_labelsLayer from '../data/layers/AssetMgt/PB_labels';
 import PK_labelsLayer from '../data/layers/AssetMgt/PK_labels';
-import airportsLayer from '../data/layers/Operations/airports';
-import seaportsLayer from '../data/layers/Operations/seaports';
-import intermodalTerminalsLayer from '../data/layers/Operations/intermodalTerminals';
-import roadTrainAssemblyLayer from '../data/layers/Operations/roadTrainAssembly';
-import keyRoadsLayer from '../data/layers/Operations/keyRoads';
-import secondaryRoadsLayer from '../data/layers/Operations/secondaryRoads';
-import keyRailsLayer from '../data/layers/Operations/keyRails';
+import airportsLayer from '../data/layers/KeyFreightRoutes/airports';
+import seaportsLayer from '../data/layers/KeyFreightRoutes/seaports';
+import intermodalTerminalsLayer from '../data/layers/KeyFreightRoutes/intermodalTerminals';
+import roadTrainAssemblyLayer from '../data/layers/KeyFreightRoutes/roadTrainAssembly';
+import keyRoadsLayer from '../data/layers/KeyFreightRoutes/keyRoads';
+import secondaryRoadsLayer from '../data/layers/KeyFreightRoutes/secondaryRoads';
+import keyRailsLayer from '../data/layers/KeyFreightRoutes/keyRails';
 import PB_berthLayer from '../data/layers/Property/PB_berths';
 import PB_gatesLayer from '../data/layers/Property/PB_gates';
 import PK_berthsLayer from '../data/layers/Property/PK_berths';
@@ -59,7 +59,7 @@ export default function Map({ viewport, active }) {
     tenancyLeaseAreas,
     tenancyUnits,
     leaseBoundaries,
-    breakwatersRevetments,
+    breakwaterRevetments,
     buildings,
     heritage,
     maritimeStructures,
@@ -135,7 +135,7 @@ export default function Map({ viewport, active }) {
       if (tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
 
       // Asset Management
-      if (breakwatersRevetments) map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
+      if (breakwaterRevetments) map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
       if (buildings) map.add(new GeoJSONLayer(buildingsLayer));
       if (heritage) map.add(new GeoJSONLayer(heritageLayer));
       if (maritimeStructures) map.add(new GeoJSONLayer(maritimeStructuresLayer));
