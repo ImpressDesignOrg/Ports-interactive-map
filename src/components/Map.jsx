@@ -6,12 +6,14 @@ import { FaBuilding } from 'react-icons/fa';
 import selectedOptionsIntoObject from '../utils/selectedOptionsIntoObject';
 
 // layers
-import suburbLayer from '../data/layers/suburb';
-import localGovLayer from '../data/layers/localGov';
-import stateGovLayer from '../data/layers/stateGov';
-import parishLayer from '../data/layers/parish';
-import countyLayer from '../data/layers/county';
-import stateForestLayer from '../data/layers/stateForest';
+import suburbLayer from '../data/layers/NSWAdminBoundaries/suburb';
+import localGovLayer from '../data/layers/NSWAdminBoundaries/localGov';
+import stateGovLayer from '../data/layers/NSWAdminBoundaries/stateGov';
+import federalGovLayer from '../data/layers/NSWAdminBoundaries/federalGov';
+import parishLayer from '../data/layers/NSWAdminBoundaries/parish';
+import countyLayer from '../data/layers/NSWAdminBoundaries/county';
+import stateForestLayer from '../data/layers/NSWAdminBoundaries/stateForest';
+import npwsReserveLayer from '../data/layers/NSWAdminBoundaries/npwsReserve';
 import PB_labelsLayer from '../data/layers/PB_labels';
 import PK_labelsLayer from '../data/layers/PK_labels';
 
@@ -274,73 +276,17 @@ export default function Map({ viewport, active }) {
           );
         }
 
-        // NSW Administrative Boundaries
+        // ###### NSW Administrative Boundaries Layers ######
         if (suburbs) map.add(new FeatureLayer(suburbLayer));
-        if (localGov) map.add(new FeatureLayer(localGovLayer));
-        if (stateGov) map.add(new FeatureLayer(stateGovLayer));
         if (county) map.add(new FeatureLayer(countyLayer));
         if (parish) map.add(new FeatureLayer(parishLayer));
         if (stateForest) map.add(new FeatureLayer(stateForestLayer));
+        if (npwsReserve) map.add(new FeatureLayer(npwsReserveLayer));
+        if (localGov) map.add(new FeatureLayer(localGovLayer));
+        if (stateGov) map.add(new FeatureLayer(stateGovLayer));
+        if (federalGov) map.add(new FeatureLayer(federalGovLayer));
 
-        if (npwsReserve) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/6',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'NPWS Reserve',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'reservename',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (federalGov) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/7',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Federal Electoral Division',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'divisionname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        // Property
+        // ##### Property Layers ######
         if (activeProperty.pbBerth) {
           map.add(
             new GeoJSONLayer({
