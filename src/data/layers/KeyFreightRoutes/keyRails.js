@@ -1,5 +1,3 @@
-import keyRoadsLayer from './keyRoads';
-
 const keyRailsLayer = {
   url: 'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/6',
   objectIdField: 'ObjectID',

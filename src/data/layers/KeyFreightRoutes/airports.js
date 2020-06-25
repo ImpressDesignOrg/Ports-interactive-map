@@ -1,6 +1,3 @@
-import React from 'react';
-import { MdLocalAirport } from 'react-icons/md';
-
 const airportsLayer = {
   url: 'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/majorAirports.geojson',
   objectIdField: 'ObjectID',

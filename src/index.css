@@ -8,7 +8,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 .map-wrapper {
-  height: 99vh;
+  height: 100vh;
 }
 .esri-attribution {
   display: none !important;
