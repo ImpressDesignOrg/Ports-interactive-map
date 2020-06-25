@@ -1,75 +1,75 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { loadModules } from 'esri-loader';
-import styled from 'styled-components';
-import { Button, Select } from 'antd';
-import { FaBuilding, FaRegBuilding } from 'react-icons/fa';
 
-import LegendItem from './LegendItem';
+// ##### IMPORT ALL INDIVIDUAL LAYERS
+import suburbLayer from '../data/layers/NSWAdminBoundaries/suburb';
+import localGovLayer from '../data/layers/NSWAdminBoundaries/localGov';
+import stateGovLayer from '../data/layers/NSWAdminBoundaries/stateGov';
+import federalGovLayer from '../data/layers/NSWAdminBoundaries/federalGov';
+import parishLayer from '../data/layers/NSWAdminBoundaries/parish';
+import countyLayer from '../data/layers/NSWAdminBoundaries/county';
+import stateForestLayer from '../data/layers/NSWAdminBoundaries/stateForest';
+import npwsReserveLayer from '../data/layers/NSWAdminBoundaries/npwsReserve';
+import PB_labelsLayer from '../data/layers/AssetMgt/PB_labels';
+import PK_labelsLayer from '../data/layers/AssetMgt/PK_labels';
+import airportsLayer from '../data/layers/KeyFreightRoutes/airports';
+import seaportsLayer from '../data/layers/KeyFreightRoutes/seaports';
+import intermodalTerminalsLayer from '../data/layers/KeyFreightRoutes/intermodalTerminals';
+import roadTrainAssemblyLayer from '../data/layers/KeyFreightRoutes/roadTrainAssembly';
+import keyRoadsLayer from '../data/layers/KeyFreightRoutes/keyRoads';
+import secondaryRoadsLayer from '../data/layers/KeyFreightRoutes/secondaryRoads';
+import keyRailsLayer from '../data/layers/KeyFreightRoutes/keyRails';
+import PB_berthLayer from '../data/layers/Property/PB_berths';
+import PB_gatesLayer from '../data/layers/Property/PB_gates';
+import PK_berthsLayer from '../data/layers/Property/PK_berths';
+import leaseBoundariesLayer from '../data/layers/Property/leaseBoundaries';
+import tenancyLeaseAreasLayer from '../data/layers/Property/tenancyLeaseAreas';
+import tenancyUnitsLayer from '../data/layers/Property/tenancyUnits';
+import breakwaterRevetmentsLayer from '../data/layers/AssetMgt/breakwaterRevetments';
+import buildingsLayer from '../data/layers/AssetMgt/buildings';
+import heritageLayer from '../data/layers/AssetMgt/heritage';
+import maritimeStructuresLayer from '../data/layers/AssetMgt/maritimeStructures';
+import railNetworkLayer from '../data/layers/AssetMgt/railNetwork';
+import PK_linesLayer from '../data/layers/AssetMgt/PK_lines';
+import PB_linesLayer from '../data/layers/AssetMgt/PB_lines';
+import roadNetworkLayer from '../data/layers/AssetMgt/roadNetwork';
 
-import selectedOptionsIntoObject from '../utils/selectedOptionsIntoObject';
-
-const { Option, OptGroup } = Select;
-
-export default function Map() {
+export default function Map({ viewport, active }) {
   const mapRef = useRef();
-  const [siderVisible, setSiderVisible] = useState(false);
 
-  // key freight routes
-  const [activeKFR, setActiveKFR] = useState({
-    airport: false,
-    seaport: false,
-    intermodal: false,
-    roadTrainAssembly: false,
-    secondaryRoad: false,
-    keyRoad: false,
-    keyRail: false,
-  });
-  // NSW admin boundaries
-  const [activeNSWAB, setActiveNSWAB] = useState({
-    suburb: false,
-    localElectoral: false,
-    stateElectoral: false,
-    county: false,
-    parish: false,
-    stateForest: false,
-    npwsReserve: false,
-    federalElectoral: false,
-  });
-  // Property
-  const [activeProperty, setActiveProperty] = useState({
-    pbBerth: false,
-    pbGate: false,
-    pkBerth: false,
-    leaseBoundary: false,
-    tenancyLeaseAreas: false,
-    tenancyUnits: false,
-  });
-  // Asset Management
-  const [activeAssetMgt, setActiveAssetMgt] = useState({
-    breakwatersRevetments: false,
-    buildings: false,
-    heritage: false,
-    maritimeStructures: false,
-    railNetwork: false,
-    roadNetwork: false,
-    pbLabels: false,
-    pbLines: false,
-    pkLabels: false,
-    pkLines: false,
-  });
-
-  const handleFreightRoutes = (selectedArray) => {
-    setActiveKFR(selectedOptionsIntoObject(activeKFR, selectedArray));
-  };
-  const handleNSWAdmin = (selectedArray) => {
-    setActiveNSWAB(selectedOptionsIntoObject(activeNSWAB, selectedArray));
-  };
-  const handleProperty = (selectedArray) => {
-    setActiveProperty(selectedOptionsIntoObject(activeProperty, selectedArray));
-  };
-  const handleAssetMgt = (selectedArray) => {
-    setActiveAssetMgt(selectedOptionsIntoObject(activeAssetMgt, selectedArray));
-  };
+  const {
+    airports,
+    seaports,
+    intermodalTerminals,
+    roadTrainAssembly,
+    keyRoads,
+    keyRails,
+    secondaryRoads,
+    suburbs,
+    county,
+    parish,
+    localGov,
+    stateGov,
+    federalGov,
+    npwsReserve,
+    stateForest,
+    pbBerths,
+    pkBerths,
+    pbGates,
+    tenancyLeaseAreas,
+    tenancyUnits,
+    leaseBoundaries,
+    breakwaterRevetments,
+    buildings,
+    heritage,
+    maritimeStructures,
+    railNetwork,
+    roadNetwork,
+    pbLabels,
+    pbLines,
+    pkLabels,
+    pkLines,
+  } = active;
 
   useEffect(() => {
     // lazy load the required ArcGIS API
@@ -83,1285 +83,75 @@ export default function Map() {
         'esri/widgets/BasemapToggle',
       ],
       { css: true }
-    ).then(
-      ([
-        esriConfig,
-        ArcGISMap,
-        MapView,
-        FeatureLayer,
-        GeoJSONLayer,
-        BasemapToggle,
-      ]) => {
-        const map = new ArcGISMap({
-          basemap: 'hybrid',
-        });
+    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
+      const map = new ArcGISMap({
+        basemap: 'hybrid',
+      });
 
-        // TODO ensure that zoom level doesn't change when layers are updated
-        let mapSettings = {
-          zoom: 11,
-          center: [151.28, -33.976],
-        };
+      // load the map view at the ref's DOM node
+      const view = new MapView({
+        container: mapRef.current,
+        map: map,
+        center: viewport.center,
+        zoom: viewport.zoom,
+      });
 
-        // load the map view at the ref's DOM node
-        const view = new MapView({
-          container: mapRef.current,
-          map: map,
-          center: mapSettings.center,
-          zoom: mapSettings.zoom,
-        });
+      // add map toggle
+      view.ui.add(
+        new BasemapToggle({
+          view: view,
+          nextBasemap: 'topo-vector',
+        }),
+        'bottom-left'
+      );
 
-        // add map toggle
-        view.ui.add(
-          new BasemapToggle({
-            view: view,
-            nextBasemap: 'topo-vector',
-          }),
-          'bottom-left'
-        );
+      // ###### BRING IN THE ACTIVE LAYERS #####
+      // Key Freight Routes
+      // TODO manually extract the data
+      if (airports) map.add(new GeoJSONLayer(airportsLayer));
+      if (seaports) map.add(new GeoJSONLayer(seaportsLayer));
+      if (intermodalTerminals) map.add(new FeatureLayer(intermodalTerminalsLayer));
+      if (roadTrainAssembly) map.add(new FeatureLayer(roadTrainAssemblyLayer));
+      if (keyRoads) map.add(new FeatureLayer(keyRoadsLayer));
+      if (secondaryRoads) map.add(new FeatureLayer(secondaryRoadsLayer));
+      if (keyRails) map.add(new FeatureLayer(keyRailsLayer));
 
-        // Key Freight Routes
-        if (activeKFR.airport) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/majorAirports.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Airport',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'Name',
-                        label: 'Airport',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeKFR.seaport) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/majorSeaports.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Seaport',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'Name',
-                        label: 'Seaport',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeKFR.intermodal) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/2',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Intermodal Terminal',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'Name',
-                        label: 'Intermodal Terminal',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeKFR.roadTrainAssembly) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/3',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Road Train Assembly',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'Name',
-                        label: 'Road Train Assembly',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeKFR.keyRoad) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/5',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Key Freight Road',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'Name',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeKFR.secondaryRoad) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/4',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Secondary Freight Road',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'Name',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeKFR.keyRail) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/6',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Rail Freight Network',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'Name',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
+      // NSW Administrative Boundaries Layers
+      if (suburbs) map.add(new FeatureLayer(suburbLayer));
+      if (county) map.add(new FeatureLayer(countyLayer));
+      if (parish) map.add(new FeatureLayer(parishLayer));
+      if (stateForest) map.add(new FeatureLayer(stateForestLayer));
+      if (npwsReserve) map.add(new FeatureLayer(npwsReserveLayer));
+      if (localGov) map.add(new FeatureLayer(localGovLayer));
+      if (stateGov) map.add(new FeatureLayer(stateGovLayer));
+      if (federalGov) map.add(new FeatureLayer(federalGovLayer));
 
-        // NSW Administrative Boundaries
-        if (activeNSWAB.suburb) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/0',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Suburbs',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'suburbname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'postcode',
-                        label: 'Postcode',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.localElectoral) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/1',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Local Government Area',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'lganame',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.stateElectoral) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/2',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'State Electoral District',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'districtname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.county) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/3',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'County',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'countyname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.parish) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/4',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Parish',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'parishname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.stateForest) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/5',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'State Forest',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'stateforestname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.npwsReserve) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/6',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'NPWS Reserve',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'reservename',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeNSWAB.federalElectoral) {
-          map.add(
-            new FeatureLayer({
-              url:
-                'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/7',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Federal Electoral Division',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'divisionname',
-                        label: 'Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'shape_area',
-                        label: 'Area',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        // Property
-        if (activeProperty.pbBerth) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_BERTH.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Port Botany Berth',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'TextString',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeProperty.pbGate) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_GATENO.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Port Botany Gate Number',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'GATE_NUM',
-                        label: 'Gate Number',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeProperty.pkBerth) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PK_BERTH.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Port Kembla Berth',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'TextString',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeProperty.leaseBoundary) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/leaseboundary/json/LEASEBOUNDARY.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Lease Boundary',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'PORT',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeProperty.tenancyLeaseAreas) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/tenancydata/json/TENANCY_LEASE_AREAS.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Tenancy Lease Areas',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'LEASE',
-                        label: 'Lease Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'LEASE_TYPE',
-                        label: 'Lease Type',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeProperty.tenancyUnits) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/tenancydata/json/TENANCY_UNITS.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Tenancy Units',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'PORT',
-                        label: 'Port Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'UNITTYPE',
-                        label: 'Unit Type',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        // Asset Management
-        if (activeAssetMgt.breakwatersRevetments) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BREAKWATERSREVETMENTS.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Breakwaters Revetments',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'ASSET_NO',
-                        label: 'Asset Number',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_NAME',
-                        label: 'Asset Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_CLASS',
-                        label: 'Asset Class',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_LOC',
-                        label: 'Asset Location',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeAssetMgt.buildings) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BUILDINGS.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Buildings',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'ASSET_NO',
-                        label: 'Asset Number',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_NAME',
-                        label: 'Asset Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_CLASS',
-                        label: 'Asset Class',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_LOC',
-                        label: 'Asset Location',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-              renderer: {
-                type: 'simple',
-                symbol: <FaBuilding />,
-              },
-            })
-          );
-        }
-        if (activeAssetMgt.heritage) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/HERITAGE.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Buildings',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'Asset_No',
-                        label: 'Asset Number',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_NAME',
-                        label: 'Asset Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_CLASS',
-                        label: 'Asset Class',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_LOC',
-                        label: 'Asset Location',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeAssetMgt.maritimeStructures) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/MARITIMESTRUCTURES.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Maritime <Structures></Structures>',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'ASSET_NO',
-                        label: 'Asset Number',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_NAME',
-                        label: 'Asset Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_CLASS',
-                        label: 'Asset Class',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_LOC',
-                        label: 'Asset Location',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeAssetMgt.railNetwork) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/RAILNETWORK.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Rail Network',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'ASSET_NO',
-                        label: 'Asset Number',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_NAME',
-                        label: 'Asset Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_CLASS',
-                        label: 'Asset Class',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_LOC',
-                        label: 'Asset Location',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeAssetMgt.roadNetwork) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/ROADNETWORK.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Road Network',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'ASSET_NO',
-                        label: 'Asset Number',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_NAME',
-                        label: 'Asset Name',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_CLASS',
-                        label: 'Asset Class',
-                        visible: true,
-                      },
-                      {
-                        fieldName: 'ASS_LOC',
-                        label: 'Asset Location',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeAssetMgt.pbLabels) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PB_LABELS.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Port Botany Labels',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'TextString',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeAssetMgt.pbLines) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PB_LINES.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Port Botany Lines',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'autocad_la',
-                        label: 'Type',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeAssetMgt.pkLabels) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PK_LABELS.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Port Kembla Labels',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'TextString',
-                        label: 'Name',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
-        if (activeAssetMgt.pkLines) {
-          map.add(
-            new GeoJSONLayer({
-              url:
-                'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PK_LINES.geojson',
-              objectIdField: 'ObjectID',
-              popupTemplate: {
-                title: 'Port Kembla Lines',
-                content: [
-                  {
-                    type: 'fields',
-                    fieldInfos: [
-                      {
-                        fieldName: 'autocad_la',
-                        label: 'Type',
-                        visible: true,
-                      },
-                    ],
-                  },
-                ],
-              },
-            })
-          );
-        }
+      // Property Layers
+      if (pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
+      if (pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
+      if (pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
+      if (leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
+      if (tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
+      if (tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
 
-        return () => {
-          if (view) {
-            // destroy the map view
-            view.container = null;
-          }
-        };
-      }
-    );
+      // Asset Management
+      if (breakwaterRevetments) map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
+      if (buildings) map.add(new GeoJSONLayer(buildingsLayer));
+      if (heritage) map.add(new GeoJSONLayer(heritageLayer));
+      if (maritimeStructures) map.add(new GeoJSONLayer(maritimeStructuresLayer));
+      if (railNetwork) map.add(new GeoJSONLayer(railNetworkLayer));
+      if (roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer));
+      if (pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer));
+      if (pbLines) map.add(new GeoJSONLayer(PB_linesLayer));
+      if (pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer));
+      if (pkLines) map.add(new GeoJSONLayer(PK_linesLayer));
+
+      return () => {
+        // destroy the map view
+        if (view) view.container = null;
+      };
+    });
   });
 
-  return (
-    <Container>
-      <ToggleWrapper visible={siderVisible}>
-        <Button onClick={() => setSiderVisible(!siderVisible)}>
-          {siderVisible ? '>' : '<'}
-        </Button>
-      </ToggleWrapper>
-      <SideWrapper visible={siderVisible}>
-        <div className='content'>
-          <div className='controls-wrapper'>
-            <div className='category'>
-              <h4>Key Freight Routes</h4>
-              <Select
-                mode='tags'
-                style={{ width: 300 }}
-                onChange={(e) => handleFreightRoutes(e)}
-                allowClear
-              >
-                <Option value='airport'>Airports</Option>
-                <Option value='seaport'>Seaports</Option>
-                <Option value='intermodal'>Intermodal Terminals</Option>
-                <Option value='roadTrainAssembly'>Road Train Assembly</Option>
-                <Option value='keyRoad'>Key Freight Road Routes</Option>
-                <Option value='keyRail'>Key Freight Rail Routes</Option>
-                <Option value='secondaryRoad'>
-                  Secondary Freight Road Routes
-                </Option>
-              </Select>
-            </div>
-            <div className='category'>
-              <h4>NSW Administrative Boundaries</h4>
-              <Select
-                mode='tags'
-                style={{ width: 300 }}
-                onChange={(e) => handleNSWAdmin(e)}
-                allowClear
-              >
-                <Option value='suburb'>Suburbs</Option>
-                <Option value='county'>County</Option>
-                <Option value='parish'>Parish</Option>
-                <Option value='stateForest'>State Forest</Option>
-                <Option value='npwsReserve'>NPWS Reserve</Option>
-                <Option value='localElectoral'>Local Government Areas</Option>
-                <Option value='stateElectoral'>
-                  State Electoral Districts
-                </Option>
-                <Option value='federalElectoral'>
-                  Federal Electoral Divison
-                </Option>
-              </Select>
-            </div>
-            <div className='category'>
-              <h4>Property</h4>
-              <Select
-                mode='tags'
-                style={{ width: 300 }}
-                onChange={(e) => handleProperty(e)}
-                allowClear
-              >
-                <OptGroup label='Gate Numbers'>
-                  <Option value='pbBerth'>Port Botany Berth Numbers</Option>
-                  <Option value='pbGate'>Port Botany Gate Numbers</Option>
-                  <Option value='pkBerth'>Port Kembla Berth Numbers</Option>
-                </OptGroup>
-                <OptGroup label='Lease Areas'>
-                  <Option value='tenancyLeaseAreas'>Tenancy Lease Areas</Option>
-                  <Option value='tenancyUnits'>Tenancy Units</Option>
-                </OptGroup>
-                <OptGroup label='Lease Boundary'>
-                  <Option value='leaseBoundary'>Lease Boundary</Option>
-                </OptGroup>
-              </Select>
-            </div>
-            <div className='category'>
-              <h4>Asset Management</h4>
-              <Select
-                mode='tags'
-                style={{ width: 300 }}
-                onChange={(e) => handleAssetMgt(e)}
-                allowClear
-              >
-                <OptGroup label='Asset Locations'>
-                  <Option value='breakwatersRevetments'>
-                    Breakwaters Revetments
-                  </Option>
-                  <Option value='buildings'>Buildings</Option>
-                  <Option value='heritage'>Heritage</Option>
-                  <Option value='maritimeStructures'>
-                    Maritime Structures
-                  </Option>
-                  <Option value='railNetwork'>Rail Network</Option>
-                  <Option value='roadNetwork'>Road Network</Option>
-                </OptGroup>
-                <OptGroup label='Channel Plans'>
-                  <Option value='pbLabels'>Port Botany Labels</Option>
-                  <Option value='pbLines'>Port Botany Lines</Option>
-                  <Option value='pkLabels'>Port Kembla Labels</Option>
-                  <Option value='pkLines'>Port Kembla Lines</Option>
-                </OptGroup>
-              </Select>
-            </div>
-          </div>
-          <div className='legend-wrapper'>
-            {activeKFR.airport && (
-              <LegendItem
-                title='Airport'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeKFR.seaport && (
-              <LegendItem
-                title='Seaport'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeKFR.intermodal && (
-              <LegendItem
-                title='Intermodal Terminals'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeKFR.roadTrainAssembly && (
-              <LegendItem
-                title='Road Train Assembly'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeKFR.keyRoad && (
-              <LegendItem
-                title='Key Road Routes'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeKFR.keyRail && (
-              <LegendItem
-                title='Key Rail Routes'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeKFR.secondaryRoad && (
-              <LegendItem
-                title='Secondary Road Routes'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeNSWAB.suburb && (
-              <LegendItem title='Suburbs' dotColor='rgba(169, 0, 230, 255)' />
-            )}
-            {activeNSWAB.county && (
-              <LegendItem title='County' dotColor='rgba(170, 255, 0, 255)' />
-            )}
-            {activeNSWAB.parish && (
-              <LegendItem title='Parish' dotColor='rgba(230, 152, 0, 255)' />
-            )}
-            {activeNSWAB.stateForest && (
-              <LegendItem
-                title='State Forest'
-                dotColor='rgba(76, 115, 0, 255)'
-              />
-            )}
-            {activeNSWAB.npwsReserve && (
-              <LegendItem
-                title='NPWS Reserve'
-                dotColor='rgba(115, 223, 255, 255)'
-              />
-            )}
-            {activeNSWAB.localElectoral && (
-              <LegendItem
-                title='Local Government Areas'
-                dotColor='rgba(209, 255, 115, 255)'
-              />
-            )}
-            {activeNSWAB.stateElectoral && (
-              <LegendItem
-                title='State Government Districts'
-                dotColor='rgba(247, 242, 210, 255)'
-              />
-            )}
-            {activeNSWAB.federalElectoral && (
-              <LegendItem
-                title='Federal Government Divisions'
-                dotColor='rgba(122, 142, 245, 255)'
-              />
-            )}
-            {activeProperty.pbBerth && (
-              <LegendItem title='Port Botany Berth' icon={<FaRegBuilding />} />
-            )}
-            {activeProperty.pbGate && (
-              <LegendItem
-                title='Port Botany Gate'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeProperty.pkBerth && (
-              <LegendItem
-                title='Port Kembla Berth'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeProperty.tenancyLeaseAreas && (
-              <LegendItem
-                title='Tenancy Lease Areas'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeProperty.tenancyUnits && (
-              <LegendItem
-                title='Tenancy Units'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeProperty.leaseBoundary && (
-              <LegendItem
-                title='Lease Boundary'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeAssetMgt.breakwatersRevetments && (
-              <LegendItem
-                title='Breakwaters Revetments'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeAssetMgt.buildings && (
-              <LegendItem title='Buildings' icon={<FaRegBuilding />} />
-            )}
-            {activeAssetMgt.heritage && (
-              <LegendItem title='Heritage' icon={<FaBuilding />} />
-            )}
-            {activeAssetMgt.maritimeStructures && (
-              <LegendItem
-                title='Maritime Structures'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeAssetMgt.railNetwork && (
-              <LegendItem
-                title='Rail Network'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeAssetMgt.roadNetwork && (
-              <LegendItem
-                title='Road Network'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeAssetMgt.pkLabels && (
-              <LegendItem
-                title='Port Botany Labels'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeAssetMgt.pbLines && (
-              <LegendItem
-                title='Port Botany Lines'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeAssetMgt.pkLabels && (
-              <LegendItem
-                title='Port Kembla Labels'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-            {activeAssetMgt.pkLines && (
-              <LegendItem
-                title='Port Kembla Lines'
-                iconSrc='https://www.kindpng.com/picc/m/108-1084414_small-location-svg-png-icon-free-download-location.png'
-              />
-            )}
-          </div>
-        </div>
-      </SideWrapper>
-      <div className='map-wrapper' ref={mapRef}></div>
-    </Container>
-  );
+  return <div className='map-wrapper' ref={mapRef}></div>;
 }
-
-const Container = styled.div`
-  position: relative;
-`;
-
-const ToggleWrapper = styled.div`
-  position: absolute;
-  z-index: 3;
-  right: 0px;
-  top: 50%;
-`;
-
-const SideWrapper = styled.div`
-  position: absolute;
-  width: 400px;
-  height: 100vh;
-  z-index: 2;
-  right: 0;
-  top: 0;
-  background: #efefef;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
-  opacity: ${(props) => (props.visible ? '1' : '0')};
-  transition: visibility 1s, opacity 0.5s linear;
-
-  .content {
-    padding: 30px;
-
-    .controls-wrapper {
-      display: flex;
-      flex-direction: column;
-
-      .reset-wrapper {
-        text-align: right;
-      }
-
-      .category {
-        margin: 10px 0;
-
-        h4 {
-          color: #000;
-        }
-      }
-    }
-
-    .legend-wrapper {
-      position: absolute;
-      bottom: 20px;
-      width: 200px;
-      height: 400px;
-
-      h2,
-      p {
-        color: #000;
-      }
-    }
-  }
-`;
