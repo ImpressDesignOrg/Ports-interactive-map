@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button, Switch } from 'antd';
+import { MdLocalAirport, MdDirectionsBoat } from 'react-icons/md';
 
 import Map from './Map';
 
@@ -10,15 +11,15 @@ const viewports = {
     center: [151.218, -33.976],
   },
   PK: { zoom: 13, center: [150.8996, -34.4854] },
-  CR: { zoom: 13, center: [151.1111, -33.333] },
-  EN: { zoom: 13, center: [151.1111, -33.3333] },
+  CR: { zoom: 14, center: [151.168, -33.9158] },
+  EN: { zoom: 14, center: [151.0644, -33.9078] },
 };
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(false);
   const [viewport, setViewport] = useState({
-    zoom: 12,
-    center: [151.1111, -33.333],
+    zoom: 10,
+    center: [150.9729, -34.2457],
   });
   const [active, setActive] = useState({});
 
@@ -29,10 +30,12 @@ export default function Sidebar() {
   return (
     <>
       <div className='sidebar-wrapper'>
+        <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
+          {visible ? 'X' : '<'}
+        </StyledToggle>
         <StyledContainer visible={visible}>
-          <Button onClick={() => setVisible(!visible)}>{visible ? '>' : '<'}</Button>
-          <div className='zoom-buttons-wrapper'>
-            <div className='zoom-buttons-content'>
+          <div className='viewport-buttons-wrapper'>
+            <div className='viewport-buttons-content'>
               <Button onClick={() => setViewport(viewports.PB)}>Port Botany</Button>
               <Button onClick={() => setViewport(viewports.PK)}>Port Kembla</Button>
               <Button onClick={() => setViewport(viewports.CR)}>Cooks River</Button>
@@ -45,30 +48,37 @@ export default function Sidebar() {
                 <div className='switch-wrapper'>
                   <h5>Operations - Key Freight Routes</h5>
                   <div className='switch'>
+                    <MdLocalAirport />
                     <p>Airports</p>
                     <Switch onClick={(e) => handleToggle(e, 'airports')} />
                   </div>
                   <div className='switch'>
+                    <MdDirectionsBoat />
                     <p>Seaports</p>
                     <Switch onClick={(e) => handleToggle(e, 'seaports')} />
                   </div>
                   <div className='switch'>
+                    <MdLocalAirport />
                     <p>Intermodal Terminals</p>
                     <Switch onClick={(e) => handleToggle(e, 'intermodalTerminals')} />
                   </div>
                   <div className='switch'>
+                    <MdLocalAirport />
                     <p>Road Train Assembly</p>
                     <Switch onClick={(e) => handleToggle(e, 'roadTrainAssembly')} />
                   </div>
                   <div className='switch'>
+                    <MdLocalAirport />
                     <p>Key Road</p>
                     <Switch onClick={(e) => handleToggle(e, 'keyRoads')} />
                   </div>
                   <div className='switch'>
+                    <MdLocalAirport />
                     <p>Key Rail</p>
                     <Switch onClick={(e) => handleToggle(e, 'keyRails')} />
                   </div>
                   <div className='switch'>
+                    <MdLocalAirport />
                     <p>Secondary Road</p>
                     <Switch onClick={(e) => handleToggle(e, 'secondaryRoads')} />
                   </div>
@@ -76,10 +86,12 @@ export default function Sidebar() {
                 <div className='switch-wrapper'>
                   <h5>NSW Administrative Boundaries</h5>
                   <div className='switch'>
+                    <MdLocalAirport />
                     <p>Suburbs</p>
                     <Switch onClick={(e) => handleToggle(e, 'suburbs')} />
                   </div>
                   <div className='switch'>
+                    <MdLocalAirport />
                     <p>Parish</p>
                     <Switch onClick={(e) => handleToggle(e, 'parish')} />
                   </div>
@@ -143,27 +155,27 @@ export default function Sidebar() {
                   <h5>Asset Management</h5>
                   <div className='switch'>
                     <p>Breakwater Revetments</p>
-                    <Switch onClick={(e) => handleToggle(e, 'pbBerths')} />
+                    <Switch onClick={(e) => handleToggle(e, 'breakwaterRevetments')} />
                   </div>
                   <div className='switch'>
                     <p>Buildings</p>
-                    <Switch onClick={(e) => handleToggle(e, 'pkBerths')} />
+                    <Switch onClick={(e) => handleToggle(e, 'buildings')} />
                   </div>
                   <div className='switch'>
                     <p>Heritage</p>
-                    <Switch onClick={(e) => handleToggle(e, 'pbGates')} />
+                    <Switch onClick={(e) => handleToggle(e, 'heritage')} />
                   </div>
                   <div className='switch'>
                     <p>Maritime Structures</p>
-                    <Switch onClick={(e) => handleToggle(e, 'pbGates')} />
+                    <Switch onClick={(e) => handleToggle(e, 'maritimeStructures')} />
                   </div>
                   <div className='switch'>
                     <p>Rail Network</p>
-                    <Switch onClick={(e) => handleToggle(e, 'tenancyLeaseAreas')} />
+                    <Switch onClick={(e) => handleToggle(e, 'railNetwork')} />
                   </div>
                   <div className='switch'>
                     <p>Road Network</p>
-                    <Switch onClick={(e) => handleToggle(e, 'tenancyUnits')} />
+                    <Switch onClick={(e) => handleToggle(e, 'roadNetwork')} />
                   </div>
                   <div className='switch'>
                     <p>Port Botany Labels</p>
@@ -194,10 +206,41 @@ export default function Sidebar() {
   );
 }
 
+const StyledToggle = styled(Button)`
+  z-index: 3;
+  right: ${(props) => (props.visible ? '50px' : '10px')};
+  top: 10px;
+`;
+
 const StyledContainer = styled.div`
   padding: 30px;
-  background: #efefef;
+  background: #fff;
   height: 100%;
+  position: absolute;
+  width: 350px;
+  height: 100vh;
+  z-index: 2;
+  right: 30px;
+  top: 0;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.visible ? '1' : '0')};
+  transition: visibility 1s, opacity 0.5s linear;
+
+  .viewport-buttons-wrapper {
+    margin: 20px 0;
+
+    .viewport-buttons-content {
+      display: flex;
+      flex-wrap: wrap;
+
+      button {
+        flex: 0 0 46%;
+        margin: 5px;
+      }
+    }
+  }
 `;
 
 const StyledControls = styled.div`
@@ -205,9 +248,9 @@ const StyledControls = styled.div`
     .switch {
       display: flex;
       align-items: center;
-      width: 200px;
+      width: 300px;
       justify-content: space-between;
-      margin: 10px 0;
+      margin: 7px 0;
 
       p {
         margin: 0;

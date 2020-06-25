@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { loadModules } from 'esri-loader';
-import styled from 'styled-components';
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
 import suburbLayer from '../data/layers/NSWAdminBoundaries/suburb';
@@ -148,61 +147,11 @@ export default function Map({ viewport, active }) {
       if (pkLines) map.add(new GeoJSONLayer(PK_linesLayer));
 
       return () => {
-        if (view) {
-          // destroy the map view
-          view.container = null;
-        }
+        // destroy the map view
+        if (view) view.container = null;
       };
     });
   });
 
   return <div className='map-wrapper' ref={mapRef}></div>;
 }
-
-const SideWrapper = styled.div`
-  position: absolute;
-  width: 400px;
-  height: 100vh;
-  z-index: 2;
-  right: 0;
-  top: 0;
-  background: #efefef;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
-  opacity: ${(props) => (props.visible ? '1' : '0')};
-  transition: visibility 1s, opacity 0.5s linear;
-
-  .content {
-    padding: 30px;
-
-    .controls-wrapper {
-      display: flex;
-      flex-direction: column;
-
-      .reset-wrapper {
-        text-align: right;
-      }
-
-      .category {
-        margin: 10px 0;
-
-        h4 {
-          color: #000;
-        }
-      }
-    }
-
-    .legend-wrapper {
-      position: absolute;
-      bottom: 20px;
-      width: 200px;
-      height: 400px;
-
-      h2,
-      p {
-        color: #000;
-      }
-    }
-  }
-`;

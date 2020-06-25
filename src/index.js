@@ -1,6 +1,5 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { createContainer } from 'react-tracked';
 import styled from 'styled-components';
 
 import Sidebar from './components/Sidebar';
@@ -23,9 +22,7 @@ const StyledApp = styled.div`
     position: absolute;
     z-index: 2;
     right: 0;
-
     height: 100vh;
-    border: 1px solid red;
   }
 `;
 
