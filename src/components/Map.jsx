@@ -37,8 +37,6 @@ import roadNetworkLayer from '../data/layers/AssetMgt/roadNetwork';
 export default function Map({ active }) {
   const mapRef = useRef();
 
-  const viewport = {};
-
   const {
     airports,
     seaports,
