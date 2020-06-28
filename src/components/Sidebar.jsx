@@ -12,17 +12,17 @@ import SidebarLegend from './SidebarLegend';
   assetMgtSwitches,
 } from '../data/toggles'; */
 import { nswAdminBoundariesSwitches } from '../data/toggles';
-import { viewports } from '../data/viewports';
+// import { viewports } from '../data/viewports';
 import { useForm } from 'antd/lib/form/util';
 
 const { Panel } = Collapse;
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
-  const [viewport, setViewport] = useState({
+  /*  const [viewport, setViewport] = useState({
     zoom: 10,
     center: [150.9729, -34.2457],
-  });
+  }); */
   const [active, setActive] = useState({});
 
   const [form] = useForm();
@@ -32,9 +32,6 @@ export default function Sidebar() {
     setActive({});
     form.resetFields();
   };
-
-  console.log('viewports :>> ', viewports);
-  setViewport(undefined);
 
   return (
     <>
@@ -123,7 +120,7 @@ export default function Sidebar() {
         </StyledContainer>
       </div>
       <div className='map-wrapper'>
-        <Map viewport={viewport} active={active} />
+        <Map /* viewport={viewport} */ active={active} />
       </div>
     </>
   );
