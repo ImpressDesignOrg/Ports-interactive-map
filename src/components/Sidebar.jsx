@@ -10,20 +10,11 @@ import {
   nswAdminBoundariesSwitches,
   propertySwitches,
   assetMgtSwitches,
-} from '../data/controls/switches';
+} from '../data/toggles';
+import { viewports } from '../data/viewports';
 import { useForm } from 'antd/lib/form/util';
 
 const { Panel } = Collapse;
-
-const viewports = {
-  PB: {
-    zoom: 13,
-    center: [151.218, -33.976],
-  },
-  PK: { zoom: 13, center: [150.8996, -34.4854] },
-  CR: { zoom: 14, center: [151.168, -33.9158] },
-  EN: { zoom: 14, center: [151.0644, -33.9078] },
-};
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(false);
