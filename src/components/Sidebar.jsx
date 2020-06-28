@@ -42,10 +42,10 @@ export default function Sidebar() {
         <StyledContainer visible={visible}>
           <div className='viewport-buttons-wrapper'>
             <div className='viewport-buttons-content'>
-              <Button onClick={() => setViewport(viewports.PB)}>Port Botany</Button>
+              {/*    <Button onClick={() => setViewport(viewports.PB)}>Port Botany</Button>
               <Button onClick={() => setViewport(viewports.PK)}>Port Kembla</Button>
               <Button onClick={() => setViewport(viewports.CR)}>Cooks River</Button>
-              <Button onClick={() => setViewport(viewports.EN)}>Enfield</Button>
+              <Button onClick={() => setViewport(viewports.EN)}>Enfield</Button> */}
             </div>
           </div>
           <StyledControls>
