@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button, Collapse, Switch, Form } from 'antd';
 
@@ -37,17 +37,9 @@ export default function Sidebar() {
 
   const handleToggle = (e, key) => setActive({ ...active, [key]: e });
   const handleReset = () => {
-    console.log('reset all active layers');
     setActive({});
-    /*     form.setFieldsValue(() => {
-      return false;
-		}); */
     form.resetFields();
   };
-
-  useEffect(() => {
-    form.resetFields();
-  }, [form]);
 
   return (
     <>
@@ -181,6 +173,8 @@ const StyledContainer = styled.div`
 
 const StyledControls = styled.div`
   margin-top: 50px;
+  overflow: scroll;
+  max-height: 70%;
 
   .content {
     .ant-form .ant-form-item button {
