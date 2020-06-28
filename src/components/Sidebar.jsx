@@ -5,12 +5,13 @@ import { Button, Collapse, Switch, Form } from 'antd';
 import Map from './Map';
 import SidebarLegend from './SidebarLegend';
 
-import {
+/* import {
   keyFreightRouteSwitches,
   nswAdminBoundariesSwitches,
   propertySwitches,
   assetMgtSwitches,
-} from '../data/toggles';
+} from '../data/toggles'; */
+import { nswAdminBoundariesSwitches } from '../data/toggles';
 import { viewports } from '../data/viewports';
 import { useForm } from 'antd/lib/form/util';
 
