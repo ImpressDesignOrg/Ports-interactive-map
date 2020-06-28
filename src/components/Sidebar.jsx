@@ -28,7 +28,7 @@ const viewports = {
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
   const [viewport, setViewport] = useState({
-    zoom: 10,
+    zoom: 9,
     center: [150.9729, -34.2457],
   });
   const [active, setActive] = useState({});
