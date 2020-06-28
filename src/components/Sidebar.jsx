@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Button, Collapse, Switch } from 'antd';
+import { Button, Collapse, Switch, Form } from 'antd';
 
 import Map from './Map';
 import SidebarLegend from './SidebarLegend';
@@ -11,6 +11,7 @@ import {
   propertySwitches,
   assetMgtSwitches,
 } from '../data/controls/switches';
+import { useForm } from 'antd/lib/form/util';
 
 const { Panel } = Collapse;
 
@@ -25,14 +26,28 @@ const viewports = {
 };
 
 export default function Sidebar() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [viewport, setViewport] = useState({
     zoom: 10,
     center: [150.9729, -34.2457],
   });
   const [active, setActive] = useState({});
 
+  const [form] = useForm();
+
   const handleToggle = (e, key) => setActive({ ...active, [key]: e });
+  const handleReset = () => {
+    console.log('reset all active layers');
+    setActive({});
+    /*     form.setFieldsValue(() => {
+      return false;
+		}); */
+    form.resetFields();
+  };
+
+  useEffect(() => {
+    form.resetFields();
+  }, [form]);
 
   return (
     <>
@@ -51,62 +66,71 @@ export default function Sidebar() {
           </div>
           <StyledControls>
             <div className='content'>
-              <Collapse expandIconPosition='right'>
-                <Panel header='Key Freight Routes'>
-                  {keyFreightRouteSwitches.map((v) => {
-                    const { label, icon, key } = v;
+              <Form form={form}>
+                <Form.Item>
+                  <Button htmlType='reset' onClick={() => handleReset()}>
+                    RESET
+                  </Button>
+                </Form.Item>
+                <Collapse expandIconPosition='right'>
+                  <Panel header='Key Freight Routes'>
+                    {keyFreightRouteSwitches.map((v) => {
+                      const { label, icon, key } = v;
 
-                    return (
-                      <StyledSwitch key={label}>
-                        <SidebarLegend icon={icon} text={label} />
-                        <Switch onClick={(e) => handleToggle(e, key)} />
-                      </StyledSwitch>
-                    );
-                  })}
-                </Panel>
-              </Collapse>
-              <Collapse expandIconPosition='right'>
-                <Panel header='NSW Administrative Boundaries'>
-                  {nswAdminBoundariesSwitches.map((v) => {
-                    const { label, icon, key } = v;
+                      return (
+                        <StyledSwitch key={label}>
+                          <SidebarLegend icon={icon} text={label} />
+                          <Form.Item name='switch'>
+                            <Switch onClick={(e) => handleToggle(e, key)} />
+                          </Form.Item>
+                        </StyledSwitch>
+                      );
+                    })}
+                  </Panel>
+                  <Panel header='NSW Administrative Boundaries'>
+                    {nswAdminBoundariesSwitches.map((v) => {
+                      const { label, icon, key } = v;
 
-                    return (
-                      <StyledSwitch key={label}>
-                        <SidebarLegend icon={icon} text={label} />
-                        <Switch onClick={(e) => handleToggle(e, key)} />
-                      </StyledSwitch>
-                    );
-                  })}
-                </Panel>
-              </Collapse>
-              <Collapse expandIconPosition='right'>
-                <Panel header='Property'>
-                  {propertySwitches.map((v) => {
-                    const { label, icon, key } = v;
+                      return (
+                        <StyledSwitch key={label}>
+                          <SidebarLegend icon={icon} text={label} />
+                          <Form.Item name='switch'>
+                            <Switch onClick={(e) => handleToggle(e, key)} />
+                          </Form.Item>
+                        </StyledSwitch>
+                      );
+                    })}
+                  </Panel>
+                  <Panel header='Property'>
+                    {propertySwitches.map((v) => {
+                      const { label, icon, key } = v;
 
-                    return (
-                      <StyledSwitch key={label}>
-                        <SidebarLegend icon={icon} text={label} />
-                        <Switch onClick={(e) => handleToggle(e, key)} />
-                      </StyledSwitch>
-                    );
-                  })}
-                </Panel>
-              </Collapse>
-              <Collapse expandIconPosition='right'>
-                <Panel header='Asset Management'>
-                  {assetMgtSwitches.map((v) => {
-                    const { label, icon, key } = v;
+                      return (
+                        <StyledSwitch key={label}>
+                          <SidebarLegend icon={icon} text={label} />
+                          <Form.Item name='switch'>
+                            <Switch onClick={(e) => handleToggle(e, key)} />
+                          </Form.Item>
+                        </StyledSwitch>
+                      );
+                    })}
+                  </Panel>
+                  <Panel header='Asset Management'>
+                    {assetMgtSwitches.map((v) => {
+                      const { label, icon, key } = v;
 
-                    return (
-                      <StyledSwitch key={label}>
-                        <SidebarLegend icon={icon} text={label} />
-                        <Switch onClick={(e) => handleToggle(e, key)} />
-                      </StyledSwitch>
-                    );
-                  })}
-                </Panel>
-              </Collapse>
+                      return (
+                        <StyledSwitch key={label}>
+                          <SidebarLegend icon={icon} text={label} />
+                          <Form.Item name='switch'>
+                            <Switch onClick={(e) => handleToggle(e, key)} />
+                          </Form.Item>
+                        </StyledSwitch>
+                      );
+                    })}
+                  </Panel>
+                </Collapse>
+              </Form>
             </div>
           </StyledControls>
         </StyledContainer>
@@ -156,7 +180,12 @@ const StyledContainer = styled.div`
 `;
 
 const StyledControls = styled.div`
+  margin-top: 50px;
+
   .content {
+    .ant-form .ant-form-item button {
+    }
+
     .ant-collapse {
       margin: 8px 0;
 
@@ -179,4 +208,12 @@ const StyledSwitch = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 7px 0;
+
+  .ant-form-item {
+    margin: 0;
+
+    button {
+      margin: 0;
+    }
+  }
 `;
