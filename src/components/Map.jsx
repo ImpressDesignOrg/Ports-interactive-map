@@ -34,8 +34,10 @@ import PK_linesLayer from '../data/layers/AssetMgt/PK_lines';
 import PB_linesLayer from '../data/layers/AssetMgt/PB_lines';
 import roadNetworkLayer from '../data/layers/AssetMgt/roadNetwork';
 
-export default function Map({ viewport, active }) {
+export default function Map({ active }) {
   const mapRef = useRef();
+
+  const viewport = {};
 
   const {
     airports,
@@ -92,8 +94,8 @@ export default function Map({ viewport, active }) {
       const view = new MapView({
         container: mapRef.current,
         map: map,
-        center: viewport.center,
-        zoom: viewport.zoom,
+        center: [150.9729, -34.2457],
+        zoom: 10,
       });
 
       // add map toggle
