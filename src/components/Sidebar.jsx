@@ -17,7 +17,7 @@ import { useForm } from 'antd/lib/form/util';
 const { Panel } = Collapse;
 
 export default function Sidebar() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [viewport, setViewport] = useState({
     zoom: 10,
     center: [150.9729, -34.2457],
@@ -56,7 +56,7 @@ export default function Sidebar() {
                   </Button>
                 </Form.Item>
                 <Collapse expandIconPosition='right'>
-                  <Panel header='Key Freight Routes'>
+                  {/* <Panel header='Key Freight Routes'>
                     {keyFreightRouteSwitches.map((v) => {
                       const { label, icon, key } = v;
 
@@ -69,7 +69,7 @@ export default function Sidebar() {
                         </StyledSwitch>
                       );
                     })}
-                  </Panel>
+                  </Panel> */}
                   <Panel header='NSW Administrative Boundaries'>
                     {nswAdminBoundariesSwitches.map((v) => {
                       const { label, icon, key } = v;
@@ -84,7 +84,7 @@ export default function Sidebar() {
                       );
                     })}
                   </Panel>
-                  <Panel header='Property'>
+                  {/*  <Panel header='Property'>
                     {propertySwitches.map((v) => {
                       const { label, icon, key } = v;
 
@@ -97,8 +97,8 @@ export default function Sidebar() {
                         </StyledSwitch>
                       );
                     })}
-                  </Panel>
-                  <Panel header='Asset Management'>
+                  </Panel> */}
+                  {/* <Panel header='Asset Management'>
                     {assetMgtSwitches.map((v) => {
                       const { label, icon, key } = v;
 
@@ -111,7 +111,7 @@ export default function Sidebar() {
                         </StyledSwitch>
                       );
                     })}
-                  </Panel>
+                  </Panel> */}
                 </Collapse>
               </Form>
             </div>
