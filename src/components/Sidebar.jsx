@@ -33,6 +33,9 @@ export default function Sidebar() {
     form.resetFields();
   };
 
+  console.log('viewports :>> ', viewports);
+  setViewport(undefined);
+
   return (
     <>
       <div className='sidebar-wrapper'>
