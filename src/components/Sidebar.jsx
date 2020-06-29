@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
-import { Button, Collapse, Switch, Form } from 'antd';
+import { Button, Collapse, Form } from 'antd';
 
 import MapContext from '../MapContext';
 
-import SidebarLegend from './SidebarLegend';
+import LocationButtons from './LocationButtons';
 
 import {
   keyFreightRouteSwitches,
@@ -12,32 +12,22 @@ import {
   propertySwitches,
   assetMgtSwitches,
 } from '../data/toggles';
-import { viewports } from '../data/viewports';
+
 import { useForm } from 'antd/lib/form/util';
+import SwitchControl from './SwitchControl';
 
 const { Panel } = Collapse;
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
 
-  const { active, setZoom, setCenter, setActive } = useContext(MapContext);
+  const { setActive } = useContext(MapContext);
 
   const [form] = useForm();
-
-  const handleToggle = (e, key) => {
-    setActive({ ...active, [key]: e });
-  };
 
   const handleReset = () => {
     setActive({});
     form.resetFields();
-  };
-
-  const handleViewport = (location) => {
-    const { zoom, center } = location;
-
-    setZoom(zoom);
-    setCenter(center);
   };
 
   return (
@@ -46,14 +36,7 @@ export default function Sidebar() {
         {visible ? 'X' : '<'}
       </StyledToggle>
       <StyledContainer visible={visible}>
-        <div className='viewport-buttons-wrapper'>
-          <div className='viewport-buttons-content'>
-            <Button onClick={() => handleViewport(viewports.PB)}>Port Botany</Button>
-            <Button onClick={() => handleViewport(viewports.PK)}>Port Kembla</Button>
-            <Button onClick={() => handleViewport(viewports.CR)}>Cooks River</Button>
-            <Button onClick={() => handleViewport(viewports.EN)}>Enfield</Button>
-          </div>
-        </div>
+        <LocationButtons />
         <StyledControls>
           <div className='content'>
             <Form form={form}>
@@ -64,60 +47,24 @@ export default function Sidebar() {
               </Form.Item>
               <Collapse expandIconPosition='right'>
                 <Panel header='Key Freight Routes'>
-                  {keyFreightRouteSwitches.map((v) => {
-                    const { label, icon, key } = v;
-
-                    return (
-                      <StyledSwitch key={label}>
-                        <SidebarLegend icon={icon} text={label} />
-                        <Form.Item name='switch'>
-                          <Switch onClick={(e) => handleToggle(e, key)} />
-                        </Form.Item>
-                      </StyledSwitch>
-                    );
-                  })}
+                  {keyFreightRouteSwitches.map((v) => (
+                    <SwitchControl item={v} />
+                  ))}
                 </Panel>
                 <Panel header='NSW Administrative Boundaries'>
-                  {nswAdminBoundariesSwitches.map((v) => {
-                    const { label, icon, key } = v;
-
-                    return (
-                      <StyledSwitch key={label}>
-                        <SidebarLegend icon={icon} text={label} />
-                        <Form.Item name='switch'>
-                          <Switch onClick={(e) => handleToggle(e, key)} />
-                        </Form.Item>
-                      </StyledSwitch>
-                    );
-                  })}
+                  {nswAdminBoundariesSwitches.map((v) => (
+                    <SwitchControl item={v} />
+                  ))}
                 </Panel>
                 <Panel header='Property'>
-                  {propertySwitches.map((v) => {
-                    const { label, icon, key } = v;
-
-                    return (
-                      <StyledSwitch key={label}>
-                        <SidebarLegend icon={icon} text={label} />
-                        <Form.Item name='switch'>
-                          <Switch onClick={(e) => handleToggle(e, key)} />
-                        </Form.Item>
-                      </StyledSwitch>
-                    );
-                  })}
+                  {propertySwitches.map((v) => (
+                    <SwitchControl item={v} />
+                  ))}
                 </Panel>
                 <Panel header='Asset Management'>
-                  {assetMgtSwitches.map((v) => {
-                    const { label, icon, key } = v;
-
-                    return (
-                      <StyledSwitch key={label}>
-                        <SidebarLegend icon={icon} text={label} />
-                        <Form.Item name='switch'>
-                          <Switch onClick={(e) => handleToggle(e, key)} />
-                        </Form.Item>
-                      </StyledSwitch>
-                    );
-                  })}
+                  {assetMgtSwitches.map((v) => (
+                    <SwitchControl item={v} />
+                  ))}
                 </Panel>
               </Collapse>
             </Form>
@@ -149,20 +96,6 @@ const StyledContainer = styled.div`
   visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.visible ? '1' : '0')};
   transition: visibility 1s, opacity 0.5s linear;
-
-  .viewport-buttons-wrapper {
-    margin: 20px 0;
-
-    .viewport-buttons-content {
-      display: flex;
-      flex-wrap: wrap;
-
-      button {
-        flex: 0 0 46%;
-        margin: 5px;
-      }
-    }
-  }
 `;
 
 const StyledControls = styled.div`
@@ -187,21 +120,6 @@ const StyledControls = styled.div`
           color: #fff;
         }
       }
-    }
-  }
-`;
-
-const StyledSwitch = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 7px 0;
-
-  .ant-form-item {
-    margin: 0;
-
-    button {
-      margin: 0;
     }
   }
 `;
