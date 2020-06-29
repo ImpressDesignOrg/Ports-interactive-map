@@ -4,6 +4,10 @@ import { loadModules } from 'esri-loader';
 import MapContext from '../MapContext';
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
+import airportsLayer from '../data/layers/KeyFreightRoutes/airports';
+import seaportsLayer from '../data/layers/KeyFreightRoutes/seaports';
+import keyRoadsLayer from '../data/layers/KeyFreightRoutes/keyRoads';
+
 import suburbLayer from '../data/layers/NSWAdminBoundaries/suburb';
 import localGovLayer from '../data/layers/NSWAdminBoundaries/localGov';
 import stateGovLayer from '../data/layers/NSWAdminBoundaries/stateGov';
@@ -14,11 +18,8 @@ import stateForestLayer from '../data/layers/NSWAdminBoundaries/stateForest';
 import npwsReserveLayer from '../data/layers/NSWAdminBoundaries/npwsReserve';
 import PB_labelsLayer from '../data/layers/AssetMgt/PB_labels';
 import PK_labelsLayer from '../data/layers/AssetMgt/PK_labels';
-import airportsLayer from '../data/layers/KeyFreightRoutes/airports';
-import seaportsLayer from '../data/layers/KeyFreightRoutes/seaports';
 import intermodalTerminalsLayer from '../data/layers/KeyFreightRoutes/intermodalTerminals';
 import roadTrainAssemblyLayer from '../data/layers/KeyFreightRoutes/roadTrainAssembly';
-import keyRoadsLayer from '../data/layers/KeyFreightRoutes/keyRoads';
 import secondaryRoadsLayer from '../data/layers/KeyFreightRoutes/secondaryRoads';
 import keyRailsLayer from '../data/layers/KeyFreightRoutes/keyRails';
 import PB_berthLayer from '../data/layers/Property/PB_berths';
@@ -35,9 +36,6 @@ import railNetworkLayer from '../data/layers/AssetMgt/railNetwork';
 import PK_linesLayer from '../data/layers/AssetMgt/PK_lines';
 import PB_linesLayer from '../data/layers/AssetMgt/PB_lines';
 import roadNetworkLayer from '../data/layers/AssetMgt/roadNetwork';
-
-let centerUpdated = false;
-let zoomUpdated = false;
 
 export default function Map() {
   const mapRef = useRef();
