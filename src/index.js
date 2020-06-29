@@ -22,16 +22,7 @@ const App = () => {
   );
 };
 
-const StyledApp = styled.div`
-  position: relative;
-
-  .sidebar-wrapper {
-    position: absolute;
-    z-index: 2;
-    right: 0;
-    height: 100vh;
-  }
-`;
+const StyledApp = styled.div``;
 
 ReactDOM.render(
   <React.StrictMode>

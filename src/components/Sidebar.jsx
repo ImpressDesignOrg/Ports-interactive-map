@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Button, Collapse, Form } from 'antd';
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 import MapContext from '../MapContext';
 
@@ -32,9 +33,15 @@ export default function Sidebar() {
 
   return (
     <div className='sidebar-wrapper'>
-      <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
-        {visible ? 'X' : '<'}
-      </StyledToggle>
+      {visible ? (
+        <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
+          <AiOutlineArrowRight />
+        </StyledToggle>
+      ) : (
+        <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
+          <AiOutlineArrowLeft />
+        </StyledToggle>
+      )}
       <StyledContainer visible={visible}>
         <LocationButtons />
         <StyledControls>
@@ -76,9 +83,13 @@ export default function Sidebar() {
 }
 
 const StyledToggle = styled(Button)`
+  position: absolute;
   z-index: 3;
-  right: ${(props) => (props.visible ? '50px' : '10px')};
-  top: 10px;
+  right: ${(props) => (props.visible ? '380px' : '10px')};
+  top: 50%;
+  height: 50px;
+  background: #9f9ffd;
+  border: none;
 `;
 
 const StyledContainer = styled.div`
@@ -95,7 +106,7 @@ const StyledContainer = styled.div`
   border-bottom-left-radius: 20px;
   visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.visible ? '1' : '0')};
-  transition: visibility 1s, opacity 0.5s linear;
+  transition: visibility 0.5s, opacity 0.1s linear;
 `;
 
 const StyledControls = styled.div`

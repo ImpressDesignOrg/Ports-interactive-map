@@ -7,7 +7,6 @@ import MapContext from '../MapContext';
 import airportsLayer from '../data/layers/KeyFreightRoutes/airports';
 import seaportsLayer from '../data/layers/KeyFreightRoutes/seaports';
 import keyRoadsLayer from '../data/layers/KeyFreightRoutes/keyRoads';
-
 import suburbLayer from '../data/layers/NSWAdminBoundaries/suburb';
 import localGovLayer from '../data/layers/NSWAdminBoundaries/localGov';
 import stateGovLayer from '../data/layers/NSWAdminBoundaries/stateGov';
@@ -37,30 +36,55 @@ import PK_linesLayer from '../data/layers/AssetMgt/PK_lines';
 import PB_linesLayer from '../data/layers/AssetMgt/PB_lines';
 import roadNetworkLayer from '../data/layers/AssetMgt/roadNetwork';
 
+let running = false;
+
 export default function Map() {
   const mapRef = useRef();
 
   const { center, zoom, active, setCenter, setZoom } = useContext(MapContext);
 
   const handleViewport = (newCenter, newZoom) => {
-    const oldZoom = zoom;
-    const zoomDif = Math.abs(newZoom - oldZoom);
+    if (running === true) {
+      console.log('Its still running');
+    } else {
+      const { latitude, longitude, x, y, z } = newCenter;
 
-    const oldLong = center[0];
-    const oldLat = center[1];
-    const newLong = newCenter.longitude;
-    const newLat = newCenter.latitude;
+      const oldZoom = zoom;
 
-    const latDif = Math.abs(newLat - oldLat);
-    const longDif = Math.abs(newLong - oldLong);
+      const oldLong = center[0];
+      const oldLat = center[1];
+      const newLong = newCenter.longitude;
+      const newLat = newCenter.latitude;
 
-    // if any of the changes has been significant, update them all!
-    if (latDif > 2 || longDif > 2 || zoomDif > 2) {
-      console.log('center updated');
-      console.log('zoom updated');
+      const zoomChanged = Math.abs(newZoom - oldZoom) > 1;
+      const latChanged = Math.abs(newLat - oldLat) > 1;
+      const longChanged = Math.abs(newLong - oldLong) > 1;
 
-      setZoom(newZoom);
-      setCenter([newLong, newLat]);
+      console.log('zoomChanged :>> ', zoomChanged);
+      console.log('latChanged :>> ', latChanged);
+      console.log('longChanged :>> ', longChanged);
+      console.log('x :>> ', x);
+      console.log('y :>> ', y);
+      console.log('z :>> ', z);
+
+      // WHEN DO WE WANT TO UPDATE?
+      // - when ANY of the zoom, lat or long has changed significantly, update ALL.
+      if (zoomChanged || latChanged || longChanged) {
+        console.log(`Zoom updating! oldZoom: ${oldZoom}... newZoom: ${newZoom}`);
+        console.log(`Lat updating! oldZoom: ${oldLat}... newZoom: ${newLat}`);
+        console.log(`Long updating! oldZoom: ${oldLong}... newZoom: ${newLong}`);
+
+        running = true;
+
+        setZoom(newZoom);
+        setCenter([newLong, newLat]);
+
+        // set to running to false after 10 seconds
+        setTimeout(() => {
+          console.log('timeout finished');
+          running = false;
+        }, 10000);
+      }
     }
   };
 
@@ -97,8 +121,6 @@ export default function Map() {
     pkLabels,
     pkLines,
   } = active;
-
-  console.log('center :>> ', center);
 
   useEffect(() => {
     // lazy load the required ArcGIS API
@@ -137,9 +159,11 @@ export default function Map() {
 
       // only run when the view isn't moving
       watchUtils.whenTrue(view, 'stationary', () => {
-        const { center, zoom } = view;
+        setTimeout(() => {
+          const { center, zoom } = view;
 
-        handleViewport(center, zoom);
+          handleViewport(center, zoom);
+        }, 5000);
       });
 
       // ###### BRING IN THE ACTIVE LAYERS #####

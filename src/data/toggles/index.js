@@ -1,5 +1,7 @@
 import React from 'react';
 import { MdLocalAirport } from 'react-icons/md';
+import { FaBuilding, FaRegBuilding } from 'react-icons/fa';
+import { GiAtSea } from 'react-icons/gi';
 
 export const keyFreightRouteSwitches = [
   { label: 'Airports', icon: <MdLocalAirport />, key: 'airports' },
@@ -22,9 +24,9 @@ export const nswAdminBoundariesSwitches = [
 ];
 
 export const propertySwitches = [
-  { label: 'Port Botany Berths', icon: 'ICON', key: 'pbBerths' },
+  { label: 'Port Botany Berths', icon: <GiAtSea />, key: 'pbBerths' },
   { label: 'Port Botany Gates', icon: 'ICON', key: 'pbGates' },
-  { label: 'Port Kembla Berths', icon: 'ICON', key: 'pkBerths' },
+  { label: 'Port Kembla Berths', icon: <GiAtSea />, key: 'pkBerths' },
   { label: 'Port Kembla Gates', icon: 'ICON', key: 'pkGates' },
   { label: 'Tenancy Lease Areas', icon: 'ICON', key: 'tenancyLeaseAreas' },
   { label: 'Tenancy Units', icon: 'ICON', key: 'tenancyUnits' },
@@ -33,8 +35,8 @@ export const propertySwitches = [
 
 export const assetMgtSwitches = [
   { label: 'Breakwater Revetments', icon: 'ICON', key: 'breakwaterRevetments' },
-  { label: 'Buildings', icon: 'ICON', key: 'buildings' },
-  { label: 'Heritage', icon: 'ICON', key: 'buildings' },
+  { label: 'Buildings', icon: <FaBuilding />, key: 'buildings' },
+  { label: 'Heritage', icon: <FaRegBuilding />, key: 'buildings' },
   { label: 'Maritime Structures', icon: 'ICON', key: 'maritimeStructures' },
   { label: 'Rail Network', icon: 'ICON', key: 'railNetwork' },
   { label: 'Road Network', icon: 'ICON', key: 'roadNetwork' },
