@@ -1,7 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import { loadModules } from 'esri-loader';
 
+import MapContext from '../MapContext';
+
 // ##### IMPORT ALL INDIVIDUAL LAYERS
+import airportsLayer from '../data/layers/KeyFreightRoutes/airports';
+import seaportsLayer from '../data/layers/KeyFreightRoutes/seaports';
+import keyRoadsLayer from '../data/layers/KeyFreightRoutes/keyRoads';
+
 import suburbLayer from '../data/layers/NSWAdminBoundaries/suburb';
 import localGovLayer from '../data/layers/NSWAdminBoundaries/localGov';
 import stateGovLayer from '../data/layers/NSWAdminBoundaries/stateGov';
@@ -12,11 +18,8 @@ import stateForestLayer from '../data/layers/NSWAdminBoundaries/stateForest';
 import npwsReserveLayer from '../data/layers/NSWAdminBoundaries/npwsReserve';
 import PB_labelsLayer from '../data/layers/AssetMgt/PB_labels';
 import PK_labelsLayer from '../data/layers/AssetMgt/PK_labels';
-import airportsLayer from '../data/layers/KeyFreightRoutes/airports';
-import seaportsLayer from '../data/layers/KeyFreightRoutes/seaports';
 import intermodalTerminalsLayer from '../data/layers/KeyFreightRoutes/intermodalTerminals';
 import roadTrainAssemblyLayer from '../data/layers/KeyFreightRoutes/roadTrainAssembly';
-import keyRoadsLayer from '../data/layers/KeyFreightRoutes/keyRoads';
 import secondaryRoadsLayer from '../data/layers/KeyFreightRoutes/secondaryRoads';
 import keyRailsLayer from '../data/layers/KeyFreightRoutes/keyRails';
 import PB_berthLayer from '../data/layers/Property/PB_berths';
@@ -34,8 +37,32 @@ import PK_linesLayer from '../data/layers/AssetMgt/PK_lines';
 import PB_linesLayer from '../data/layers/AssetMgt/PB_lines';
 import roadNetworkLayer from '../data/layers/AssetMgt/roadNetwork';
 
-export default function Map({ active }) {
+export default function Map() {
   const mapRef = useRef();
+
+  const { center, zoom, active, setCenter, setZoom } = useContext(MapContext);
+
+  const handleViewport = (newCenter, newZoom) => {
+    const oldZoom = zoom;
+    const zoomDif = Math.abs(newZoom - oldZoom);
+
+    const oldLong = center[0];
+    const oldLat = center[1];
+    const newLong = newCenter.longitude;
+    const newLat = newCenter.latitude;
+
+    const latDif = Math.abs(newLat - oldLat);
+    const longDif = Math.abs(newLong - oldLong);
+
+    // if any of the changes has been significant, update them all!
+    if (latDif > 2 || longDif > 2 || zoomDif > 2) {
+      console.log('center updated');
+      console.log('zoom updated');
+
+      setZoom(newZoom);
+      setCenter([newLong, newLat]);
+    }
+  };
 
   const {
     airports,
@@ -71,11 +98,14 @@ export default function Map({ active }) {
     pkLines,
   } = active;
 
+  console.log('center :>> ', center);
+
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
       [
         'esri/config',
+        'esri/core/watchUtils',
         'esri/Map',
         'esri/views/MapView',
         'esri/layers/FeatureLayer',
@@ -83,7 +113,7 @@ export default function Map({ active }) {
         'esri/widgets/BasemapToggle',
       ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
+    ).then(([esriConfig, watchUtils, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
       const map = new ArcGISMap({
         basemap: 'hybrid',
       });
@@ -92,8 +122,8 @@ export default function Map({ active }) {
       const view = new MapView({
         container: mapRef.current,
         map: map,
-        center: [150.9729, -34.2457],
-        zoom: 10,
+        center: center,
+        zoom: zoom,
       });
 
       // add map toggle
@@ -104,6 +134,13 @@ export default function Map({ active }) {
         }),
         'bottom-left'
       );
+
+      // only run when the view isn't moving
+      watchUtils.whenTrue(view, 'stationary', () => {
+        const { center, zoom } = view;
+
+        handleViewport(center, zoom);
+      });
 
       // ###### BRING IN THE ACTIVE LAYERS #####
       // Key Freight Routes
