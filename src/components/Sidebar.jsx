@@ -6,13 +6,14 @@ import MapContext from '../MapContext';
 
 import SidebarLegend from './SidebarLegend';
 
-import {
+/* import {
   keyFreightRouteSwitches,
   nswAdminBoundariesSwitches,
   propertySwitches,
   assetMgtSwitches,
-} from '../data/toggles';
-import { viewports } from '../data/viewports';
+} from '../data/toggles'; */
+import { nswAdminBoundariesSwitches } from '../data/toggles';
+// import { viewports } from '../data/viewports';
 import { useForm } from 'antd/lib/form/util';
 
 const { Panel } = Collapse;
