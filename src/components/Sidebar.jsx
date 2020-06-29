@@ -4,7 +4,6 @@ import { Button, Collapse, Switch, Form } from 'antd';
 
 import MapContext from '../MapContext';
 
-import Map from './Map';
 import SidebarLegend from './SidebarLegend';
 
 import {
@@ -20,13 +19,14 @@ const { Panel } = Collapse;
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
-  const [active, setActive] = useState({});
 
-  const { setZoom, setCenter } = useContext(MapContext);
+  const { active, setZoom, setCenter, setActive } = useContext(MapContext);
 
   const [form] = useForm();
 
-  const handleToggle = (e, key) => setActive({ ...active, [key]: e });
+  const handleToggle = (e, key) => {
+    setActive({ ...active, [key]: e });
+  };
 
   const handleReset = () => {
     setActive({});
@@ -48,7 +48,7 @@ export default function Sidebar() {
       <StyledContainer visible={visible}>
         <div className='viewport-buttons-wrapper'>
           <div className='viewport-buttons-content'>
-            <Button onClick={() => handleViewport(viewports.PK)}>Port Botany</Button>
+            <Button onClick={() => handleViewport(viewports.PB)}>Port Botany</Button>
             <Button onClick={() => handleViewport(viewports.PK)}>Port Kembla</Button>
             <Button onClick={() => handleViewport(viewports.CR)}>Cooks River</Button>
             <Button onClick={() => handleViewport(viewports.EN)}>Enfield</Button>

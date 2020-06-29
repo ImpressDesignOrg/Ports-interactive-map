@@ -36,10 +36,35 @@ import PK_linesLayer from '../data/layers/AssetMgt/PK_lines';
 import PB_linesLayer from '../data/layers/AssetMgt/PB_lines';
 import roadNetworkLayer from '../data/layers/AssetMgt/roadNetwork';
 
-export default function Map({ active }) {
+let centerUpdated = false;
+let zoomUpdated = false;
+
+export default function Map() {
   const mapRef = useRef();
 
-  const { center, zoom } = useContext(MapContext);
+  const { center, zoom, active, setCenter, setZoom } = useContext(MapContext);
+
+  const handleViewport = (newCenter, newZoom) => {
+    const oldZoom = zoom;
+    const zoomDif = Math.abs(newZoom - oldZoom);
+
+    const oldLong = center[0];
+    const oldLat = center[1];
+    const newLong = newCenter.longitude;
+    const newLat = newCenter.latitude;
+
+    const latDif = Math.abs(newLat - oldLat);
+    const longDif = Math.abs(newLong - oldLong);
+
+    // if any of the changes has been significant, update them all!
+    if (latDif > 2 || longDif > 2 || zoomDif > 2) {
+      console.log('center updated');
+      console.log('zoom updated');
+
+      setZoom(newZoom);
+      setCenter([newLong, newLat]);
+    }
+  };
 
   const {
     airports,
@@ -75,11 +100,14 @@ export default function Map({ active }) {
     pkLines,
   } = active;
 
+  console.log('center :>> ', center);
+
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
       [
         'esri/config',
+        'esri/core/watchUtils',
         'esri/Map',
         'esri/views/MapView',
         'esri/layers/FeatureLayer',
@@ -87,7 +115,7 @@ export default function Map({ active }) {
         'esri/widgets/BasemapToggle',
       ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
+    ).then(([esriConfig, watchUtils, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
       const map = new ArcGISMap({
         basemap: 'hybrid',
       });
@@ -108,6 +136,13 @@ export default function Map({ active }) {
         }),
         'bottom-left'
       );
+
+      // only run when the view isn't moving
+      watchUtils.whenTrue(view, 'stationary', () => {
+        const { center, zoom } = view;
+
+        handleViewport(center, zoom);
+      });
 
       // ###### BRING IN THE ACTIVE LAYERS #####
       // Key Freight Routes

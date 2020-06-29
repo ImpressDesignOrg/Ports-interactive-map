@@ -4,14 +4,9 @@ const MapContext = React.createContext(true);
 
 class MapProvider extends Component {
   state = {
-    user: { name: 'Tom' },
     center: [150.9729, -34.2457],
     zoom: 10,
-    activeLayers: {},
-  };
-
-  setUser = (user) => {
-    this.setState((prevState) => ({ user }));
+    active: {},
   };
 
   setZoom = (zoom) => {
@@ -19,20 +14,22 @@ class MapProvider extends Component {
   };
 
   setCenter = (center) => {
+    console.log('center :>> ', center);
+
     this.setState((prevState) => ({ center }));
   };
 
-  setActiveLayers = (activeLayers) => {
-    this.setState((prevState) => ({ activeLayers }));
+  setActive = (active) => {
+    this.setState((prevState) => ({ active }));
   };
 
   render() {
     const { children } = this.props;
-    const { user, center, zoom, activeLayers } = this.state;
-    const { setUser, setCenter, setZoom, setActiveLayers } = this;
+    const { center, zoom, active } = this.state;
+    const { setCenter, setZoom, setActive } = this;
 
     return (
-      <MapContext.Provider value={{ center, user, zoom, activeLayers, setUser, setCenter, setZoom, setActiveLayers }}>
+      <MapContext.Provider value={{ center, zoom, active, setCenter, setZoom, setActive }}>
         {children}
       </MapContext.Provider>
     );
