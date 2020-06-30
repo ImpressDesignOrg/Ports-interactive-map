@@ -52,7 +52,9 @@ export default function Map() {
       const oldZoom = zoom;
 
       // BUG app was crashing if zoom went to -1
-      if (newZoom <= 0) newZoom = 1;
+      if (newZoom <= 0) newZoom = 5;
+      // cap the zoom at zoom
+      if (newZoom >= 16) newZoom = 16;
 
       const oldLong = center[0];
       const oldLat = center[1];
@@ -79,7 +81,7 @@ export default function Map() {
         setTimeout(() => {
           console.log('timeout finished');
           running = false;
-        }, 10000);
+        }, 7500);
       }
     }
   };
@@ -161,7 +163,7 @@ export default function Map() {
           const { center, zoom } = view;
 
           handleViewport(center, zoom);
-        }, 5000);
+        }, 1250);
       });
 
       // ###### BRING IN THE ACTIVE LAYERS #####

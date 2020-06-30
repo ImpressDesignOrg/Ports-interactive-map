@@ -41,5 +41,9 @@ const StyledContainer = styled.div`
       height: 45px;
       font-size: 16px;
     }
+
+    button:last-child {
+      flex: 0 0 96%;
+    }
   }
 `;

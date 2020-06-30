@@ -20,7 +20,7 @@ import SwitchControl from './SwitchControl';
 const { Panel } = Collapse;
 
 export default function Sidebar() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const { setActive } = useContext(MapContext);
 
@@ -56,7 +56,7 @@ export default function Sidebar() {
               </Button>
             </div>
             <div className='accordions-wrapper'>
-              <Collapse defaultActiveKey={['1']} expandIconPosition='right'>
+              <Collapse defaultActiveKey={['2']} expandIconPosition='right'>
                 <Panel header='Key Freight Routes' disabled={true}>
                   {keyFreightRouteSwitches.map((v) => (
                     <SwitchControl item={v} />
@@ -149,7 +149,7 @@ const StyledWrapper = styled.div`
 const StyledToggle = styled(Button)`
   position: absolute;
   z-index: 3;
-  right: ${(props) => (props.visible ? '435px' : '10px')};
+  right: ${(props) => (props.visible ? '490px' : '10px')};
   top: 50%;
   height: 50px;
   border: none;

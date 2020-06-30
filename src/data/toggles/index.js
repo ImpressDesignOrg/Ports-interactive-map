@@ -24,10 +24,10 @@ export const nswAdminBoundariesSwitches = [
 ];
 
 export const propertySwitches = [
-  { label: 'Port Botany Berths', icon: <GiPositionMarker />, key: 'pbBerths' },
-  { label: 'Port Botany Gates', icon: <GiAtSea />, key: 'pbGates' },
-  { label: 'Port Kembla Berths', icon: <GiPositionMarker />, key: 'pkBerths' },
-  { label: 'Port Kembla Gates', icon: <GiAtSea />, key: 'pkGates' },
+  { label: 'Port Botany Berths', icon: <GiAtSea />, key: 'pbBerths' },
+  { label: 'Port Botany Gates', icon: <GiPositionMarker />, key: 'pbGates' },
+  { label: 'Port Kembla Berths', icon: <GiAtSea />, key: 'pkBerths' },
+  { label: 'Port Kembla Gates', icon: <GiPositionMarker />, key: 'pkGates' },
   { label: 'Tenancy Lease Areas', icon: <FaGripLinesVertical color='#e69800' />, key: 'tenancyLeaseAreas' },
   { label: 'Tenancy Units', icon: <FaGripLinesVertical color='#e69800' />, key: 'tenancyUnits' },
   { label: 'leaseBoundary', icon: <FaGripLinesVertical color='#e69800' />, key: 'leaseBoundary' },
