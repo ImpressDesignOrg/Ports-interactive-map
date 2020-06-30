@@ -1,7 +1,7 @@
 import React from 'react';
 import { MdLocalAirport } from 'react-icons/md';
-import { FaBuilding, FaRegBuilding, FaGripLinesVertical, FaMapMarkerAlt } from 'react-icons/fa';
-import { GiAtSea, GiPositionMarker, GiVirtualMarker } from 'react-icons/gi';
+import { FaRegBuilding, FaGripLinesVertical, FaMapMarkerAlt } from 'react-icons/fa';
+import { GiVirtualMarker } from 'react-icons/gi';
 
 export const keyFreightRouteSwitches = [
   { label: 'Airports', icon: <MdLocalAirport />, key: 'airports' },
@@ -24,10 +24,10 @@ export const nswAdminBoundariesSwitches = [
 ];
 
 export const propertySwitches = [
-  { label: 'Port Botany Berths', icon: <GiAtSea />, key: 'pbBerths' },
-  { label: 'Port Botany Gates', icon: <GiPositionMarker />, key: 'pbGates' },
-  { label: 'Port Kembla Berths', icon: <GiAtSea />, key: 'pkBerths' },
-  { label: 'Port Kembla Gates', icon: <GiPositionMarker />, key: 'pkGates' },
+  { label: 'Port Botany Berths', iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png', key: 'pbBerths' },
+  { label: 'Port Botany Gates', iconUrl: 'https://img.icons8.com/dusk/16/000000/road-closure.png', key: 'pbGates' },
+  { label: 'Port Kembla Berths', iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png', key: 'pkBerths' },
+  { label: 'Port Kembla Gates', icon: 'https://img.icons8.com/dusk/16/000000/road-closure.png', key: 'pkGates' },
   { label: 'Tenancy Lease Areas', icon: <FaGripLinesVertical color='#e69800' />, key: 'tenancyLeaseAreas' },
   { label: 'Tenancy Units', icon: <FaGripLinesVertical color='#e69800' />, key: 'tenancyUnits' },
   { label: 'Lease Boundary', icon: <FaGripLinesVertical color='#e69800' />, key: 'leaseBoundary' },
@@ -35,7 +35,7 @@ export const propertySwitches = [
 
 export const assetMgtSwitches = [
   { label: 'Breakwater Revetments', icon: <FaGripLinesVertical color='#e69800' />, key: 'breakwaterRevetments' },
-  { label: 'Buildings', icon: <FaBuilding />, key: 'buildings' },
+  { label: 'Buildings', iconUrl: 'https://img.icons8.com/carbon-copy/100/000000/building.png', key: 'buildings' },
   { label: 'Heritage', icon: <FaRegBuilding />, key: 'buildings' },
   { label: 'Maritime Structures', icon: <FaGripLinesVertical color='#e69800' />, key: 'maritimeStructures' },
   { label: 'Rail Network', icon: <FaGripLinesVertical color='#e69800' />, key: 'railNetwork' },

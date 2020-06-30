@@ -4,6 +4,8 @@ import { loadModules } from 'esri-loader';
 import MapContext from '../MapContext';
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
+import allLocationsLayer from '../data/layers/allLocations';
+
 import airportsLayer from '../data/layers/KeyFreightRoutes/airports';
 import seaportsLayer from '../data/layers/KeyFreightRoutes/seaports';
 import keyRoadsLayer from '../data/layers/KeyFreightRoutes/keyRoads';
@@ -86,8 +88,6 @@ export default function Map() {
     }
   };
 
-  console.log('active :>> ', active);
-
   const {
     airports,
     seaports,
@@ -165,6 +165,8 @@ export default function Map() {
           handleViewport(center, zoom);
         }, 1250);
       });
+
+      map.add(new GeoJSONLayer(allLocationsLayer));
 
       // ###### BRING IN THE ACTIVE LAYERS #####
       // Key Freight Routes

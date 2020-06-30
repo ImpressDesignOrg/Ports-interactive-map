@@ -7,7 +7,7 @@ import MapContext from '../MapContext';
 export default function SwitchControl({ item }) {
   const { active, setActive } = useContext(MapContext);
 
-  const { label, icon, key } = item;
+  const { label, icon, iconUrl, key } = item;
 
   const handleToggle = (e, key) => {
     setActive({ ...active, [key]: e });
@@ -16,7 +16,7 @@ export default function SwitchControl({ item }) {
   return (
     <StyledSwitch key={label}>
       <div className='label-wrapper'>
-        {icon}
+        {icon ? icon : <img src={iconUrl} alt={key} />}
         <p>{label}</p>
       </div>
       <Form.Item name='switch'>
