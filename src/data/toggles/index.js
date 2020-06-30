@@ -30,7 +30,7 @@ export const propertySwitches = [
   { label: 'Port Kembla Gates', icon: <GiPositionMarker />, key: 'pkGates' },
   { label: 'Tenancy Lease Areas', icon: <FaGripLinesVertical color='#e69800' />, key: 'tenancyLeaseAreas' },
   { label: 'Tenancy Units', icon: <FaGripLinesVertical color='#e69800' />, key: 'tenancyUnits' },
-  { label: 'leaseBoundary', icon: <FaGripLinesVertical color='#e69800' />, key: 'leaseBoundary' },
+  { label: 'Lease Boundary', icon: <FaGripLinesVertical color='#e69800' />, key: 'leaseBoundary' },
 ];
 
 export const assetMgtSwitches = [
