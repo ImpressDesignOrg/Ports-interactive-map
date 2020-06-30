@@ -47,9 +47,7 @@ export default function Map() {
     if (running === true) {
       console.log('Its still running');
     } else {
-      const { latitude, longitude, x, y, z } = newCenter;
-
-      console.log('newCenter :>> ', newCenter);
+      // const { latitude, longitude, x, y, z } = newCenter;
 
       const oldZoom = zoom;
 
