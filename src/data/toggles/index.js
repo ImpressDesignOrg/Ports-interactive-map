@@ -27,7 +27,7 @@ export const propertySwitches = [
   { label: 'Port Botany Berths', iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png', key: 'pbBerths' },
   { label: 'Port Botany Gates', iconUrl: 'https://img.icons8.com/dusk/16/000000/road-closure.png', key: 'pbGates' },
   { label: 'Port Kembla Berths', iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png', key: 'pkBerths' },
-  { label: 'Port Kembla Gates', icon: 'https://img.icons8.com/dusk/16/000000/road-closure.png', key: 'pkGates' },
+  /* { label: 'Port Kembla Gates', iconUrl: 'https://img.icons8.com/dusk/16/000000/road-closure.png', key: 'pkGates' }, */
   { label: 'Tenancy Lease Areas', icon: <FaGripLinesVertical color='#e69800' />, key: 'tenancyLeaseAreas' },
   { label: 'Tenancy Units', icon: <FaGripLinesVertical color='#e69800' />, key: 'tenancyUnits' },
   { label: 'Lease Boundary', icon: <FaGripLinesVertical color='#e69800' />, key: 'leaseBoundary' },
