@@ -52,7 +52,7 @@ export default function Map() {
       const oldZoom = zoom;
 
       // BUG app was crashing if zoom went to -1
-      if (newZoom <= 0) newZoom = 5;
+      if (newZoom <= 0) newZoom = 6;
       // cap the zoom at zoom
       if (newZoom >= 16) newZoom = 16;
 
