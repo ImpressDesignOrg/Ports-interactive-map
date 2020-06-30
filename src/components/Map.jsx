@@ -49,6 +49,8 @@ export default function Map() {
     } else {
       const { latitude, longitude, x, y, z } = newCenter;
 
+      console.log('newCenter :>> ', newCenter);
+
       const oldZoom = zoom;
 
       // BUG app was crashing if zoom went to -1

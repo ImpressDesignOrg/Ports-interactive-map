@@ -22,6 +22,7 @@ export default function LocationButtons() {
         <Button onClick={() => handleViewport(viewports.PK)}>Port Kembla</Button>
         <Button onClick={() => handleViewport(viewports.CR)}>Cooks River</Button>
         <Button onClick={() => handleViewport(viewports.EN)}>Enfield</Button>
+        <Button onClick={() => handleViewport(viewports.allLocations)}>All Locations</Button>
       </div>
     </StyledContainer>
   );

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
+import { viewports } from './data/viewports';
+
 const MapContext = React.createContext(true);
 
 class MapProvider extends Component {
   state = {
-    center: [150.9729, -34.2457],
-    zoom: 10,
+    center: viewports.allLocations.center,
+    zoom: viewports.allLocations.zoom,
     active: {},
   };
 

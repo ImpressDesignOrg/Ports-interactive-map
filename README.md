@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## TODO
+
+Include a location marker on each location that zooms to location
+
 ## Available Scripts
 
 In the project directory, you can run:
