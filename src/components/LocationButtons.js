@@ -37,6 +37,8 @@ const StyledContainer = styled.div`
     button {
       flex: 0 0 46%;
       margin: 5px;
+      height: 45px;
+      font-size: 16px;
     }
   }
 `;

@@ -41,7 +41,7 @@ let running = false;
 export default function Map() {
   const mapRef = useRef();
 
-  const { center, zoom, active, setCenter, setZoom } = useContext(MapContext);
+  const { active, center, zoom, setCenter, setZoom } = useContext(MapContext);
 
   const handleViewport = (newCenter, newZoom) => {
     if (running === true) {
@@ -51,6 +51,9 @@ export default function Map() {
 
       const oldZoom = zoom;
 
+      // BUG app was crashing if zoom went to -1
+      if (newZoom <= 0) newZoom = 1;
+
       const oldLong = center[0];
       const oldLat = center[1];
       const newLong = newCenter.longitude;
@@ -59,13 +62,6 @@ export default function Map() {
       const zoomChanged = Math.abs(newZoom - oldZoom) > 1;
       const latChanged = Math.abs(newLat - oldLat) > 1;
       const longChanged = Math.abs(newLong - oldLong) > 1;
-
-      console.log('zoomChanged :>> ', zoomChanged);
-      console.log('latChanged :>> ', latChanged);
-      console.log('longChanged :>> ', longChanged);
-      console.log('x :>> ', x);
-      console.log('y :>> ', y);
-      console.log('z :>> ', z);
 
       // WHEN DO WE WANT TO UPDATE?
       // - when ANY of the zoom, lat or long has changed significantly, update ALL.
@@ -87,6 +83,8 @@ export default function Map() {
       }
     }
   };
+
+  console.log('active :>> ', active);
 
   const {
     airports,

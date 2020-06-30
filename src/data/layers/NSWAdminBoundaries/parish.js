@@ -1,6 +1,5 @@
 const parishLayer = {
-  url:
-    'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/4',
+  url: 'https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/4',
   objectIdField: 'ObjectID',
   popupTemplate: {
     title: 'Parish',

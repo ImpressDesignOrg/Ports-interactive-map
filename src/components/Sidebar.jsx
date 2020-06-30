@@ -26,6 +26,8 @@ export default function Sidebar() {
 
   const [form] = useForm();
 
+  const handleVisible = () => setVisible(!visible);
+
   const handleReset = () => {
     setActive({});
     form.resetFields();
@@ -35,11 +37,11 @@ export default function Sidebar() {
     <StyledWrapper visible={visible}>
       <div className='toggle-wrapper'>
         {visible ? (
-          <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
+          <StyledToggle visible={visible} onClick={() => handleVisible()}>
             <AiOutlineArrowRight />
           </StyledToggle>
         ) : (
-          <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
+          <StyledToggle visible={visible} onClick={() => handleVisible()}>
             <AiOutlineArrowLeft />
           </StyledToggle>
         )}
@@ -54,8 +56,8 @@ export default function Sidebar() {
               </Button>
             </div>
             <div className='accordions-wrapper'>
-              <Collapse expandIconPosition='right'>
-                <Panel header='Key Freight Routes'>
+              <Collapse defaultActiveKey={['1']} expandIconPosition='right'>
+                <Panel header='Key Freight Routes' disabled={true}>
                   {keyFreightRouteSwitches.map((v) => (
                     <SwitchControl item={v} />
                   ))}
@@ -90,7 +92,7 @@ const StyledWrapper = styled.div`
     background: #fff;
     height: 100%;
     position: absolute;
-    width: 350px;
+    width: 450px;
     height: 100vh;
     z-index: 2;
     right: 30px;
@@ -104,12 +106,23 @@ const StyledWrapper = styled.div`
 
   .content .form-wrapper {
     margin-top: 50px;
-    overflow: scroll;
     max-height: 70%;
-  }
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
-  .content .form-wrapper .accordions-wrapper {
-    margin-top: 30px;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .reset-wrapper {
+      text-align: right;
+    }
+
+    .accordions-wrapper {
+      margin-top: 10px;
+    }
   }
 
   .ant-collapse {
@@ -124,6 +137,11 @@ const StyledWrapper = styled.div`
       .ant-collapse-header {
         color: #fff;
       }
+
+      .ant-collapse-content {
+        background: #e9e9e9;
+        font-size: 17px;
+      }
     }
   }
 `;
@@ -131,9 +149,10 @@ const StyledWrapper = styled.div`
 const StyledToggle = styled(Button)`
   position: absolute;
   z-index: 3;
-  right: ${(props) => (props.visible ? '380px' : '10px')};
+  right: ${(props) => (props.visible ? '435px' : '10px')};
   top: 50%;
   height: 50px;
-  background: #9f9ffd;
   border: none;
+  display: flex;
+  align-items: center;
 `;
