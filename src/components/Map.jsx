@@ -79,11 +79,11 @@ export default function Map() {
         setZoom(newZoom);
         setCenter([newLong, newLat]);
 
-        // set to running to false after 10 seconds
+        // set to running to false after x seconds
         setTimeout(() => {
           console.log('timeout finished');
           running = false;
-        }, 7500);
+        }, 2500);
       }
     }
   };
@@ -143,19 +143,25 @@ export default function Map() {
       // load the map view at the ref's DOM node
       const view = new MapView({
         container: mapRef.current,
-        map: map,
-        center: center,
-        zoom: zoom,
+        map,
+        center,
+        zoom,
       });
 
       // add map toggle
       view.ui.add(
         new BasemapToggle({
-          view: view,
+          view,
           nextBasemap: 'topo-vector',
         }),
         'bottom-left'
       );
+
+      view.popup.on('trigger-action', (e) => {
+        console.log('e :>> ', e);
+
+        // TODO zoom in closer to marker
+      });
 
       // only run when the view isn't moving
       watchUtils.whenTrue(view, 'stationary', () => {
@@ -166,7 +172,10 @@ export default function Map() {
         }, 1250);
       });
 
-      map.add(new GeoJSONLayer(allLocationsLayer));
+      // add the entire location markers if the map is zoomed out
+      if (zoom < 12) {
+        map.add(new GeoJSONLayer(allLocationsLayer));
+      }
 
       // ###### BRING IN THE ACTIVE LAYERS #####
       // Key Freight Routes

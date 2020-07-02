@@ -10,6 +10,7 @@ const allLocationsLayer = {
   objectIdField: 'ObjectID',
   popupTemplate: {
     title: 'NSW Ports Locations',
+    id: 'zoom-to',
     content: [
       {
         type: 'fields',
