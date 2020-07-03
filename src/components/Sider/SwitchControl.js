@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Switch, Form } from 'antd';
 
-import MapContext from '../MapContext';
+import MapContext from '../../MapContext';
 
 export default function SwitchControl({ item }) {
   const { active, setActive } = useContext(MapContext);
@@ -30,7 +30,7 @@ const StyledSwitch = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 7px 0;
+  margin: 10px 0;
 
   .label-wrapper {
     display: flex;
@@ -38,6 +38,7 @@ const StyledSwitch = styled.div`
 
     p {
       margin: 0 0 0 20px;
+      font-size: 15px;
     }
   }
 

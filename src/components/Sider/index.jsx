@@ -22,11 +22,7 @@ export default function Sidebar() {
         </StyledToggle>
       </div>
       <div className='content'>
-        {siderLevel === 1 ? (
-          <Button onClick={() => setSiderLevel(siderLevel + 1)}>GO FORWARD: select a layer</Button>
-        ) : (
-          <Button onClick={() => setSiderLevel(siderLevel - 1)}>GO BACK: select a location</Button>
-        )}
+        {siderLevel === 2 && <Button onClick={() => setSiderLevel(siderLevel - 1)}>Select a location</Button>}
         {siderLevel === 1 ? <LocationButtons /> : <ActiveLayersForm />}
       </div>
     </StyledWrapper>
@@ -35,7 +31,7 @@ export default function Sidebar() {
 
 const StyledWrapper = styled.div`
   .content {
-    padding: 40px 20px;
+    padding: 40px;
     background: #fff;
     height: 100%;
     position: absolute;

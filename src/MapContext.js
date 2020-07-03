@@ -6,18 +6,13 @@ const MapContext = React.createContext(true);
 
 class MapProvider extends Component {
   state = {
-    center: viewports.allLocations.center,
-    zoom: viewports.allLocations.zoom,
+    viewing: 'ALL',
     active: {},
     siderLevel: 1,
   };
 
-  setZoom = (zoom) => {
-    this.setState((prevState) => ({ zoom }));
-  };
-
-  setCenter = (center) => {
-    this.setState((prevState) => ({ center }));
+  setViewing = (viewing) => {
+    this.setState((prevState) => ({ viewing }));
   };
 
   setActive = (active) => {
@@ -30,11 +25,11 @@ class MapProvider extends Component {
 
   render() {
     const { children } = this.props;
-    const { center, zoom, active, siderLevel } = this.state;
-    const { setCenter, setZoom, setActive, setSiderLevel } = this;
+    const { viewing, active, siderLevel } = this.state;
+    const { setViewing, setActive, setSiderLevel } = this;
 
     return (
-      <MapContext.Provider value={{ center, zoom, active, siderLevel, setCenter, setZoom, setActive, setSiderLevel }}>
+      <MapContext.Provider value={{ viewing, active, siderLevel, setViewing, setActive, setSiderLevel }}>
         {children}
       </MapContext.Provider>
     );

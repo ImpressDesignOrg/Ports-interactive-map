@@ -1,6 +1,7 @@
 export const viewports = {
-  allLocations: {
-    zoom: 11,
+  AUS: { zoom: 6, center: [133.750016, -27.827017] },
+  ALL: {
+    zoom: 10,
     center: [151.007918920896, -34.1735835411723],
   },
   PB: {

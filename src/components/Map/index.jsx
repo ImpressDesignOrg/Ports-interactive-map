@@ -38,53 +38,11 @@ import PK_linesLayer from '../../data/layers/AssetMgt/PK_lines';
 import PB_linesLayer from '../../data/layers/AssetMgt/PB_lines';
 import roadNetworkLayer from '../../data/layers/AssetMgt/roadNetwork';
 
-let running = false;
+import { viewports } from '../../data/viewports';
 
 export default function Map() {
   const mapRef = useRef();
-
-  const { active, center, zoom, setCenter, setZoom } = useContext(MapContext);
-
-  const handleViewport = (newCenter, newZoom) => {
-    if (running === true) {
-      console.log('Its still running');
-    } else {
-      const oldZoom = zoom;
-
-      // BUG app was crashing if zoom went to -1
-      if (newZoom <= 0) newZoom = 6;
-      // cap the zoom at zoom
-      if (newZoom >= 16) newZoom = 16;
-
-      const oldLong = center[0];
-      const oldLat = center[1];
-      const newLong = newCenter.longitude;
-      const newLat = newCenter.latitude;
-
-      const zoomChanged = Math.abs(newZoom - oldZoom) > 1;
-      const latChanged = Math.abs(newLat - oldLat) > 1;
-      const longChanged = Math.abs(newLong - oldLong) > 1;
-
-      // WHEN DO WE WANT TO UPDATE?
-      // - when ANY of the zoom, lat or long has changed significantly, update ALL.
-      if (zoomChanged || latChanged || longChanged) {
-        console.log(`Zoom updating! oldZoom: ${oldZoom}... newZoom: ${newZoom}`);
-        console.log(`Lat updating! oldLat: ${oldLat}... newLat: ${newLat}`);
-        console.log(`Long updating! oldLong: ${oldLong}... newLong: ${newLong}`);
-
-        running = true;
-
-        setZoom(newZoom);
-        setCenter([newLong, newLat]);
-
-        // set to running to false after x seconds
-        setTimeout(() => {
-          console.log('timeout finished');
-          running = false;
-        }, 2500);
-      }
-    }
-  };
+  const { viewing, active } = useContext(MapContext);
 
   const {
     airports,
@@ -120,12 +78,49 @@ export default function Map() {
     pkLines,
   } = active;
 
+  const ZOOM_LEVEL = () => {
+    switch (viewing) {
+      case 'AUS':
+        return 5;
+      case 'ALL':
+        return 10;
+      case 'PB':
+        return 15;
+      case 'PK':
+        return 14;
+      case 'CR':
+        return 15;
+      case 'EN':
+        return 15;
+      default:
+        break;
+    }
+  };
+
+  const CENTER_LEVEL = () => {
+    switch (viewing) {
+      case 'AUS':
+        return viewports.AUS.center;
+      case 'ALL':
+        return viewports.ALL.center;
+      case 'PB':
+        return viewports.PB.center;
+      case 'PK':
+        return viewports.PK.center;
+      case 'CR':
+        return viewports.CR.center;
+      case 'EN':
+        return viewports.EN.center;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
       [
         'esri/config',
-        'esri/core/watchUtils',
         'esri/Map',
         'esri/views/MapView',
         'esri/layers/FeatureLayer',
@@ -133,7 +128,7 @@ export default function Map() {
         'esri/widgets/BasemapToggle',
       ],
       { css: true }
-    ).then(([esriConfig, watchUtils, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
+    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
       const map = new ArcGISMap({
         basemap: 'hybrid',
       });
@@ -142,8 +137,8 @@ export default function Map() {
       const view = new MapView({
         container: mapRef.current,
         map,
-        center,
-        zoom,
+        center: CENTER_LEVEL(),
+        zoom: ZOOM_LEVEL(),
       });
 
       // add map toggle
@@ -155,25 +150,10 @@ export default function Map() {
         'bottom-left'
       );
 
-      view.popup.on('click', (e) => {
-        console.log('e :>> ', e);
-
-        map.centerAndZoom(e.mapPoint, 4);
-      });
-
-      // only run when the view isn't moving
-      watchUtils.whenTrue(view, 'stationary', () => {
-        setTimeout(() => {
-          const { center, zoom } = view;
-
-          // handleViewport(center, zoom);
-        }, 1250);
-      });
-
       // add the entire location markers if the map is zoomed out
-      if (zoom < 12) {
+      /*       if (zoom < 12) {
         map.add(new GeoJSONLayer(allLocationsLayer));
-      }
+      } */
 
       // ###### BRING IN THE ACTIVE LAYERS #####
       // Key Freight Routes

@@ -1,24 +1,18 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Button, Collapse, Form } from 'antd';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import MapContext from '../../MapContext';
 
-import {
-  keyFreightRouteSwitches,
-  nswAdminBoundariesSwitches,
-  propertySwitches,
-  assetMgtSwitches,
-} from '../../data/toggles';
+import { PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from '../../data/toggles';
 
 import { useForm } from 'antd/lib/form/util';
-import SwitchControl from '../SwitchControl';
-
-const { Panel } = Collapse;
+import SwitchControl from './SwitchControl';
 
 export default function ActiveLayersForm() {
   const [form] = useForm();
-  const { setActive } = useContext(MapContext);
+  const { viewing, setActive } = useContext(MapContext);
 
   const handleReset = () => {
     setActive({});
@@ -30,32 +24,16 @@ export default function ActiveLayersForm() {
       <Form form={form}>
         <div className='reset-wrapper'>
           <Button htmlType='reset' onClick={() => handleReset()}>
-            RESET
+            <AiOutlineClose />
           </Button>
         </div>
         <div className='accordions-wrapper'>
-          <Collapse defaultActiveKey={['2']} expandIconPosition='right'>
-            <Panel header='Key Freight Routes' disabled={true}>
-              {keyFreightRouteSwitches.map((v) => (
-                <SwitchControl item={v} />
-              ))}
-            </Panel>
-            <Panel header='NSW Administrative Boundaries'>
-              {nswAdminBoundariesSwitches.map((v) => (
-                <SwitchControl item={v} />
-              ))}
-            </Panel>
-            <Panel header='Property'>
-              {propertySwitches.map((v) => (
-                <SwitchControl item={v} />
-              ))}
-            </Panel>
-            <Panel header='Asset Management'>
-              {assetMgtSwitches.map((v) => (
-                <SwitchControl item={v} />
-              ))}
-            </Panel>
-          </Collapse>
+          {viewing === 'AUSTRALIA' && PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {viewing === 'ALL LOCATIONS' && PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {viewing === 'PB' && PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {viewing === 'PK' && PK_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {viewing === 'CR' && CR_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {viewing === 'EN' && EN_SWITCHES.map((v) => <SwitchControl item={v} />)}
         </div>
       </Form>
     </StyledWrapper>
@@ -76,37 +54,5 @@ const StyledWrapper = styled.div`
 
   .reset-wrapper {
     text-align: right;
-  }
-
-  .accordions-wrapper {
-    margin-top: 10px;
-  }
-
-  .ant-collapse {
-    margin: 8px 0;
-
-    .ant-collapse-item {
-      .ant-switch-checked {
-        background: #1d384b;
-      }
-    }
-
-    .ant-collapse-header {
-      font-size: 16px;
-      font-weight: 300;
-    }
-
-    .ant-collapse-item-active {
-      background: #1d384b;
-
-      .ant-collapse-header {
-        color: #fff;
-      }
-
-      .ant-collapse-content {
-        background: #e9e9e9;
-        font-size: 17px;
-      }
-    }
   }
 `;

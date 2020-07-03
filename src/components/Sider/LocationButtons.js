@@ -4,44 +4,64 @@ import { FaMapMarkerAlt, FaBuilding } from 'react-icons/fa';
 import { GiAustralia } from 'react-icons/gi';
 
 import MapContext from '../../MapContext';
-import { viewports } from '../../data/viewports';
 
 export default function LocationButtons() {
-  const { siderLevel, setZoom, setCenter, setSiderLevel } = useContext(MapContext);
+  const { siderLevel, setViewing, setSiderLevel } = useContext(MapContext);
 
   const handleClick = (location) => {
-    setZoom(location.zoom);
-    setCenter(location.center);
     setSiderLevel(siderLevel + 1);
+
+    switch (location) {
+      case 'AUS':
+        setViewing('AUS');
+        break;
+      case 'ALL':
+        setViewing('ALL');
+        break;
+      case 'PB':
+        setViewing('PB');
+        break;
+      case 'PK':
+        setViewing('PK');
+        break;
+      case 'CR':
+        setViewing('CR');
+        break;
+      case 'EN':
+        setViewing('EN');
+        break;
+      default:
+        break;
+    }
   };
 
   return (
     <StyledContainer>
       <h2>Select one of our locations</h2>
       <div className='viewport-buttons-content'>
-        <button onClick={() => handleClick(viewports.PB)}>
+        <button onClick={() => handleClick('PB')}>
           <FaMapMarkerAlt />
           <span>Port Botany</span>
         </button>
-        <button onClick={() => handleClick(viewports.PK)}>
+        <button onClick={() => handleClick('PK')}>
           <FaMapMarkerAlt />
           <span>Port Kembla</span>
         </button>
-        <button onClick={() => handleClick(viewports.CR)}>
+        <button onClick={() => handleClick('CR')}>
           <FaMapMarkerAlt />
           <span>Cooks River Intermodal Terminal</span>
         </button>
-        <button onClick={() => handleClick(viewports.EN)}>
+        <button onClick={() => handleClick('EN')}>
           <FaMapMarkerAlt />
           <span>Enfield Intermodal Terminal</span>
         </button>
-        <button onClick={() => handleClick(viewports.allLocations)}>
+        <button onClick={() => handleClick('ALL')}>
           <FaBuilding />
-          <span>All our locations</span>
+          <span>NSW Ports Locations</span>
         </button>
-        <button onClick={() => handleClick(viewports.allLocations)}>
+        <button onClick={() => handleClick('AUS')}>
           <GiAustralia />
-          <span>Australia</span>
+          <span>National</span>
         </button>
       </div>
     </StyledContainer>
@@ -68,7 +88,7 @@ const StyledContainer = styled.div`
       flex: 0 0 100%;
       margin: 5px;
       height: 45px;
-      font-size: 16px;
+      font-size: 15px;
       color: #000;
       box-shadow: none;
       border: none;
@@ -85,9 +105,5 @@ const StyledContainer = styled.div`
         font-weight: 600;
       }
     }
-
-    /*     button:last-child {
-      flex: 0 0 96%;
-    } */
   }
 `;
