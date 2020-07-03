@@ -1,6 +1,6 @@
 export const viewports = {
   allLocations: {
-    zoom: 10.875,
+    zoom: 11,
     center: [151.007918920896, -34.1735835411723],
   },
   PB: {

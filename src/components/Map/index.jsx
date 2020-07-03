@@ -1,42 +1,42 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import { loadModules } from 'esri-loader';
 
-import MapContext from '../MapContext';
+import MapContext from '../../MapContext';
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
-import allLocationsLayer from '../data/layers/allLocations';
+import allLocationsLayer from '../../data/layers/allLocations';
 
-import airportsLayer from '../data/layers/KeyFreightRoutes/airports';
-import seaportsLayer from '../data/layers/KeyFreightRoutes/seaports';
-import keyRoadsLayer from '../data/layers/KeyFreightRoutes/keyRoads';
-import suburbLayer from '../data/layers/NSWAdminBoundaries/suburb';
-import localGovLayer from '../data/layers/NSWAdminBoundaries/localGov';
-import stateGovLayer from '../data/layers/NSWAdminBoundaries/stateGov';
-import federalGovLayer from '../data/layers/NSWAdminBoundaries/federalGov';
-import parishLayer from '../data/layers/NSWAdminBoundaries/parish';
-import countyLayer from '../data/layers/NSWAdminBoundaries/county';
-import stateForestLayer from '../data/layers/NSWAdminBoundaries/stateForest';
-import npwsReserveLayer from '../data/layers/NSWAdminBoundaries/npwsReserve';
-import PB_labelsLayer from '../data/layers/AssetMgt/PB_labels';
-import PK_labelsLayer from '../data/layers/AssetMgt/PK_labels';
-import intermodalTerminalsLayer from '../data/layers/KeyFreightRoutes/intermodalTerminals';
-import roadTrainAssemblyLayer from '../data/layers/KeyFreightRoutes/roadTrainAssembly';
-import secondaryRoadsLayer from '../data/layers/KeyFreightRoutes/secondaryRoads';
-import keyRailsLayer from '../data/layers/KeyFreightRoutes/keyRails';
-import PB_berthLayer from '../data/layers/Property/PB_berths';
-import PB_gatesLayer from '../data/layers/Property/PB_gates';
-import PK_berthsLayer from '../data/layers/Property/PK_berths';
-import leaseBoundariesLayer from '../data/layers/Property/leaseBoundaries';
-import tenancyLeaseAreasLayer from '../data/layers/Property/tenancyLeaseAreas';
-import tenancyUnitsLayer from '../data/layers/Property/tenancyUnits';
-import breakwaterRevetmentsLayer from '../data/layers/AssetMgt/breakwaterRevetments';
-import buildingsLayer from '../data/layers/AssetMgt/buildings';
-import heritageLayer from '../data/layers/AssetMgt/heritage';
-import maritimeStructuresLayer from '../data/layers/AssetMgt/maritimeStructures';
-import railNetworkLayer from '../data/layers/AssetMgt/railNetwork';
-import PK_linesLayer from '../data/layers/AssetMgt/PK_lines';
-import PB_linesLayer from '../data/layers/AssetMgt/PB_lines';
-import roadNetworkLayer from '../data/layers/AssetMgt/roadNetwork';
+import airportsLayer from '../../data/layers/KeyFreightRoutes/airports';
+import seaportsLayer from '../../data/layers/KeyFreightRoutes/seaports';
+import keyRoadsLayer from '../../data/layers/KeyFreightRoutes/keyRoads';
+import suburbLayer from '../../data/layers/NSWAdminBoundaries/suburb';
+import localGovLayer from '../../data/layers/NSWAdminBoundaries/localGov';
+import stateGovLayer from '../../data/layers/NSWAdminBoundaries/stateGov';
+import federalGovLayer from '../../data/layers/NSWAdminBoundaries/federalGov';
+import parishLayer from '../../data/layers/NSWAdminBoundaries/parish';
+import countyLayer from '../../data/layers/NSWAdminBoundaries/county';
+import stateForestLayer from '../../data/layers/NSWAdminBoundaries/stateForest';
+import npwsReserveLayer from '../../data/layers/NSWAdminBoundaries/npwsReserve';
+import PB_labelsLayer from '../../data/layers/AssetMgt/PB_labels';
+import PK_labelsLayer from '../../data/layers/AssetMgt/PK_labels';
+import intermodalTerminalsLayer from '../../data/layers/KeyFreightRoutes/intermodalTerminals';
+import roadTrainAssemblyLayer from '../../data/layers/KeyFreightRoutes/roadTrainAssembly';
+import secondaryRoadsLayer from '../../data/layers/KeyFreightRoutes/secondaryRoads';
+import keyRailsLayer from '../../data/layers/KeyFreightRoutes/keyRails';
+import PB_berthLayer from '../../data/layers/Property/PB_berths';
+import PB_gatesLayer from '../../data/layers/Property/PB_gates';
+import PK_berthsLayer from '../../data/layers/Property/PK_berths';
+import leaseBoundariesLayer from '../../data/layers/Property/leaseBoundaries';
+import tenancyLeaseAreasLayer from '../../data/layers/Property/tenancyLeaseAreas';
+import tenancyUnitsLayer from '../../data/layers/Property/tenancyUnits';
+import breakwaterRevetmentsLayer from '../../data/layers/AssetMgt/breakwaterRevetments';
+import buildingsLayer from '../../data/layers/AssetMgt/buildings';
+import heritageLayer from '../../data/layers/AssetMgt/heritage';
+import maritimeStructuresLayer from '../../data/layers/AssetMgt/maritimeStructures';
+import railNetworkLayer from '../../data/layers/AssetMgt/railNetwork';
+import PK_linesLayer from '../../data/layers/AssetMgt/PK_lines';
+import PB_linesLayer from '../../data/layers/AssetMgt/PB_lines';
+import roadNetworkLayer from '../../data/layers/AssetMgt/roadNetwork';
 
 let running = false;
 
@@ -49,8 +49,6 @@ export default function Map() {
     if (running === true) {
       console.log('Its still running');
     } else {
-      // const { latitude, longitude, x, y, z } = newCenter;
-
       const oldZoom = zoom;
 
       // BUG app was crashing if zoom went to -1
@@ -71,8 +69,8 @@ export default function Map() {
       // - when ANY of the zoom, lat or long has changed significantly, update ALL.
       if (zoomChanged || latChanged || longChanged) {
         console.log(`Zoom updating! oldZoom: ${oldZoom}... newZoom: ${newZoom}`);
-        console.log(`Lat updating! oldZoom: ${oldLat}... newZoom: ${newLat}`);
-        console.log(`Long updating! oldZoom: ${oldLong}... newZoom: ${newLong}`);
+        console.log(`Lat updating! oldLat: ${oldLat}... newLat: ${newLat}`);
+        console.log(`Long updating! oldLong: ${oldLong}... newLong: ${newLong}`);
 
         running = true;
 
@@ -157,10 +155,10 @@ export default function Map() {
         'bottom-left'
       );
 
-      view.popup.on('trigger-action', (e) => {
+      view.popup.on('click', (e) => {
         console.log('e :>> ', e);
 
-        // TODO zoom in closer to marker
+        map.centerAndZoom(e.mapPoint, 4);
       });
 
       // only run when the view isn't moving
@@ -168,7 +166,7 @@ export default function Map() {
         setTimeout(() => {
           const { center, zoom } = view;
 
-          handleViewport(center, zoom);
+          // handleViewport(center, zoom);
         }, 1250);
       });
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { MapProvider } from './MapContext';
 import Map from './components/Map';
-import Sidebar from './components/Sidebar';
+import Sidebar from './components/Sider';
 
 import 'antd/dist/antd.css';
 import './index.css';
