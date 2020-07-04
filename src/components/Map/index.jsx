@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { loadModules } from 'esri-loader';
 
-import MapContext from '../../MapContext';
 import { useSetState, useTrackedState } from '../../store';
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
@@ -79,7 +78,7 @@ export default function Map() {
     pbLines,
     pkLabels,
     pkLines,
-  } = state;
+  } = state.active;
 
   console.log('state :>> ', state);
 

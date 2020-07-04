@@ -1,20 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Switch, Form } from 'antd';
 
-import MapContext from '../../MapContext';
 import { useSetState, useTrackedState } from '../../store';
 
 export default function SwitchControl({ item }) {
-  // const { active, setActive } = useContext(MapContext);
   const state = useTrackedState();
   const setState = useSetState();
 
-  const { label, icon, iconUrl, key } = item;
-
   const handleToggle = (e, key) => {
-    setState((prev) => ({ ...prev, [key]: e }));
+    setState((prev) => ({ ...prev, active: { ...state.active, [key]: e } }));
   };
+
+  const { label, icon, iconUrl, key } = item;
 
   return (
     <StyledSwitch key={label}>

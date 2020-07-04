@@ -1,19 +1,16 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button } from 'antd';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
-import MapContext from '../../MapContext';
-import { useSetState, useTrackedState } from '../../store';
+import { useTrackedState } from '../../store';
 
 import LocationButtons from './forms/LocationButtons';
 import ActiveLayers from './forms/ActiveLayers';
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
-  // const setState = useSetState();
   const state = useTrackedState();
-  // const { siderLevel } = useContext(MapContext);
 
   return (
     <StyledWrapper visible={visible}>

@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { FaMapMarkerAlt, FaBuilding } from 'react-icons/fa';
 import { GiAustralia } from 'react-icons/gi';
 
-import MapContext from '../../../MapContext';
-import { useSetState, useTrackedState } from '../../../store';
+import { useSetState } from '../../../store';
 
 export default function LocationButtons() {
-  // const { setViewing, setSiderLevel } = useContext(MapContext);
-  // const state = useTrackedState();
   const setState = useSetState();
 
   const handleClick = (location) => {

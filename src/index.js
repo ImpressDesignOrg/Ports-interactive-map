@@ -1,39 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
 
 import { Provider } from './store';
 
-import { MapProvider } from './MapContext';
-import Map from './components/Map';
 import Sidebar from './components/Sider';
+import Map from './components/Map';
 
 import 'antd/dist/antd.css';
 import './index.css';
 
 // TODO check whether best to use esri-loader or webpack with Drupal (https://developers.arcgis.com/javascript/latest/guide/react/)
 
-/* const App = () => {
-  return (
-    <MapProvider>
-      <StyledApp>
-        <Sidebar />
-        <Map />
-      </StyledApp>
-    </MapProvider>
-  );
-}; */
-
 const App = () => (
   <Provider>
-    <StyledApp className='react-interactive-map-content'>
+    <div className='react-interactive-map-content'>
       <Sidebar />
       <Map />
-    </StyledApp>
+    </div>
   </Provider>
 );
-
-const StyledApp = styled.div``;
 
 ReactDOM.render(
   <React.StrictMode>

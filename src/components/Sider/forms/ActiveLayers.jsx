@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Form } from 'antd';
 
-import MapContext from '../../../MapContext';
 import { useSetState, useTrackedState } from '../../../store';
 
 import {
@@ -17,7 +16,6 @@ import SwitchControl from '../SwitchControl';
 
 export default function ActiveLayersForm() {
   const [form] = useForm();
-  const { viewing, setActive } = useContext(MapContext);
   const state = useTrackedState();
   const setState = useSetState();
 
@@ -51,7 +49,10 @@ export default function ActiveLayersForm() {
         <h2>{headingMarkup()}</h2>
         <div className='buttons-wrapper'>
           <button
-            onClick={() => setState((prev) => ({ ...prev, siderLevel: 1 }))}
+            onClick={() => {
+              handleReset();
+              setState((prev) => ({ ...prev, siderLevel: 1 }));
+            }}
           >
             Locations
           </button>
