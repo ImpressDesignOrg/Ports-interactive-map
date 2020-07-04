@@ -11,11 +11,6 @@ const PK_berthsLayer = {
   objectIdField: 'ObjectID',
   popupTemplate: {
     title: 'Port Kembla Berths',
-    dockOptions: { position: 'bottom-left' },
-    dockEnabled: false,
-    currentDockPosition: 'bottom-left',
-    alignment: 'bottom-left',
-    position: 'bottom-left',
     content: [
       {
         type: 'fields',

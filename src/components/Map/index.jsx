@@ -156,7 +156,7 @@ export default function Map() {
         // TODO add basemap toggle
         // TODO Display the loading indicator when the view is updating
 
-        // TODO write function to bring it in and add layers dynamically
+        // TODO write function to bring it in and add layers dynamically (to do so, need to seperate FeatureLayer and GeoJSONLayer layers)
         // ###### BRING IN THE ACTIVE LAYERS #####
         // Key Freight Routes
         // TODO manually extract the data Key Freight Route Data

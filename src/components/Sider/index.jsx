@@ -12,6 +12,38 @@ export default function Sidebar() {
   const [visible, setVisible] = useState(true);
   const state = useTrackedState();
 
+  const INFO_BODY = () => {
+    switch (state.viewing) {
+      case 'AUS':
+      case 'ALL':
+        return 'Interested in learning more about NSW Ports and our operations?';
+      case 'PB':
+        return 'Interested in learning more about Port Botany?';
+      case 'PK':
+        return 'Interested in learning more about Port Kembla?';
+      case 'EN':
+        return 'Interested in learning more about Enfield Intermodal Terminal?';
+      case 'CR':
+        return 'Interested in learning more about Cooks River Intermodal Terminal?';
+      default:
+        break;
+    }
+  };
+
+  const INFO_URL = () => {
+    switch (state.viewing) {
+      case 'AUS':
+      case 'ALL':
+      case 'PB':
+      case 'PK':
+      case 'EN':
+      case 'CR':
+        return '/';
+      default:
+        break;
+    }
+  };
+
   return (
     <StyledWrapper visible={visible}>
       <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
@@ -19,7 +51,17 @@ export default function Sidebar() {
       </StyledToggle>
       <div className='content'>
         {state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}
-        <div className='info'>NSW Ports Info Box</div>
+        <div className='info-wrapper'>
+          <div className='info-content'>
+            <div className='heading'>Want to find out more?</div>
+            <div className='body'>
+              <p>
+                {INFO_BODY()}{' '}
+                <a href={INFO_URL()}>Find out more information here</a>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </StyledWrapper>
   );
@@ -41,14 +83,45 @@ const StyledWrapper = styled.div`
     opacity: ${(props) => (props.visible ? '1' : '0')};
     transition: visibility 0.5s, opacity 0.1s linear;
 
-    .info {
+    .info-wrapper {
       position: absolute;
-      height: 205px;
+      height: 207px;
       width: 350px;
       left: 0px;
       background: #68a0b9;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
+
+      .info-content {
+        padding: 40px 30px;
+
+        .heading {
+          font-size: 22px;
+          font-family: 'Roboto Condensed';
+          color: #fff;
+          font-weight: 600;
+          border-bottom: 1px solid #fff;
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-size: 17px;
+          color: #fff;
+          font-family: 'Roboto Condensed';
+          font-weight: 300;
+
+          a {
+            text-decoration: none;
+            cursor: pointer;
+            color: #fff;
+            font-weight: 600;
+
+            &:hover {
+              color: #1d384b;
+            }
+          }
+        }
+      }
     }
   }
 `;

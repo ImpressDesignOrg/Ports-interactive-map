@@ -1,461 +1,216 @@
 import React from 'react';
-import { MdLocalAirport } from 'react-icons/md';
+import { MdLocalAirport, MdLocalShipping } from 'react-icons/md';
 import {
   FaRegBuilding,
   FaGripLinesVertical,
   FaMapMarkerAlt,
+  FaDocker,
+  FaCircle,
 } from 'react-icons/fa';
-import { GiVirtualMarker } from 'react-icons/gi';
+import { GiVirtualMarker, GiGate } from 'react-icons/gi';
+import { RiShipLine } from 'react-icons/ri';
+import { BsBuilding } from 'react-icons/bs';
 
-export const AUS_SWITCHES = [
-  { label: 'Airports', icon: <MdLocalAirport />, key: 'airports' },
-  { label: 'Seaports', icon: 'ICON', key: 'seaports' },
-  { label: 'Intermodal Terminals', icon: 'ICON', key: 'intermodalTerminals' },
-  { label: 'Road Train Assembly', icon: 'ICON', key: 'roadTrainAssembly' },
-  { label: 'Key Roads', icon: 'ICON', key: 'keyRoads' },
-  { label: 'Key Rail', icon: 'ICON', key: 'keyRail' },
-  { label: 'Secondary Roads', icon: 'ICON', key: 'secondaryRoads' },
-  {
+const ICON_SIZE = '30px';
+
+const ALL = {
+  airports: {
+    label: 'Airports',
+    icon: <MdLocalAirport size={ICON_SIZE} />,
+    key: 'airports',
+  },
+  seaports: {
+    label: 'Seaports',
+    icon: <RiShipLine size={ICON_SIZE} />,
+    key: 'seaports',
+  },
+  intermodalTerminals: {
+    label: 'Intermodal Terminals',
+    icon: <MdLocalShipping size={ICON_SIZE} />,
+    key: 'intermodalTerminals',
+  },
+  roadTrainAssemby: {
+    label: 'Road Train Assembly',
+    icon: <MdLocalAirport size={ICON_SIZE} />,
+    key: 'roadTrainAssembly',
+  },
+  keyRoads: {
+    label: 'Key Roads',
+    icon: <MdLocalAirport size={ICON_SIZE} />,
+    key: 'keyRoads',
+  },
+  keyRail: {
+    label: 'Key Rail',
+    icon: <MdLocalAirport size={ICON_SIZE} />,
+    key: 'keyRail',
+  },
+  secondaryRoads: {
+    label: 'Secondary Roads',
+    icon: <MdLocalAirport size={ICON_SIZE} />,
+    key: 'secondaryRoads',
+  },
+  localGov: {
     label: 'Local Government',
-    icon: <FaGripLinesVertical color='#aaff00' />,
+    icon: <FaGripLinesVertical size={ICON_SIZE} color='#aaff00' />,
     key: 'localGov',
   },
-  {
+  stateGov: {
     label: 'State Government',
-    icon: <FaGripLinesVertical color='#e69800' />,
+    icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
     key: 'stateGov',
   },
-  {
+  federalGov: {
     label: 'Federal Government',
-    icon: <FaGripLinesVertical color='#7a8ef5' />,
+    icon: <FaGripLinesVertical size={ICON_SIZE} color='#7a8ef5' />,
     key: 'federalGov',
   },
-  {
-    label: 'Berths',
-    iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png',
-    key: 'pbBerths',
-  },
-  {
-    label: 'Gates',
-    iconUrl: 'https://img.icons8.com/dusk/16/000000/road-closure.png',
-    key: 'pbGates',
-  },
-  {
-    label: 'Berths',
-    iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png',
-    key: 'pkBerths',
-  },
-  /* { label: 'Port Kembla Gates', iconUrl: 'https://img.icons8.com/dusk/16/000000/road-closure.png', key: 'pkGates' }, */
-  {
+  tenancyLeaseArea: {
     label: 'Tenancy Lease Areas',
-    icon: <FaGripLinesVertical color='#e69800' />,
+    icon: <FaCircle size={ICON_SIZE} color='#e69800' />,
     key: 'tenancyLeaseAreas',
   },
-  {
+  tenancyUnits: {
     label: 'Tenancy Units',
-    icon: <FaGripLinesVertical color='#e69800' />,
+    icon: <FaCircle size={ICON_SIZE} color='#3333cc' />,
     key: 'tenancyUnits',
   },
-  {
+  leaseBoundary: {
     label: 'Lease Boundary',
-    icon: <FaGripLinesVertical color='#e69800' />,
+    icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
     key: 'leaseBoundary',
   },
-  {
+  breakwaterRevetments: {
     label: 'Breakwater Revetments',
-    icon: <FaGripLinesVertical color='#e69800' />,
+    icon: <FaCircle size={ICON_SIZE} color='#ccc433' />,
     key: 'breakwaterRevetments',
   },
-  {
+  buildings: {
     label: 'Buildings',
-    iconUrl: 'https://img.icons8.com/carbon-copy/100/000000/building.png',
+    icon: <BsBuilding size={ICON_SIZE} />,
     key: 'buildings',
   },
-  { label: 'Heritage', icon: <FaRegBuilding />, key: 'buildings' },
-  {
+  heritage: {
+    label: 'Heritage',
+    icon: <FaRegBuilding size={ICON_SIZE} />,
+    key: 'buildings',
+  },
+  maritimeStructures: {
     label: 'Maritime Structures',
-    icon: <FaGripLinesVertical color='#e69800' />,
+    icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
     key: 'maritimeStructures',
   },
-  {
+  railNetwork: {
     label: 'Rail Network',
-    icon: <FaGripLinesVertical color='#e69800' />,
+    icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
     key: 'railNetwork',
   },
-  {
+  roadNetwork: {
     label: 'Road Network',
-    icon: <FaGripLinesVertical color='#e69800' />,
+    icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
     key: 'roadNetwork',
   },
-  { label: 'Port Botany Labels', icon: <GiVirtualMarker />, key: 'pbLabels' },
-  { label: 'Port Botany Lines', icon: <FaMapMarkerAlt />, key: 'pbLines' },
-  { label: 'Port Kembla Labels', icon: <GiVirtualMarker />, key: 'pkLabels' },
-  { label: 'Port Kembla Lines', icon: <FaMapMarkerAlt />, key: 'pkLines' },
+};
+
+export const AUS_SWITCHES = [
+  ALL.airports,
+  ALL.seaports,
+  ALL.intermodalTerminals,
+  ALL.roadTrainAssemby,
+  ALL.keyRoads,
+  ALL.keyRail,
+  ALL.secondaryRoads,
+  ALL.localGov,
+  ALL.stateGov,
+  ALL.federalGov,
 ];
 
 export const ALL_SWITCHES = [
-  {
-    label: 'Airports',
-    icon: <MdLocalAirport />,
-    key: 'airports',
-  },
-  { label: 'Seaports', icon: 'ICON', key: 'seaports' },
-  { label: 'Intermodal Terminals', icon: 'ICON', key: 'intermodalTerminals' },
-  { label: 'Road Train Assembly', icon: 'ICON', key: 'roadTrainAssembly' },
-  { label: 'Key Roads', icon: 'ICON', key: 'keyRoads' },
-  { label: 'Key Rail', icon: 'ICON', key: 'keyRail' },
-  { label: 'Secondary Roads', icon: 'ICON', key: 'secondaryRoads' },
-  {
-    label: 'Local Government',
-    icon: <FaGripLinesVertical color='#aaff00' />,
-    key: 'localGov',
-  },
-  {
-    label: 'State Government',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'stateGov',
-  },
-  {
-    label: 'Federal Government',
-    icon: <FaGripLinesVertical color='#7a8ef5' />,
-    key: 'federalGov',
-  },
+  ALL.airports,
+  ALL.seaports,
+  ALL.intermodalTerminals,
+  ALL.roadTrainAssemby,
+  ALL.keyRoads,
+  ALL.keyRail,
+  ALL.secondaryRoads,
+  ALL.localGov,
+  ALL.stateGov,
+  ALL.federalGov,
 ];
 
 export const PB_SWITCHES = [
   {
-    label: 'Local Government',
-    icon: <FaGripLinesVertical color='#aaff00' />,
-    key: 'localGov',
-  },
-  {
-    label: 'State Government',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'stateGov',
-  },
-  {
-    label: 'Federal Government',
-    icon: <FaGripLinesVertical color='#7a8ef5' />,
-    key: 'federalGov',
-  },
-  {
     label: 'Berths',
-    iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png',
+    icon: <FaDocker size={ICON_SIZE} />,
     key: 'pbBerths',
   },
   {
     label: 'Gates',
-    iconUrl: 'https://img.icons8.com/dusk/16/000000/road-closure.png',
+    icon: <GiGate size={ICON_SIZE} />,
     key: 'pbGates',
   },
+  ALL.tenancyLeaseArea,
+  ALL.tenancyUnits,
+  ALL.leaseBoundary,
+  ALL.breakwaterRevetments,
   {
-    label: 'Tenancy Lease Areas',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyLeaseAreas',
+    label: 'Labels',
+    icon: <GiVirtualMarker size={ICON_SIZE} />,
+    key: 'pbLabels',
   },
   {
-    label: 'Tenancy Units',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyUnits',
+    label: 'Lines',
+    icon: <FaMapMarkerAlt size={ICON_SIZE} />,
+    key: 'pbLines',
   },
-  {
-    label: 'Lease Boundary',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'leaseBoundary',
-  },
-  {
-    label: 'Breakwater Revetments',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'breakwaterRevetments',
-  },
-  {
-    label: 'Buildings',
-    iconUrl: 'https://img.icons8.com/carbon-copy/100/000000/building.png',
-    key: 'buildings',
-  },
-  { label: 'Heritage', icon: <FaRegBuilding />, key: 'buildings' },
-  {
-    label: 'Maritime Structures',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'maritimeStructures',
-  },
-  {
-    label: 'Road Network',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'roadNetwork',
-  },
-  { label: 'Port Botany Labels', icon: <GiVirtualMarker />, key: 'pbLabels' },
-  { label: 'Port Botany Lines', icon: <FaMapMarkerAlt />, key: 'pbLines' },
+  ALL.maritimeStructures,
+  ALL.roadNetwork,
+  ALL.buildings,
+  ALL.heritage,
+  ALL.localGov,
+  ALL.stateGov,
+  ALL.federalGov,
 ];
 
 export const PK_SWITCHES = [
-  {
-    label: 'Local Government',
-    icon: <FaGripLinesVertical color='#aaff00' />,
-    key: 'localGov',
-  },
-  {
-    label: 'State Government',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'stateGov',
-  },
-  {
-    label: 'Federal Government',
-    icon: <FaGripLinesVertical color='#7a8ef5' />,
-    key: 'federalGov',
-  },
+  ALL.localGov,
+  ALL.stateGov,
+  ALL.federalGov,
   {
     label: 'Berths',
-    iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png',
+    icon: <GiGate size={ICON_SIZE} />,
     key: 'pkBerths',
   },
-  {
-    label: 'Tenancy Lease Areas',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyLeaseAreas',
-  },
-  {
-    label: 'Tenancy Units',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyUnits',
-  },
-  {
-    label: 'Lease Boundary',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'leaseBoundary',
-  },
-  {
-    label: 'Breakwater Revetments',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'breakwaterRevetments',
-  },
-  {
-    label: 'Buildings',
-    iconUrl: 'https://img.icons8.com/carbon-copy/100/000000/building.png',
-    key: 'buildings',
-  },
-  { label: 'Heritage', icon: <FaRegBuilding />, key: 'buildings' },
-  {
-    label: 'Maritime Structures',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'maritimeStructures',
-  },
-  {
-    label: 'Rail Network',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'railNetwork',
-  },
-  {
-    label: 'Road Network',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'roadNetwork',
-  },
-  { label: 'Port Kembla Labels', icon: <GiVirtualMarker />, key: 'pkLabels' },
-  { label: 'Port Kembla Lines', icon: <FaMapMarkerAlt />, key: 'pkLines' },
+  ALL.tenancyLeaseArea,
+  ALL.tenancyUnits,
+  ALL.buildings,
+  ALL.heritage,
+  ALL.leaseBoundary,
+  ALL.breakwaterRevetments,
+  ALL.maritimeStructures,
+  ALL.railNetwork,
+  ALL.roadNetwork,
+  { label: 'Labels', icon: <GiVirtualMarker />, key: 'pkLabels' },
+  { label: 'Lines', icon: <FaMapMarkerAlt />, key: 'pkLines' },
 ];
 
 export const CR_SWITCHES = [
-  {
-    label: 'Local Government',
-    icon: <FaGripLinesVertical color='#aaff00' />,
-    key: 'localGov',
-  },
-  {
-    label: 'State Government',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'stateGov',
-  },
-  {
-    label: 'Federal Government',
-    icon: <FaGripLinesVertical color='#7a8ef5' />,
-    key: 'federalGov',
-  },
-  {
-    label: 'Tenancy Lease Areas',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyLeaseAreas',
-  },
-  {
-    label: 'Tenancy Units',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyUnits',
-  },
-  {
-    label: 'Buildings',
-    iconUrl: 'https://img.icons8.com/carbon-copy/100/000000/building.png',
-    key: 'buildings',
-  },
-  { label: 'Heritage', icon: <FaRegBuilding />, key: 'buildings' },
+  ALL.localGov,
+  ALL.stateGov,
+  ALL.federalGov,
+  ALL.tenancyLeaseArea,
+  ALL.tenancyUnits,
+  ALL.buildings,
+  ALL.heritage,
 ];
 
 export const EN_SWITCHES = [
-  {
-    label: 'Local Government',
-    icon: <FaGripLinesVertical color='#aaff00' />,
-    key: 'localGov',
-  },
-  {
-    label: 'State Government',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'stateGov',
-  },
-  {
-    label: 'Federal Government',
-    icon: <FaGripLinesVertical color='#7a8ef5' />,
-    key: 'federalGov',
-  },
-  {
-    label: 'Tenancy Lease Areas',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyLeaseAreas',
-  },
-  {
-    label: 'Tenancy Units',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyUnits',
-  },
-  {
-    label: 'Buildings',
-    iconUrl: 'https://img.icons8.com/carbon-copy/100/000000/building.png',
-    key: 'buildings',
-  },
-  { label: 'Heritage', icon: <FaRegBuilding />, key: 'buildings' },
-  {
-    label: 'Rail Network',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'railNetwork',
-  },
-  {
-    label: 'Road Network',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'roadNetwork',
-  },
-];
-
-export const keyFreightRouteSwitches = [
-  {
-    label: 'Airports',
-    icon: <MdLocalAirport />,
-    key: 'airports',
-    locations: true,
-  },
-  { label: 'Seaports', icon: 'ICON', key: 'seaports', locations: true },
-  {
-    label: 'Intermodal Terminals',
-    icon: 'ICON',
-    key: 'intermodalTerminals',
-    locations: true,
-  },
-  {
-    label: 'Road Train Assembly',
-    icon: 'ICON',
-    key: 'roadTrainAssembly',
-    locations: true,
-  },
-  { label: 'Key Roads', icon: 'ICON', key: 'keyRoads', locations: true },
-  { label: 'Key Rail', icon: 'ICON', key: 'keyRail', locations: true },
-  {
-    label: 'Secondary Roads',
-    icon: 'ICON',
-    key: 'secondaryRoads',
-    locations: true,
-  },
-];
-
-export const nswAdminBoundariesSwitches = [
-  {
-    label: 'Local Government',
-    icon: <FaGripLinesVertical color='#aaff00' />,
-    key: 'localGov',
-    locations: true,
-  },
-  {
-    label: 'State Government',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'stateGov',
-    locations: true,
-  },
-  {
-    label: 'Federal Government',
-    icon: <FaGripLinesVertical color='#7a8ef5' />,
-    key: 'federalGov',
-    locations: true,
-  },
-  /*   { label: 'Suburbs', icon: <FaGripLinesVertical color='#a900e6' />, key: 'suburbs', locations: true },
-  { label: 'Parish', icon: <FaGripLinesVertical color='#73dfff' />, key: 'parish', locations: true },
-  { label: 'NPWS Reserve', icon: <FaGripLinesVertical color='#73b273' />, key: 'npwsReserve', locations: true },
-  { label: 'State Forest', icon: <FaGripLinesVertical color='#73b273' />, key: 'stateForest', locations: true }, */
-];
-
-export const propertySwitches = [
-  {
-    label: 'Berths',
-    iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png',
-    key: 'pbBerths',
-    locations: 'PB',
-  },
-  {
-    label: 'Gates',
-    iconUrl: 'https://img.icons8.com/dusk/16/000000/road-closure.png',
-    key: 'pbGates',
-    locations: 'PB',
-  },
-  {
-    label: 'Berths',
-    iconUrl: 'https://img.icons8.com/office/16/000000/wharf.png',
-    key: 'pkBerths',
-    locations: 'PK',
-  },
-  /* { label: 'Port Kembla Gates', iconUrl: 'https://img.icons8.com/dusk/16/000000/road-closure.png', key: 'pkGates' }, */
-  {
-    label: 'Tenancy Lease Areas',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyLeaseAreas',
-    locations: ['PB', 'PK', 'CR', 'EN'],
-  },
-  {
-    label: 'Tenancy Units',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'tenancyUnits',
-    locations: ['PB', 'PK', 'CR', 'EN'],
-  },
-  {
-    label: 'Lease Boundary',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'leaseBoundary',
-    locations: ['PB', 'PK', 'CR', 'EN'],
-  },
-];
-
-export const assetMgtSwitches = [
-  {
-    label: 'Breakwater Revetments',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'breakwaterRevetments',
-  },
-  {
-    label: 'Buildings',
-    iconUrl: 'https://img.icons8.com/carbon-copy/100/000000/building.png',
-    key: 'buildings',
-  },
-  { label: 'Heritage', icon: <FaRegBuilding />, key: 'buildings' },
-  {
-    label: 'Maritime Structures',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'maritimeStructures',
-  },
-  {
-    label: 'Rail Network',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'railNetwork',
-  },
-  {
-    label: 'Road Network',
-    icon: <FaGripLinesVertical color='#e69800' />,
-    key: 'roadNetwork',
-  },
-  { label: 'Port Botany Labels', icon: <GiVirtualMarker />, key: 'pbLabels' },
-  { label: 'Port Botany Lines', icon: <FaMapMarkerAlt />, key: 'pbLines' },
-  { label: 'Port Kembla Labels', icon: <GiVirtualMarker />, key: 'pkLabels' },
-  { label: 'Port Kembla Lines', icon: <FaMapMarkerAlt />, key: 'pkLines' },
+  ALL.localGov,
+  ALL.stateGov,
+  ALL.federalGov,
+  ALL.tenancyLeaseArea,
+  ALL.tenancyUnits,
+  ALL.buildings,
+  ALL.heritage,
+  ALL.railNetwork,
+  ALL.roadNetwork,
 ];

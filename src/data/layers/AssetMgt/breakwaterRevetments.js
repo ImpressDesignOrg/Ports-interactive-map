@@ -32,6 +32,14 @@ const breakwaterRevetmentsLayer = {
       },
     ],
   },
+  renderer: {
+    type: 'simple',
+    symbol: {
+      type: 'simple-fill',
+      color: [204, 196, 51, 0.9],
+      style: 'solid',
+    },
+  },
 };
 
 export default breakwaterRevetmentsLayer;
