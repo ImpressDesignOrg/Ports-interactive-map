@@ -122,22 +122,24 @@ export default function Map() {
       [
         'esri/config',
         'esri/core/watchUtils',
+        'esri/core/promiseUtils',
+        'esri/widgets/Feature',
         'esri/Map',
         'esri/views/MapView',
         'esri/layers/FeatureLayer',
         'esri/layers/GeoJSONLayer',
-        'esri/widgets/BasemapToggle',
       ],
       { css: true }
     ).then(
       ([
         esriConfig,
         watchUtils,
+        promiseUtils,
+        Feature,
         ArcGISMap,
         MapView,
         FeatureLayer,
         GeoJSONLayer,
-        BasemapToggle,
       ]) => {
         const map = new ArcGISMap({
           basemap: 'hybrid',
@@ -151,25 +153,13 @@ export default function Map() {
           zoom: ZOOM_LEVEL(),
         });
 
-        // add map toggle
-        view.ui.add(
-          new BasemapToggle({
-            view,
-            nextBasemap: 'topo-vector',
-          }),
-          'bottom-left'
-        );
-
+        // TODO add basemap toggle
         // TODO Display the loading indicator when the view is updating
 
-        // add the entire location markers if the map is zoomed out
-        /*       if (zoom < 12) {
-        map.add(new GeoJSONLayer(allLocationsLayer));
-      } */
-
+        // TODO write function to bring it in and add layers dynamically
         // ###### BRING IN THE ACTIVE LAYERS #####
         // Key Freight Routes
-        // TODO manually extract the data
+        // TODO manually extract the data Key Freight Route Data
         if (airports) map.add(new FeatureLayer(airportsLayer));
         if (seaports) map.add(new FeatureLayer(seaportsLayer));
         if (intermodalTerminals)

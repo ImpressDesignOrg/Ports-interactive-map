@@ -16,3 +16,6 @@ code {
 .esri-attribution {
   display: none !important;
 }
+.esri-ui .esri-popup .esri-popup__header {
+  background: blue;
+}
