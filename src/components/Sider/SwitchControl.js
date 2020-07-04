@@ -38,7 +38,10 @@ const StyledSwitch = styled.div`
 
     p {
       margin: 0 0 0 20px;
-      font-size: 15px;
+      margin-left: 22px;
+      color: #000;
+      font-weight: 500;
+      font-family: 'Roboto Condensed';
     }
   }
 

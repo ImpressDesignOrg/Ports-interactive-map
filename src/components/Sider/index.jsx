@@ -5,8 +5,8 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 import MapContext from '../../MapContext';
 
-import LocationButtons from './LocationButtons';
-import ActiveLayersForm from './ActiveLayersForm';
+import LocationButtons from './forms/LocationButtons';
+import ActiveLayers from './forms/ActiveLayers';
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
@@ -16,14 +16,18 @@ export default function Sidebar() {
 
   return (
     <StyledWrapper visible={visible}>
-      <div className='toggle-wrapper'>
-        <StyledToggle visible={visible} onClick={() => handleVisible()}>
-          {visible ? <AiOutlineArrowRight color='#000' /> : <AiOutlineArrowLeft color='#000' />}
-        </StyledToggle>
-      </div>
+      <StyledToggle visible={visible} onClick={() => handleVisible()}>
+        {visible ? <AiOutlineArrowRight /> : <AiOutlineArrowLeft />}
+      </StyledToggle>
       <div className='content'>
-        {siderLevel === 2 && <Button onClick={() => setSiderLevel(siderLevel - 1)}>Select a location</Button>}
-        {siderLevel === 1 ? <LocationButtons /> : <ActiveLayersForm />}
+        {siderLevel === 2 && (
+          <Button onClick={() => setSiderLevel(siderLevel - 1)}>
+            <AiOutlineArrowLeft size='7px' />
+            <span>our locations</span>
+          </Button>
+        )}
+        {siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}
+        <div className='info'>NSW Ports Info Box</div>
       </div>
     </StyledWrapper>
   );
@@ -31,19 +35,29 @@ export default function Sidebar() {
 
 const StyledWrapper = styled.div`
   .content {
-    padding: 40px;
+    padding: 20px 40px;
     background: #fff;
     height: 100%;
     position: absolute;
     width: 350px;
-    height: 80vh;
+    height: 700px;
     z-index: 2;
     right: 30px;
-    top: 85px;
+    top: 40px;
     border-radius: 10px;
     visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
     opacity: ${(props) => (props.visible ? '1' : '0')};
     transition: visibility 0.5s, opacity 0.1s linear;
+
+    .info {
+      position: absolute;
+      height: 205px;
+      width: 350px;
+      left: 0px;
+      background: #68a0b9;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
   }
 `;
 
@@ -51,9 +65,14 @@ const StyledToggle = styled(Button)`
   position: absolute;
   z-index: 3;
   right: ${(props) => (props.visible ? '380px' : '0')};
-  top: 15%;
-  height: 80px;
+  top: 7%;
+  height: 60px;
   border: none;
   display: flex;
   align-items: center;
+  background: #68a0b9;
+
+  &:hover {
+    background: #1d384b;
+  }
 `;

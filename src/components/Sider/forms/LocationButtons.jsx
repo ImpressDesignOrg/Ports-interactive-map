@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FaMapMarkerAlt, FaBuilding } from 'react-icons/fa';
 import { GiAustralia } from 'react-icons/gi';
 
-import MapContext from '../../MapContext';
+import MapContext from '../../../MapContext';
 
 export default function LocationButtons() {
   const { siderLevel, setViewing, setSiderLevel } = useContext(MapContext);
@@ -37,30 +37,30 @@ export default function LocationButtons() {
 
   return (
     <StyledContainer>
-      <h2>Select one of our locations</h2>
-      <div className='viewport-buttons-content'>
+      <h2>NSW Ports Locations</h2>
+      <div className='sider-content'>
         <button onClick={() => handleClick('PB')}>
-          <FaMapMarkerAlt />
+          <FaMapMarkerAlt size='30px' />
           <span>Port Botany</span>
         </button>
         <button onClick={() => handleClick('PK')}>
-          <FaMapMarkerAlt />
+          <FaMapMarkerAlt size='30px' />
           <span>Port Kembla</span>
         </button>
         <button onClick={() => handleClick('CR')}>
-          <FaMapMarkerAlt />
-          <span>Cooks River Intermodal Terminal</span>
+          <FaMapMarkerAlt size='30px' />
+          <span>Cooks River Intermodal</span>
         </button>
         <button onClick={() => handleClick('EN')}>
-          <FaMapMarkerAlt />
-          <span>Enfield Intermodal Terminal</span>
+          <FaMapMarkerAlt size='30px' />
+          <span>Enfield Intermodal</span>
         </button>
         <button onClick={() => handleClick('ALL')}>
-          <FaBuilding />
+          <FaBuilding size='30px' />
           <span>NSW Ports Locations</span>
         </button>
         <button onClick={() => handleClick('AUS')}>
-          <GiAustralia />
+          <GiAustralia size='30px' />
           <span>National</span>
         </button>
       </div>
@@ -73,12 +73,12 @@ const StyledContainer = styled.div`
   font-family: 'Roboto';
 
   h2 {
-    font-size: 20px;
-    color: #5b6770;
+    font-size: 22px;
+    color: #000;
     font-weight: 700;
   }
 
-  .viewport-buttons-content {
+  .sider-content {
     display: flex;
     flex-wrap: wrap;
 
@@ -86,7 +86,8 @@ const StyledContainer = styled.div`
       display: flex;
       align-items: center;
       flex: 0 0 100%;
-      margin: 5px;
+      margin: 10px 0;
+      padding: 0;
       height: 45px;
       font-size: 15px;
       color: #000;
@@ -96,13 +97,14 @@ const StyledContainer = styled.div`
       cursor: pointer;
 
       &:hover {
-        color: #1d384b;
+        color: #68a0b9;
       }
 
       span {
-        margin-left: 15px;
-        color: #5b6770;
-        font-weight: 600;
+        margin-left: 22px;
+        color: #000;
+        font-weight: 500;
+        font-family: 'Roboto Condensed';
       }
     }
   }
