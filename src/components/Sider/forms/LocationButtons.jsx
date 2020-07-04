@@ -4,35 +4,16 @@ import { FaMapMarkerAlt, FaBuilding } from 'react-icons/fa';
 import { GiAustralia } from 'react-icons/gi';
 
 import MapContext from '../../../MapContext';
+import { useSetState, useTrackedState } from '../../../store';
 
 export default function LocationButtons() {
-  const { siderLevel, setViewing, setSiderLevel } = useContext(MapContext);
+  // const { setViewing, setSiderLevel } = useContext(MapContext);
+  // const state = useTrackedState();
+  const setState = useSetState();
 
   const handleClick = (location) => {
-    setSiderLevel(siderLevel + 1);
-
-    switch (location) {
-      case 'AUS':
-        setViewing('AUS');
-        break;
-      case 'ALL':
-        setViewing('ALL');
-        break;
-      case 'PB':
-        setViewing('PB');
-        break;
-      case 'PK':
-        setViewing('PK');
-        break;
-      case 'CR':
-        setViewing('CR');
-        break;
-      case 'EN':
-        setViewing('EN');
-        break;
-      default:
-        break;
-    }
+    setState((prev) => ({ ...prev, siderLevel: 2 }));
+    setState((prev) => ({ ...prev, viewing: location }));
   };
 
   return (
@@ -76,6 +57,7 @@ const StyledContainer = styled.div`
     font-size: 22px;
     color: #000;
     font-weight: 700;
+    margin: 0 0 10px 0;
   }
 
   .sider-content {
@@ -98,6 +80,11 @@ const StyledContainer = styled.div`
 
       &:hover {
         color: #68a0b9;
+      }
+
+      &:focus {
+        border: none;
+        outline: none;
       }
 
       span {

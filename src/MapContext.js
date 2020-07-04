@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { viewports } from './data/viewports';
-
 const MapContext = React.createContext(true);
 
 class MapProvider extends Component {
@@ -29,7 +27,16 @@ class MapProvider extends Component {
     const { setViewing, setActive, setSiderLevel } = this;
 
     return (
-      <MapContext.Provider value={{ viewing, active, siderLevel, setViewing, setActive, setSiderLevel }}>
+      <MapContext.Provider
+        value={{
+          viewing,
+          active,
+          siderLevel,
+          setViewing,
+          setActive,
+          setSiderLevel,
+        }}
+      >
         {children}
       </MapContext.Provider>
     );

@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
+import { Provider } from './store';
+
 import { MapProvider } from './MapContext';
 import Map from './components/Map';
 import Sidebar from './components/Sider';
@@ -11,7 +13,7 @@ import './index.css';
 
 // TODO check whether best to use esri-loader or webpack with Drupal (https://developers.arcgis.com/javascript/latest/guide/react/)
 
-const App = () => {
+/* const App = () => {
   return (
     <MapProvider>
       <StyledApp>
@@ -20,7 +22,16 @@ const App = () => {
       </StyledApp>
     </MapProvider>
   );
-};
+}; */
+
+const App = () => (
+  <Provider>
+    <StyledApp className='react-interactive-map-content'>
+      <Sidebar />
+      <Map />
+    </StyledApp>
+  </Provider>
+);
 
 const StyledApp = styled.div``;
 

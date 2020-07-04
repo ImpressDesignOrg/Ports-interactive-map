@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useContext } from 'react';
 import { loadModules } from 'esri-loader';
 
 import MapContext from '../../MapContext';
+import { useSetState, useTrackedState } from '../../store';
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
 import allLocationsLayer from '../../data/layers/allLocations';
@@ -42,7 +43,9 @@ import { viewports } from '../../data/viewports';
 
 export default function Map() {
   const mapRef = useRef();
-  const { viewing, active } = useContext(MapContext);
+  // const { viewing, active } = useContext(MapContext);
+  const state = useTrackedState();
+  const setState = useSetState();
 
   const {
     airports,
@@ -76,10 +79,12 @@ export default function Map() {
     pbLines,
     pkLabels,
     pkLines,
-  } = active;
+  } = state;
+
+  console.log('state :>> ', state);
 
   const ZOOM_LEVEL = () => {
-    switch (viewing) {
+    switch (state.viewing) {
       case 'AUS':
         return 5;
       case 'ALL':
@@ -98,7 +103,7 @@ export default function Map() {
   };
 
   const CENTER_LEVEL = () => {
-    switch (viewing) {
+    switch (state.viewing) {
       case 'AUS':
         return viewports.AUS.center;
       case 'ALL':
@@ -128,79 +133,93 @@ export default function Map() {
         'esri/widgets/BasemapToggle',
       ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
-      const map = new ArcGISMap({
-        basemap: 'hybrid',
-      });
+    ).then(
+      ([
+        esriConfig,
+        ArcGISMap,
+        MapView,
+        FeatureLayer,
+        GeoJSONLayer,
+        BasemapToggle,
+      ]) => {
+        const map = new ArcGISMap({
+          basemap: 'hybrid',
+        });
 
-      // load the map view at the ref's DOM node
-      const view = new MapView({
-        container: mapRef.current,
-        map,
-        center: CENTER_LEVEL(),
-        zoom: ZOOM_LEVEL(),
-      });
+        // load the map view at the ref's DOM node
+        const view = new MapView({
+          container: mapRef.current,
+          map,
+          center: CENTER_LEVEL(),
+          zoom: ZOOM_LEVEL(),
+        });
 
-      // add map toggle
-      view.ui.add(
-        new BasemapToggle({
-          view,
-          nextBasemap: 'topo-vector',
-        }),
-        'bottom-left'
-      );
+        // add map toggle
+        view.ui.add(
+          new BasemapToggle({
+            view,
+            nextBasemap: 'topo-vector',
+          }),
+          'bottom-left'
+        );
 
-      // add the entire location markers if the map is zoomed out
-      /*       if (zoom < 12) {
+        // add the entire location markers if the map is zoomed out
+        /*       if (zoom < 12) {
         map.add(new GeoJSONLayer(allLocationsLayer));
       } */
 
-      // ###### BRING IN THE ACTIVE LAYERS #####
-      // Key Freight Routes
-      // TODO manually extract the data
-      if (airports) map.add(new GeoJSONLayer(airportsLayer));
-      if (seaports) map.add(new GeoJSONLayer(seaportsLayer));
-      if (intermodalTerminals) map.add(new FeatureLayer(intermodalTerminalsLayer));
-      if (roadTrainAssembly) map.add(new FeatureLayer(roadTrainAssemblyLayer));
-      if (keyRoads) map.add(new FeatureLayer(keyRoadsLayer));
-      if (secondaryRoads) map.add(new FeatureLayer(secondaryRoadsLayer));
-      if (keyRails) map.add(new FeatureLayer(keyRailsLayer));
+        // ###### BRING IN THE ACTIVE LAYERS #####
+        // Key Freight Routes
+        // TODO manually extract the data
+        if (airports) map.add(new GeoJSONLayer(airportsLayer));
+        if (seaports) map.add(new GeoJSONLayer(seaportsLayer));
+        if (intermodalTerminals)
+          map.add(new FeatureLayer(intermodalTerminalsLayer));
+        if (roadTrainAssembly)
+          map.add(new FeatureLayer(roadTrainAssemblyLayer));
+        if (keyRoads) map.add(new FeatureLayer(keyRoadsLayer));
+        if (secondaryRoads) map.add(new FeatureLayer(secondaryRoadsLayer));
+        if (keyRails) map.add(new FeatureLayer(keyRailsLayer));
 
-      // NSW Administrative Boundaries Layers
-      if (suburbs) map.add(new FeatureLayer(suburbLayer));
-      if (county) map.add(new FeatureLayer(countyLayer));
-      if (parish) map.add(new FeatureLayer(parishLayer));
-      if (stateForest) map.add(new FeatureLayer(stateForestLayer));
-      if (npwsReserve) map.add(new FeatureLayer(npwsReserveLayer));
-      if (localGov) map.add(new FeatureLayer(localGovLayer));
-      if (stateGov) map.add(new FeatureLayer(stateGovLayer));
-      if (federalGov) map.add(new FeatureLayer(federalGovLayer));
+        // NSW Administrative Boundaries Layers
+        if (suburbs) map.add(new FeatureLayer(suburbLayer));
+        if (county) map.add(new FeatureLayer(countyLayer));
+        if (parish) map.add(new FeatureLayer(parishLayer));
+        if (stateForest) map.add(new FeatureLayer(stateForestLayer));
+        if (npwsReserve) map.add(new FeatureLayer(npwsReserveLayer));
+        if (localGov) map.add(new FeatureLayer(localGovLayer));
+        if (stateGov) map.add(new FeatureLayer(stateGovLayer));
+        if (federalGov) map.add(new FeatureLayer(federalGovLayer));
 
-      // Property Layers
-      if (pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
-      if (pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
-      if (pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
-      if (leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
-      if (tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
-      if (tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
+        // Property Layers
+        if (pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
+        if (pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
+        if (pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
+        if (leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
+        if (tenancyLeaseAreas)
+          map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
+        if (tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
 
-      // Asset Management
-      if (breakwaterRevetments) map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
-      if (buildings) map.add(new GeoJSONLayer(buildingsLayer));
-      if (heritage) map.add(new GeoJSONLayer(heritageLayer));
-      if (maritimeStructures) map.add(new GeoJSONLayer(maritimeStructuresLayer));
-      if (railNetwork) map.add(new GeoJSONLayer(railNetworkLayer));
-      if (roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer));
-      if (pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer));
-      if (pbLines) map.add(new GeoJSONLayer(PB_linesLayer));
-      if (pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer));
-      if (pkLines) map.add(new GeoJSONLayer(PK_linesLayer));
+        // Asset Management
+        if (breakwaterRevetments)
+          map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
+        if (buildings) map.add(new GeoJSONLayer(buildingsLayer));
+        if (heritage) map.add(new GeoJSONLayer(heritageLayer));
+        if (maritimeStructures)
+          map.add(new GeoJSONLayer(maritimeStructuresLayer));
+        if (railNetwork) map.add(new GeoJSONLayer(railNetworkLayer));
+        if (roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer));
+        if (pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer));
+        if (pbLines) map.add(new GeoJSONLayer(PB_linesLayer));
+        if (pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer));
+        if (pkLines) map.add(new GeoJSONLayer(PK_linesLayer));
 
-      return () => {
-        // destroy the map view
-        if (view) view.container = null;
-      };
-    });
+        return () => {
+          // destroy the map view
+          if (view) view.container = null;
+        };
+      }
+    );
   });
 
   return <div className='map-wrapper' ref={mapRef}></div>;

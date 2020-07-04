@@ -3,14 +3,17 @@ import styled from 'styled-components';
 import { Switch, Form } from 'antd';
 
 import MapContext from '../../MapContext';
+import { useSetState, useTrackedState } from '../../store';
 
 export default function SwitchControl({ item }) {
-  const { active, setActive } = useContext(MapContext);
+  // const { active, setActive } = useContext(MapContext);
+  const state = useTrackedState();
+  const setState = useSetState();
 
   const { label, icon, iconUrl, key } = item;
 
   const handleToggle = (e, key) => {
-    setActive({ ...active, [key]: e });
+    setState((prev) => ({ ...prev, [key]: e }));
   };
 
   return (
@@ -40,6 +43,7 @@ const StyledSwitch = styled.div`
       margin: 0 0 0 20px;
       margin-left: 22px;
       color: #000;
+      font-size: 15px;
       font-weight: 500;
       font-family: 'Roboto Condensed';
     }
@@ -50,6 +54,10 @@ const StyledSwitch = styled.div`
 
     button {
       margin: 0;
+    }
+
+    .ant-switch-checked {
+      background: #68a0b9;
     }
   }
 `;

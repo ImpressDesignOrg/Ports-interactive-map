@@ -4,29 +4,24 @@ import { Button } from 'antd';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 import MapContext from '../../MapContext';
+import { useSetState, useTrackedState } from '../../store';
 
 import LocationButtons from './forms/LocationButtons';
 import ActiveLayers from './forms/ActiveLayers';
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
-  const { siderLevel, setSiderLevel } = useContext(MapContext);
-
-  const handleVisible = () => setVisible(!visible);
+  // const setState = useSetState();
+  const state = useTrackedState();
+  // const { siderLevel } = useContext(MapContext);
 
   return (
     <StyledWrapper visible={visible}>
-      <StyledToggle visible={visible} onClick={() => handleVisible()}>
+      <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
         {visible ? <AiOutlineArrowRight /> : <AiOutlineArrowLeft />}
       </StyledToggle>
       <div className='content'>
-        {siderLevel === 2 && (
-          <Button onClick={() => setSiderLevel(siderLevel - 1)}>
-            <AiOutlineArrowLeft size='7px' />
-            <span>our locations</span>
-          </Button>
-        )}
-        {siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}
+        {state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}
         <div className='info'>NSW Ports Info Box</div>
       </div>
     </StyledWrapper>
