@@ -5,6 +5,8 @@ import { Form } from 'antd';
 import { useSetState, useTrackedState } from '../../../store';
 
 import {
+  AUS_SWITCHES,
+  ALL_SWITCHES,
   PB_SWITCHES,
   PK_SWITCHES,
   CR_SWITCHES,
@@ -27,9 +29,9 @@ export default function ActiveLayersForm() {
   const headingMarkup = () => {
     switch (state.viewing) {
       case 'AUS':
-        return 'Australia';
+        return 'National';
       case 'ALL':
-        return 'NSW Ports';
+        return 'NSW Ports Properties';
       case 'PB':
         return 'Port Botany';
       case 'PK':
@@ -63,10 +65,10 @@ export default function ActiveLayersForm() {
       </div>
       <Form form={form}>
         <div className='toggles-wrapper'>
-          {state.viewing === 'AUSTRALIA' &&
-            PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'ALL LOCATIONS' &&
-            PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === 'AUS' &&
+            AUS_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === 'ALL' &&
+            ALL_SWITCHES.map((v) => <SwitchControl item={v} />)}
           {state.viewing === 'PB' &&
             PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
           {state.viewing === 'PK' &&

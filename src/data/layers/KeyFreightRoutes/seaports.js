@@ -1,6 +1,6 @@
 const seaportsLayer = {
   url:
-    'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/majorSeaports.geojson',
+    'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/2',
   objectIdField: 'ObjectID',
   popupTemplate: {
     title: 'Seaport',

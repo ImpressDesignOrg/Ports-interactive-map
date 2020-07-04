@@ -1,11 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { loadModules } from 'esri-loader';
 
-import { useSetState, useTrackedState } from '../../store';
+import { useTrackedState } from '../../store';
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
-import allLocationsLayer from '../../data/layers/allLocations';
-
 import airportsLayer from '../../data/layers/KeyFreightRoutes/airports';
 import seaportsLayer from '../../data/layers/KeyFreightRoutes/seaports';
 import keyRoadsLayer from '../../data/layers/KeyFreightRoutes/keyRoads';
@@ -41,10 +39,10 @@ import roadNetworkLayer from '../../data/layers/AssetMgt/roadNetwork';
 import { viewports } from '../../data/viewports';
 
 export default function Map() {
+  // const [loading, setLoading] = useState(true);
   const mapRef = useRef();
-  // const { viewing, active } = useContext(MapContext);
   const state = useTrackedState();
-  const setState = useSetState();
+  // const setState = useSetState();
 
   const {
     airports,
@@ -79,8 +77,6 @@ export default function Map() {
     pkLabels,
     pkLines,
   } = state.active;
-
-  console.log('state :>> ', state);
 
   const ZOOM_LEVEL = () => {
     switch (state.viewing) {
@@ -125,6 +121,7 @@ export default function Map() {
     loadModules(
       [
         'esri/config',
+        'esri/core/watchUtils',
         'esri/Map',
         'esri/views/MapView',
         'esri/layers/FeatureLayer',
@@ -135,6 +132,7 @@ export default function Map() {
     ).then(
       ([
         esriConfig,
+        watchUtils,
         ArcGISMap,
         MapView,
         FeatureLayer,
@@ -162,6 +160,8 @@ export default function Map() {
           'bottom-left'
         );
 
+        // TODO Display the loading indicator when the view is updating
+
         // add the entire location markers if the map is zoomed out
         /*       if (zoom < 12) {
         map.add(new GeoJSONLayer(allLocationsLayer));
@@ -170,8 +170,8 @@ export default function Map() {
         // ###### BRING IN THE ACTIVE LAYERS #####
         // Key Freight Routes
         // TODO manually extract the data
-        if (airports) map.add(new GeoJSONLayer(airportsLayer));
-        if (seaports) map.add(new GeoJSONLayer(seaportsLayer));
+        if (airports) map.add(new FeatureLayer(airportsLayer));
+        if (seaports) map.add(new FeatureLayer(seaportsLayer));
         if (intermodalTerminals)
           map.add(new FeatureLayer(intermodalTerminalsLayer));
         if (roadTrainAssembly)
