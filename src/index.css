@@ -5,6 +5,9 @@ body {
 #root {
   background: #efefef;
 }
+.react-interactive-map {
+  position: relative;
+}
 .map-wrapper {
   height: 100vh;
   max-height: 800px;

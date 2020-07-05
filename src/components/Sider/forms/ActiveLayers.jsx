@@ -22,7 +22,11 @@ export default function ActiveLayersForm() {
   const setState = useSetState();
 
   const handleReset = () => {
-    setState((prev) => ({ ...prev, active: {} }));
+    // reset to initial state
+    setState((prev) => ({
+      viewing: state.viewing,
+      siderLevel: state.siderLevel,
+    }));
     form.resetFields();
   };
 
@@ -132,6 +136,10 @@ const StyledContainer = styled.div`
 
     ::-webkit-scrollbar {
       display: none;
+    }
+
+    .toggles-wrapper {
+      padding: 20px 0 0 0;
     }
   }
 `;

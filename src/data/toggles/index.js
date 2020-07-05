@@ -10,6 +10,7 @@ import {
 import { GiVirtualMarker, GiGate } from 'react-icons/gi';
 import { RiShipLine } from 'react-icons/ri';
 import { BsBuilding } from 'react-icons/bs';
+import { AiOutlineLine } from 'react-icons/ai';
 
 const ICON_SIZE = '30px';
 
@@ -96,7 +97,7 @@ const ALL = {
   },
   maritimeStructures: {
     label: 'Maritime Structures',
-    icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#007502' />,
     key: 'maritimeStructures',
   },
   railNetwork: {
@@ -106,7 +107,7 @@ const ALL = {
   },
   roadNetwork: {
     label: 'Road Network',
-    icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#a800e6' />,
     key: 'roadNetwork',
   },
 };
@@ -148,69 +149,77 @@ export const PB_SWITCHES = [
     icon: <GiGate size={ICON_SIZE} />,
     key: 'pbGates',
   },
+  ALL.breakwaterRevetments,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
   ALL.leaseBoundary,
-  ALL.breakwaterRevetments,
+  ALL.roadNetwork,
+  {
+    label: 'Lines',
+    icon: <AiOutlineLine size={ICON_SIZE} color='#ff5edf' />,
+    key: 'pbLines',
+  },
+  ALL.buildings,
+  ALL.heritage,
+  ALL.maritimeStructures,
   {
     label: 'Labels',
     icon: <GiVirtualMarker size={ICON_SIZE} />,
     key: 'pbLabels',
   },
-  {
-    label: 'Lines',
-    icon: <FaMapMarkerAlt size={ICON_SIZE} />,
-    key: 'pbLines',
-  },
-  ALL.maritimeStructures,
-  ALL.roadNetwork,
-  ALL.buildings,
-  ALL.heritage,
   ALL.localGov,
   ALL.stateGov,
   ALL.federalGov,
 ];
 
 export const PK_SWITCHES = [
-  ALL.localGov,
-  ALL.stateGov,
-  ALL.federalGov,
   {
     label: 'Berths',
     icon: <GiGate size={ICON_SIZE} />,
     key: 'pkBerths',
   },
+  ALL.breakwaterRevetments,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
+  ALL.leaseBoundary,
+  ALL.roadNetwork,
+  ALL.railNetwork,
+  {
+    label: 'Lines',
+    icon: <AiOutlineLine size={ICON_SIZE} color='#ff5edf' />,
+    key: 'pkLines',
+  },
   ALL.buildings,
   ALL.heritage,
-  ALL.leaseBoundary,
-  ALL.breakwaterRevetments,
   ALL.maritimeStructures,
-  ALL.railNetwork,
-  ALL.roadNetwork,
-  { label: 'Labels', icon: <GiVirtualMarker />, key: 'pkLabels' },
-  { label: 'Lines', icon: <FaMapMarkerAlt />, key: 'pkLines' },
+  {
+    label: 'Labels',
+    icon: <GiVirtualMarker size={ICON_SIZE} />,
+    key: 'pkLabels',
+  },
+  ALL.localGov,
+  ALL.stateGov,
+  ALL.federalGov,
 ];
 
 export const CR_SWITCHES = [
-  ALL.localGov,
-  ALL.stateGov,
-  ALL.federalGov,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
   ALL.buildings,
   ALL.heritage,
+  ALL.localGov,
+  ALL.stateGov,
+  ALL.federalGov,
 ];
 
 export const EN_SWITCHES = [
+  ALL.tenancyLeaseArea,
+  ALL.tenancyUnits,
+  ALL.heritage,
+  ALL.buildings,
+  ALL.roadNetwork,
+  ALL.railNetwork,
   ALL.localGov,
   ALL.stateGov,
   ALL.federalGov,
-  ALL.tenancyLeaseArea,
-  ALL.tenancyUnits,
-  ALL.buildings,
-  ALL.heritage,
-  ALL.railNetwork,
-  ALL.roadNetwork,
 ];

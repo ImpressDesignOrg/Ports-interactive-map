@@ -76,7 +76,7 @@ export default function Map() {
     pbLines,
     pkLabels,
     pkLines,
-  } = state.active;
+  } = state;
 
   const ZOOM_LEVEL = () => {
     switch (state.viewing) {
@@ -115,6 +115,8 @@ export default function Map() {
         break;
     }
   };
+
+  console.log('state :>> ', state);
 
   useEffect(() => {
     // lazy load the required ArcGIS API
