@@ -4,6 +4,7 @@ import { loadModules } from 'esri-loader';
 import { useTrackedState } from '../../store';
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
+import allLocationsLayer from '../../data/layers/allLocations';
 import airportsLayer from '../../data/layers/KeyFreightRoutes/airports';
 import seaportsLayer from '../../data/layers/KeyFreightRoutes/seaports';
 import keyRoadsLayer from '../../data/layers/KeyFreightRoutes/keyRoads';
@@ -38,25 +39,6 @@ export default function Map() {
   const mapRef = useRef();
   const state = useTrackedState();
 
-  const {
-    pbBerths,
-    pkBerths,
-    pbGates,
-    tenancyLeaseAreas,
-    tenancyUnits,
-    leaseBoundaries,
-    breakwaterRevetments,
-    buildings,
-    heritage,
-    maritimeStructures,
-    railNetwork,
-    roadNetwork,
-    pbLabels,
-    pbLines,
-    pkLabels,
-    pkLines,
-  } = state;
-
   console.log('state :>> ', state);
 
   useEffect(() => {
@@ -85,8 +67,12 @@ export default function Map() {
 
       view.popup.collapseEnabled = false;
 
-      // TODO write function to bring it in and add layers dynamically (to do so, need to seperate FeatureLayer and GeoJSONLayer layers)
+      if (state.viewing === 'ALL' || state.viewing === 'AUS') {
+        map.add(new GeoJSONLayer(allLocationsLayer));
+      }
+
       // ###### BRING IN THE ACTIVE LAYERS #####
+      // TODO write function to bring it in and add layers dynamically (to do so, need to seperate FeatureLayer and GeoJSONLayer layers)
       // Key Freight Routes
       // TODO manually extract the data Key Freight Route Data
       if (state.airports) map.add(new FeatureLayer(airportsLayer));
@@ -106,29 +92,31 @@ export default function Map() {
       if (state.federalGov) map.add(new FeatureLayer(federalGovLayer));
 
       // Property Layers
-      if (pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
-      if (pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
-      if (pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
-      if (leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
-      if (tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
-      if (tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
+      if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
+      if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
+      if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
+      if (state.leaseBoundaries)
+        map.add(new GeoJSONLayer(leaseBoundariesLayer));
+      if (state.tenancyLeaseAreas)
+        map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
+      if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
 
       // Asset Management
-      if (breakwaterRevetments)
+      if (state.breakwaterRevetments)
         map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
-      if (buildings) map.add(new GeoJSONLayer(buildingsLayer));
-      if (heritage) map.add(new GeoJSONLayer(heritageLayer));
-      if (maritimeStructures)
+      if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer));
+      if (state.heritage) map.add(new GeoJSONLayer(heritageLayer));
+      if (state.maritimeStructures)
         map.add(new GeoJSONLayer(maritimeStructuresLayer));
-      if (railNetwork) map.add(new GeoJSONLayer(railNetworkLayer));
-      if (roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer));
-      if (pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer));
-      if (pbLines) map.add(new GeoJSONLayer(PB_linesLayer));
-      if (pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer));
-      if (pkLines) map.add(new GeoJSONLayer(PK_linesLayer));
+      if (state.railNetwork) map.add(new GeoJSONLayer(railNetworkLayer));
+      if (state.roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer));
+      if (state.pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer));
+      if (state.pbLines) map.add(new GeoJSONLayer(PB_linesLayer));
+      if (state.pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer));
+      if (state.pkLines) map.add(new GeoJSONLayer(PK_linesLayer));
 
+      // destroy the map view
       return () => {
-        // destroy the map view
         if (view) view.container = null;
       };
     });

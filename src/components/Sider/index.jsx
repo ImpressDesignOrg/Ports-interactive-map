@@ -106,7 +106,8 @@ const StyledContent = styled.div`
     position: absolute;
     height: 207px;
     width: 350px;
-    left: 0px;
+    left: 0;
+    bottom: 0;
     background: #68a0b9;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
