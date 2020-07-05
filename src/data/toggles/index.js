@@ -1,32 +1,21 @@
 import React from 'react';
 import { MdLocalAirport, MdLocalShipping } from 'react-icons/md';
-import {
-  FaRegBuilding,
-  FaGripLinesVertical,
-  FaDocker,
-  FaCircle,
-} from 'react-icons/fa';
+import { FaRegBuilding, FaGripLinesVertical, FaCircle } from 'react-icons/fa';
 import { GiVirtualMarker, GiGate } from 'react-icons/gi';
-import { RiShipLine } from 'react-icons/ri';
-import { BsBuilding } from 'react-icons/bs';
 import { AiOutlineLine } from 'react-icons/ai';
-import {
-  AIRPORT_SYMBOL,
-  SEAPORT_SYMBOL,
-  BERTH_SYMBOL,
-} from '../../data/symbols';
+import { airport, seaport, berth, building } from '../../data/symbols';
 
 const ICON_SIZE = '30px';
 
 const ALL = {
   airports: {
     label: 'Airports',
-    icon: <MdLocalAirport size={ICON_SIZE} />,
+    iconUrl: airport,
     key: 'airports',
   },
   seaports: {
     label: 'Seaports',
-    icon: <RiShipLine size={ICON_SIZE} />,
+    iconUrl: seaport,
     key: 'seaports',
   },
   intermodalTerminals: {
@@ -91,7 +80,7 @@ const ALL = {
   },
   buildings: {
     label: 'Buildings',
-    icon: <BsBuilding size={ICON_SIZE} />,
+    iconUrl: building,
     key: 'buildings',
   },
   heritage: {
@@ -145,7 +134,7 @@ export const ALL_SWITCHES = [
 export const PB_SWITCHES = [
   {
     label: 'Berths',
-    iconUrl: BERTH_SYMBOL.url,
+    iconUrl: berth,
     key: 'pbBerths',
   },
   {
@@ -179,7 +168,7 @@ export const PB_SWITCHES = [
 export const PK_SWITCHES = [
   {
     label: 'Berths',
-    iconUrl: BERTH_SYMBOL.url,
+    iconUrl: berth,
     key: 'pkBerths',
   },
   ALL.breakwaterRevetments,

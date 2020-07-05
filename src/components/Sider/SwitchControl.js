@@ -36,6 +36,11 @@ const StyledSwitch = styled.div`
     display: flex;
     align-items: center;
 
+    img {
+      height: 30px;
+      width: 30px;
+    }
+
     p {
       margin: 0 0 0 20px;
       margin-left: 22px;

@@ -1,5 +1,15 @@
+import { building } from '../../symbols';
+
+const symbol = {
+  type: 'picture-marker',
+  url: building,
+  width: '30px',
+  height: '30px',
+};
+
 const buildingsLayer = {
-  url: 'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BUILDINGS.geojson',
+  url:
+    'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BUILDINGS.geojson',
   objectIdField: 'ObjectID',
   popupTemplate: {
     title: 'Buildings',
@@ -31,6 +41,7 @@ const buildingsLayer = {
       },
     ],
   },
+  renderer: symbol,
 };
 
 export default buildingsLayer;
