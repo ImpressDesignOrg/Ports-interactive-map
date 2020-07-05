@@ -15,3 +15,11 @@ body {
 .esri-attribution {
   display: none !important;
 }
+.esri-popup {
+  position: absolute !important;
+  bottom: 10px !important;
+  left: 10px !important;
+}
+.esri-popup__pointer {
+  display: none !important;
+}

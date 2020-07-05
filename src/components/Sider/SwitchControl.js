@@ -50,14 +50,6 @@ const StyledSwitch = styled.div`
       font-family: 'Roboto Condensed';
       border-bottom: 1px solid #fff;
     }
-
-    &:hover {
-      cursor: pointer;
-
-      p {
-        border-bottom: 1px solid #68a0b9;
-      }
-    }
   }
 
   .ant-form-item {

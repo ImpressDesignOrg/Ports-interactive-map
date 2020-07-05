@@ -11,10 +11,10 @@ import suburbLayer from '../../data/layers/NSWAdminBoundaries/suburb';
 import localGovLayer from '../../data/layers/NSWAdminBoundaries/localGov';
 import stateGovLayer from '../../data/layers/NSWAdminBoundaries/stateGov';
 import federalGovLayer from '../../data/layers/NSWAdminBoundaries/federalGov';
-import parishLayer from '../../data/layers/NSWAdminBoundaries/parish';
+/* import parishLayer from '../../data/layers/NSWAdminBoundaries/parish';
 import countyLayer from '../../data/layers/NSWAdminBoundaries/county';
 import stateForestLayer from '../../data/layers/NSWAdminBoundaries/stateForest';
-import npwsReserveLayer from '../../data/layers/NSWAdminBoundaries/npwsReserve';
+import npwsReserveLayer from '../../data/layers/NSWAdminBoundaries/npwsReserve'; */
 import PB_labelsLayer from '../../data/layers/AssetMgt/PB_labels';
 import PK_labelsLayer from '../../data/layers/AssetMgt/PK_labels';
 import intermodalTerminalsLayer from '../../data/layers/KeyFreightRoutes/intermodalTerminals';
@@ -45,17 +45,9 @@ export default function Map() {
   // const setState = useSetState();
 
   const {
-    keyRoads,
-    keyRails,
-    secondaryRoads,
-    suburbs,
-    county,
-    parish,
     localGov,
     stateGov,
     federalGov,
-    npwsReserve,
-    stateForest,
     pbBerths,
     pkBerths,
     pbGates,
@@ -119,8 +111,6 @@ export default function Map() {
     loadModules(
       [
         'esri/config',
-        'esri/core/watchUtils',
-        'esri/core/promiseUtils',
         'esri/widgets/Feature',
         'esri/Map',
         'esri/views/MapView',
@@ -131,8 +121,6 @@ export default function Map() {
     ).then(
       ([
         esriConfig,
-        watchUtils,
-        promiseUtils,
         Feature,
         ArcGISMap,
         MapView,
@@ -164,16 +152,13 @@ export default function Map() {
           map.add(new FeatureLayer(intermodalTerminalsLayer));
         if (state.roadTrainAssembly)
           map.add(new FeatureLayer(roadTrainAssemblyLayer));
-        if (keyRoads) map.add(new FeatureLayer(keyRoadsLayer));
-        if (secondaryRoads) map.add(new FeatureLayer(secondaryRoadsLayer));
-        if (keyRails) map.add(new FeatureLayer(keyRailsLayer));
+        if (state.keyRoads) map.add(new FeatureLayer(keyRoadsLayer));
+        if (state.secondaryRoads)
+          map.add(new FeatureLayer(secondaryRoadsLayer));
+        if (state.keyRails) map.add(new FeatureLayer(keyRailsLayer));
 
         // NSW Administrative Boundaries Layers
-        if (suburbs) map.add(new FeatureLayer(suburbLayer));
-        if (county) map.add(new FeatureLayer(countyLayer));
-        if (parish) map.add(new FeatureLayer(parishLayer));
-        if (stateForest) map.add(new FeatureLayer(stateForestLayer));
-        if (npwsReserve) map.add(new FeatureLayer(npwsReserveLayer));
+        if (state.suburbs) map.add(new FeatureLayer(suburbLayer));
         if (localGov) map.add(new FeatureLayer(localGovLayer));
         if (stateGov) map.add(new FeatureLayer(stateGovLayer));
         if (federalGov) map.add(new FeatureLayer(federalGovLayer));
