@@ -1,9 +1,16 @@
 import React from 'react';
 import { MdLocalAirport, MdLocalShipping } from 'react-icons/md';
-import { FaRegBuilding, FaGripLinesVertical, FaCircle } from 'react-icons/fa';
-import { GiVirtualMarker, GiGate } from 'react-icons/gi';
+import { FaGripLinesVertical, FaCircle } from 'react-icons/fa';
+import { GiVirtualMarker } from 'react-icons/gi';
 import { AiOutlineLine } from 'react-icons/ai';
-import { airport, seaport, berth, building } from '../../data/symbols';
+import {
+  airport,
+  seaport,
+  berth,
+  gate,
+  building,
+  heritage,
+} from '../../data/symbols';
 
 const ICON_SIZE = '30px';
 
@@ -85,7 +92,7 @@ const ALL = {
   },
   heritage: {
     label: 'Heritage',
-    icon: <FaRegBuilding size={ICON_SIZE} />,
+    iconUrl: heritage,
     key: 'buildings',
   },
   maritimeStructures: {
@@ -139,7 +146,7 @@ export const PB_SWITCHES = [
   },
   {
     label: 'Gates',
-    icon: <GiGate size={ICON_SIZE} />,
+    iconUrl: gate,
     key: 'pbGates',
   },
   ALL.breakwaterRevetments,
