@@ -17,14 +17,72 @@ body {
 }
 .esri-popup {
   position: absolute !important;
-  bottom: 10px !important;
-  left: 10px !important;
+  bottom: 30px !important;
+  left: 30px !important;
   box-shadow: none !important;
 }
 .esri-popup__main-container {
   position: absolute !important;
   bottom: 0 !important;
+  background: #68a0b9 !important;
+  border-radius: 10px;
+}
+.esri-popup__main-container .esri-popup__header {
+  background: #1d384b !important;
+  height: 70px;
+  align-items: center;
+  display: flex;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.esri-popup__main-container .esri-popup__header-container {
+  margin-left: 20px;
+}
+.esri-popup__main-container .esri-popup__header h2 {
+  font-family: 'Roboto Condensed';
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff !important;
+}
+.esri-popup__main-container .esri-popup__header h2:hover {
+  background: inherit;
+}
+.esri-popup__main-container .esri-popup__content {
+  margin: 20px;
+}
+.esri-popup__main-container .esri-popup__content .esri-feature__main-container {
+  background: #68a0b9;
+}
+.esri-popup__main-container .esri-popup__content table th,
+.esri-popup__main-container .esri-popup__content table td {
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 300;
+  color: #fff;
+}
+.esri-popup__button:hover {
+  background: #1d384b !important;
+}
+.esri-popup__button .esri-icon-close {
+  color: #fff;
+}
+.esri-popup__button--dock {
+  display: none !important;
 }
 .esri-popup__pointer {
   display: none !important;
+}
+.esri-popup__footer {
+  margin: 0 0 3px 20px;
+}
+.esri-popup__footer .esri-popup__button {
+  color: #fff;
+  font-size: 16px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex !important;
+  justify-content: end !important;
+}
+.esri-popup__footer .esri-popup__button .esri-zoom-in-magnifying-glass {
+  margin-right: 10px;
 }
