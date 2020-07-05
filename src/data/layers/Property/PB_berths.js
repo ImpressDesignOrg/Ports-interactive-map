@@ -1,9 +1,15 @@
-import { BERTH_SYMBOL } from '../../symbols';
+import { berth } from '../../symbols';
 
 const PB_berthLayer = {
   url:
     'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_BERTH.geojson',
   objectIdField: 'ObjectID',
+  renderer: {
+    type: 'picture-marker',
+    url: berth,
+    width: '50px',
+    height: '50px',
+  },
   popupTemplate: {
     title: 'Port Botany Berth',
     highlightEnabled: true,
@@ -134,10 +140,6 @@ const PB_berthLayer = {
         ],
       },
     ],
-  },
-  renderer: {
-    type: 'simple',
-    symbol: BERTH_SYMBOL,
   },
 };
 
