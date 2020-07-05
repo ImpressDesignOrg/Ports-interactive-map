@@ -19,6 +19,11 @@ body {
   position: absolute !important;
   bottom: 10px !important;
   left: 10px !important;
+  box-shadow: none !important;
+}
+.esri-popup__main-container {
+  position: absolute !important;
+  bottom: 0 !important;
 }
 .esri-popup__pointer {
   display: none !important;
