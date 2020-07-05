@@ -1,13 +1,18 @@
-const symbol = {
-  type: 'picture-marker',
-  url: 'https://img.icons8.com/dusk/16/000000/road-closure.png',
-  width: '30px',
-  height: '30px',
-};
+import { gate } from '../../symbols';
 
 const PB_gatesLayer = {
-  url: 'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_GATENO.geojson',
+  url:
+    'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_GATENO.geojson',
   objectIdField: 'ObjectID',
+  renderer: {
+    type: 'simple',
+    symbol: {
+      type: 'picture-marker',
+      url: gate,
+      width: '40px',
+      height: '40px',
+    },
+  },
   popupTemplate: {
     title: 'Port Botany Gate Number',
     content: [
@@ -22,10 +27,6 @@ const PB_gatesLayer = {
         ],
       },
     ],
-  },
-  renderer: {
-    type: 'simple',
-    symbol,
   },
 };
 

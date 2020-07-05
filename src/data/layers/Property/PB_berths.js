@@ -5,10 +5,13 @@ const PB_berthLayer = {
     'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_BERTH.geojson',
   objectIdField: 'ObjectID',
   renderer: {
-    type: 'picture-marker',
-    url: berth,
-    width: '50px',
-    height: '50px',
+    type: 'simple',
+    symbol: {
+      type: 'picture-marker',
+      url: berth,
+      width: '50px',
+      height: '50px',
+    },
   },
   popupTemplate: {
     title: 'Port Botany Berth',

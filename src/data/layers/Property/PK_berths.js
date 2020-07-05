@@ -1,9 +1,18 @@
-import { BERTH_SYMBOL } from '../../symbols';
+import { berth } from '../../symbols';
 
 const PK_berthsLayer = {
   url:
     'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PK_BERTH.geojson',
   objectIdField: 'ObjectID',
+  renderer: {
+    type: 'simple',
+    symbol: {
+      type: 'picture-marker',
+      url: berth,
+      width: '50px',
+      height: '50px',
+    },
+  },
   popupTemplate: {
     title: 'Port Kembla Berths',
     content: [
@@ -133,10 +142,6 @@ const PK_berthsLayer = {
         ],
       },
     ],
-  },
-  renderer: {
-    type: 'simple',
-    symbol: BERTH_SYMBOL,
   },
 };
 
