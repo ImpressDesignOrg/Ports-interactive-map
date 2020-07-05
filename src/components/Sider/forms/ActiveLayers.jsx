@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Form } from 'antd';
+import { RiArrowGoBackLine } from 'react-icons/ri';
 
 import { useSetState, useTrackedState } from '../../../store';
 
@@ -53,6 +54,7 @@ export default function ActiveLayersForm() {
               setState((prev) => ({ ...prev, siderLevel: 1 }));
             }}
           >
+            <RiArrowGoBackLine />
             Locations
           </button>
           <button htmlType='reset' onClick={() => handleReset()}>
@@ -88,12 +90,16 @@ const StyledContainer = styled.div`
     }
 
     .buttons-wrapper {
+      display: flex;
+      justify-content: flex-end;
       text-align: right;
 
       button {
+        display: flex;
+        align-items: center;
         background: none;
         border: none;
-        border-bottom: 1px solid #68a0b9;
+        border-bottom: 1px solid #fff;
         box-shadow: none;
         cursor: pointer;
         font-size: 13px;
@@ -102,12 +108,16 @@ const StyledContainer = styled.div`
         margin: 0 10px;
 
         &:hover {
-          border-bottom: 1px solid #1d384b;
+          border-bottom: 1px solid #68a0b9;
         }
 
         &:focus {
           border: none;
           outline: none;
+        }
+
+        svg {
+          margin-right: 5px;
         }
       }
     }

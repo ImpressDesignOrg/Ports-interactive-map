@@ -44,17 +44,11 @@ export default function Map() {
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
-      [
-        'esri/config',
-        'esri/Map',
-        'esri/views/MapView',
-        'esri/layers/FeatureLayer',
-        'esri/layers/GeoJSONLayer',
-      ],
+      ['esri/config', 'esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/layers/GeoJSONLayer'],
       { css: true }
     ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer]) => {
       const map = new ArcGISMap({
-        basemap: 'hybrid',
+        basemap: 'satellite',
       });
 
       // load the map view at the ref's DOM node
@@ -77,10 +71,8 @@ export default function Map() {
       // TODO manually extract the data Key Freight Route Data
       if (state.airports) map.add(new FeatureLayer(airportsLayer));
       if (state.seaports) map.add(new FeatureLayer(seaportsLayer));
-      if (state.intermodalTerminals)
-        map.add(new FeatureLayer(intermodalTerminalsLayer));
-      if (state.roadTrainAssembly)
-        map.add(new FeatureLayer(roadTrainAssemblyLayer));
+      if (state.intermodalTerminals) map.add(new FeatureLayer(intermodalTerminalsLayer));
+      if (state.roadTrainAssembly) map.add(new FeatureLayer(roadTrainAssemblyLayer));
       if (state.keyRoads) map.add(new FeatureLayer(keyRoadsLayer));
       if (state.secondaryRoads) map.add(new FeatureLayer(secondaryRoadsLayer));
       if (state.keyRails) map.add(new FeatureLayer(keyRailsLayer));
@@ -95,19 +87,15 @@ export default function Map() {
       if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
       if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
-      if (state.leaseBoundaries)
-        map.add(new GeoJSONLayer(leaseBoundariesLayer));
-      if (state.tenancyLeaseAreas)
-        map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
+      if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
+      if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
       if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
 
       // Asset Management
-      if (state.breakwaterRevetments)
-        map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
+      if (state.breakwaterRevetments) map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
       if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer));
       if (state.heritage) map.add(new GeoJSONLayer(heritageLayer));
-      if (state.maritimeStructures)
-        map.add(new GeoJSONLayer(maritimeStructuresLayer));
+      if (state.maritimeStructures) map.add(new GeoJSONLayer(maritimeStructuresLayer));
       if (state.railNetwork) map.add(new GeoJSONLayer(railNetworkLayer));
       if (state.roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer));
       if (state.pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer));

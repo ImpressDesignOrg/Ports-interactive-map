@@ -68,12 +68,13 @@ const StyledContainer = styled.div`
       margin: 10px 0;
       padding: 0;
       height: 45px;
-      font-size: 17px;
+      font-size: 18px;
       color: #000;
       box-shadow: none;
       border: none;
       background: none;
       cursor: pointer;
+      font-weight: 500;
 
       &:hover {
         color: #68a0b9;
@@ -87,7 +88,6 @@ const StyledContainer = styled.div`
       span {
         margin-left: 22px;
         color: #000;
-        font-weight: 500;
         font-family: 'Roboto Condensed';
       }
     }

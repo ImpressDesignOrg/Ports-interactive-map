@@ -75,13 +75,25 @@ body {
 .esri-popup__footer {
   margin: 0 0 3px 20px;
 }
+.esri-popup__footer .esri-popup__navigation {
+  margin: 0;
+  background: inherit;
+  min-width: 80px !important;
+  margin-right: 10px;
+}
+.esri-popup__footer .esri-popup__navigation .esri-popup__button {
+  width: 20px !important;
+}
+.esri-popup__footer .esri-popup__navigation .esri-popup__feature-menu-button {
+  width: 50px !important;
+}
 .esri-popup__footer .esri-popup__button {
   color: #fff;
   font-size: 16px !important;
   width: 100% !important;
   max-width: 100% !important;
   display: flex !important;
-  justify-content: end !important;
+  justify-content: flex-start !important;
   border: none;
   outline: none;
 }
