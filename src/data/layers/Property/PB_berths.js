@@ -1,6 +1,6 @@
 const symbol = {
   type: 'picture-marker',
-  url: 'https://img.icons8.com/office/16/000000/wharf.png',
+  url: 'https://f399e9-5fsa23.netlify.app/images/marker--airports.png',
   width: '30px',
   height: '30px',
 };

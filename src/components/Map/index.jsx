@@ -45,10 +45,6 @@ export default function Map() {
   // const setState = useSetState();
 
   const {
-    airports,
-    seaports,
-    intermodalTerminals,
-    roadTrainAssembly,
     keyRoads,
     keyRails,
     secondaryRoads,
@@ -162,11 +158,11 @@ export default function Map() {
         // ###### BRING IN THE ACTIVE LAYERS #####
         // Key Freight Routes
         // TODO manually extract the data Key Freight Route Data
-        if (airports) map.add(new FeatureLayer(airportsLayer));
-        if (seaports) map.add(new FeatureLayer(seaportsLayer));
-        if (intermodalTerminals)
+        if (state.airports) map.add(new FeatureLayer(airportsLayer));
+        if (state.seaports) map.add(new FeatureLayer(seaportsLayer));
+        if (state.intermodalTerminals)
           map.add(new FeatureLayer(intermodalTerminalsLayer));
-        if (roadTrainAssembly)
+        if (state.roadTrainAssembly)
           map.add(new FeatureLayer(roadTrainAssemblyLayer));
         if (keyRoads) map.add(new FeatureLayer(keyRoadsLayer));
         if (secondaryRoads) map.add(new FeatureLayer(secondaryRoadsLayer));

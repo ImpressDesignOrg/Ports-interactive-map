@@ -46,15 +46,12 @@ export default function Sidebar() {
 
   return (
     <div className='sidebar-wrapper'>
-      <StyledInfoPopup>
-        <div className='content'>
-          <div className='heading'>{state.activeInfo}</div>
-          <div className='body'>{state.activeInfo}</div>
-        </div>
-      </StyledInfoPopup>
-
       <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
-        {visible ? <AiOutlineArrowRight /> : <AiOutlineArrowLeft />}
+        {visible ? (
+          <AiOutlineArrowRight size='20px' color='#68a0b9' />
+        ) : (
+          <AiOutlineArrowLeft size='20px' color='#68a0b9' />
+        )}
       </StyledToggle>
 
       <StyledContent visible={visible}>
@@ -75,30 +72,6 @@ export default function Sidebar() {
   );
 }
 
-const StyledInfoPopup = styled.div`
-  position: absolute;
-  z-index: 3;
-  background: #1d384b;
-  color: #fff;
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  left: 20px;
-  bottom: 30px;
-
-  .content {
-    .heading {
-      background: #68a0b9;
-      font-size: 20px;
-      text-align: center;
-    }
-
-    .body {
-      padding: 15px;
-    }
-  }
-`;
-
 const StyledToggle = styled(Button)`
   position: absolute;
   z-index: 3;
@@ -108,7 +81,6 @@ const StyledToggle = styled(Button)`
   border: none;
   display: flex;
   align-items: center;
-  background: #68a0b9;
 
   &:hover {
     background: #1d384b;

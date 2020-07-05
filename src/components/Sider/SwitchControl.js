@@ -1,30 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Switch, Form } from 'antd';
-import { FaInfoCircle } from 'react-icons/fa';
 
-import { useSetState, useTrackedState } from '../../store';
+import { useSetState } from '../../store';
 
 export default function SwitchControl({ item }) {
-  const state = useTrackedState();
   const setState = useSetState();
 
   const handleToggle = (e, key) => {
     setState((prev) => ({ ...prev, [key]: e }));
   };
 
-  const handleLabelClick = (label) => {
-    setState((prev) => ({ ...prev, activeInfo: label }));
-  };
-
   const { label, icon, iconUrl, key } = item;
 
   return (
     <StyledSwitch key={label}>
-      <div className='label-wrapper' onClick={() => handleLabelClick(label)}>
+      <div className='label-wrapper'>
         {icon ? icon : <img src={iconUrl} alt={key} />}
         <p>{label}</p>
-        <FaInfoCircle size='15px' />
       </div>
       <Form.Item name='switch'>
         <Switch onClick={(e) => handleToggle(e, key)} />
