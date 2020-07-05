@@ -6,7 +6,7 @@ const allLocationsLayer = {
     type: 'simple',
     symbol: {
       type: 'picture-marker',
-      url: 'https://f399e9-5fsa23.netlify.app/images/marker--airports.svg',
+      url: 'https://f399e9-5fsa23.netlify.app/images/marker--location.svg',
       width: '50px',
       height: '50px',
     },

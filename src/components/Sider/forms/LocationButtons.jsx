@@ -68,7 +68,7 @@ const StyledContainer = styled.div`
       margin: 10px 0;
       padding: 0;
       height: 45px;
-      font-size: 15px;
+      font-size: 17px;
       color: #000;
       box-shadow: none;
       border: none;

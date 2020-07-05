@@ -34,11 +34,12 @@ export default function Sidebar() {
     switch (state.viewing) {
       case 'AUS':
       case 'ALL':
-      case 'PB':
       case 'PK':
       case 'EN':
       case 'CR':
         return '/';
+      case 'PB':
+        return 'https://dev-nsw-ports.pantheonsite.io/locations/port-botany#overview';
       default:
         break;
     }

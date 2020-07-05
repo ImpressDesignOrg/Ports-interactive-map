@@ -14,7 +14,7 @@ export default function SwitchControl({ item }) {
   const { label, icon, iconUrl, key } = item;
 
   return (
-    <StyledSwitch key={label}>
+    <StyledSwitch key={label} className='switch-wrapper'>
       <div className='label-wrapper'>
         {icon ? icon : <img src={iconUrl} alt={key} />}
         <p>{label}</p>
@@ -31,6 +31,14 @@ const StyledSwitch = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .label-wrapper {
     display: flex;

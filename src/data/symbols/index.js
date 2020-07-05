@@ -1,5 +1,7 @@
+export const allLocations =
+  'https://f399e9-5fsa23.netlify.app/images/marker--location.svg';
 export const airport =
-  'https://f399e9-5fsa23.netlify.app/images/marker--airports.svg';
+  'https://f399e9-5fsa23.netlify.app/images/marker--airport.svg';
 export const seaport =
   'https://f399e9-5fsa23.netlify.app/images/marker--boat.svg';
 export const intermodalTerminal = '';

@@ -127,19 +127,30 @@ const StyledContainer = styled.div`
   }
 
   form {
+    display: flex;
     width: 100%;
-    max-height: 400px;
+    max-height: 350px;
+    margin-top: 30px;
     overflow: scroll;
     overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
 
+    scrollbar-width: thin;
+    scrollbar-color: orange #68a0b9;
+
     ::-webkit-scrollbar {
-      display: none;
+      width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #68a0b9;
+      border-radius: 20px;
+      /*  border: 3px solid orange; */
     }
 
     .toggles-wrapper {
-      padding: 20px 0 0 0;
+      width: 95%;
+      height: 315px;
     }
   }
 `;

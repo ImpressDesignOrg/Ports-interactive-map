@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdLocalAirport, MdLocalShipping } from 'react-icons/md';
+import { MdLocalShipping } from 'react-icons/md';
 import { FaGripLinesVertical, FaCircle } from 'react-icons/fa';
 import { GiVirtualMarker } from 'react-icons/gi';
 import { AiOutlineLine } from 'react-icons/ai';
@@ -32,22 +32,22 @@ const ALL = {
   },
   roadTrainAssemby: {
     label: 'Road Train Assembly',
-    icon: <MdLocalAirport size={ICON_SIZE} />,
+    icon: <GiVirtualMarker size={ICON_SIZE} />,
     key: 'roadTrainAssembly',
   },
   keyRoads: {
     label: 'Key Roads',
-    icon: <MdLocalAirport size={ICON_SIZE} />,
+    icon: <GiVirtualMarker size={ICON_SIZE} />,
     key: 'keyRoads',
   },
   keyRail: {
     label: 'Key Rail',
-    icon: <MdLocalAirport size={ICON_SIZE} />,
+    icon: <GiVirtualMarker size={ICON_SIZE} />,
     key: 'keyRail',
   },
   secondaryRoads: {
     label: 'Secondary Roads',
-    icon: <MdLocalAirport size={ICON_SIZE} />,
+    icon: <GiVirtualMarker size={ICON_SIZE} />,
     key: 'secondaryRoads',
   },
   localGov: {
@@ -152,7 +152,6 @@ export const PB_SWITCHES = [
   ALL.breakwaterRevetments,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
-  ALL.leaseBoundary,
   ALL.roadNetwork,
   {
     label: 'Lines',
@@ -162,11 +161,11 @@ export const PB_SWITCHES = [
   ALL.buildings,
   ALL.heritage,
   ALL.maritimeStructures,
-  {
+  /*   {
     label: 'Labels',
     icon: <GiVirtualMarker size={ICON_SIZE} />,
     key: 'pbLabels',
-  },
+  }, */
   ALL.localGov,
   ALL.stateGov,
   ALL.federalGov,
@@ -181,7 +180,6 @@ export const PK_SWITCHES = [
   ALL.breakwaterRevetments,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
-  ALL.leaseBoundary,
   ALL.roadNetwork,
   ALL.railNetwork,
   {
@@ -192,11 +190,11 @@ export const PK_SWITCHES = [
   ALL.buildings,
   ALL.heritage,
   ALL.maritimeStructures,
-  {
+  /*   {
     label: 'Labels',
     icon: <GiVirtualMarker size={ICON_SIZE} />,
     key: 'pkLabels',
-  },
+  }, */
   ALL.localGov,
   ALL.stateGov,
   ALL.federalGov,
