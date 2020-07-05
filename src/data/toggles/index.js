@@ -3,7 +3,6 @@ import { MdLocalAirport, MdLocalShipping } from 'react-icons/md';
 import {
   FaRegBuilding,
   FaGripLinesVertical,
-  FaMapMarkerAlt,
   FaDocker,
   FaCircle,
 } from 'react-icons/fa';
@@ -11,6 +10,11 @@ import { GiVirtualMarker, GiGate } from 'react-icons/gi';
 import { RiShipLine } from 'react-icons/ri';
 import { BsBuilding } from 'react-icons/bs';
 import { AiOutlineLine } from 'react-icons/ai';
+import {
+  AIRPORT_SYMBOL,
+  SEAPORT_SYMBOL,
+  BERTH_SYMBOL,
+} from '../../data/symbols';
 
 const ICON_SIZE = '30px';
 
@@ -141,7 +145,7 @@ export const ALL_SWITCHES = [
 export const PB_SWITCHES = [
   {
     label: 'Berths',
-    icon: <FaDocker size={ICON_SIZE} />,
+    iconUrl: BERTH_SYMBOL.url,
     key: 'pbBerths',
   },
   {
@@ -175,7 +179,7 @@ export const PB_SWITCHES = [
 export const PK_SWITCHES = [
   {
     label: 'Berths',
-    icon: <GiGate size={ICON_SIZE} />,
+    iconUrl: BERTH_SYMBOL.url,
     key: 'pkBerths',
   },
   ALL.breakwaterRevetments,

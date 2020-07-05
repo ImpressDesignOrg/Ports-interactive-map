@@ -1,3 +1,5 @@
+import { AIRPORT_SYMBOL } from '../../symbols';
+
 const airportsLayer = {
   url:
     'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/1',
@@ -19,12 +21,7 @@ const airportsLayer = {
   },
   renderer: {
     type: 'simple',
-    symbol: {
-      type: 'picture-marker',
-      url: './images/marker--airports.png',
-      width: '30px',
-      height: '30px',
-    },
+    symbol: AIRPORT_SYMBOL,
   },
 };
 

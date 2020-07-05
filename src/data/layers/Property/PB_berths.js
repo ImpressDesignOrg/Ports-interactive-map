@@ -1,9 +1,4 @@
-const symbol = {
-  type: 'picture-marker',
-  url: 'https://f399e9-5fsa23.netlify.app/images/marker--airports.png',
-  width: '30px',
-  height: '30px',
-};
+import { BERTH_SYMBOL } from '../../symbols';
 
 const PB_berthLayer = {
   url:
@@ -142,7 +137,7 @@ const PB_berthLayer = {
   },
   renderer: {
     type: 'simple',
-    symbol,
+    symbol: BERTH_SYMBOL,
   },
 };
 

@@ -1,3 +1,5 @@
+import { SEAPORT_SYMBOL } from '../../symbols';
+
 const seaportsLayer = {
   url:
     'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/2',
@@ -16,6 +18,10 @@ const seaportsLayer = {
         ],
       },
     ],
+  },
+  renderer: {
+    type: 'simple',
+    symbol: SEAPORT_SYMBOL,
   },
 };
 

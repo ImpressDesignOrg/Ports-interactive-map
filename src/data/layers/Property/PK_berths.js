@@ -1,9 +1,4 @@
-const symbol = {
-  type: 'picture-marker',
-  url: 'https://img.icons8.com/office/16/000000/wharf.png',
-  width: '30px',
-  height: '30px',
-};
+import { BERTH_SYMBOL } from '../../symbols';
 
 const PK_berthsLayer = {
   url:
@@ -141,7 +136,7 @@ const PK_berthsLayer = {
   },
   renderer: {
     type: 'simple',
-    symbol,
+    symbol: BERTH_SYMBOL,
   },
 };
 
