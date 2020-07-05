@@ -1,13 +1,16 @@
-const symbol = {
-  type: 'picture-marker', // autocasts as new PictureMarkerSymbol()
-  url: 'https://img.icons8.com/officel/16/000000/marker.png',
-  width: '30px',
-  height: '30px',
-};
-
 const allLocationsLayer = {
-  url: 'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/allLocations/index.geojson',
+  url:
+    'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/allLocations/index.geojson',
   objectIdField: 'ObjectID',
+  renderer: {
+    type: 'simple',
+    symbol: {
+      type: 'picture-marker',
+      url: 'https://f399e9-5fsa23.netlify.app/images/marker--airports.svg',
+      width: '50px',
+      height: '50px',
+    },
+  },
   popupTemplate: {
     title: 'NSW Ports Locations',
     id: 'zoom-to',
@@ -23,10 +26,6 @@ const allLocationsLayer = {
         ],
       },
     ],
-  },
-  renderer: {
-    type: 'simple',
-    symbol,
   },
 };
 

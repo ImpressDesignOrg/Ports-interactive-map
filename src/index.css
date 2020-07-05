@@ -82,6 +82,12 @@ body {
   max-width: 100% !important;
   display: flex !important;
   justify-content: end !important;
+  border: none;
+  outline: none;
+}
+.esri-popup__footer .esri-popup__button:hover {
+  background: inherit !important;
+  color: #1d384b !important;
 }
 .esri-popup__footer .esri-popup__button .esri-zoom-in-magnifying-glass {
   margin-right: 10px;
