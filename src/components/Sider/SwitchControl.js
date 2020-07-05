@@ -53,7 +53,7 @@ const StyledSwitch = styled.div`
       margin: 0 0 0 20px;
       margin-left: 22px;
       color: #000;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 500;
       font-family: 'Roboto Condensed';
       border-bottom: 1px solid #fff;
@@ -65,6 +65,10 @@ const StyledSwitch = styled.div`
 
     button {
       margin: 0;
+    }
+
+    .ant-switch {
+      min-width: 37px;
     }
 
     .ant-switch-checked {

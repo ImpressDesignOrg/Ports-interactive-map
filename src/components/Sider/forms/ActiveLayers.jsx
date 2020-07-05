@@ -4,14 +4,7 @@ import { Form } from 'antd';
 
 import { useSetState, useTrackedState } from '../../../store';
 
-import {
-  AUS_SWITCHES,
-  ALL_SWITCHES,
-  PB_SWITCHES,
-  PK_SWITCHES,
-  CR_SWITCHES,
-  EN_SWITCHES,
-} from '../../../data/toggles';
+import { AUS_SWITCHES, ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from '../../../data/toggles';
 
 import { useForm } from 'antd/lib/form/util';
 import SwitchControl from '../SwitchControl';
@@ -69,18 +62,12 @@ export default function ActiveLayersForm() {
       </div>
       <Form form={form}>
         <div className='toggles-wrapper'>
-          {state.viewing === 'AUS' &&
-            AUS_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'ALL' &&
-            ALL_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'PB' &&
-            PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'PK' &&
-            PK_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'CR' &&
-            CR_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'EN' &&
-            EN_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === 'AUS' && AUS_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === 'ALL' && ALL_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === 'PB' && PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === 'PK' && PK_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === 'CR' && CR_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === 'EN' && EN_SWITCHES.map((v) => <SwitchControl item={v} />)}
         </div>
       </Form>
     </StyledContainer>
@@ -109,7 +96,7 @@ const StyledContainer = styled.div`
         border-bottom: 1px solid #68a0b9;
         box-shadow: none;
         cursor: pointer;
-        font-size: 12px;
+        font-size: 13px;
         font-family: 'Roboto';
         font-weight: 500;
         margin: 0 10px;
