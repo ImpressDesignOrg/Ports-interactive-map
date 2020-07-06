@@ -1,4 +1,8 @@
 export const viewports = {
+  default: {
+    zoom: 13,
+    center: [151.132921, -33.954024],
+  },
   AUS: { zoom: 5, center: [133.750016, -27.827017] },
   ALL: {
     zoom: 10,

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Button } from 'antd';
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Button } from "antd";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
-import { useTrackedState } from '../../store';
+import { useTrackedState } from "../../store";
 
-import LocationButtons from './forms/LocationButtons';
-import ActiveLayers from './forms/ActiveLayers';
+import LocationButtons from "./forms/LocationButtons";
+import ActiveLayers from "./forms/ActiveLayers";
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
@@ -14,17 +14,18 @@ export default function Sidebar() {
 
   const INFO_BODY = () => {
     switch (state.viewing) {
-      case 'AUS':
-      case 'ALL':
-        return 'Interested in learning more about NSW Ports and our operations?';
-      case 'PB':
-        return 'Interested in learning more about Port Botany?';
-      case 'PK':
-        return 'Interested in learning more about Port Kembla?';
-      case 'EN':
-        return 'Interested in learning more about Enfield Intermodal Terminal?';
-      case 'CR':
-        return 'Interested in learning more about Cooks River Intermodal Terminal?';
+      case "default":
+      case "AUS":
+      case "ALL":
+        return "Interested in learning more about NSW Ports and our operations?";
+      case "PB":
+        return "Interested in learning more about Port Botany?";
+      case "PK":
+        return "Interested in learning more about Port Kembla?";
+      case "EN":
+        return "Interested in learning more about Enfield Intermodal Terminal?";
+      case "CR":
+        return "Interested in learning more about Cooks River Intermodal Terminal?";
       default:
         break;
     }
@@ -32,14 +33,15 @@ export default function Sidebar() {
 
   const INFO_URL = () => {
     switch (state.viewing) {
-      case 'AUS':
-      case 'ALL':
-      case 'PK':
-      case 'EN':
-      case 'CR':
-        return '/';
-      case 'PB':
-        return 'https://dev-nsw-ports.pantheonsite.io/locations/port-botany#overview';
+      case "default":
+      case "AUS":
+      case "ALL":
+      case "PK":
+      case "EN":
+      case "CR":
+        return "/";
+      case "PB":
+        return "https://dev-nsw-ports.pantheonsite.io/locations/port-botany#overview";
       default:
         break;
     }
@@ -62,7 +64,7 @@ export default function Sidebar() {
             <div className='heading'>Want to find out more?</div>
             <div className='body'>
               <p>
-                {INFO_BODY()}{' '}
+                {INFO_BODY()}{" "}
                 <a href={INFO_URL()} target='_blank' rel='noopener noreferrer'>
                   Find out more information here
                 </a>
@@ -78,7 +80,7 @@ export default function Sidebar() {
 const StyledToggle = styled(Button)`
   position: absolute;
   z-index: 3;
-  right: ${(props) => (props.visible ? '380px' : '0')};
+  right: ${(props) => (props.visible ? "380px" : "0")};
   top: 7%;
   height: 60px;
   border: none;
@@ -101,8 +103,8 @@ const StyledContent = styled.div`
   right: 30px;
   top: 40px;
   border-radius: 10px;
-  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
-  opacity: ${(props) => (props.visible ? '1' : '0')};
+  visibility: ${(props) => (props.visible ? "visible" : "hidden")};
+  opacity: ${(props) => (props.visible ? "1" : "0")};
   transition: visibility 0.5s, opacity 0.1s linear;
 
   .info-wrapper {
@@ -120,7 +122,7 @@ const StyledContent = styled.div`
 
       .heading {
         font-size: 22px;
-        font-family: 'Roboto Condensed';
+        font-family: "Roboto Condensed";
         color: #fff;
         font-weight: 600;
         border-bottom: 1px solid #fff;
@@ -130,7 +132,7 @@ const StyledContent = styled.div`
       p {
         font-size: 17px;
         color: #fff;
-        font-family: 'Roboto Condensed';
+        font-family: "Roboto Condensed";
         font-weight: 300;
 
         a {

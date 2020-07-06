@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 #root {
   background: #efefef;
@@ -11,6 +11,20 @@ body {
 .map-wrapper {
   height: 100vh;
   max-height: 800px;
+}
+.esri-ui-corner .esri-basemap-toggle {
+  position: absolute;
+  left: 50px;
+}
+.esri-ui-corner .esri-basemap-thumbnail {
+  border-radius: 5px;
+  outline: none;
+  border: 0;
+}
+.esri-ui-corner .esri-basemap-toggle .esri-basemap-toggle__image--secondary {
+  display: none;
+  outline: none;
+  border: 0;
 }
 .esri-attribution {
   display: none !important;
@@ -39,7 +53,7 @@ body {
   margin-left: 20px;
 }
 .esri-popup__main-container .esri-popup__header h2 {
-  font-family: 'Roboto Condensed';
+  font-family: "Roboto Condensed";
   font-size: 22px;
   font-weight: 700;
   color: #fff !important;
@@ -55,7 +69,7 @@ body {
 }
 .esri-popup__main-container .esri-popup__content table th,
 .esri-popup__main-container .esri-popup__content table td {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 16px;
   font-weight: 300;
   color: #fff;

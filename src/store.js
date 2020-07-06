@@ -1,10 +1,6 @@
-import { useState } from 'react';
-import { createContainer } from 'react-tracked';
+import { useState } from "react";
+import { createContainer } from "react-tracked";
 
-const useValue = () => useState({ viewing: 'ALL', siderLevel: 1 });
+const useValue = () => useState({ viewing: "default", siderLevel: 1 });
 
-export const {
-  Provider,
-  useTrackedState,
-  useUpdate: useSetState,
-} = createContainer(useValue);
+export const { Provider, useTrackedState, useUpdate: useSetState } = createContainer(useValue);

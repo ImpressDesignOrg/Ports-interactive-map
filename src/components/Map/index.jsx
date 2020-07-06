@@ -1,63 +1,62 @@
-import React, { useEffect, useRef } from 'react';
-import { loadModules } from 'esri-loader';
+import React, { useEffect, useRef } from "react";
+import { loadModules } from "esri-loader";
 
-import { useTrackedState } from '../../store';
+import { useTrackedState } from "../../store";
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
-import allLocationsLayer from '../../data/layers/allLocations';
-import airportsLayer from '../../data/layers/KeyFreightRoutes/airports';
-import seaportsLayer from '../../data/layers/KeyFreightRoutes/seaports';
-import keyRoadsLayer from '../../data/layers/KeyFreightRoutes/keyRoads';
-import suburbLayer from '../../data/layers/NSWAdminBoundaries/suburb';
-import localGovLayer from '../../data/layers/NSWAdminBoundaries/localGov';
-import stateGovLayer from '../../data/layers/NSWAdminBoundaries/stateGov';
-import federalGovLayer from '../../data/layers/NSWAdminBoundaries/federalGov';
-import PB_labelsLayer from '../../data/layers/AssetMgt/PB_labels';
-import PK_labelsLayer from '../../data/layers/AssetMgt/PK_labels';
-import intermodalTerminalsLayer from '../../data/layers/KeyFreightRoutes/intermodalTerminals';
-import roadTrainAssemblyLayer from '../../data/layers/KeyFreightRoutes/roadTrainAssembly';
-import secondaryRoadsLayer from '../../data/layers/KeyFreightRoutes/secondaryRoads';
-import keyRailsLayer from '../../data/layers/KeyFreightRoutes/keyRails';
-import PB_berthLayer from '../../data/layers/Property/PB_berths';
-import PB_gatesLayer from '../../data/layers/Property/PB_gates';
-import PK_berthsLayer from '../../data/layers/Property/PK_berths';
-import leaseBoundariesLayer from '../../data/layers/Property/leaseBoundaries';
-import tenancyLeaseAreasLayer from '../../data/layers/Property/tenancyLeaseAreas';
-import tenancyUnitsLayer from '../../data/layers/Property/tenancyUnits';
-import breakwaterRevetmentsLayer from '../../data/layers/AssetMgt/breakwaterRevetments';
-import buildingsLayer from '../../data/layers/AssetMgt/buildings';
-import heritageLayer from '../../data/layers/AssetMgt/heritage';
-import maritimeStructuresLayer from '../../data/layers/AssetMgt/maritimeStructures';
-import railNetworkLayer from '../../data/layers/AssetMgt/railNetwork';
-import PK_linesLayer from '../../data/layers/AssetMgt/PK_lines';
-import PB_linesLayer from '../../data/layers/AssetMgt/PB_lines';
-import roadNetworkLayer from '../../data/layers/AssetMgt/roadNetwork';
+import allLocationsLayer from "../../data/layers/allLocations";
+import airportsLayer from "../../data/layers/KeyFreightRoutes/airports";
+import seaportsLayer from "../../data/layers/KeyFreightRoutes/seaports";
+import keyRoadsLayer from "../../data/layers/KeyFreightRoutes/keyRoads";
+import suburbLayer from "../../data/layers/NSWAdminBoundaries/suburb";
+import localGovLayer from "../../data/layers/NSWAdminBoundaries/localGov";
+import stateGovLayer from "../../data/layers/NSWAdminBoundaries/stateGov";
+import federalGovLayer from "../../data/layers/NSWAdminBoundaries/federalGov";
+import PB_labelsLayer from "../../data/layers/AssetMgt/PB_labels";
+import PK_labelsLayer from "../../data/layers/AssetMgt/PK_labels";
+import intermodalTerminalsLayer from "../../data/layers/KeyFreightRoutes/intermodalTerminals";
+import roadTrainAssemblyLayer from "../../data/layers/KeyFreightRoutes/roadTrainAssembly";
+import secondaryRoadsLayer from "../../data/layers/KeyFreightRoutes/secondaryRoads";
+import keyRailsLayer from "../../data/layers/KeyFreightRoutes/keyRails";
+import PB_berthLayer from "../../data/layers/Property/PB_berths";
+import PB_gatesLayer from "../../data/layers/Property/PB_gates";
+import PK_berthsLayer from "../../data/layers/Property/PK_berths";
+import leaseBoundariesLayer from "../../data/layers/Property/leaseBoundaries";
+import tenancyLeaseAreasLayer from "../../data/layers/Property/tenancyLeaseAreas";
+import tenancyUnitsLayer from "../../data/layers/Property/tenancyUnits";
+import breakwaterRevetmentsLayer from "../../data/layers/AssetMgt/breakwaterRevetments";
+import buildingsLayer from "../../data/layers/AssetMgt/buildings";
+import heritageLayer from "../../data/layers/AssetMgt/heritage";
+import maritimeStructuresLayer from "../../data/layers/AssetMgt/maritimeStructures";
+import railNetworkLayer from "../../data/layers/AssetMgt/railNetwork";
+import PK_linesLayer from "../../data/layers/AssetMgt/PK_lines";
+import PB_linesLayer from "../../data/layers/AssetMgt/PB_lines";
+import roadNetworkLayer from "../../data/layers/AssetMgt/roadNetwork";
 
-import { viewports } from '../../data/viewports';
+import { viewports } from "../../data/viewports";
 
 export default function Map() {
   const mapRef = useRef();
   const state = useTrackedState();
 
-  console.log('state :>> ', state);
+  console.log("state :>> ", state);
 
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
       [
-        'esri/config',
-        'esri/Map',
-        'esri/views/MapView',
-        'esri/layers/FeatureLayer',
-        'esri/layers/GeoJSONLayer',
-        'esri/widgets/BasemapToggle',
-        'esri/widgets/BasemapGallery',
+        "esri/config",
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/FeatureLayer",
+        "esri/layers/GeoJSONLayer",
+        "esri/widgets/BasemapToggle",
+        "esri/widgets/BasemapGallery",
       ],
       { css: true }
     ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle, BasemapGallery]) => {
       const map = new ArcGISMap({
-        basemap: 'satellite',
-        ground: 'world-elevation',
+        basemap: "gray",
       });
 
       // load the map view at the ref's DOM node
@@ -70,17 +69,16 @@ export default function Map() {
 
       view.popup.collapseEnabled = false;
 
-      const basemapGallery = new BasemapGallery({
-        view: view,
-        container: document.createElement('div'),
+      const basemapToggle = new BasemapToggle({
+        view,
+        nextBasemap: "satellite",
       });
 
-      // Add the widget to the top-right corner of the view
-      view.ui.add(basemapGallery, {
-        position: 'top-left',
+      view.ui.add(basemapToggle, {
+        position: "top-left",
       });
 
-      if (state.viewing === 'ALL' || state.viewing === 'AUS') {
+      if (state.viewing === "ALL" || state.viewing === "AUS") {
         map.add(new GeoJSONLayer(allLocationsLayer));
       }
 
