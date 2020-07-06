@@ -61,6 +61,10 @@ body {
 .esri-popup__main-container .esri-popup__header h2:hover {
   background: inherit;
 }
+.esri-popup__main-container .esri-feature__content-element,
+.esri-popup__main-container .esri-feature__content-element tbody {
+  background: #68a0b9 !important;
+}
 .esri-popup__main-container .esri-popup__content {
   margin: 20px;
   overflow: scroll;
