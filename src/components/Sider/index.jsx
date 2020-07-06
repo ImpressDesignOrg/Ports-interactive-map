@@ -63,7 +63,9 @@ export default function Sidebar() {
             <div className='body'>
               <p>
                 {INFO_BODY()}{' '}
-                <a href={INFO_URL()}>Find out more information here</a>
+                <a href={INFO_URL()} target='_blank' rel='noopener noreferrer'>
+                  Find out more information here
+                </a>
               </p>
             </div>
           </div>

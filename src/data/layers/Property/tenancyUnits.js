@@ -1,6 +1,5 @@
 const tenancyUnitsLayer = {
-  url:
-    'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/tenancydata/json/TENANCY_UNITS.geojson',
+  url: 'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/tenancydata/json/TENANCY_UNITS.geojson',
   objectIdField: 'ObjectID',
   renderer: {
     type: 'simple',
