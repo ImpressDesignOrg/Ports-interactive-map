@@ -44,11 +44,20 @@ export default function Map() {
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
-      ['esri/config', 'esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/layers/GeoJSONLayer'],
+      [
+        'esri/config',
+        'esri/Map',
+        'esri/views/MapView',
+        'esri/layers/FeatureLayer',
+        'esri/layers/GeoJSONLayer',
+        'esri/widgets/BasemapToggle',
+        'esri/widgets/BasemapGallery',
+      ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer]) => {
+    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle, BasemapGallery]) => {
       const map = new ArcGISMap({
         basemap: 'satellite',
+        ground: 'world-elevation',
       });
 
       // load the map view at the ref's DOM node
@@ -60,6 +69,16 @@ export default function Map() {
       });
 
       view.popup.collapseEnabled = false;
+
+      const basemapGallery = new BasemapGallery({
+        view: view,
+        container: document.createElement('div'),
+      });
+
+      // Add the widget to the top-right corner of the view
+      view.ui.add(basemapGallery, {
+        position: 'top-left',
+      });
 
       if (state.viewing === 'ALL' || state.viewing === 'AUS') {
         map.add(new GeoJSONLayer(allLocationsLayer));

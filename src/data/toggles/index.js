@@ -1,11 +1,12 @@
 import React from 'react';
-import { MdLocalShipping } from 'react-icons/md';
 import { FaGripLinesVertical, FaCircle } from 'react-icons/fa';
 import { GiVirtualMarker } from 'react-icons/gi';
 import { AiOutlineLine } from 'react-icons/ai';
 import {
   airport,
   seaport,
+  intermodalTerminal,
+  roadTrainAssembly,
   berth,
   gate,
   building,
@@ -27,12 +28,12 @@ const ALL = {
   },
   intermodalTerminals: {
     label: 'Intermodal Terminals',
-    icon: <MdLocalShipping size={ICON_SIZE} />,
+    icon: intermodalTerminal,
     key: 'intermodalTerminals',
   },
   roadTrainAssemby: {
     label: 'Road Train Assembly',
-    icon: <GiVirtualMarker size={ICON_SIZE} />,
+    icon: roadTrainAssembly,
     key: 'roadTrainAssembly',
   },
   keyRoads: {
@@ -126,16 +127,16 @@ export const AUS_SWITCHES = [
 ];
 
 export const ALL_SWITCHES = [
-  ALL.airports,
-  ALL.seaports,
-  ALL.intermodalTerminals,
-  ALL.roadTrainAssemby,
-  ALL.keyRoads,
-  ALL.keyRail,
-  ALL.secondaryRoads,
   ALL.localGov,
   ALL.stateGov,
   ALL.federalGov,
+  ALL.intermodalTerminals,
+  ALL.roadTrainAssemby,
+  ALL.airports,
+  ALL.seaports,
+  ALL.keyRoads,
+  ALL.keyRail,
+  ALL.secondaryRoads,
 ];
 
 export const PB_SWITCHES = [
