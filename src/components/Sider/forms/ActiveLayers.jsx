@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Form } from 'antd';
-import { RiArrowGoBackLine } from 'react-icons/ri';
+import React from "react";
+import styled from "styled-components";
+import { Form } from "antd";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
-import { useSetState, useTrackedState } from '../../../store';
+import { useSetState, useTrackedState } from "../../../store";
 
-import { AUS_SWITCHES, ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from '../../../data/toggles';
+import { AUS_SWITCHES, ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from "../../../data/toggles";
 
-import { useForm } from 'antd/lib/form/util';
-import SwitchControl from '../SwitchControl';
+import { useForm } from "antd/lib/form/util";
+import SwitchControl from "../SwitchControl";
 
 export default function ActiveLayersForm() {
   const [form] = useForm();
@@ -26,18 +26,18 @@ export default function ActiveLayersForm() {
 
   const headingMarkup = () => {
     switch (state.viewing) {
-      case 'AUS':
-        return 'National';
-      case 'ALL':
-        return 'NSW Ports Properties';
-      case 'PB':
-        return 'Port Botany';
-      case 'PK':
-        return 'Port Kembla';
-      case 'CR':
-        return 'Cooks River Intermodal';
-      case 'EN':
-        return 'Enfield Intermodal';
+      case "AUS":
+        return "National";
+      case "ALL":
+        return "NSW Ports Properties";
+      case "PB":
+        return "Port Botany";
+      case "PK":
+        return "Port Kembla";
+      case "CR":
+        return "Cooks River Intermodal";
+      case "EN":
+        return "Enfield Intermodal";
       default:
         break;
     }
@@ -64,12 +64,12 @@ export default function ActiveLayersForm() {
       </div>
       <Form form={form}>
         <div className='toggles-wrapper'>
-          {state.viewing === 'AUS' && AUS_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'ALL' && ALL_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'PB' && PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'PK' && PK_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'CR' && CR_SWITCHES.map((v) => <SwitchControl item={v} />)}
-          {state.viewing === 'EN' && EN_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === "AUS" && AUS_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === "ALL" && ALL_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === "PB" && PB_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === "PK" && PK_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === "CR" && CR_SWITCHES.map((v) => <SwitchControl item={v} />)}
+          {state.viewing === "EN" && EN_SWITCHES.map((v) => <SwitchControl item={v} />)}
         </div>
       </Form>
     </StyledContainer>
@@ -78,7 +78,7 @@ export default function ActiveLayersForm() {
 
 const StyledContainer = styled.div`
   margin: 20px 0;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 
   .heading-wrapper {
     h2 {
@@ -103,7 +103,7 @@ const StyledContainer = styled.div`
         box-shadow: none;
         cursor: pointer;
         font-size: 13px;
-        font-family: 'Roboto';
+        font-family: "Roboto";
         font-weight: 500;
         margin: 0 10px;
 
