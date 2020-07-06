@@ -101,12 +101,12 @@ export default function Map() {
       if (state.federalGov) map.add(new FeatureLayer(federalGovLayer));
 
       // Property Layers
-      if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
-      if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
-      if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
       if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
       if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
       if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
+      if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
+      if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
+      if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
 
       // Asset Management
       if (state.breakwaterRevetments) map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
