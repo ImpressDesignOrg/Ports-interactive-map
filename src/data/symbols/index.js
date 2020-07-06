@@ -4,6 +4,6 @@ export const seaport = 'https://f399e9-5fsa23.netlify.app/images/marker--boat.sv
 export const intermodalTerminal = '';
 export const roadTrainAssembly = '';
 export const berth = 'https://f399e9-5fsa23.netlify.app/images/marker--anchor.svg';
-export const gate = 'https://f399e9-5fsa23.netlify.app/images/marker.svg';
+export const gate = 'https://f399e9-5fsa23.netlify.app/images/marker--gate--NEW.svg';
 export const building = 'https://f399e9-5fsa23.netlify.app/images/marker--building.png';
 export const heritage = 'https://f399e9-5fsa23.netlify.app/images/marker--heritage.png';
