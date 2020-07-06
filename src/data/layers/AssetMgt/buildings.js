@@ -1,42 +1,41 @@
-import { building } from '../../symbols';
+import { building } from "../../symbols";
 
 const buildingsLayer = {
-  url:
-    'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BUILDINGS.geojson',
-  objectIdField: 'ObjectID',
+  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BUILDINGS.geojson",
+  objectIdField: "ObjectID",
   renderer: {
-    type: 'simple',
+    type: "simple",
     symbol: {
-      type: 'picture-marker',
+      type: "picture-marker",
       url: building,
-      width: '50px',
-      height: '50px',
+      width: "50px",
+      height: "50px",
     },
   },
   popupTemplate: {
-    title: 'Buildings',
+    title: "Building",
     content: [
       {
-        type: 'fields',
+        type: "fields",
         fieldInfos: [
           {
-            fieldName: 'ASSET_NO',
-            label: 'Asset Number',
+            fieldName: "ASSET_NO",
+            label: "Asset Number",
             visible: true,
           },
           {
-            fieldName: 'ASS_NAME',
-            label: 'Asset Name',
+            fieldName: "ASS_NAME",
+            label: "Asset Name",
             visible: true,
           },
           {
-            fieldName: 'ASS_CLASS',
-            label: 'Asset Class',
+            fieldName: "ASS_CLASS",
+            label: "Asset Class",
             visible: true,
           },
           {
-            fieldName: 'ASS_LOC',
-            label: 'Asset Location',
+            fieldName: "ASS_LOC",
+            label: "Asset Location",
             visible: true,
           },
         ],

@@ -1,7 +1,7 @@
-import React from 'react';
-import { FaGripLinesVertical, FaCircle } from 'react-icons/fa';
-import { GiVirtualMarker } from 'react-icons/gi';
-import { AiOutlineLine } from 'react-icons/ai';
+import React from "react";
+import { FaGripLinesVertical, FaCircle } from "react-icons/fa";
+import { GiVirtualMarker } from "react-icons/gi";
+import { AiOutlineLine } from "react-icons/ai";
 import {
   airport,
   seaport,
@@ -11,105 +11,105 @@ import {
   gate,
   building,
   heritage,
-} from '../../data/symbols';
+} from "../../data/symbols";
 
-const ICON_SIZE = '30px';
+const ICON_SIZE = "30px";
 
 const ALL = {
   airports: {
-    label: 'Airports',
+    label: "Airports",
     iconUrl: airport,
-    key: 'airports',
+    key: "airports",
   },
   seaports: {
-    label: 'Seaports',
+    label: "Seaports",
     iconUrl: seaport,
-    key: 'seaports',
+    key: "seaports",
   },
   intermodalTerminals: {
-    label: 'Intermodal Terminals',
+    label: "Intermodal Terminals",
     icon: intermodalTerminal,
-    key: 'intermodalTerminals',
+    key: "intermodalTerminals",
   },
   roadTrainAssemby: {
-    label: 'Road Train Assembly',
+    label: "Road Train Assembly",
     icon: roadTrainAssembly,
-    key: 'roadTrainAssembly',
+    key: "roadTrainAssembly",
   },
   keyRoads: {
-    label: 'Key Roads',
+    label: "Key Roads",
     icon: <GiVirtualMarker size={ICON_SIZE} />,
-    key: 'keyRoads',
+    key: "keyRoads",
   },
   keyRail: {
-    label: 'Key Rail',
+    label: "Key Rail",
     icon: <GiVirtualMarker size={ICON_SIZE} />,
-    key: 'keyRail',
+    key: "keyRail",
   },
   secondaryRoads: {
-    label: 'Secondary Roads',
+    label: "Secondary Roads",
     icon: <GiVirtualMarker size={ICON_SIZE} />,
-    key: 'secondaryRoads',
+    key: "secondaryRoads",
   },
   localGov: {
-    label: 'Local Government',
+    label: "Local Government",
     icon: <FaGripLinesVertical size={ICON_SIZE} color='#aaff00' />,
-    key: 'localGov',
+    key: "localGov",
   },
   stateGov: {
-    label: 'State Government',
+    label: "State Government",
     icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
-    key: 'stateGov',
+    key: "stateGov",
   },
   federalGov: {
-    label: 'Federal Government',
+    label: "Federal Government",
     icon: <FaGripLinesVertical size={ICON_SIZE} color='#7a8ef5' />,
-    key: 'federalGov',
+    key: "federalGov",
   },
   tenancyLeaseArea: {
-    label: 'Tenancy Lease Areas',
+    label: "Tenancy Lease Areas",
     icon: <FaCircle size={ICON_SIZE} color='#e69800' />,
-    key: 'tenancyLeaseAreas',
+    key: "tenancyLeaseAreas",
   },
   tenancyUnits: {
-    label: 'Tenancy Units',
+    label: "Tenancy Units",
     icon: <FaCircle size={ICON_SIZE} color='#3333cc' />,
-    key: 'tenancyUnits',
+    key: "tenancyUnits",
   },
   leaseBoundary: {
-    label: 'Lease Boundary',
+    label: "Lease Boundary",
     icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
-    key: 'leaseBoundary',
+    key: "leaseBoundary",
   },
   breakwaterRevetments: {
-    label: 'Breakwater Revetments',
+    label: "Breakwater Revetments",
     icon: <FaCircle size={ICON_SIZE} color='#ccc433' />,
-    key: 'breakwaterRevetments',
+    key: "breakwaterRevetments",
   },
   buildings: {
-    label: 'Buildings',
+    label: "Buildings",
     iconUrl: building,
-    key: 'buildings',
+    key: "buildings",
   },
   heritage: {
-    label: 'Heritage',
+    label: "Heritage",
     iconUrl: heritage,
-    key: 'buildings',
+    key: "heritage",
   },
   maritimeStructures: {
-    label: 'Maritime Structures',
+    label: "Maritime Structures",
     icon: <AiOutlineLine size={ICON_SIZE} color='#007502' />,
-    key: 'maritimeStructures',
+    key: "maritimeStructures",
   },
   railNetwork: {
-    label: 'Rail Network',
+    label: "Rail Network",
     icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
-    key: 'railNetwork',
+    key: "railNetwork",
   },
   roadNetwork: {
-    label: 'Road Network',
+    label: "Road Network",
     icon: <AiOutlineLine size={ICON_SIZE} color='#a800e6' />,
-    key: 'roadNetwork',
+    key: "roadNetwork",
   },
 };
 
@@ -141,23 +141,23 @@ export const ALL_SWITCHES = [
 
 export const PB_SWITCHES = [
   {
-    label: 'Berths',
+    label: "Berths",
     iconUrl: berth,
-    key: 'pbBerths',
+    key: "pbBerths",
   },
   {
-    label: 'Gates',
+    label: "Gates",
     iconUrl: gate,
-    key: 'pbGates',
+    key: "pbGates",
   },
   ALL.breakwaterRevetments,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
   ALL.roadNetwork,
   {
-    label: 'Lines',
+    label: "Lines",
     icon: <AiOutlineLine size={ICON_SIZE} color='#ff5edf' />,
-    key: 'pbLines',
+    key: "pbLines",
   },
   ALL.buildings,
   ALL.heritage,
@@ -174,9 +174,9 @@ export const PB_SWITCHES = [
 
 export const PK_SWITCHES = [
   {
-    label: 'Berths',
+    label: "Berths",
     iconUrl: berth,
-    key: 'pkBerths',
+    key: "pkBerths",
   },
   ALL.breakwaterRevetments,
   ALL.tenancyLeaseArea,
@@ -184,9 +184,9 @@ export const PK_SWITCHES = [
   ALL.roadNetwork,
   ALL.railNetwork,
   {
-    label: 'Lines',
+    label: "Lines",
     icon: <AiOutlineLine size={ICON_SIZE} color='#ff5edf' />,
-    key: 'pkLines',
+    key: "pkLines",
   },
   ALL.buildings,
   ALL.heritage,
