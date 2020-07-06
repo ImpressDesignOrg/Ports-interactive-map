@@ -69,17 +69,17 @@ body {
   -ms-overflow-style: none;
 
   scrollbar-width: thin;
-  scrollbar-color: orange #68a0b9;
+  scrollbar-color: orange #1d384b;
 }
 .esri-popup__main-container .esri-popup__content::-webkit-scrollbar {
   width: 5px;
 }
 .esri-popup__main-container .esri-popup__content::-webkit-scrollbar-thumb {
-  background-color: #68a0b9;
+  background-color: #1d384b;
   border-radius: 20px;
 }
 .esri-popup__main-container .esri-popup__content .esri-feature__main-container {
-  background: #68a0b9;
+  background: #1d384b;
 }
 .esri-popup__main-container .esri-popup__content table th,
 .esri-popup__main-container .esri-popup__content table td {

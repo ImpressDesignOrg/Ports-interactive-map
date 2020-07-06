@@ -142,7 +142,6 @@ const StyledContainer = styled.div`
     ::-webkit-scrollbar-thumb {
       background-color: #68a0b9;
       border-radius: 20px;
-      /*  border: 3px solid orange; */
     }
 
     .toggles-wrapper {
