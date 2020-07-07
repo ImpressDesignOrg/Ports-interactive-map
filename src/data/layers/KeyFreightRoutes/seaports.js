@@ -1,27 +1,26 @@
-import { seaport } from '../../symbols';
+import { seaport } from "../../symbols";
 
 const seaportsLayer = {
-  url:
-    'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/2',
-  objectIdField: 'ObjectID',
+  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/majorSeaports.geojson",
+  objectIdField: "ObjectID",
   renderer: {
-    type: 'simple',
+    type: "simple",
     symbol: {
-      type: 'picture-marker',
+      type: "picture-marker",
       url: seaport,
-      width: '50px',
-      height: '50px',
+      width: "50px",
+      height: "50px",
     },
   },
   popupTemplate: {
-    title: 'Seaport',
+    title: "Seaport",
     content: [
       {
-        type: 'fields',
+        type: "fields",
         fieldInfos: [
           {
-            fieldName: 'Name',
-            label: 'Seaport',
+            fieldName: "Name",
+            label: "Seaport",
             visible: true,
           },
         ],

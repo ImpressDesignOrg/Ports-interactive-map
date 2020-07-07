@@ -1,27 +1,26 @@
-import { airport } from '../../symbols';
+import { airport } from "../../symbols";
 
 const airportsLayer = {
-  url:
-    'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/1',
-  objectIdField: 'ObjectID',
+  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/majorAirports.geojson",
+  objectIdField: "ObjectID",
   renderer: {
-    type: 'simple',
+    type: "simple",
     symbol: {
-      type: 'picture-marker',
+      type: "picture-marker",
       url: airport,
-      width: '50px',
-      height: '50px',
+      width: "50px",
+      height: "50px",
     },
   },
   popupTemplate: {
-    title: 'Airport',
+    title: "Airport",
     content: [
       {
-        type: 'fields',
+        type: "fields",
         fieldInfos: [
           {
-            fieldName: 'Name',
-            label: 'Airport',
+            fieldName: "Name",
+            label: "Airport",
             visible: true,
           },
         ],

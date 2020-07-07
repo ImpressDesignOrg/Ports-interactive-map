@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Switch, Form } from 'antd';
+import React from "react";
+import styled from "styled-components";
+import { Switch, Form } from "antd";
 
-import { useSetState } from '../../store';
+import { useSetState } from "../../store";
 
 export default function SwitchControl({ item }) {
   const setState = useSetState();
@@ -31,6 +31,7 @@ const StyledSwitch = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
+  cursor: pointer;
 
   &:first-child {
     margin-top: 0;
@@ -55,7 +56,7 @@ const StyledSwitch = styled.div`
       color: #000;
       font-size: 16px;
       font-weight: 500;
-      font-family: 'Roboto Condensed';
+      font-family: "Roboto Condensed";
       border-bottom: 1px solid #fff;
     }
   }
