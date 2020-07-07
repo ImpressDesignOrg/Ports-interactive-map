@@ -1,5 +1,5 @@
 const secondaryRoadsLayer = {
-  url: "http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/4",
+  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/secondaryRoad.geojson",
   objectIdField: "ObjectID",
   renderer: {
     type: "simple",

@@ -1,15 +1,15 @@
 const keyRailsLayer = {
-  url: 'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/6',
-  objectIdField: 'ObjectID',
+  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/keyRail.geojson",
+  objectIdField: "ObjectID",
   popupTemplate: {
-    title: 'Rail Freight Network',
+    title: "Rail Freight Network",
     content: [
       {
-        type: 'fields',
+        type: "fields",
         fieldInfos: [
           {
-            fieldName: 'Name',
-            label: 'Name',
+            fieldName: "Name",
+            label: "Name",
             visible: true,
           },
         ],

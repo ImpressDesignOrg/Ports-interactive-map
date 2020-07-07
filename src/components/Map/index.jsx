@@ -80,10 +80,7 @@ export default function Map() {
         map.add(new GeoJSONLayer(allLocationsLayer));
       }
 
-      // ###### BRING IN THE ACTIVE LAYERS #####
-      // TODO write function to bring it in and add layers dynamically (to do so, need to seperate FeatureLayer and GeoJSONLayer layers)
       // Key Freight Routes
-      // TODO manually extract the data Key Freight Route Data
       if (state.airports) map.add(new GeoJSONLayer(airportsLayer));
       if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer));
       if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer));
