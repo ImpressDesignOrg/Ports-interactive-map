@@ -1,4 +1,4 @@
-import { building } from "../../symbols";
+import { heritage } from "../../symbols";
 
 const heritageLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/HERITAGE.geojson",
@@ -7,7 +7,7 @@ const heritageLayer = {
     type: "simple",
     symbol: {
       type: "picture-marker",
-      url: building,
+      url: heritage,
       width: "50px",
       height: "50px",
     },
