@@ -28,12 +28,12 @@ const ALL = {
   },
   intermodalTerminals: {
     label: "Intermodal Terminals",
-    icon: intermodalTerminal,
+    iconUrl: intermodalTerminal,
     key: "intermodalTerminals",
   },
   roadTrainAssemby: {
     label: "Road Train Assembly",
-    icon: roadTrainAssembly,
+    iconUrl: roadTrainAssembly,
     key: "roadTrainAssembly",
   },
   keyRoads: {
