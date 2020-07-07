@@ -13,7 +13,7 @@ const PB_berthLayer = {
     },
   },
   popupTemplate: {
-    title: "Port Botany Berth {TextString}",
+    title: "Port Botany {TextString}",
     highlightEnabled: true,
     content: [
       {

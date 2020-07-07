@@ -13,7 +13,7 @@ const PK_berthsLayer = {
     },
   },
   popupTemplate: {
-    title: "Port Kembla Berth {TextString}",
+    title: "Port Kembla {TextString}",
     content: [
       {
         type: "fields",
