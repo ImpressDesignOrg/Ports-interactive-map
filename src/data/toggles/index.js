@@ -102,7 +102,7 @@ const ALL = {
   },
   railNetwork: {
     label: "Rail Network",
-    icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#e69800' />,
     key: "railNetwork",
   },
   roadNetwork: {
