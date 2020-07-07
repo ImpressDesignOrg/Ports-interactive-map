@@ -1,16 +1,27 @@
+import { intermodalTerminal } from "../../symbols";
+
 const intermodalTerminalsLayer = {
   url:
-    'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/2',
-  objectIdField: 'ObjectID',
+    "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/intermodalTerminals.geojson",
+  objectIdField: "ObjectID",
+  renderer: {
+    type: "simple",
+    symbol: {
+      type: "picture-marker",
+      url: intermodalTerminal,
+      width: "50px",
+      height: "50px",
+    },
+  },
   popupTemplate: {
-    title: 'Intermodal Terminal',
+    title: "Intermodal Terminal",
     content: [
       {
-        type: 'fields',
+        type: "fields",
         fieldInfos: [
           {
-            fieldName: 'Name',
-            label: 'Intermodal Terminal',
+            fieldName: "Name",
+            label: "Intermodal Terminal",
             visible: true,
           },
         ],
