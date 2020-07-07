@@ -13,17 +13,12 @@ const PB_berthLayer = {
     },
   },
   popupTemplate: {
-    title: "Port Botany Berth",
+    title: "Port Botany Berth {TextString}",
     highlightEnabled: true,
     content: [
       {
         type: "fields",
         fieldInfos: [
-          {
-            fieldName: "TextString",
-            label: "Name",
-            visible: true,
-          },
           {
             fieldName: "BerthManager",
             label: "Berth Manager",
