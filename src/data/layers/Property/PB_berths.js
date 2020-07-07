@@ -25,6 +25,16 @@ const PB_berthLayer = {
             visible: true,
           },
           {
+            fieldName: "BerthManager",
+            label: "Berth Manager",
+            visible: true,
+          },
+          {
+            fieldName: "Commodities",
+            label: "Commodities",
+            visible: true,
+          },
+          {
             fieldName: "ChannelMaintainedDepth",
             label: "Channel Maintained Depth",
             visible: true,
@@ -104,11 +114,7 @@ const PB_berthLayer = {
             label: "Rail Access",
             visible: true,
           },
-          {
-            fieldName: "Commodities",
-            label: "Commodities",
-            visible: true,
-          },
+
           {
             fieldName: "UnloadingEquipment",
             label: "Unloading Equipment",
@@ -119,11 +125,7 @@ const PB_berthLayer = {
             label: "Operating Hours",
             visible: true,
           },
-          {
-            fieldName: "BerthManager",
-            label: "Berth Manager",
-            visible: true,
-          },
+
           {
             fieldName: "PotableWaterAvailable",
             label: "Potable Water Available",
