@@ -1,16 +1,27 @@
+import { roadTrainAssembly } from "../../symbols";
+
 const roadTrainAssemblyLayer = {
   url:
-    'http://gis.infrastructure.gov.au/infrastructure/rest/services/KeyFreightRoute/KFR/MapServer/3',
-  objectIdField: 'ObjectID',
+    "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/roadTrainAssembly.geojson",
+  objectIdField: "ObjectID",
+  renderer: {
+    type: "simple",
+    symbol: {
+      type: "picture-marker",
+      url: roadTrainAssembly,
+      width: "50px",
+      height: "50px",
+    },
+  },
   popupTemplate: {
-    title: 'Road Train Assembly',
+    title: "Road Train Assembly",
     content: [
       {
-        type: 'fields',
+        type: "fields",
         fieldInfos: [
           {
-            fieldName: 'Name',
-            label: 'Road Train Assembly',
+            fieldName: "Name",
+            label: "Road Train Assembly",
             visible: true,
           },
         ],
