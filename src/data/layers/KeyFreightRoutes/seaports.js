@@ -13,19 +13,7 @@ const seaportsLayer = {
     },
   },
   popupTemplate: {
-    title: "Seaport",
-    content: [
-      {
-        type: "fields",
-        fieldInfos: [
-          {
-            fieldName: "Name",
-            label: "Seaport",
-            visible: true,
-          },
-        ],
-      },
-    ],
+    title: "{NAME}",
   },
 };
 
