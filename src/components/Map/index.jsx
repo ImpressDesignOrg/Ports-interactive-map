@@ -39,8 +39,6 @@ export default function Map() {
   const mapRef = useRef();
   const state = useTrackedState();
 
-  console.log("state :>> ", state);
-
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(

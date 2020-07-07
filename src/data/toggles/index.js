@@ -1,6 +1,5 @@
 import React from "react";
 import { FaGripLinesVertical, FaCircle } from "react-icons/fa";
-import { GiVirtualMarker } from "react-icons/gi";
 import { AiOutlineLine } from "react-icons/ai";
 import {
   airport,
@@ -38,32 +37,32 @@ const ALL = {
   },
   keyRoads: {
     label: "Key Roads",
-    icon: <GiVirtualMarker size={ICON_SIZE} />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#002673' />,
     key: "keyRoads",
   },
   keyRail: {
     label: "Key Rail",
-    icon: <GiVirtualMarker size={ICON_SIZE} />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#000000' />,
     key: "keyRail",
   },
   secondaryRoads: {
     label: "Secondary Roads",
-    icon: <GiVirtualMarker size={ICON_SIZE} />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#004de8' />,
     key: "secondaryRoads",
   },
   localGov: {
     label: "Local Government",
-    icon: <FaGripLinesVertical size={ICON_SIZE} color='#aaff00' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#aaff00' />,
     key: "localGov",
   },
   stateGov: {
     label: "State Government",
-    icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#e69800' />,
     key: "stateGov",
   },
   federalGov: {
     label: "Federal Government",
-    icon: <FaGripLinesVertical size={ICON_SIZE} color='#7a8ef5' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#7a8ef5' />,
     key: "federalGov",
   },
   tenancyLeaseArea: {
@@ -121,9 +120,6 @@ export const AUS_SWITCHES = [
   ALL.keyRoads,
   ALL.keyRail,
   ALL.secondaryRoads,
-  ALL.localGov,
-  ALL.stateGov,
-  ALL.federalGov,
 ];
 
 export const ALL_SWITCHES = [
