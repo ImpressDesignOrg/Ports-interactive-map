@@ -13,19 +13,7 @@ const airportsLayer = {
     },
   },
   popupTemplate: {
-    title: "Airport",
-    content: [
-      {
-        type: "fields",
-        fieldInfos: [
-          {
-            fieldName: "Name",
-            label: "Airport",
-            visible: true,
-          },
-        ],
-      },
-    ],
+    title: "{Name}",
   },
 };
 
