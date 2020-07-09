@@ -10,9 +10,6 @@ const allLocationsLayer = {
       height: "50px",
     },
   },
-  popupTemplate: {
-    title: "NSW Ports Locations",
-  },
 };
 
 export default allLocationsLayer;
