@@ -83,7 +83,7 @@ export default function Map() {
       // Ports Data
       if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
       if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
-      if (state.tenancyUnits) map.add(new FeatureLayer(tenancyUnitsLayer));
+      if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
       if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
       if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
