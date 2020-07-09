@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { loadModules } from "esri-loader";
-import ArcGIS from "terraformer-arcgis-parser";
-import { geojsonToArcGIS } from "@esri/arcgis-to-geojson-utils";
 
 import { useTrackedState } from "../../store";
 
@@ -45,10 +43,10 @@ export default function Map() {
         "esri/layers/FeatureLayer",
         "esri/layers/GeoJSONLayer",
         "esri/widgets/BasemapToggle",
-        "esri/renderers/UniqueValueRenderer",
+        "esri/core/watchUtils",
       ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle, UniqueValueRenderer]) => {
+    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle, watchUtils]) => {
       const map = new ArcGISMap({
         basemap: "gray",
       });
@@ -72,17 +70,10 @@ export default function Map() {
         position: "top-left",
       });
 
-      if (state.viewing === "ALL") {
-        map.add(new GeoJSONLayer(allLocationsLayer));
-      }
+      // ### ADD THE RELEVANT DATA ###
 
-      // take GeoJSON and convert it to ArcGIS JSON
-      const arcgis = geojsonToArcGIS({
-        type: "Point",
-        coordinates: [45.5165, -122.6764],
-      });
-
-      console.log("arcgis :>> ", arcgis);
+      // if they're viewing all locations, show the locations marker
+      if (state.viewing === "ALL") map.add(new GeoJSONLayer(allLocationsLayer));
 
       // Ports Data
       if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
