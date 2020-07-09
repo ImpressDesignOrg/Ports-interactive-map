@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Form } from "antd";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
-import { useSetState, useTrackedState } from "../../../store";
+import { deactiveLayers, useSetState, useTrackedState } from "../../../store";
 
 import { AUS_SWITCHES, ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from "../../../data/toggles";
 
@@ -16,10 +16,11 @@ export default function ActiveLayersForm() {
   const setState = useSetState();
 
   const handleReset = () => {
-    // reset to initial state
+    // reset to layers to initial state (all false)
     setState((prev) => ({
       viewing: state.viewing,
       siderLevel: state.siderLevel,
+      ...deactiveLayers,
     }));
     form.resetFields();
   };

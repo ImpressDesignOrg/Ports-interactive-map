@@ -1,25 +1,11 @@
 import React from "react";
 import { FaGripLinesVertical, FaCircle } from "react-icons/fa";
 import { AiOutlineLine } from "react-icons/ai";
-import {
-  airport,
-  seaport,
-  intermodalTerminal,
-  roadTrainAssembly,
-  berth,
-  gate,
-  building,
-  heritage,
-} from "../../data/symbols";
+import { seaport, intermodalTerminal, roadTrainAssembly, berth, gate, building, heritage } from "../../data/symbols";
 
 const ICON_SIZE = "30px";
 
 const ALL = {
-  airports: {
-    label: "Airports",
-    iconUrl: airport,
-    key: "airports",
-  },
   seaports: {
     label: "Seaports",
     iconUrl: seaport,
@@ -55,16 +41,6 @@ const ALL = {
     icon: <AiOutlineLine size={ICON_SIZE} color='#aaff00' />,
     key: "localGov",
   },
-  stateGov: {
-    label: "State Government",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#e69800' />,
-    key: "stateGov",
-  },
-  federalGov: {
-    label: "Federal Government",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#7a8ef5' />,
-    key: "federalGov",
-  },
   tenancyLeaseArea: {
     label: "Tenancy Lease Areas",
     icon: <FaCircle size={ICON_SIZE} color='#e69800' />,
@@ -80,11 +56,6 @@ const ALL = {
     icon: <FaGripLinesVertical size={ICON_SIZE} color='#e69800' />,
     key: "leaseBoundary",
   },
-  breakwaterRevetments: {
-    label: "Breakwater Revetments",
-    icon: <FaCircle size={ICON_SIZE} color='#ccc433' />,
-    key: "breakwaterRevetments",
-  },
   buildings: {
     label: "Buildings",
     iconUrl: building,
@@ -94,11 +65,6 @@ const ALL = {
     label: "Heritage",
     iconUrl: heritage,
     key: "heritage",
-  },
-  maritimeStructures: {
-    label: "Maritime Structures",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#007502' />,
-    key: "maritimeStructures",
   },
   railNetwork: {
     label: "Rail Network",
@@ -113,7 +79,6 @@ const ALL = {
 };
 
 export const AUS_SWITCHES = [
-  ALL.airports,
   ALL.seaports,
   ALL.intermodalTerminals,
   ALL.roadTrainAssemby,
@@ -124,11 +89,8 @@ export const AUS_SWITCHES = [
 
 export const ALL_SWITCHES = [
   ALL.localGov,
-  ALL.stateGov,
-  ALL.federalGov,
   ALL.intermodalTerminals,
   ALL.roadTrainAssemby,
-  ALL.airports,
   ALL.seaports,
   ALL.keyRoads,
   ALL.keyRail,
@@ -146,26 +108,12 @@ export const PB_SWITCHES = [
     iconUrl: gate,
     key: "pbGates",
   },
-  ALL.breakwaterRevetments,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
   ALL.roadNetwork,
-  {
-    label: "Lines",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#ff5edf' />,
-    key: "pbLines",
-  },
   ALL.buildings,
   ALL.heritage,
-  ALL.maritimeStructures,
-  /*   {
-    label: 'Labels',
-    icon: <GiVirtualMarker size={ICON_SIZE} />,
-    key: 'pbLabels',
-  }, */
   ALL.localGov,
-  ALL.stateGov,
-  ALL.federalGov,
 ];
 
 export const PK_SWITCHES = [
@@ -174,38 +122,16 @@ export const PK_SWITCHES = [
     iconUrl: berth,
     key: "pkBerths",
   },
-  ALL.breakwaterRevetments,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
   ALL.roadNetwork,
   ALL.railNetwork,
-  {
-    label: "Lines",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#ff5edf' />,
-    key: "pkLines",
-  },
   ALL.buildings,
   ALL.heritage,
-  ALL.maritimeStructures,
-  /*   {
-    label: 'Labels',
-    icon: <GiVirtualMarker size={ICON_SIZE} />,
-    key: 'pkLabels',
-  }, */
   ALL.localGov,
-  ALL.stateGov,
-  ALL.federalGov,
 ];
 
-export const CR_SWITCHES = [
-  ALL.tenancyLeaseArea,
-  ALL.tenancyUnits,
-  ALL.buildings,
-  ALL.heritage,
-  ALL.localGov,
-  ALL.stateGov,
-  ALL.federalGov,
-];
+export const CR_SWITCHES = [ALL.tenancyLeaseArea, ALL.tenancyUnits, ALL.buildings, ALL.heritage, ALL.localGov];
 
 export const EN_SWITCHES = [
   ALL.tenancyLeaseArea,
@@ -215,6 +141,4 @@ export const EN_SWITCHES = [
   ALL.roadNetwork,
   ALL.railNetwork,
   ALL.localGov,
-  ALL.stateGov,
-  ALL.federalGov,
 ];
