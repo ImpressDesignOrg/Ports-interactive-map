@@ -22,6 +22,6 @@ export const deactiveLayers = {
   keyRail: false,
 };
 
-const useValue = () => useState({ viewing: "default", siderLevel: 1, ...deactiveLayers });
+const useValue = () => useState({ viewing: "ALL", siderLevel: 1, ...deactiveLayers });
 
 export const { Provider, useTrackedState, useUpdate: useSetState } = createContainer(useValue);

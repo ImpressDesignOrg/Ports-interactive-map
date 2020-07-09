@@ -67,7 +67,7 @@ export default function Map() {
         position: "top-left",
       });
 
-      if (state.viewing === "ALL" || state.viewing === "AUS") {
+      if (state.viewing === "ALL") {
         map.add(new GeoJSONLayer(allLocationsLayer));
       }
 
