@@ -7,9 +7,7 @@ import { useSetState } from "../../store";
 export default function SwitchControl({ item }) {
   const setState = useSetState();
 
-  const handleToggle = (e, key) => {
-    setState((prev) => ({ ...prev, [key]: e }));
-  };
+  const handleToggle = (e, key) => setState((prev) => ({ ...prev, [key]: e }));
 
   const { label, icon, iconUrl, key } = item;
 

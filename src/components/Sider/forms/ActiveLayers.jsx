@@ -7,21 +7,22 @@ import { deactiveLayers, useSetState, useTrackedState } from "../../../store";
 
 import { AUS_SWITCHES, ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from "../../../data/toggles";
 
-import { useForm } from "antd/lib/form/util";
 import SwitchControl from "../SwitchControl";
 
 export default function ActiveLayersForm() {
-  const [form] = useForm();
+  const [form] = Form.useForm();
   const state = useTrackedState();
   const setState = useSetState();
 
   const handleReset = () => {
     // reset to layers to initial state (all false)
-    setState((prev) => ({
+    setState(() => ({
       viewing: state.viewing,
       siderLevel: state.siderLevel,
       ...deactiveLayers,
     }));
+
+    // set all the toggles to be switched off
     form.resetFields();
   };
 

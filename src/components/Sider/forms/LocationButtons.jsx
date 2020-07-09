@@ -1,43 +1,40 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaMapMarkerAlt, FaBuilding } from 'react-icons/fa';
-import { GiAustralia } from 'react-icons/gi';
+import React from "react";
+import styled from "styled-components";
+import { FaMapMarkerAlt, FaBuilding } from "react-icons/fa";
+import { GiAustralia } from "react-icons/gi";
 
-import { useSetState } from '../../../store';
+import { useSetState } from "../../../store";
 
 export default function LocationButtons() {
   const setState = useSetState();
 
-  const handleClick = (location) => {
-    setState((prev) => ({ ...prev, siderLevel: 2 }));
-    setState((prev) => ({ ...prev, viewing: location }));
-  };
+  const handleClick = (location) => setState((prev) => ({ ...prev, siderLevel: 2, viewing: location }));
 
   return (
     <StyledContainer>
       <h2>NSW Ports Locations</h2>
       <div className='sider-content'>
-        <button onClick={() => handleClick('PB')}>
+        <button onClick={() => handleClick("PB")}>
           <FaMapMarkerAlt size='30px' />
           <span>Port Botany</span>
         </button>
-        <button onClick={() => handleClick('PK')}>
+        <button onClick={() => handleClick("PK")}>
           <FaMapMarkerAlt size='30px' />
           <span>Port Kembla</span>
         </button>
-        <button onClick={() => handleClick('CR')}>
+        <button onClick={() => handleClick("CR")}>
           <FaMapMarkerAlt size='30px' />
           <span>Cooks River Intermodal</span>
         </button>
-        <button onClick={() => handleClick('EN')}>
+        <button onClick={() => handleClick("EN")}>
           <FaMapMarkerAlt size='30px' />
           <span>Enfield Intermodal</span>
         </button>
-        <button onClick={() => handleClick('ALL')}>
+        <button onClick={() => handleClick("ALL")}>
           <FaBuilding size='30px' />
           <span>NSW Ports Locations</span>
         </button>
-        <button onClick={() => handleClick('AUS')}>
+        <button onClick={() => handleClick("AUS")}>
           <GiAustralia size='30px' />
           <span>National</span>
         </button>
@@ -48,7 +45,7 @@ export default function LocationButtons() {
 
 const StyledContainer = styled.div`
   margin: 20px 0;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 
   h2 {
     font-size: 22px;
@@ -88,7 +85,7 @@ const StyledContainer = styled.div`
       span {
         margin-left: 22px;
         color: #000;
-        font-family: 'Roboto Condensed';
+        font-family: "Roboto Condensed";
       }
     }
   }

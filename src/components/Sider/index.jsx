@@ -33,15 +33,13 @@ export default function Sidebar() {
 
   const INFO_URL = () => {
     switch (state.viewing) {
-      case "default":
       case "AUS":
       case "ALL":
       case "PK":
       case "EN":
       case "CR":
-        return "/";
       case "PB":
-        return "https://dev-nsw-ports.pantheonsite.io/locations/port-botany#overview";
+        return "/";
       default:
         break;
     }
@@ -56,7 +54,6 @@ export default function Sidebar() {
           <AiOutlineArrowLeft size='20px' color='#68a0b9' />
         )}
       </StyledToggle>
-
       <StyledContent visible={visible}>
         {state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}
         <div className='info-wrapper'>
@@ -64,7 +61,7 @@ export default function Sidebar() {
             <div className='heading'>Want to find out more?</div>
             <div className='body'>
               <p>
-                {INFO_BODY()}{" "}
+                {INFO_BODY()}
                 <a href={INFO_URL()} target='_blank' rel='noopener noreferrer'>
                   Find out more information here
                 </a>
