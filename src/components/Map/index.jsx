@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { loadModules } from "esri-loader";
 import ArcGIS from "terraformer-arcgis-parser";
+import { geojsonToArcGIS } from "@esri/arcgis-to-geojson-utils";
 
 import { useTrackedState } from "../../store";
 
@@ -25,6 +26,8 @@ import buildingsLayer from "../../data/layers/PortsData/buildings";
 import heritageLayer from "../../data/layers/PortsData/heritage";
 import railNetworkLayer from "../../data/layers/PortsData/railNetwork";
 import roadNetworkLayer from "../../data/layers/PortsData/roadNetwork";
+
+// TODO convert geoJSON layers to FeatureLayer so that can add
 
 import { viewports } from "../../data/viewports";
 
@@ -73,12 +76,13 @@ export default function Map() {
         map.add(new GeoJSONLayer(allLocationsLayer));
       }
 
-      const ArcGISFeatureLayer = ArcGIS.convert({
+      // take GeoJSON and convert it to ArcGIS JSON
+      const arcgis = geojsonToArcGIS({
         type: "Point",
-        coordinates: [151.20118262971195, -33.96032897921971],
+        coordinates: [45.5165, -122.6764],
       });
 
-      console.log("ArcGISFeatureLayer :>> ", ArcGISFeatureLayer);
+      console.log("arcgis :>> ", arcgis);
 
       // Ports Data
       if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
