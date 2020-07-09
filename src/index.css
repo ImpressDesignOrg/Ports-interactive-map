@@ -12,6 +12,14 @@ body {
   height: 100vh;
   max-height: 800px;
 }
+path[data-classbreak="berth-marker"] {
+  stroke: rgb(255, 245, 220);
+  stroke-width: 1pt;
+  stroke-opacity: 0.35;
+  fill: rgb(255, 215, 120);
+  fill-opacity: 0.8;
+  box-shadow: rgb(0, 245, 220, 1);
+}
 .esri-ui-corner .esri-basemap-toggle {
   position: absolute;
   left: 50px;
