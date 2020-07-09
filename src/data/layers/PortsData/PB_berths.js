@@ -10,6 +10,12 @@ const PB_berthLayer = {
       url: berth,
       width: "50px",
       height: "50px",
+      declaredClass: "berth-marker",
+      outline: {
+        // autocasts as new SimpleLineSymbol()
+        color: [128, 128, 128, 0.5],
+        width: "0.5px",
+      },
     },
   },
   popupTemplate: {
