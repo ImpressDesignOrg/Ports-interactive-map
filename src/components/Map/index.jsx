@@ -5,13 +5,9 @@ import { useTrackedState } from "../../store";
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
 import allLocationsLayer from "../../data/layers/allLocations";
-import airportsLayer from "../../data/layers/KeyFreightRoutes/airports";
 import seaportsLayer from "../../data/layers/KeyFreightRoutes/seaports";
 import keyRoadsLayer from "../../data/layers/KeyFreightRoutes/keyRoads";
-import suburbLayer from "../../data/layers/NSWAdminBoundaries/suburb";
 import localGovLayer from "../../data/layers/NSWAdminBoundaries/localGov";
-import stateGovLayer from "../../data/layers/NSWAdminBoundaries/stateGov";
-import federalGovLayer from "../../data/layers/NSWAdminBoundaries/federalGov";
 import PB_labelsLayer from "../../data/layers/AssetMgt/PB_labels";
 import PK_labelsLayer from "../../data/layers/AssetMgt/PK_labels";
 import intermodalTerminalsLayer from "../../data/layers/KeyFreightRoutes/intermodalTerminals";
@@ -24,13 +20,9 @@ import PK_berthsLayer from "../../data/layers/Property/PK_berths";
 import leaseBoundariesLayer from "../../data/layers/Property/leaseBoundaries";
 import tenancyLeaseAreasLayer from "../../data/layers/Property/tenancyLeaseAreas";
 import tenancyUnitsLayer from "../../data/layers/Property/tenancyUnits";
-import breakwaterRevetmentsLayer from "../../data/layers/AssetMgt/breakwaterRevetments";
 import buildingsLayer from "../../data/layers/AssetMgt/buildings";
 import heritageLayer from "../../data/layers/AssetMgt/heritage";
-import maritimeStructuresLayer from "../../data/layers/AssetMgt/maritimeStructures";
 import railNetworkLayer from "../../data/layers/AssetMgt/railNetwork";
-import PK_linesLayer from "../../data/layers/AssetMgt/PK_lines";
-import PB_linesLayer from "../../data/layers/AssetMgt/PB_lines";
 import roadNetworkLayer from "../../data/layers/AssetMgt/roadNetwork";
 
 import { viewports } from "../../data/viewports";
@@ -49,10 +41,9 @@ export default function Map() {
         "esri/layers/FeatureLayer",
         "esri/layers/GeoJSONLayer",
         "esri/widgets/BasemapToggle",
-        "esri/widgets/BasemapGallery",
       ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle, BasemapGallery]) => {
+    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
       const map = new ArcGISMap({
         basemap: "gray",
       });
@@ -81,7 +72,6 @@ export default function Map() {
       }
 
       // Key Freight Routes
-      if (state.airports) map.add(new GeoJSONLayer(airportsLayer));
       if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer));
       if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer));
       if (state.roadTrainAssembly) map.add(new GeoJSONLayer(roadTrainAssemblyLayer));
@@ -90,10 +80,7 @@ export default function Map() {
       if (state.keyRails) map.add(new GeoJSONLayer(keyRailsLayer));
 
       // NSW Administrative Boundaries Layers
-      if (state.suburbs) map.add(new FeatureLayer(suburbLayer));
       if (state.localGov) map.add(new FeatureLayer(localGovLayer));
-      if (state.stateGov) map.add(new FeatureLayer(stateGovLayer));
-      if (state.federalGov) map.add(new FeatureLayer(federalGovLayer));
 
       // Property Layers
       if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
@@ -104,16 +91,12 @@ export default function Map() {
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
 
       // Asset Management
-      if (state.breakwaterRevetments) map.add(new GeoJSONLayer(breakwaterRevetmentsLayer));
       if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer));
       if (state.heritage) map.add(new GeoJSONLayer(heritageLayer));
-      if (state.maritimeStructures) map.add(new GeoJSONLayer(maritimeStructuresLayer));
       if (state.railNetwork) map.add(new GeoJSONLayer(railNetworkLayer));
       if (state.roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer));
       if (state.pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer));
-      if (state.pbLines) map.add(new GeoJSONLayer(PB_linesLayer));
       if (state.pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer));
-      if (state.pkLines) map.add(new GeoJSONLayer(PK_linesLayer));
 
       // destroy the map view
       return () => {

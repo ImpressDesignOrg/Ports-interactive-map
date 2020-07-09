@@ -1,31 +1,30 @@
 const roadNetworkLayer = {
-  url:
-    'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/ROADNETWORK.geojson',
-  objectIdField: 'ObjectID',
+  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/ROADNETWORK.geojson",
+  objectIdField: "ObjectID",
   popupTemplate: {
-    title: 'Road Network',
+    title: "Road Network",
     content: [
       {
-        type: 'fields',
+        type: "fields",
         fieldInfos: [
           {
-            fieldName: 'ASSET_NO',
-            label: 'Asset Number',
+            fieldName: "ASSET_NO",
+            label: "Asset Number",
             visible: true,
           },
           {
-            fieldName: 'ASS_NAME',
-            label: 'Asset Name',
+            fieldName: "ASS_NAME",
+            label: "Asset Name",
             visible: true,
           },
           {
-            fieldName: 'ASS_CLASS',
-            label: 'Asset Class',
+            fieldName: "ASS_CLASS",
+            label: "Asset Class",
             visible: true,
           },
           {
-            fieldName: 'ASS_LOC',
-            label: 'Asset Location',
+            fieldName: "ASS_LOC",
+            label: "Asset Location",
             visible: true,
           },
         ],
@@ -33,14 +32,14 @@ const roadNetworkLayer = {
     ],
   },
   renderer: {
-    type: 'simple',
+    type: "simple",
     symbol: {
-      type: 'simple-fill',
+      type: "simple-fill",
       color: [168, 0, 230, 1],
-      style: 'simple',
+      style: "simple",
       outline: {
         color: [168, 0, 230, 1],
-        width: '5px',
+        width: "5px",
       },
     },
   },
