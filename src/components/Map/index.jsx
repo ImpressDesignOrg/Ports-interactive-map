@@ -92,7 +92,7 @@ export default function Map() {
       if (state.roadTrainAssembly) map.add(new GeoJSONLayer(roadTrainAssemblyLayer));
       if (state.keyRoads) map.add(new GeoJSONLayer(keyRoadsLayer));
       if (state.secondaryRoads) map.add(new GeoJSONLayer(secondaryRoadsLayer));
-      if (state.keyRails) map.add(new GeoJSONLayer(keyRailsLayer));
+      if (state.keyRail) map.add(new GeoJSONLayer(keyRailsLayer));
 
       // destroy the map view
       return () => {
