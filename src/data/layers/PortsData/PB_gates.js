@@ -12,21 +12,6 @@ const PB_gatesLayer = {
       height: "40px",
     },
   },
-  popupTemplate: {
-    title: "Port Botany Gate {GATE_NUM}",
-    content: [
-      {
-        type: "fields",
-        fieldInfos: [
-          {
-            fieldName: "GATE_NUM",
-            label: "Gate Number",
-            visible: true,
-          },
-        ],
-      },
-    ],
-  },
 };
 
 export default PB_gatesLayer;

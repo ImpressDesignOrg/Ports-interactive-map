@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { loadModules } from "esri-loader";
+import ArcGIS from "terraformer-arcgis-parser";
 
 import { useTrackedState } from "../../store";
 
@@ -41,9 +42,10 @@ export default function Map() {
         "esri/layers/FeatureLayer",
         "esri/layers/GeoJSONLayer",
         "esri/widgets/BasemapToggle",
+        "esri/renderers/UniqueValueRenderer",
       ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
+    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle, UniqueValueRenderer]) => {
       const map = new ArcGISMap({
         basemap: "gray",
       });
@@ -71,10 +73,17 @@ export default function Map() {
         map.add(new GeoJSONLayer(allLocationsLayer));
       }
 
+      const ArcGISFeatureLayer = ArcGIS.convert({
+        type: "Point",
+        coordinates: [151.20118262971195, -33.96032897921971],
+      });
+
+      console.log("ArcGISFeatureLayer :>> ", ArcGISFeatureLayer);
+
       // Ports Data
       if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
       if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
-      if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
+      if (state.tenancyUnits) map.add(new FeatureLayer(tenancyUnitsLayer));
       if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
       if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
