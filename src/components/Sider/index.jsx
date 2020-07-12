@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Button } from "antd";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 import { useTrackedState } from "../../store";
@@ -74,15 +73,21 @@ export default function Sidebar() {
   );
 }
 
-const StyledToggle = styled(Button)`
-  position: absolute;
+const StyledToggle = styled.button`
   z-index: 3;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   right: ${(props) => (props.visible ? "380px" : "0")};
   top: 7%;
   height: 60px;
+  width: 30px;
   border: none;
-  display: flex;
-  align-items: center;
+  cursor: pointer;
+  background: #efefef;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 
   &:hover {
     background: #1d384b;
@@ -94,7 +99,7 @@ const StyledContent = styled.div`
   background: #fff;
   height: 100%;
   position: absolute;
-  width: 350px;
+  width: 268px;
   height: 700px;
   z-index: 2;
   right: 30px;
@@ -127,9 +132,9 @@ const StyledContent = styled.div`
       }
 
       p {
-        font-size: 17px;
+        font-size: 18px;
         color: #fff;
-        font-family: "Roboto Condensed";
+        font-family: "Roboto";
         font-weight: 300;
 
         a {

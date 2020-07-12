@@ -3,6 +3,8 @@ import { loadModules } from "esri-loader";
 
 import { useTrackedState } from "../../store";
 
+// TODO can we add an icon shadow?
+
 // ##### IMPORT ALL INDIVIDUAL LAYERS
 import allLocationsLayer from "../../data/layers/PortsData/allLocations";
 import localGovLayer from "../../data/layers/PublicData/localGov";
@@ -15,7 +17,7 @@ import roadTrainAssemblyLayer from "../../data/layers/PublicData/roadTrainAssemb
 import secondaryRoadsLayer from "../../data/layers/PublicData/secondaryRoads";
 import keyRailsLayer from "../../data/layers/PublicData/keyRails";
 import PB_berthLayer from "../../data/layers/PortsData/PB_berths";
-import PB_gatesLayer from "../../data/layers/PortsData/PB_gates";
+import PB_GATES_DATA from "../../data/layers/PortsData/PB_gates";
 import PK_berthsLayer from "../../data/layers/PortsData/PK_berths";
 import leaseBoundariesLayer from "../../data/layers/PortsData/leaseBoundaries";
 import tenancyLeaseAreasLayer from "../../data/layers/PortsData/tenancyLeaseAreas";
@@ -72,6 +74,10 @@ export default function Map() {
 
       // ### ADD THE RELEVANT DATA ###
 
+      // TODO add 0 with the map.add method to ensure that the layers
+      // are added in the appropriate order:
+      // https://developers.arcgis.com/javascript/latest/guide/add-layers-to-a-map/
+
       // if they're viewing all locations, show the locations marker
       if (state.viewing === "ALL") map.add(new GeoJSONLayer(allLocationsLayer));
 
@@ -80,7 +86,29 @@ export default function Map() {
       if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
       if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
       if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
-      if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
+      if (state.pbGates) {
+        // ADD ALL GATES DYNAMICALLY (to allow for seperate icons for geoJSON layer data)
+
+        PB_GATES_DATA.map((gate) => {
+          const { num, icon } = gate;
+
+          return map.add(
+            new GeoJSONLayer({
+              url: `https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/PortsData/gates/${num}.geojson`,
+              objectIdField: "ObjectID",
+              renderer: {
+                type: "simple",
+                symbol: {
+                  type: "picture-marker",
+                  url: icon,
+                  width: "40px",
+                  height: "40px",
+                },
+              },
+            })
+          );
+        });
+      }
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
       if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer));
       if (state.heritage) map.add(new GeoJSONLayer(heritageLayer));
