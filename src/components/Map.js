@@ -1,35 +1,33 @@
 import React, { useEffect, useRef } from "react";
 import { loadModules } from "esri-loader";
 
-import { useTrackedState } from "../../store";
-
-// TODO can we add an icon shadow?
+import { useTrackedState } from "../store";
 
 // ##### IMPORT ALL INDIVIDUAL LAYERS
-import allLocationsLayer from "../../data/layers/PortsData/allLocations";
-import localGovLayer from "../../data/layers/PublicData/localGov";
-import seaportsLayer from "../../data/layers/PublicData/seaports";
-import keyRoadsLayer from "../../data/layers/PublicData/keyRoads";
-import PB_labelsLayer from "../../data/layers/PortsData/PB_labels";
-import PK_labelsLayer from "../../data/layers/PortsData/PK_labels";
-import intermodalTerminalsLayer from "../../data/layers/PublicData/intermodalTerminals";
-import roadTrainAssemblyLayer from "../../data/layers/PublicData/roadTrainAssembly";
-import secondaryRoadsLayer from "../../data/layers/PublicData/secondaryRoads";
-import keyRailsLayer from "../../data/layers/PublicData/keyRails";
-import PB_berthLayer from "../../data/layers/PortsData/PB_berths";
-import PB_GATES_DATA from "../../data/layers/PortsData/PB_gates";
-import PK_berthsLayer from "../../data/layers/PortsData/PK_berths";
-import leaseBoundariesLayer from "../../data/layers/PortsData/leaseBoundaries";
-import tenancyLeaseAreasLayer from "../../data/layers/PortsData/tenancyLeaseAreas";
-import tenancyUnitsLayer from "../../data/layers/PortsData/tenancyUnits";
-import buildingsLayer from "../../data/layers/PortsData/buildings";
-import heritageLayer from "../../data/layers/PortsData/heritage";
-import railNetworkLayer from "../../data/layers/PortsData/railNetwork";
-import roadNetworkLayer from "../../data/layers/PortsData/roadNetwork";
+import allLocationsLayer from "../data/layers/PortsData/allLocations";
+import localGovLayer from "../data/layers/PublicData/localGov";
+import seaportsLayer from "../data/layers/PublicData/seaports";
+import keyRoadsLayer from "../data/layers/PublicData/keyRoads";
+import PB_labelsLayer from "../data/layers/PortsData/PB_labels";
+import PK_labelsLayer from "../data/layers/PortsData/PK_labels";
+import intermodalTerminalsLayer from "../data/layers/PublicData/intermodalTerminals";
+import roadTrainAssemblyLayer from "../data/layers/PublicData/roadTrainAssembly";
+import secondaryRoadsLayer from "../data/layers/PublicData/secondaryRoads";
+import keyRailsLayer from "../data/layers/PublicData/keyRails";
+import PB_berthLayer from "../data/layers/PortsData/PB_berths";
+import PB_GATES_DATA from "../data/layers/PortsData/PB_gates";
+import PK_berthsLayer from "../data/layers/PortsData/PK_berths";
+import leaseBoundariesLayer from "../data/layers/PortsData/leaseBoundaries";
+import tenancyLeaseAreasLayer from "../data/layers/PortsData/tenancyLeaseAreas";
+import tenancyUnitsLayer from "../data/layers/PortsData/tenancyUnits";
+import buildingsLayer from "../data/layers/PortsData/buildings";
+import heritageLayer from "../data/layers/PortsData/heritage";
+import railNetworkLayer from "../data/layers/PortsData/railNetwork";
+import roadNetworkLayer from "../data/layers/PortsData/roadNetwork";
 
 // TODO convert geoJSON layers to FeatureLayer so that can add
 
-import { viewports } from "../../data/viewports";
+import { viewports } from "../data/viewports";
 
 export default function Map() {
   const mapRef = useRef();

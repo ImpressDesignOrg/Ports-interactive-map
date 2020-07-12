@@ -3,7 +3,16 @@ import styled from "styled-components";
 import { FaMapMarkerAlt, FaBuilding } from "react-icons/fa";
 import { GiAustralia } from "react-icons/gi";
 
-import { useSetState } from "../../../store";
+import { useSetState } from "../../store";
+
+const BUTTONS = [
+  { label: "Port Botany", id: "PB", icon: <FaMapMarkerAlt size='30px' /> },
+  { label: "Port Kembla", id: "PK", icon: <FaMapMarkerAlt size='30px' /> },
+  { label: "Cooks River Intermodal", id: "CR", icon: <FaMapMarkerAlt size='30px' /> },
+  { label: "Enfield Intermodal", id: "EN", icon: <FaMapMarkerAlt size='30px' /> },
+  { label: "NSW Ports Locations", id: "ALL", icon: <FaBuilding size='30px' /> },
+  { label: "National", id: "AUS", icon: <GiAustralia size='30px' /> },
+];
 
 export default function LocationButtons() {
   const setState = useSetState();
@@ -14,30 +23,12 @@ export default function LocationButtons() {
     <StyledContainer>
       <h2>NSW Ports Locations</h2>
       <div className='sider-content'>
-        <button onClick={() => handleClick("PB")}>
-          <FaMapMarkerAlt size='30px' />
-          <span>Port Botany</span>
-        </button>
-        <button onClick={() => handleClick("PK")}>
-          <FaMapMarkerAlt size='30px' />
-          <span>Port Kembla</span>
-        </button>
-        <button onClick={() => handleClick("CR")}>
-          <FaMapMarkerAlt size='30px' />
-          <span>Cooks River Intermodal</span>
-        </button>
-        <button onClick={() => handleClick("EN")}>
-          <FaMapMarkerAlt size='30px' />
-          <span>Enfield Intermodal</span>
-        </button>
-        <button onClick={() => handleClick("ALL")}>
-          <FaBuilding size='30px' />
-          <span>NSW Ports Locations</span>
-        </button>
-        <button onClick={() => handleClick("AUS")}>
-          <GiAustralia size='30px' />
-          <span>National</span>
-        </button>
+        {BUTTONS.map((button) => (
+          <button key={button.id} onClick={() => handleClick(button.id)}>
+            {button.icon}
+            <span>{button.label}</span>
+          </button>
+        ))}
       </div>
     </StyledContainer>
   );

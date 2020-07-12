@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
-import { deactiveLayers, useSetState, useTrackedState } from "../../../store";
+import { deactiveLayers, useSetState, useTrackedState } from "../../store";
 
-import { AUS_SWITCHES, ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from "../../../data/toggles";
+import { AUS_SWITCHES, ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from "../../data/toggles";
 
 import Switch from "./Switch";
 
@@ -61,12 +60,12 @@ export default function ActiveLayersForm() {
           </button>
         </div>
         <div className='toggles-wrapper'>
-          {state.viewing === "AUS" && AUS_SWITCHES.map((v) => <Switch item={v} />)}
-          {state.viewing === "ALL" && ALL_SWITCHES.map((v) => <Switch item={v} />)}
-          {state.viewing === "PB" && PB_SWITCHES.map((v) => <Switch item={v} />)}
-          {state.viewing === "PK" && PK_SWITCHES.map((v) => <Switch item={v} />)}
-          {state.viewing === "CR" && CR_SWITCHES.map((v) => <Switch item={v} />)}
-          {state.viewing === "EN" && EN_SWITCHES.map((v) => <Switch item={v} />)}
+          {state.viewing === "AUS" && AUS_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
+          {state.viewing === "ALL" && ALL_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
+          {state.viewing === "PB" && PB_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
+          {state.viewing === "PK" && PK_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
+          {state.viewing === "CR" && CR_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
+          {state.viewing === "EN" && EN_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
         </div>
       </form>
     </StyledContainer>

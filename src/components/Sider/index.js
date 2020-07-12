@@ -4,8 +4,8 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 import { useTrackedState } from "../../store";
 
-import LocationButtons from "./forms/LocationButtons";
-import ActiveLayers from "./forms/ActiveLayers";
+import LocationButtons from "./LocationButtons";
+import ActiveLayers from "./ActiveLayers";
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
