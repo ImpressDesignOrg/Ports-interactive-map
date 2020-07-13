@@ -91,7 +91,29 @@ const StyledContainer = styled.div`
     flex-direction: column;
     width: 100%;
     max-height: 350px;
-    margin-top: 30px;
+		margin-top: 30px;
+		
+		.toggles-wrapper {
+      width: 95%;
+			height: 320px;
+			padding-right: 10px;
+      overflow: scroll;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      scrollbar-width: thin;
+      scrollbar-color: orange #68a0b9;
+
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #68a0b9;
+        border-radius: 20px;
+      }
+    }
 
     .buttons-wrapper {
 			margin: 0 0 15px 0;
@@ -125,27 +147,6 @@ const StyledContainer = styled.div`
         svg {
           margin-right: 5px;
         }
-    }
-
-    .toggles-wrapper {
-      width: 95%;
-      height: 315px;
-      overflow: scroll;
-      overflow-x: hidden;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-
-      scrollbar-width: thin;
-      scrollbar-color: orange #68a0b9;
-
-      ::-webkit-scrollbar {
-        width: 5px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background-color: #68a0b9;
-        border-radius: 20px;
-      }
     }
   }
 `;

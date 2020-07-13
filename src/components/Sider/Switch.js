@@ -23,7 +23,14 @@ export default function SwitchComp({ item }) {
           {icon ? icon : <img src={iconUrl} alt={key} />}
           <p>{label}</p>
         </span>
-        <Switch onChange={(e) => handleToggle(e, key)} checked={state[key]} ref={register} />
+        <Switch
+          onChange={(e) => handleToggle(e, key)}
+          checked={state[key]}
+          ref={register}
+          onColor='#68a0b9'
+          offColor='#1d384b'
+          height={26}
+        />
       </label>
     </StyledSwitch>
   );
@@ -41,6 +48,7 @@ const StyledSwitch = styled.div`
     justify-content: space-between;
     width: 100%;
     cursor: pointer;
+    align-items: center;
   }
 
   &:first-child {
@@ -55,9 +63,10 @@ const StyledSwitch = styled.div`
     display: flex;
     align-items: center;
 
-    img {
-      height: 30px;
-      width: 30px;
+    img,
+    svg {
+      height: 40px;
+      width: 40px;
     }
 
     p {
