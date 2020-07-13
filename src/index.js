@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import styled from "styled-components";
 
 import { Provider } from "./store";
 
@@ -12,11 +13,15 @@ import "./index.css";
 
 const App = () => (
   <Provider>
-    <div className='react-interactive-map'>
+    <StyledWrapper>
       <Sidebar />
       <Map />
-    </div>
+    </StyledWrapper>
   </Provider>
 );
+
+const StyledWrapper = styled.div`
+  position: relative;
+`;
 
 ReactDOM.render(<App />, document.getElementById("root"));
