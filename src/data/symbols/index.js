@@ -1,6 +1,6 @@
 const URL = "https://f399e9-5fsa23.netlify.app/images";
 
-export const allLocations = `${URL}/marker.svg`;
+export const allLocations = `${URL}/marker--nsw-ports.svg`;
 export const airport = `${URL}/marker--airport.svg`;
 export const seaport = `${URL}/marker--seaport.svg`;
 export const intermodalTerminal = `${URL}/marker--imt.svg`;
