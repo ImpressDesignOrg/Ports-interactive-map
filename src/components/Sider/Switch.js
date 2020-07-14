@@ -24,12 +24,15 @@ export default function SwitchComp({ item }) {
           <p>{label}</p>
         </span>
         <Switch
+          ref={register}
           onChange={(e) => handleToggle(e, key)}
           checked={state[key]}
-          ref={register}
+          checkedIcon={false}
+          uncheckedIcon={false}
           onColor='#68a0b9'
-          offColor='#1d384b'
-          height={26}
+          offColor='#A9A9A9'
+          height={24}
+          width={45}
         />
       </label>
     </StyledSwitch>

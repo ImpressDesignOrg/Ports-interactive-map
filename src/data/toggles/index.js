@@ -90,7 +90,6 @@ export const AUS_SWITCHES = [
 export const ALL_SWITCHES = [
   ALL.localGov,
   ALL.intermodalTerminals,
-  ALL.roadTrainAssemby,
   ALL.seaports,
   ALL.keyRoads,
   ALL.keyRail,

@@ -10,7 +10,11 @@ const BUTTONS = [
   { label: "Port Kembla", id: "PK", icon: <FaMapMarkerAlt size='30px' /> },
   { label: "Cooks River Intermodal", id: "CR", icon: <FaMapMarkerAlt size='30px' /> },
   { label: "Enfield Intermodal", id: "EN", icon: <FaMapMarkerAlt size='30px' /> },
-  { label: "NSW Ports Locations", id: "ALL", icon: <FaBuilding size='30px' /> },
+  {
+    label: "NSW Ports Locations",
+    id: "ALL",
+    iconUrl: "https://f399e9-5fsa23.netlify.app/images/marker--nsw-ports.svg",
+  },
   { label: "National", id: "AUS", icon: <GiAustralia size='30px' /> },
 ];
 
@@ -25,7 +29,7 @@ export default function LocationButtons() {
       <div className='sider-content'>
         {BUTTONS.map((button) => (
           <button key={button.id} onClick={() => handleClick(button.id)}>
-            {button.icon}
+            {button.icon ? button.icon : <img src={button.iconUrl} alt='marker-symbol' />}
             <span>{button.label}</span>
           </button>
         ))}
@@ -73,10 +77,19 @@ const StyledContainer = styled.div`
         outline: none;
       }
 
+      img {
+        width: 30px;
+        height: auto;
+      }
+
       span {
         margin-left: 22px;
         color: #000;
         font-family: "Roboto Condensed";
+
+        &:hover {
+          color: #68a0b9;
+        }
       }
     }
   }
