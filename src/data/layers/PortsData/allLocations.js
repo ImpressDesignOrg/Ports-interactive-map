@@ -8,8 +8,8 @@ const allLocationsLayer = {
     symbol: {
       type: "picture-marker",
       url: allLocations,
-      width: "50px",
-      height: "50px",
+      width: "80px",
+      height: "80px",
     },
   },
 };
