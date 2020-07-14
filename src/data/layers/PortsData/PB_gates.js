@@ -14,7 +14,6 @@ const PB_gatesLayer = {
   },
   popupTemplate: {
     title: "{GATE_NUM}",
-    content: "<div>hey</div>",
   },
 };
 
