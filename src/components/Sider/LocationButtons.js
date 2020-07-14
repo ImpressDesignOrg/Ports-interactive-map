@@ -1,27 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import { FaMapMarkerAlt, FaBuilding } from "react-icons/fa";
 import { GiAustralia } from "react-icons/gi";
 
 import { useSetState } from "../../store";
 
 const BUTTONS = [
-  { label: "Port Botany", id: "PB", icon: <FaMapMarkerAlt size='30px' /> },
-  { label: "Port Kembla", id: "PK", icon: <FaMapMarkerAlt size='30px' /> },
-  { label: "Cooks River Intermodal", id: "CR", icon: <FaMapMarkerAlt size='30px' /> },
-  { label: "Enfield Intermodal", id: "EN", icon: <FaMapMarkerAlt size='30px' /> },
+  { label: "Port Botany", id: "PB", iconUrl: "https://f399e9-5fsa23.netlify.app/images/marker--botany.svg" },
+  { label: "Port Kembla", id: "PK", iconUrl: "https://f399e9-5fsa23.netlify.app/images/marker--kembla.svg" },
+  {
+    label: "Cooks River Intermodal",
+    id: "CR",
+    iconUrl: "https://f399e9-5fsa23.netlify.app/images/marker--cooksriver.svg",
+  },
+  { label: "Enfield Intermodal", id: "EN", iconUrl: "https://f399e9-5fsa23.netlify.app/images/marker--enfield.svg" },
   {
     label: "NSW Ports Locations",
     id: "ALL",
-    iconUrl: "https://f399e9-5fsa23.netlify.app/images/marker--nsw-ports.svg",
+    iconUrl: "https://f399e9-5fsa23.netlify.app/images/marker--location--circle.svg",
   },
-  { label: "National", id: "AUS", icon: <GiAustralia size='30px' /> },
+  { label: "National", id: "AUS", icon: <GiAustralia size='60px' /> },
 ];
 
 export default function LocationButtons() {
   const setState = useSetState();
 
-  const handleClick = (location) => setState((prev) => ({ ...prev, siderLevel: 2, viewing: location }));
+  const handleClick = (location) => {
+    setState((prev) => ({ ...prev, siderLevel: 2, viewing: location }));
+  };
 
   return (
     <StyledContainer>
@@ -57,7 +62,7 @@ const StyledContainer = styled.div`
       display: flex;
       align-items: center;
       flex: 0 0 100%;
-      margin: 10px 0;
+      margin: 15px 0;
       padding: 0;
       height: 45px;
       font-size: 18px;
@@ -78,7 +83,7 @@ const StyledContainer = styled.div`
       }
 
       img {
-        width: 30px;
+        width: 60px;
         height: auto;
       }
 

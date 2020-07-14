@@ -3,8 +3,14 @@ import { loadModules } from "esri-loader";
 
 import { useTrackedState } from "../store";
 
-// ##### IMPORT ALL INDIVIDUAL LAYERS
-import allLocationsLayer from "../data/layers/PortsData/allLocations";
+// ##### IMPORT ALL INDIVIDUAL LAYER SETTINGS
+import {
+  allLocationsLayer,
+  botanyLayer,
+  kemblaLayer,
+  cooksLayer,
+  enfieldLayer,
+} from "../data/layers/PortsData/allLocations";
 import localGovLayer from "../data/layers/PublicData/localGov";
 import seaportsLayer from "../data/layers/PublicData/seaports";
 import keyRoadsLayer from "../data/layers/PublicData/keyRoads";
@@ -80,7 +86,12 @@ export default function Map() {
       // https://developers.arcgis.com/javascript/latest/guide/add-layers-to-a-map/
 
       // if they're viewing all locations, show the locations marker
-      if (state.viewing === "ALL") map.add(new GeoJSONLayer(allLocationsLayer));
+      if (state.viewing === "ALL") {
+        map.add(new GeoJSONLayer(botanyLayer));
+        map.add(new GeoJSONLayer(kemblaLayer));
+        map.add(new GeoJSONLayer(cooksLayer));
+        map.add(new GeoJSONLayer(enfieldLayer));
+      }
 
       // Ports Data
       if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
