@@ -56,7 +56,7 @@ export default function ActiveLayersForm() {
             Locations
           </button>
           <button type='reset' onClick={() => handleReset()}>
-            Clear
+            Clear all
           </button>
         </div>
         <div className='toggles-wrapper'>
