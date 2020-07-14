@@ -9,6 +9,8 @@ import ActiveLayers from "./ActiveLayers";
 
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
+  // to adjust icon color when hovered
+  const [btnHovered, setBtnHovered] = useState(false);
   const state = useTrackedState();
 
   const INFO_BODY = () => {
@@ -46,11 +48,16 @@ export default function Sidebar() {
 
   return (
     <div className='sidebar-wrapper'>
-      <StyledToggle visible={visible} onClick={() => setVisible(!visible)}>
+      <StyledToggle
+        visible={visible}
+        onClick={() => setVisible(!visible)}
+        onMouseEnter={() => setBtnHovered(true)}
+        onMouseLeave={() => setBtnHovered(false)}
+      >
         {visible ? (
-          <AiOutlineArrowRight size='20px' color='#68a0b9' />
+          <AiOutlineArrowRight size='20px' color={btnHovered ? "#002650" : "#68a0b9"} />
         ) : (
-          <AiOutlineArrowLeft size='20px' color='#68a0b9' />
+          <AiOutlineArrowLeft size='20px' color={btnHovered ? "#002650" : "#68a0b9"} />
         )}
       </StyledToggle>
       <StyledContent visible={visible}>
@@ -85,12 +92,12 @@ const StyledToggle = styled.button`
   width: 30px;
   border: none;
   cursor: pointer;
-  background: #efefef;
+  background: #002650;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 
   &:hover {
-    background: #1d384b;
+    background: #f5a91c;
   }
 `;
 
