@@ -1,16 +1,15 @@
 const PB_labelsLayer = {
-  url:
-    'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PB_LABELS.geojson',
-  objectIdField: 'ObjectID',
+  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/channelplans/json/PB_LABELS.geojson",
+  objectIdField: "ObjectID",
   popupTemplate: {
-    title: 'Port Botany Labels',
+    title: "Port Botany Labels",
     content: [
       {
-        type: 'fields',
+        type: "fields",
         fieldInfos: [
           {
-            fieldName: 'TextString',
-            label: 'Name',
+            fieldName: "TextString",
+            label: "Name",
             visible: true,
           },
         ],

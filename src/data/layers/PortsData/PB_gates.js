@@ -1,6 +1,26 @@
 import { gate } from "../../symbols";
 
-const PB_GATES_DATA = [
+const PB_gatesLayer = {
+  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_GATENO.geojson",
+  objectIdField: "ObjectID",
+  renderer: {
+    type: "simple",
+    symbol: {
+      type: "picture-marker",
+      url: gate,
+      width: "50px",
+      height: "50px",
+    },
+  },
+  popupTemplate: {
+    title: "{GATE_NUM}",
+    content: "<div>hey</div>",
+  },
+};
+
+export default PB_gatesLayer;
+
+/* const PB_GATES_DATA = [
   { num: "B1", icon: "https://img.icons8.com/cute-clipart/50/000000/1-circle-c.png" },
   { num: "B10", icon: gate },
   { num: "B100", icon: gate },
@@ -78,4 +98,4 @@ const PB_GATES_DATA = [
   { num: "B9", icon: gate },
 ];
 
-export default PB_GATES_DATA;
+export default PB_GATES_DATA; */
