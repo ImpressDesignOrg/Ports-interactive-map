@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { GiAustralia } from "react-icons/gi";
 
 import { useSetState } from "../../store";
 
@@ -18,7 +17,7 @@ const BUTTONS = [
     id: "ALL",
     iconUrl: "https://f399e9-5fsa23.netlify.app/images/marker--location--circle.svg",
   },
-  { label: "National", id: "AUS", icon: <GiAustralia size='60px' /> },
+  { label: "National", id: "AUS", iconUrl: "https://f399e9-5fsa23.netlify.app/images/marker--australia.svg" },
 ];
 
 export default function LocationButtons() {
