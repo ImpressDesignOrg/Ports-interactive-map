@@ -27,7 +27,7 @@ const ALL = {
     key: "keyRoads",
   },
   keyRail: {
-    label: "Key Rail",
+    label: "Key Rails",
     icon: <AiOutlineLine size={ICON_SIZE} color='#000000' />,
     key: "keyRail",
   },
