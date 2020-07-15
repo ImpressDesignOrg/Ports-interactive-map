@@ -6,18 +6,18 @@ import { useSetState } from "../../store";
 const URL = "https://f399e9-5fsa23.netlify.app/images/";
 
 const BUTTONS = [
-  { label: "Port Botany", id: "PB", iconUrl: `${URL}marker--botany.svg` },
-  { label: "Port Kembla", id: "PK", iconUrl: `${URL}marker--kembla.svg` },
+  { label: "Port Botany", id: "PB", iconUrl: `${URL}marker--botany2.svg` },
+  { label: "Port Kembla", id: "PK", iconUrl: `${URL}marker--kembla2.svg` },
   {
     label: "Cooks River Intermodal",
     id: "CR",
     iconUrl: `${URL}marker--cooksriver.svg`,
   },
-  { label: "Enfield Intermodal", id: "EN", iconUrl: `${URL}marker--enfield.svg` },
+  { label: "Enfield Intermodal", id: "EN", iconUrl: `${URL}marker--enfield2.svg` },
   {
     label: "NSW Ports Locations",
     id: "ALL",
-    iconUrl: `${URL}marker--location--circle.svg`,
+    iconUrl: `${URL}marker--nsw-ports.svg`,
   },
   { label: "National", id: "AUS", iconUrl: `${URL}marker--australia.svg` },
 ];
