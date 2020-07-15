@@ -35,7 +35,7 @@ export default function LocationButtons() {
       <div className='sider-content'>
         {BUTTONS.map((button) => (
           <button key={button.id} onClick={() => handleClick(button.id)}>
-            {button.icon ? button.icon : <img src={button.iconUrl} alt='marker-symbol' />}
+            <img src={button.iconUrl} alt='marker-symbol' />
             <span>{button.label}</span>
           </button>
         ))}

@@ -120,12 +120,6 @@ const PB_berthLayer = {
             label: "Operating Hours",
             visible: true,
           },
-
-          {
-            fieldName: "PotableWaterAvailable",
-            label: "Potable Water Available",
-            visible: true,
-          },
           {
             fieldName: "AdditionalInformation",
             label: "Additional Information",
