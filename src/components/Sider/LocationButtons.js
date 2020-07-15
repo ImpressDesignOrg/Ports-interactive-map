@@ -11,13 +11,13 @@ const BUTTONS = [
   {
     label: "Cooks River Intermodal",
     id: "CR",
-    iconUrl: `${URL}marker--cooksriver.svg`,
+    iconUrl: `${URL}marker--cooksriver2.svg`,
   },
   { label: "Enfield Intermodal", id: "EN", iconUrl: `${URL}marker--enfield2.svg` },
   {
     label: "NSW Ports Locations",
     id: "ALL",
-    iconUrl: `${URL}marker--nsw-ports.svg`,
+    iconUrl: `${URL}nsw-ports.svg`,
   },
   { label: "National", id: "AUS", iconUrl: `${URL}marker--australia.svg` },
 ];
