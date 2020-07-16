@@ -82,12 +82,23 @@ body {
 .esri-popup__main-container .esri-popup__content .esri-feature__main-container {
   background: #1d384b;
 }
-.esri-popup__main-container .esri-popup__content table th,
 .esri-popup__main-container .esri-popup__content table td {
   font-family: "Roboto";
   font-size: 16px;
   font-weight: 300;
-  color: #fff;
+  color: #000;
+  word-break: break-word;
+  width: 50%;
+  padding: 10px;
+}
+.esri-popup__main-container .esri-popup__content table tr td:first-child {
+  font-weight: 400;
+}
+.esri-popup__main-container .esri-popup__content table tr:nth-child(even) {
+  background: #a8dcf4;
+}
+.esri-popup__main-container .esri-popup__content table tr:nth-child(odd) {
+  background: #d0e9f4;
 }
 .esri-popup__button:hover {
   background: #1d384b !important;
