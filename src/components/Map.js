@@ -64,24 +64,26 @@ export default function Map() {
         map,
         center: viewports[state.viewing].center,
         zoom: viewports[state.viewing].zoom,
+        popup: {
+          collapseEnabled: false,
+        },
+        highlightOptions: {
+          color: [0, 38, 80, 1],
+          haloOpacity: 0.9,
+          fillOpacity: 0.2,
+        },
       });
 
-      view.popup.collapseEnabled = false;
-
-      const basemapToggle = new BasemapToggle({
-        view,
-        nextBasemap: "satellite",
-      });
-
-      view.ui.add(basemapToggle, {
-        position: "top-left",
-      });
-
-      // ### ADD THE RELEVANT DATA ###
-
-      // TODO add 0 with the map.add method to ensure that the layers
-      // are added in the appropriate order:
-      // https://developers.arcgis.com/javascript/latest/guide/add-layers-to-a-map/
+      // add the map the toggle
+      view.ui.add(
+        new BasemapToggle({
+          view,
+          nextBasemap: "satellite",
+        }),
+        {
+          position: "top-left",
+        }
+      );
 
       // if they're viewing all locations, show the locations marker
       if (state.viewing === "ALL") {
@@ -91,28 +93,30 @@ export default function Map() {
         map.add(new GeoJSONLayer(enfieldLayer));
       }
 
-      // Ports Data
-      if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer));
-      if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer));
-      if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer));
-      if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer));
-      if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer));
-      if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer));
-      if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer));
-      if (state.heritage) map.add(new GeoJSONLayer(heritageLayer));
-      if (state.railNetwork) map.add(new GeoJSONLayer(railNetworkLayer));
-      if (state.roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer));
-      if (state.pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer));
-      if (state.pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer));
+      // The layers are added in the appropriate order: polygons, lines, points
 
-      // Public Data
-      if (state.localGov) map.add(new FeatureLayer(localGovLayer));
-      if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer));
-      if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer));
-      if (state.roadTrainAssembly) map.add(new GeoJSONLayer(roadTrainAssemblyLayer));
-      if (state.keyRoads) map.add(new GeoJSONLayer(keyRoadsLayer));
-      if (state.secondaryRoads) map.add(new GeoJSONLayer(secondaryRoadsLayer));
-      if (state.keyRail) map.add(new GeoJSONLayer(keyRailsLayer));
+      // Polygons
+      if (state.localGov) map.add(new FeatureLayer(localGovLayer), 0);
+      if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer), 0);
+      if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer), 0);
+      if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer), 0);
+
+      // Lines
+      if (state.railNetwork) map.add(new GeoJSONLayer(railNetworkLayer), 0);
+      if (state.roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer), 0);
+      if (state.keyRoads) map.add(new GeoJSONLayer(keyRoadsLayer), 0);
+      if (state.secondaryRoads) map.add(new GeoJSONLayer(secondaryRoadsLayer), 0);
+
+      // Points
+      if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer), 0);
+      if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer), 0);
+      if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
+      if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
+      if (state.heritage) map.add(new GeoJSONLayer(heritageLayer), 0);
+      if (state.pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer), 0);
+      if (state.pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer), 0);
+      if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
+      if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer), 0);
 
       // destroy the map view
       return () => {
