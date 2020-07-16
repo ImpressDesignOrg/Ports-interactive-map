@@ -1,8 +1,10 @@
 import { building } from "../../symbols";
+import { clusterConfig } from "../../../utils/cluster-config";
 
 const buildingsLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BUILDINGS.geojson",
   objectIdField: "ObjectID",
+  featureReduction: clusterConfig,
   renderer: {
     type: "simple",
     symbol: {

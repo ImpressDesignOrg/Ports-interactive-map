@@ -3,23 +3,28 @@ import styled from "styled-components";
 
 import { useSetState } from "../../store";
 
-const URL = "https://f399e9-5fsa23.netlify.app/images/";
+import BotanyIcon from "../../images/marker--botany.svg";
+import KemblaIcon from "../../images/marker--kembla.svg";
+import CooksIcon from "../../images/marker--cooks.svg";
+import EnfieldIcon from "../../images/marker--enfield.svg";
+import NSWPortsIcon from "../../images/marker--nsw-ports.svg";
+import AustraliaIcon from "../../images/marker--australia.svg";
 
 const BUTTONS = [
-  { label: "Port Botany", id: "PB", iconUrl: `${URL}marker--botany2.svg` },
-  { label: "Port Kembla", id: "PK", iconUrl: `${URL}marker--kembla2.svg` },
+  { label: "Port Botany", id: "PB", icon: BotanyIcon },
+  { label: "Port Kembla", id: "PK", icon: KemblaIcon },
   {
     label: "Cooks River Intermodal",
     id: "CR",
-    iconUrl: `${URL}marker--cooksriver2.svg`,
+    icon: CooksIcon,
   },
-  { label: "Enfield Intermodal", id: "EN", iconUrl: `${URL}marker--enfield2.svg` },
+  { label: "Enfield Intermodal", id: "EN", icon: EnfieldIcon },
   {
     label: "NSW Ports Locations",
     id: "ALL",
-    iconUrl: `${URL}nsw-ports.svg`,
+    icon: NSWPortsIcon,
   },
-  { label: "National", id: "AUS", iconUrl: `${URL}marker--australia.svg` },
+  { label: "National", id: "AUS", icon: AustraliaIcon },
 ];
 
 export default function LocationButtons() {
@@ -34,7 +39,7 @@ export default function LocationButtons() {
       <div className='sider-content'>
         {BUTTONS.map((button) => (
           <button key={button.id} onClick={() => handleClick(button.id)}>
-            <img src={button.iconUrl} alt='marker-symbol' />
+            <img src={button.icon} alt='marker-symbol' />
             <p>{button.label}</p>
           </button>
         ))}

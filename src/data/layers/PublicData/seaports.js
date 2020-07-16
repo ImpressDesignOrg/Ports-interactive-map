@@ -1,8 +1,10 @@
 import { seaport } from "../../symbols";
+import { clusterConfig } from "../../../utils/cluster-config";
 
 const seaportsLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/majorSeaports.geojson",
   objectIdField: "ObjectID",
+  featureReduction: clusterConfig,
   renderer: {
     type: "simple",
     symbol: {

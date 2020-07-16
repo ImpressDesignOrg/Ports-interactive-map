@@ -1,8 +1,10 @@
 import { heritage } from "../../symbols";
+import { clusterConfig } from "../../../utils/cluster-config";
 
 const heritageLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/HERITAGE.geojson",
   objectIdField: "ObjectID",
+  featureReduction: clusterConfig,
   renderer: {
     type: "simple",
     symbol: {
