@@ -64,12 +64,20 @@ const StyledContainer = styled.div`
       display: flex;
       align-items: center;
       flex: 0 0 100%;
-      margin: 15px 0;
+      margin: 10px 0;
       padding: 0;
       box-shadow: none;
       border: none;
       background: none;
       cursor: pointer;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       &:hover {
         color: #68a0b9;

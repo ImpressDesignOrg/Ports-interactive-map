@@ -61,12 +61,14 @@ export default function Sidebar() {
         )}
       </StyledToggle>
       <StyledContent visible={visible}>
-        {/* X icon is displayed on mobile only */}
-        <StyledClose visible={visible}>
-          <button onClick={() => setVisible(false)}>
-            <AiOutlineClose size='30px' color='#002650' />
-          </button>
-        </StyledClose>
+        <div className='header-wrp'>
+          {/* X icon is displayed on mobile only */}
+          {/*           <div className='mobile-close-wrp'>
+            <button onClick={() => setVisible(false)}>
+              <AiOutlineClose size='30px' color='#002650' />
+            </button>
+          </div> */}
+        </div>
         <div className='buttons-wrapper'>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</div>
         <div className='info-wrapper'>
           <div className='info-content'>
@@ -93,7 +95,7 @@ const StyledToggle = styled.button`
   justify-content: center;
   align-items: center;
   right: ${(props) => (props.visible ? "380px" : "0")};
-  top: 7%;
+  top: 17%;
   height: 60px;
   width: 30px;
   border: none;
@@ -111,23 +113,6 @@ const StyledToggle = styled.button`
   }
 `;
 
-const StyledClose = styled.div`
-  z-index: 4;
-  cursor: pointer;
-  display: ${(props) => (props.visible ? "flex" : "none")};
-  width: 100%;
-
-  @media (min-width: 500px) {
-    display: none;
-  }
-
-  button {
-    background: none;
-    border: none;
-    margin: 10px 10px 0 auto;
-  }
-`;
-
 const StyledContent = styled.div`
   background: #fff;
   display: flex;
@@ -136,7 +121,7 @@ const StyledContent = styled.div`
   width: 350px;
   z-index: 2;
   right: 30px;
-  top: 10px;
+  top: 4px;
   border-radius: 10px;
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
   opacity: ${(props) => (props.visible ? "1" : "0")};
@@ -150,8 +135,31 @@ const StyledContent = styled.div`
     right: 0;
   }
 
+  .header-wrp {
+    background: #002650;
+    height: 125px;
+
+    .mobile-close.wrp {
+      z-index: 4;
+      cursor: pointer;
+      display: ${(props) => (props.visible ? "flex" : "none")};
+      width: 100%;
+
+      @media (min-width: 500px) {
+        display: none;
+      }
+
+      button {
+        background: none;
+        border: none;
+        margin: 10px 10px 0 auto;
+      }
+    }
+  }
+
   .buttons-wrapper {
-    padding: 0 20px 30px 20px;
+    padding: 0 20px;
+    height: 500px;
 
     @media (max-width: 500px) {
       flex: 1;
@@ -165,6 +173,7 @@ const StyledContent = styled.div`
     flex: 1;
 
     .info-content {
+      height: 125px;
       padding: 20px 30px;
 
       .heading {
@@ -173,11 +182,11 @@ const StyledContent = styled.div`
         color: #fff;
         font-weight: 600;
         border-bottom: 1px solid #fff;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
       }
 
       p {
-        font-size: 18px;
+        font-size: 16px;
         color: #fff;
         font-family: "Roboto";
         font-weight: 300;

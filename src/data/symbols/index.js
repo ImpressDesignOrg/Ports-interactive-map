@@ -1,4 +1,8 @@
 export const allLocations = `./images/marker--nsw-ports.svg`;
+export const botany = "./images/marker--botany.svg";
+export const kembla = "./images/marker--kembla.svg";
+export const cooksriver = "./images/marker--cooksriver.svg";
+export const enfield = "./images/marker--enfield.svg";
 export const airport = `./images/marker--airport.svg`;
 export const seaport = `./images/marker--seaport.svg`;
 export const intermodalTerminal = `./images/marker--imt.svg`;
@@ -8,7 +12,3 @@ export const gate = `./images/marker--gate.svg`;
 export const building = `./images/marker--building.svg`;
 export const heritage = `./images/marker--heritage.svg`;
 export const australia = `./images/marker--australia.svg`;
-export const botany = "./images/marker--botany2.svg";
-export const kembla = "./images/marker--kembla2.svg";
-export const cooksriver = "./images/marker--cooksriver2.svg";
-export const enfield = "./images/marker--enfield2.svg";

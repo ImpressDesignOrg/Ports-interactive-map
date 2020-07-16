@@ -78,19 +78,12 @@ const ALL = {
   },
 };
 
-export const AUS_SWITCHES = [
-  ALL.seaports,
-  ALL.intermodalTerminals,
-  /*   ALL.roadTrainAssemby, */
-  ALL.keyRoads,
-  /*   ALL.keyRail, */
-  ALL.secondaryRoads,
-];
+export const AUS_SWITCHES = [ALL.seaports, ALL.intermodalTerminals, ALL.keyRoads, ALL.secondaryRoads];
 
 export const ALL_SWITCHES = [
-  ALL.localGov,
   ALL.intermodalTerminals,
   ALL.seaports,
+  ALL.localGov,
   ALL.keyRoads,
   ALL.keyRail,
   ALL.secondaryRoads,
@@ -107,11 +100,11 @@ export const PB_SWITCHES = [
     iconUrl: gate,
     key: "pbGates",
   },
+  ALL.buildings,
+  ALL.heritage,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
   ALL.roadNetwork,
-  ALL.buildings,
-  ALL.heritage,
   ALL.localGov,
 ];
 
@@ -121,22 +114,22 @@ export const PK_SWITCHES = [
     iconUrl: berth,
     key: "pkBerths",
   },
+  ALL.buildings,
+  ALL.heritage,
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
   ALL.roadNetwork,
   ALL.railNetwork,
-  ALL.buildings,
-  ALL.heritage,
   ALL.localGov,
 ];
 
-export const CR_SWITCHES = [ALL.tenancyLeaseArea, ALL.tenancyUnits, ALL.buildings, ALL.heritage, ALL.localGov];
+export const CR_SWITCHES = [ALL.buildings, ALL.heritage, ALL.tenancyLeaseArea, ALL.tenancyUnits, ALL.localGov];
 
 export const EN_SWITCHES = [
-  ALL.tenancyLeaseArea,
-  ALL.tenancyUnits,
   ALL.heritage,
   ALL.buildings,
+  ALL.tenancyLeaseArea,
+  ALL.tenancyUnits,
   ALL.roadNetwork,
   ALL.railNetwork,
   ALL.localGov,

@@ -14,12 +14,8 @@ import {
 import localGovLayer from "../data/layers/PublicData/localGov";
 import seaportsLayer from "../data/layers/PublicData/seaports";
 import keyRoadsLayer from "../data/layers/PublicData/keyRoads";
-import PB_labelsLayer from "../data/layers/PortsData/PB_labels";
-import PK_labelsLayer from "../data/layers/PortsData/PK_labels";
 import intermodalTerminalsLayer from "../data/layers/PublicData/intermodalTerminals";
-import roadTrainAssemblyLayer from "../data/layers/PublicData/roadTrainAssembly";
 import secondaryRoadsLayer from "../data/layers/PublicData/secondaryRoads";
-import keyRailsLayer from "../data/layers/PublicData/keyRails";
 import PB_berthLayer from "../data/layers/PortsData/PB_berths";
 import PB_gatesLayer from "../data/layers/PortsData/PB_gates";
 import PK_berthsLayer from "../data/layers/PortsData/PK_berths";
@@ -49,23 +45,12 @@ export default function Map() {
         "esri/layers/FeatureLayer",
         "esri/layers/GeoJSONLayer",
         "esri/widgets/BasemapToggle",
-        "esri/core/watchUtils",
         "esri/PopupTemplate",
         "esri/popup/content/CustomContent",
       ],
       { css: true }
     ).then(
-      ([
-        esriConfig,
-        ArcGISMap,
-        MapView,
-        FeatureLayer,
-        GeoJSONLayer,
-        BasemapToggle,
-        watchUtils,
-        PopupTemplate,
-        CustomContent,
-      ]) => {
+      ([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle, PopupTemplate, CustomContent]) => {
         const map = new ArcGISMap({
           basemap: "gray",
         });
@@ -127,8 +112,6 @@ export default function Map() {
         if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
         if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
         if (state.heritage) map.add(new GeoJSONLayer(heritageLayer), 0);
-        if (state.pbLabels) map.add(new GeoJSONLayer(PB_labelsLayer), 0);
-        if (state.pkLabels) map.add(new GeoJSONLayer(PK_labelsLayer), 0);
         if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
         if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer), 0);
 
