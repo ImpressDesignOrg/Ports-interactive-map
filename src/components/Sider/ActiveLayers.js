@@ -6,6 +6,13 @@ import { deactiveLayers, useSetState, useTrackedState } from "../../store";
 
 import { AUS_SWITCHES, ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from "../../data/toggles";
 
+import BotanyIcon from "../../images/marker--botany.svg";
+import KemblaIcon from "../../images/marker--kembla.svg";
+import CooksIcon from "../../images/marker--cooks.svg";
+import EnfieldIcon from "../../images/marker--enfield.svg";
+import NSWPortsIcon from "../../images/marker--nsw-ports.svg";
+import AustraliaIcon from "../../images/marker--australia.svg";
+
 import Switch from "./Switch";
 
 export default function ActiveLayersForm() {
@@ -24,17 +31,17 @@ export default function ActiveLayersForm() {
   const headingMarkup = () => {
     switch (state.viewing) {
       case "AUS":
-        return "National";
+        return AustraliaIcon;
       case "ALL":
-        return "NSW Ports Properties";
+        return NSWPortsIcon;
       case "PB":
-        return "Port Botany";
+        return BotanyIcon;
       case "PK":
-        return "Port Kembla";
+        return KemblaIcon;
       case "CR":
-        return "Cooks River Intermodal";
+        return CooksIcon;
       case "EN":
-        return "Enfield Intermodal";
+        return EnfieldIcon;
       default:
         break;
     }
@@ -43,10 +50,10 @@ export default function ActiveLayersForm() {
   return (
     <StyledContainer>
       <div className='heading-wrapper'>
-        <h2>{headingMarkup()}</h2>
+        <img src={headingMarkup()} alt={state.viewing} />
       </div>
       <form>
-        <div className='buttons-wrapper'>
+        <div className='layers-btns-wrp'>
           <button
             onClick={() => {
               setState((prev) => ({ ...prev, siderLevel: 1 }));
@@ -77,13 +84,12 @@ const StyledContainer = styled.div`
   font-family: "Roboto";
 
   .heading-wrapper {
-    h2 {
-      font-size: 22px;
-      color: #000;
-      font-weight: 700;
-      margin: 0 0 10px 0;
-      padding: 0;
-    }
+		display:flex;
+		justify-content: center;
+
+		img {
+			max-width: 120px;
+		}
   }
 
   form {
@@ -115,7 +121,7 @@ const StyledContainer = styled.div`
       }
     }
 
-    .buttons-wrapper {
+    .layers-btns-wrp {
 			margin: 0 0 15px 0;
 			display: flex;
       justify-content: flex-end;

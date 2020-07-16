@@ -80,6 +80,14 @@ const StyledSwitch = styled.div`
       font-weight: 500;
       font-family: "Roboto Condensed";
       border-bottom: 1px solid #fff;
+
+      &:hover {
+        color: #68a0b9;
+      }
+
+      @media (max-width: 500px) {
+        font-size: 20px;
+      }
     }
   }
 `;

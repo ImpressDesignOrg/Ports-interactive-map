@@ -31,12 +31,11 @@ export default function LocationButtons() {
 
   return (
     <StyledContainer>
-      <h2>NSW Ports Locations</h2>
       <div className='sider-content'>
         {BUTTONS.map((button) => (
           <button key={button.id} onClick={() => handleClick(button.id)}>
             <img src={button.iconUrl} alt='marker-symbol' />
-            <span>{button.label}</span>
+            <p>{button.label}</p>
           </button>
         ))}
       </div>
@@ -48,16 +47,13 @@ const StyledContainer = styled.div`
   margin: 20px 0;
   font-family: "Roboto";
 
-  h2 {
-    font-size: 22px;
-    color: #000;
-    font-weight: 700;
-    margin: 0 0 10px 0;
-  }
-
   .sider-content {
     display: flex;
     flex-wrap: wrap;
+
+    @media (max-width: 500px) {
+      justify-content: center;
+    }
 
     button {
       display: flex;
@@ -65,14 +61,10 @@ const StyledContainer = styled.div`
       flex: 0 0 100%;
       margin: 15px 0;
       padding: 0;
-      height: 45px;
-      font-size: 18px;
-      color: #000;
       box-shadow: none;
       border: none;
       background: none;
       cursor: pointer;
-      font-weight: 500;
 
       &:hover {
         color: #68a0b9;
@@ -83,18 +75,42 @@ const StyledContainer = styled.div`
         outline: none;
       }
 
+      @media (max-width: 500px) {
+        flex: 0 0 37%;
+        margin: 10px 0;
+        justify-content: center;
+      }
+
       img {
         width: 60px;
         height: auto;
+        max-height: 100%;
+
+        @media (max-width: 500px) {
+          width: 140px;
+        }
       }
 
-      span {
-        margin-left: 22px;
+      p {
+        margin: 0 0 0 22px;
         color: #000;
         font-family: "Roboto Condensed";
+        font-weight: 500;
+        height: 45px;
+        font-size: 18px;
+        color: #000;
+        display: flex;
+        align-items: center;
 
         &:hover {
           color: #68a0b9;
+        }
+
+        @media (max-width: 500px) {
+          display: none;
+
+          margin-left: 35px;
+          font-size: 24px;
         }
       }
     }

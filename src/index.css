@@ -133,3 +133,9 @@ body {
 .esri-popup__footer .esri-popup__button .esri-zoom-in-magnifying-glass {
   margin-right: 10px;
 }
+
+@media (max-width: 500px) {
+  .esri-popup__main-container {
+    width: 95% !important;
+  }
+}

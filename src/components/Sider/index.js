@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose } from "react-icons/ai";
 
 import { useTrackedState } from "../../store";
 
@@ -61,13 +61,19 @@ export default function Sidebar() {
         )}
       </StyledToggle>
       <StyledContent visible={visible}>
-        {state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}
+        {/* X icon is displayed on mobile only */}
+        <StyledClose visible={visible}>
+          <button onClick={() => setVisible(false)}>
+            <AiOutlineClose size='30px' color='#002650' />
+          </button>
+        </StyledClose>
+        <div className='buttons-wrapper'>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</div>
         <div className='info-wrapper'>
           <div className='info-content'>
             <div className='heading'>Want to find out more?</div>
             <div className='body'>
               <p>
-                {INFO_BODY()}{" "}
+                {INFO_BODY()}
                 <a href={INFO_URL()} target='_blank' rel='noopener noreferrer'>
                   Find out more information here
                 </a>
@@ -99,35 +105,67 @@ const StyledToggle = styled.button`
   &:hover {
     background: #f5a91c;
   }
+
+  @media (max-width: 500px) {
+    display: ${(props) => (props.visible ? "none" : "flex")};
+  }
+`;
+
+const StyledClose = styled.div`
+  z-index: 4;
+  cursor: pointer;
+  display: ${(props) => (props.visible ? "flex" : "none")};
+  width: 100%;
+
+  @media (min-width: 500px) {
+    display: none;
+  }
+
+  button {
+    background: none;
+    border: none;
+    margin: 10px 10px 0 auto;
+  }
 `;
 
 const StyledContent = styled.div`
-  padding: 20px 40px;
   background: #fff;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  width: 268px;
-  height: 700px;
+  width: 350px;
   z-index: 2;
   right: 30px;
-  top: 40px;
+  top: 10px;
   border-radius: 10px;
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
   opacity: ${(props) => (props.visible ? "1" : "0")};
   transition: visibility 0.5s, opacity 0.1s linear;
 
-  .info-wrapper {
-    position: absolute;
-    height: 207px;
-    width: 350px;
+  @media (max-width: 500px) {
+    width: 100vw;
+    height: 800px;
     left: 0;
-    bottom: 0;
+    top: 0;
+    right: 0;
+  }
+
+  .buttons-wrapper {
+    padding: 0 20px 30px 20px;
+
+    @media (max-width: 500px) {
+      flex: 1;
+    }
+  }
+
+  .info-wrapper {
+    height: 207px;
+    width: 100%;
     background: #68a0b9;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    flex: 1;
 
     .info-content {
-      padding: 40px 30px;
+      padding: 20px 30px;
 
       .heading {
         font-size: 22px;

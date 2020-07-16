@@ -81,7 +81,7 @@ const ALL = {
 export const AUS_SWITCHES = [
   ALL.seaports,
   ALL.intermodalTerminals,
-  ALL.roadTrainAssemby,
+  /*   ALL.roadTrainAssemby, */
   ALL.keyRoads,
   /*   ALL.keyRail, */
   ALL.secondaryRoads,
