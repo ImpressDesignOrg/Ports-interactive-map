@@ -21,6 +21,9 @@ export default function ActiveLayersForm() {
     }));
   };
 
+  /**
+   * Function to reorder the toggles so that the 'active' toggles are first in the order
+   */
   const handleToggles = () => {
     let togglesArr;
     const newTogglesArr = [];
@@ -36,7 +39,7 @@ export default function ActiveLayersForm() {
         togglesArr = PB_SWITCHES;
         break;
       case "PK":
-        togglesArr = PB_SWITCHES;
+        togglesArr = PK_SWITCHES;
         break;
       case "CR":
         togglesArr = CR_SWITCHES;

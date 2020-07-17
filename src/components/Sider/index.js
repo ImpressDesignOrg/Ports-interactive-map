@@ -7,44 +7,50 @@ import { useTrackedState } from "../../store";
 import LocationButtons from "./LocationButtons";
 import ActiveLayers from "./ActiveLayers";
 
+import BannerNSWPorts from "../../images/banner--nsw-ports.svg";
+
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
   // to adjust icon color when hovered
   const [btnHovered, setBtnHovered] = useState(false);
   const state = useTrackedState();
 
-  const INFO_BODY = () => {
-    switch (state.viewing) {
-      case "default":
-      case "AUS":
-      case "ALL":
-        return "Interested in learning more about NSW Ports and our operations?";
-      case "PB":
-        return "Interested in learning more about Port Botany?";
-      case "PK":
-        return "Interested in learning more about Port Kembla?";
-      case "EN":
-        return "Interested in learning more about Enfield Intermodal Terminal?";
-      case "CR":
-        return "Interested in learning more about Cooks River Intermodal Terminal?";
-      default:
-        break;
-    }
-  };
+  let header;
+  let body;
+  let url;
 
-  const INFO_URL = () => {
+  (() => {
     switch (state.viewing) {
       case "AUS":
       case "ALL":
-      case "PK":
-      case "EN":
-      case "CR":
+        header = "NSW Ports";
+        body = "Interested in learning more about NSW Ports and our operations?";
+        url = "/";
+        break;
       case "PB":
-        return "/";
+        header = "Port Botany";
+        body = "Interested in learning more about Port Botany?";
+        url = "/";
+        break;
+      case "PK":
+        header = "Port Kembla";
+        body = "Interested in learning more about Port Kembla?";
+        url = "/";
+        break;
+      case "EN":
+        header = "Enfield";
+        body = "Interested in learning more about Cooks River?";
+        url = "/";
+        break;
+      case "CR":
+        header = "Cooks River";
+        body = "Interested in learning more about Enfield?";
+        url = "/";
+        break;
       default:
         break;
     }
-  };
+  })();
 
   return (
     <div className='sidebar-wrapper'>
@@ -63,11 +69,12 @@ export default function Sidebar() {
       <StyledContent visible={visible}>
         <div className='header-wrp'>
           {/* X icon is displayed on mobile only */}
-          {/*           <div className='mobile-close-wrp'>
+          <div className='mobile-close-wrp'>
             <button onClick={() => setVisible(false)}>
-              <AiOutlineClose size='30px' color='#002650' />
+              <AiOutlineClose size='30px' color='#fff' />
             </button>
-          </div> */}
+          </div>
+          <div className='svg-wrp'>INSERT {header} BANNER SVG</div>
         </div>
         <div className='buttons-wrapper'>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</div>
         <div className='info-wrapper'>
@@ -75,8 +82,8 @@ export default function Sidebar() {
             <div className='heading'>Want to find out more?</div>
             <div className='body'>
               <p>
-                {INFO_BODY()}
-                <a href={INFO_URL()} target='_blank' rel='noopener noreferrer'>
+                {body}{" "}
+                <a href={url} target='_blank' rel='noopener noreferrer'>
                   Find out more information here
                 </a>
               </p>
@@ -138,12 +145,15 @@ const StyledContent = styled.div`
   .header-wrp {
     background: #002650;
     height: 125px;
+    position: relative;
 
-    .mobile-close.wrp {
+    .mobile-close-wrp {
       z-index: 4;
       cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
       display: ${(props) => (props.visible ? "flex" : "none")};
-      width: 100%;
 
       @media (min-width: 500px) {
         display: none;
@@ -154,6 +164,11 @@ const StyledContent = styled.div`
         border: none;
         margin: 10px 10px 0 auto;
       }
+    }
+
+    .svg-wrp {
+      font-size: 25px;
+      color: #efefef;
     }
   }
 
@@ -175,6 +190,10 @@ const StyledContent = styled.div`
     .info-content {
       height: 125px;
       padding: 20px 30px;
+
+      @media (max-width: 500px) {
+        padding: 25px 30px;
+      }
 
       .heading {
         font-size: 22px;

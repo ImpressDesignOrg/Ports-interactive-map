@@ -36,11 +36,10 @@ export default function LocationButtons() {
 
   return (
     <StyledContainer>
-      <div className='sider-content'>
+      <div className='locations-buttons-content'>
         {BUTTONS.map((button) => (
           <button key={button.id} onClick={() => handleClick(button.id)}>
             <img src={button.icon} alt='marker-symbol' />
-            <p>{button.label}</p>
           </button>
         ))}
       </div>
@@ -52,9 +51,10 @@ const StyledContainer = styled.div`
   margin: 20px 0;
   font-family: "Roboto";
 
-  .sider-content {
+  .locations-buttons-content {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     @media (max-width: 500px) {
       justify-content: center;
@@ -63,21 +63,13 @@ const StyledContainer = styled.div`
     button {
       display: flex;
       align-items: center;
-      flex: 0 0 100%;
-      margin: 10px 0;
+      flex: 0 0 32%;
+      margin: 15px;
       padding: 0;
       box-shadow: none;
       border: none;
       background: none;
       cursor: pointer;
-
-      &:first-child {
-        margin-top: 0;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
 
       &:hover {
         color: #68a0b9;
@@ -95,35 +87,16 @@ const StyledContainer = styled.div`
       }
 
       img {
-        width: 60px;
+        width: 125px;
         height: auto;
         max-height: 100%;
 
         @media (max-width: 500px) {
           width: 140px;
         }
-      }
 
-      p {
-        margin: 0 0 0 22px;
-        color: #000;
-        font-family: "Roboto Condensed";
-        font-weight: 500;
-        height: 45px;
-        font-size: 18px;
-        color: #000;
-        display: flex;
-        align-items: center;
-
-        &:hover {
-          color: #68a0b9;
-        }
-
-        @media (max-width: 500px) {
-          display: none;
-
-          margin-left: 35px;
-          font-size: 24px;
+        @media (max-width: 430px) {
+          max-width: 90%;
         }
       }
     }
