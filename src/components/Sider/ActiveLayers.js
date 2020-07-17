@@ -35,21 +35,23 @@ export default function ActiveLayersForm() {
       case "PB":
         togglesArr = PB_SWITCHES;
         break;
+      case "PK":
+        togglesArr = PB_SWITCHES;
+        break;
+      case "CR":
+        togglesArr = CR_SWITCHES;
+        break;
+      case "EN":
+        togglesArr = EN_SWITCHES;
+        break;
       default:
         break;
     }
 
-    console.log("toggleObj :>> ", togglesArr);
-
-    // reorder the toggles so that the active toggles are first
-    togglesArr.map((v) => {
-      console.log("v :>> ", v);
-
-      if (state[v.key] === true) {
-        newTogglesArr.unshift(v);
-      } else {
-        newTogglesArr.push(v);
-      }
+    // reorder the toggles so that the active toggles are ordered
+    // first in the array
+    togglesArr.forEach((v) => {
+      state[v.key] ? newTogglesArr.unshift(v) : newTogglesArr.push(v);
     });
 
     return newTogglesArr;
@@ -74,12 +76,9 @@ export default function ActiveLayersForm() {
           </button>
         </div>
         <div className='toggles-wrapper'>
-          {state.viewing === "AUS" && AUS_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
-          {state.viewing === "ALL" && ALL_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
-          {state.viewing === "PB" && togglesArr.map((v) => <Switch key={v.label} item={v} />)}
-          {state.viewing === "PK" && PK_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
-          {state.viewing === "CR" && CR_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
-          {state.viewing === "EN" && EN_SWITCHES.map((v) => <Switch key={v.label} item={v} />)}
+          {togglesArr.map((v) => (
+            <Switch key={v.label} item={v} />
+          ))}
         </div>
       </form>
     </StyledContainer>

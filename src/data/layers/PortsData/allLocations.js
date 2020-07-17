@@ -50,10 +50,8 @@ export const cooksLayer = {
   renderer: {
     type: "simple",
     symbol: {
-      type: "picture-marker",
+      ...symbolSettings,
       url: cooksriver,
-      width: "80px",
-      height: "80px",
     },
   },
 };
