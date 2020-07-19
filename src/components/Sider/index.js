@@ -13,9 +13,7 @@ export default function Sidebar() {
   const [btnHovered, setBtnHovered] = useState(false);
   const state = useTrackedState();
 
-  let header;
-  let body;
-  let url;
+  let header, body, url;
 
   (() => {
     switch (state.viewing) {
@@ -54,7 +52,10 @@ export default function Sidebar() {
     <div className='sidebar-wrapper'>
       <StyledToggle
         visible={visible}
-        onClick={() => setVisible(!visible)}
+        onClick={() => {
+          setBtnHovered(!btnHovered);
+          setVisible(!visible);
+        }}
         onMouseEnter={() => setBtnHovered(true)}
         onMouseLeave={() => setBtnHovered(false)}
       >
@@ -180,13 +181,11 @@ const StyledContent = styled.div`
   }
 
   .info-wrapper {
-    height: 207px;
+    height: 165px;
     width: 100%;
     background: #68a0b9;
-    flex: 1;
 
     .info-content {
-      height: 125px;
       padding: 20px 30px;
 
       @media (max-width: 500px) {

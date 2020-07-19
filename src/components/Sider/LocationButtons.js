@@ -70,6 +70,7 @@ const StyledContainer = styled.div`
       border: none;
       background: none;
       cursor: pointer;
+      height: 125px;
 
       &:hover {
         color: #68a0b9;
