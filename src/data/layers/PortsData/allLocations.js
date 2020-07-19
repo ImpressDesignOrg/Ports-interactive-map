@@ -1,4 +1,9 @@
-import { allLocations, botany, kembla, cooksriver, enfield } from "../../symbols";
+import { allLocations } from "../../symbols";
+
+import BotanyIcon from "../../../images/marker--botany.svg";
+import KemblaIcon from "../../../images/marker--kembla.svg";
+import CooksIcon from "../../../images/marker--cooks.svg";
+import EnfieldIcon from "../../../images/marker--enfield.svg";
 
 const symbolSettings = {
   type: "picture-marker",
@@ -12,10 +17,8 @@ export const allLocationsLayer = {
   renderer: {
     type: "simple",
     symbol: {
-      type: "picture-marker",
+      ...symbolSettings,
       url: allLocations,
-      width: "80px",
-      height: "80px",
     },
   },
 };
@@ -27,7 +30,7 @@ export const botanyLayer = {
     type: "simple",
     symbol: {
       ...symbolSettings,
-      url: botany,
+      url: BotanyIcon,
     },
   },
 };
@@ -39,7 +42,7 @@ export const kemblaLayer = {
     type: "simple",
     symbol: {
       ...symbolSettings,
-      url: kembla,
+      url: KemblaIcon,
     },
   },
 };
@@ -51,7 +54,7 @@ export const cooksLayer = {
     type: "simple",
     symbol: {
       ...symbolSettings,
-      url: cooksriver,
+      url: CooksIcon,
     },
   },
 };
@@ -63,7 +66,7 @@ export const enfieldLayer = {
     type: "simple",
     symbol: {
       ...symbolSettings,
-      url: enfield,
+      url: EnfieldIcon,
     },
   },
 };

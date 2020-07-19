@@ -7,8 +7,6 @@ import { useTrackedState } from "../../store";
 import LocationButtons from "./LocationButtons";
 import ActiveLayers from "./ActiveLayers";
 
-import BannerNSWPorts from "../../images/banner--nsw-ports.svg";
-
 export default function Sidebar() {
   const [visible, setVisible] = useState(true);
   // to adjust icon color when hovered
