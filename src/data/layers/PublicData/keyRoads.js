@@ -1,8 +1,9 @@
-import { layerSettings } from "../../../utils/layer-settings";
-
 const keyRoadsLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/keyRoad.geojson",
-  ...layerSettings,
+  objectIdField: "ObjectID",
+  popupTemplate: {
+    title: "{Name}",
+  },
   renderer: {
     type: "simple",
     symbol: {

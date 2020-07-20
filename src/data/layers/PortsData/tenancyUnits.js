@@ -1,8 +1,14 @@
-import { layerSettings } from "../../../utils/layer-settings";
+import { handlePopupContent } from "../../../utils/popup/content-fields";
 
 const tenancyUnitsLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/tenancydata/json/TENANCY_UNITS.geojson",
-  ...layerSettings,
+  outFields: ["*"],
+  objectIdField: "ObjectID",
+  popupTemplate: {
+    title: "Tenancy Lease Area",
+    outfields: ["*"],
+    content: handlePopupContent,
+  },
   renderer: {
     type: "simple",
     symbol: {

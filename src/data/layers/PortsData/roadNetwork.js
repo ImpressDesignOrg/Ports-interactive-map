@@ -1,8 +1,14 @@
-import { layerSettings } from "../../../utils/layer-settings";
+import { handlePopupContent } from "../../../utils/popup/content-fields";
 
 const roadNetworkLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/ROADNETWORK.geojson",
-  ...layerSettings,
+  outFields: ["*"],
+  objectIdField: "ObjectID",
+  popupTemplate: {
+    title: "{Name}",
+    outfields: ["*"],
+    content: handlePopupContent,
+  },
   renderer: {
     type: "simple",
     symbol: {

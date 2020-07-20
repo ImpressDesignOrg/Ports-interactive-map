@@ -13,7 +13,6 @@ import secondaryRoadsLayer from "../data/layers/PublicData/secondaryRoads";
 import PB_berthLayer from "../data/layers/PortsData/PB_berths";
 import PB_gatesLayer from "../data/layers/PortsData/PB_gates";
 import PK_berthsLayer from "../data/layers/PortsData/PK_berths";
-import leaseBoundariesLayer from "../data/layers/PortsData/leaseBoundaries";
 import tenancyLeaseAreasLayer from "../data/layers/PortsData/tenancyLeaseAreas";
 import tenancyUnitsLayer from "../data/layers/PortsData/tenancyUnits";
 import buildingsLayer from "../data/layers/PortsData/buildings";
@@ -100,7 +99,6 @@ export default function Map() {
 
       // Polygons
       if (state.localGov) map.add(new FeatureLayer(localGovLayer), 0);
-      if (state.leaseBoundaries) map.add(new GeoJSONLayer(leaseBoundariesLayer), 0);
       if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer), 0);
       if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer), 0);
 

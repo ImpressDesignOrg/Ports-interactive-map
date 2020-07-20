@@ -1,8 +1,9 @@
-import { layerSettings } from "../../../utils/layer-settings";
-
 const secondaryRoadsLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/secondaryRoad.geojson",
-  ...layerSettings,
+  objectIdField: "ObjectID",
+  popupTemplate: {
+    title: "{Name}",
+  },
   renderer: {
     type: "simple",
     symbol: {

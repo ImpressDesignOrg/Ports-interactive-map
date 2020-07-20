@@ -1,10 +1,16 @@
 import { building } from "../../symbols";
-import { clusterConfig } from "../../../utils/cluster-config";
-import { layerSettings } from "../../../utils/layer-settings";
+import { clusterConfig } from "../../../utils/popup/cluster";
+import { handlePopupContent } from "../../../utils/popup/content-fields";
 
 const buildingsLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BUILDINGS.geojson",
-  ...layerSettings,
+  outFields: ["*"],
+  objectIdField: "ObjectID",
+  popupTemplate: {
+    title: "Building",
+    outfields: ["*"],
+    content: handlePopupContent,
+  },
   featureReduction: clusterConfig,
   renderer: {
     type: "simple",

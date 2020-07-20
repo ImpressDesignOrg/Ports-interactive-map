@@ -9,8 +9,6 @@ export const handlePopupContent = (feature) => {
 
   let htmlString = "";
 
-  console.log("dataObj :>> ", dataObj);
-
   // iterate over the metadata object and add all non-null values to as a new table in a row
   Object.keys(dataObj).forEach((key) => {
     const value = dataObj[key];

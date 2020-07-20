@@ -1,5 +1,5 @@
 import { gate } from "../../symbols";
-import { clusterConfig } from "../../../utils/cluster-config";
+import { clusterConfig } from "../../../utils/popup/cluster";
 
 const PB_gatesLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_GATENO.geojson",

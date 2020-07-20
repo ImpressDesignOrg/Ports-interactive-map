@@ -1,9 +1,6 @@
-import { layerSettings } from "../../../utils/layer-settings";
-
 const leaseBoundariesLayer = {
   url:
     "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/leaseboundary/json/LEASEBOUNDARY.geojson",
-  ...layerSettings,
   renderer: {
     type: "simple",
     symbol: {

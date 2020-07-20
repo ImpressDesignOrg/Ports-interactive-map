@@ -80,14 +80,7 @@ const ALL = {
 
 export const AUS_SWITCHES = [ALL.seaports, ALL.intermodalTerminals, ALL.keyRoads, ALL.secondaryRoads];
 
-export const ALL_SWITCHES = [
-  ALL.intermodalTerminals,
-  ALL.seaports,
-  ALL.localGov,
-  ALL.keyRoads,
-  ALL.keyRail,
-  ALL.secondaryRoads,
-];
+export const ALL_SWITCHES = [ALL.intermodalTerminals, ALL.seaports, ALL.localGov, ALL.keyRoads, ALL.secondaryRoads];
 
 export const PB_SWITCHES = [
   {
