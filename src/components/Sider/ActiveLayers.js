@@ -63,9 +63,9 @@ export default function ActiveLayersForm() {
   const togglesArr = handleToggles();
 
   return (
-    <StyledContainer>
-      <form>
-        <div className='layers-btns-wrp'>
+    <StyledWrapper>
+      <StyledForm>
+        <MenuBtnsWrapper>
           <button
             onClick={() => {
               setState((prev) => ({ ...prev, siderLevel: 1 }));
@@ -77,90 +77,90 @@ export default function ActiveLayersForm() {
           <button type='reset' onClick={() => handleReset()}>
             Clear all
           </button>
-        </div>
-        <div className='toggles-wrapper'>
+        </MenuBtnsWrapper>
+        <TogglesWrapper>
           {togglesArr.map((v) => (
             <Switch key={v.label} item={v} />
           ))}
-        </div>
-      </form>
-    </StyledContainer>
+        </TogglesWrapper>
+      </StyledForm>
+    </StyledWrapper>
   );
 }
 
-const StyledContainer = styled.div`
+const StyledWrapper = styled.div`
   margin: 20px 0;
   font-family: "Roboto";
 
   .heading-wrapper {
-		display:flex;
-		justify-content: center;
+    display: flex;
+    justify-content: center;
 
-		img {
-			max-width: 120px;
+    img {
+      max-width: 120px;
+    }
+  }
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 435px;
+  margin-top: 30px;
+`;
+
+const MenuBtnsWrapper = styled.div`
+	margin: 0 0 15px 0;
+	display: flex;
+	justify-content: flex-end;
+	text-align: right;
+	
+	button {
+		display: flex;
+		align-items: center;
+		background: none;
+		border: none;
+		border-bottom: 2px solid #fff;
+		box-shadow: none;
+		cursor: pointer;
+		font-size: 16px;
+		font-family: "Roboto";
+		font-weight: 500;
+		margin: 0 10px;
+
+		&:hover {
+			border-bottom: 2px solid #68a0b9;
 		}
+
+		&:focus {
+			border: none;
+			outline: none;
+		}
+
+		svg {
+			margin-right: 5px;
+		}
+`;
+
+const TogglesWrapper = styled.div`
+  width: 95%;
+  height: 100%;
+  padding-right: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  scrollbar-width: thin;
+  scrollbar-color: orange #68a0b9;
+
+  ::-webkit-scrollbar {
+    width: 5px;
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-height: 435px;
-		margin-top: 30px;
-		
-		.toggles-wrapper {
-      width: 95%;
-			height: 100%;
-			padding-right: 10px;
-      overflow: scroll;
-      overflow-x: hidden;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-
-      scrollbar-width: thin;
-      scrollbar-color: orange #68a0b9;
-
-      ::-webkit-scrollbar {
-        width: 5px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background-color: #68a0b9;
-        border-radius: 20px;
-      }
-    }
-
-    .layers-btns-wrp {
-			margin: 0 0 15px 0;
-			display: flex;
-      justify-content: flex-end;
-      text-align: right;
-			
-      button {
-        display: flex;
-        align-items: center;
-        background: none;
-        border: none;
-        border-bottom: 2px solid #fff;
-        box-shadow: none;
-        cursor: pointer;
-        font-size: 16px;
-        font-family: "Roboto";
-        font-weight: 500;
-				margin: 0 10px;
-
-        &:hover {
-          border-bottom: 2px solid #68a0b9;
-        }
-
-        &:focus {
-          border: none;
-          outline: none;
-        }
-
-        svg {
-          margin-right: 5px;
-        }
-    }
+  ::-webkit-scrollbar-thumb {
+    background-color: #68a0b9;
+    border-radius: 20px;
   }
 `;

@@ -36,13 +36,13 @@ export default function LocationButtons() {
 
   return (
     <StyledContainer>
-      <div className='locations-buttons-content'>
+      <StyledContent>
         {BUTTONS.map((button) => (
           <button key={button.id} onClick={() => handleClick(button.id)}>
             <img src={button.icon} alt='marker-symbol' />
           </button>
         ))}
-      </div>
+      </StyledContent>
     </StyledContainer>
   );
 }
@@ -50,55 +50,55 @@ export default function LocationButtons() {
 const StyledContainer = styled.div`
   margin: 20px 0;
   font-family: "Roboto";
+`;
 
-  .locations-buttons-content {
-    display: flex;
-    flex-wrap: wrap;
+const StyledContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: 500px) {
     justify-content: center;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    flex: 0 0 32%;
+    margin: 15px;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    height: 125px;
+
+    &:hover {
+      color: #68a0b9;
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
 
     @media (max-width: 500px) {
+      flex: 0 0 48%;
+      margin: 10px 0;
       justify-content: center;
     }
 
-    button {
-      display: flex;
-      align-items: center;
-      flex: 0 0 32%;
-      margin: 15px;
-      padding: 0;
-      box-shadow: none;
-      border: none;
-      background: none;
-      cursor: pointer;
-      height: 125px;
-
-      &:hover {
-        color: #68a0b9;
-      }
-
-      &:focus {
-        border: none;
-        outline: none;
-      }
+    img {
+      width: 125px;
+      height: auto;
+      max-height: 100%;
 
       @media (max-width: 500px) {
-        flex: 0 0 37%;
-        margin: 10px 0;
-        justify-content: center;
+        width: 140px;
       }
 
-      img {
-        width: 125px;
-        height: auto;
-        max-height: 100%;
-
-        @media (max-width: 500px) {
-          width: 140px;
-        }
-
-        @media (max-width: 430px) {
-          max-width: 90%;
-        }
+      @media (max-width: 430px) {
+        max-width: 90%;
       }
     }
   }

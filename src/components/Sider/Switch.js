@@ -19,7 +19,7 @@ export default function SwitchComp({ item }) {
   return (
     <StyledSwitch name={`switch-${label}`} key={label}>
       <label>
-        <span className='label-wrapper'>
+        <span>
           {icon ? icon : <img src={iconUrl} alt={key} />}
           <p>{label}</p>
         </span>
@@ -62,14 +62,14 @@ const StyledSwitch = styled.div`
     margin-bottom: 0;
   }
 
-  .label-wrapper {
+  span {
     display: flex;
     align-items: center;
 
     img,
     svg {
-      height: 40px;
-      width: 40px;
+      height: 50px;
+      width: 50px;
     }
 
     p {
@@ -83,10 +83,6 @@ const StyledSwitch = styled.div`
 
       &:hover {
         color: #68a0b9;
-      }
-
-      @media (max-width: 500px) {
-        font-size: 20px;
       }
     }
   }
