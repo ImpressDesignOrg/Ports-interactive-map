@@ -26,5 +26,5 @@ export const handlePopupContent = (feature) => {
     }
   });
 
-  return `<table style="width:100%" class='custom-popup-template-table'>${htmlString}</table>`;
+  return `<table style="width:100%" class="esri-widget__table">${htmlString}</table>`;
 };

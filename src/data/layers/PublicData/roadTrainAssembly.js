@@ -1,9 +1,10 @@
 import { roadTrainAssembly } from "../../symbols";
+import { layerSettings } from "../../../utils/layer-settings";
 
 const roadTrainAssemblyLayer = {
   url:
     "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/roadTrainAssembly.geojson",
-  objectIdField: "ObjectID",
+  ...layerSettings,
   renderer: {
     type: "simple",
     symbol: {
@@ -12,21 +13,6 @@ const roadTrainAssemblyLayer = {
       width: "50px",
       height: "50px",
     },
-  },
-  popupTemplate: {
-    title: "Road Train Assembly",
-    content: [
-      {
-        type: "fields",
-        fieldInfos: [
-          {
-            fieldName: "Name",
-            label: "Road Train Assembly",
-            visible: true,
-          },
-        ],
-      },
-    ],
   },
 };
 

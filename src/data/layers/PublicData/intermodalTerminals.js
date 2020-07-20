@@ -1,9 +1,10 @@
 import { intermodalTerminal } from "../../symbols";
+import { layerSettings } from "../../../utils/layer-settings";
 
 const intermodalTerminalsLayer = {
   url:
     "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/intermodalTerminals.geojson",
-  objectIdField: "ObjectID",
+  ...layerSettings,
   renderer: {
     type: "simple",
     symbol: {
@@ -12,21 +13,6 @@ const intermodalTerminalsLayer = {
       width: "50px",
       height: "50px",
     },
-  },
-  popupTemplate: {
-    title: "Intermodal Terminal",
-    content: [
-      {
-        type: "fields",
-        fieldInfos: [
-          {
-            fieldName: "Name",
-            label: "Intermodal Terminal",
-            visible: true,
-          },
-        ],
-      },
-    ],
   },
 };
 

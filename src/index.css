@@ -95,10 +95,10 @@ body {
   font-weight: 400;
 }
 .esri-popup__main-container .esri-popup__content table tr:nth-child(even) {
-  background: #a8dcf4;
+  background: rgba(104, 160, 185, 1);
 }
 .esri-popup__main-container .esri-popup__content table tr:nth-child(odd) {
-  background: #d0e9f4;
+  background: rgba(104, 160, 185, 0.7);
 }
 .esri-popup__button:hover {
   background: #1d384b !important;

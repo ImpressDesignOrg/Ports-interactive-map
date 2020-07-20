@@ -1,6 +1,8 @@
+import { layerSettings } from "../../../utils/layer-settings";
+
 const keyRoadsLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/keyRoad.geojson",
-  objectIdField: "ObjectID",
+  ...layerSettings,
   renderer: {
     type: "simple",
     symbol: {
@@ -12,21 +14,6 @@ const keyRoadsLayer = {
         width: "1px",
       },
     },
-  },
-  popupTemplate: {
-    title: "Key Freight Road",
-    content: [
-      {
-        type: "fields",
-        fieldInfos: [
-          {
-            fieldName: "Name",
-            label: "Name",
-            visible: true,
-          },
-        ],
-      },
-    ],
   },
 };
 

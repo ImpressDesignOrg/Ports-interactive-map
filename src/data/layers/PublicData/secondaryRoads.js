@@ -1,6 +1,8 @@
+import { layerSettings } from "../../../utils/layer-settings";
+
 const secondaryRoadsLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/secondaryRoad.geojson",
-  objectIdField: "ObjectID",
+  ...layerSettings,
   renderer: {
     type: "simple",
     symbol: {
@@ -12,21 +14,6 @@ const secondaryRoadsLayer = {
         width: "1px",
       },
     },
-  },
-  popupTemplate: {
-    title: "Secondary Freight Road",
-    content: [
-      {
-        type: "fields",
-        fieldInfos: [
-          {
-            fieldName: "Name",
-            label: "Name",
-            visible: true,
-          },
-        ],
-      },
-    ],
   },
 };
 
