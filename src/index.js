@@ -24,4 +24,6 @@ const StyledWrapper = styled.div`
   position: relative;
 `;
 
-ReactDOM.render(<App />, document.getElementById("root"));
+window.onload = () => {
+  ReactDOM.render(<App />, document.getElementById("react-interactive-map"));
+};

@@ -13,33 +13,28 @@ export default function Sidebar() {
   const [btnHovered, setBtnHovered] = useState(false);
   const state = useTrackedState();
 
-  let header, body, url;
+  let body, url;
 
   (() => {
     switch (state.viewing) {
       case "AUS":
       case "ALL":
-        header = "NSW Ports";
         body = "Interested in learning more about NSW Ports and our operations?";
         url = "/";
         break;
       case "PB":
-        header = "Port Botany";
         body = "Interested in learning more about Port Botany?";
         url = "/";
         break;
       case "PK":
-        header = "Port Kembla";
         body = "Interested in learning more about Port Kembla?";
         url = "/";
         break;
       case "EN":
-        header = "Enfield";
         body = "Interested in learning more about Cooks River?";
         url = "/";
         break;
       case "CR":
-        header = "Cooks River";
         body = "Interested in learning more about Enfield?";
         url = "/";
         break;
@@ -49,7 +44,7 @@ export default function Sidebar() {
   })();
 
   return (
-    <div className='sidebar-wrapper'>
+    <div>
       <StyledToggle
         visible={visible}
         onClick={() => {
@@ -66,20 +61,17 @@ export default function Sidebar() {
         )}
       </StyledToggle>
       <StyledContent visible={visible}>
-        <div className='header-wrp'>
-          {/* X icon is displayed on mobile only */}
-          <div className='mobile-close-wrp'>
-            <button onClick={() => setVisible(false)}>
-              <AiOutlineClose size='30px' color='#fff' />
-            </button>
-          </div>
-          <div className='svg-wrp'>INSERT {header} BANNER SVG</div>
-        </div>
-        <div className='buttons-wrapper'>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</div>
-        <div className='info-wrapper'>
-          <div className='info-content'>
-            <div className='heading'>Want to find out more?</div>
-            <div className='body'>
+        <StyledHeader viewing={state.viewing}>
+          <div className='icon-wrapper'></div>
+          <MobileCloseBtn onClick={() => setVisible(false)}>
+            <AiOutlineClose size='30px' color='#fff' />
+          </MobileCloseBtn>
+        </StyledHeader>
+        <ButtonsWrapper>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</ButtonsWrapper>
+        {window.location.pathname === "/map" && (
+          <InfoWrapper>
+            <div>
+              <h5>Want to find out more?</h5>
               <p>
                 {body}{" "}
                 <a href={url} target='_blank' rel='noopener noreferrer'>
@@ -87,8 +79,8 @@ export default function Sidebar() {
                 </a>
               </p>
             </div>
-          </div>
-        </div>
+          </InfoWrapper>
+        )}
       </StyledContent>
     </div>
   );
@@ -140,82 +132,112 @@ const StyledContent = styled.div`
     top: 0;
     right: 0;
   }
+`;
 
-  .header-wrp {
-    background: #002650;
-    height: 125px;
-    position: relative;
+const handleBannerImage = (viewing) => {
+  switch (viewing) {
+    case "AUS":
+    case "ALL":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--nsw-ports.jpg";
+    case "PB":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--botany.jpg";
+    case "PK":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--kembla.jpg";
+    case "EN":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--enfield.jpg";
+    case "CR":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--cooks.jpg";
+    default:
+      break;
+  }
+};
 
-    .mobile-close-wrp {
-      z-index: 4;
-      cursor: pointer;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: ${(props) => (props.visible ? "flex" : "none")};
+const handleBannerIcon = (viewing) => {
+  switch (viewing) {
+    case "AUS":
+    case "ALL":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--nsw-ports.svg";
+    case "PB":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--botany.svg";
+    case "PK":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--kembla.svg";
+    case "EN":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--enfield.svg";
+    case "CR":
+      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--cooks.svg";
+    default:
+      break;
+  }
+};
 
-      @media (min-width: 500px) {
-        display: none;
-      }
+const StyledHeader = styled.div`
+  height: 125px;
+  position: relative;
+  background: url(${(props) => handleBannerImage(props.viewing)});
+  background-size: cover;
+  background-repeat: no-repeat;
 
-      button {
-        background: none;
-        border: none;
-        margin: 10px 10px 0 auto;
-      }
-    }
+  .icon-wrapper {
+    background: url(${(props) => handleBannerIcon(props.viewing)});
+    position: absolute;
+    z-index: 3;
+    height: 110px;
+    width: 110px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    left: 33%;
+    top: 7%;
+  }
+`;
 
-    .svg-wrp {
-      font-size: 25px;
-      color: #efefef;
-    }
+const MobileCloseBtn = styled.button`
+  z-index: 4;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  @media (min-width: 500px) {
+    display: none;
   }
 
-  .buttons-wrapper {
-    padding: 0 20px;
-    height: 500px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px 10px 0 auto;
+`;
 
-    @media (max-width: 500px) {
-      flex: 1;
-    }
+const ButtonsWrapper = styled.div`
+  padding: 0 20px;
+  height: 500px;
+
+  @media (max-width: 500px) {
+    flex: 1;
   }
+`;
 
-  .info-wrapper {
-    height: 165px;
-    width: 100%;
-    background: #68a0b9;
+const InfoWrapper = styled.div`
+  height: 165px;
+  width: 100%;
+  background: #fff;
+  border-top: 2px solid #002650;
 
-    .info-content {
-      padding: 20px 30px;
+  div {
+    padding: 20px;
 
-      @media (max-width: 500px) {
-        padding: 25px 30px;
-      }
+    h5 {
+      margin-top: 0;
+    }
 
-      .heading {
-        font-size: 22px;
-        font-family: "Roboto Condensed";
-        color: #fff;
+    p {
+      a {
+        text-decoration: none;
+        cursor: pointer;
+        color: #002650;
         font-weight: 600;
-        border-bottom: 1px solid #fff;
-        margin-bottom: 15px;
-      }
+        border-bottom: 2px solid #fff;
 
-      p {
-        font-size: 16px;
-        color: #fff;
-        font-family: "Roboto";
-        font-weight: 300;
-
-        a {
-          text-decoration: none;
-          cursor: pointer;
-          color: #fff;
-          font-weight: 600;
-
-          &:hover {
-            color: #1d384b;
-          }
+        &:hover {
+          border-bottom: 2px solid #002650;
         }
       }
     }

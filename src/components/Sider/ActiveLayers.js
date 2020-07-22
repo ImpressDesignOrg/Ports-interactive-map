@@ -25,39 +25,22 @@ export default function ActiveLayersForm() {
    * Function to reorder the toggles so that the 'active' toggles are first in the order
    */
   const handleToggles = () => {
-    let togglesArr;
-    const newTogglesArr = [];
-
     switch (state.viewing) {
       case "AUS":
-        togglesArr = AUS_SWITCHES;
-        break;
+        return AUS_SWITCHES;
       case "ALL":
-        togglesArr = ALL_SWITCHES;
-        break;
+        return ALL_SWITCHES;
       case "PB":
-        togglesArr = PB_SWITCHES;
-        break;
+        return PB_SWITCHES;
       case "PK":
-        togglesArr = PK_SWITCHES;
-        break;
+        return PK_SWITCHES;
       case "CR":
-        togglesArr = CR_SWITCHES;
-        break;
+        return CR_SWITCHES;
       case "EN":
-        togglesArr = EN_SWITCHES;
-        break;
+        return EN_SWITCHES;
       default:
-        break;
+        return undefined;
     }
-
-    // reorder the toggles so that the active toggles are ordered
-    // first in the array
-    togglesArr.forEach((v) => {
-      state[v.key] ? newTogglesArr.unshift(v) : newTogglesArr.push(v);
-    });
-
-    return newTogglesArr;
   };
 
   const togglesArr = handleToggles();
@@ -71,11 +54,11 @@ export default function ActiveLayersForm() {
               setState((prev) => ({ ...prev, siderLevel: 1 }));
             }}
           >
-            <RiArrowGoBackLine />
-            Locations
+            <RiArrowGoBackLine size={20} />
+            Go back
           </button>
           <button type='reset' onClick={() => handleReset()}>
-            Clear all
+            Clear
           </button>
         </MenuBtnsWrapper>
         <TogglesWrapper>
@@ -114,29 +97,22 @@ const MenuBtnsWrapper = styled.div`
 	margin: 0 0 15px 0;
 	display: flex;
 	justify-content: flex-end;
-	text-align: right;
-	
+  text-align: right;
+  height: 35px;
+
 	button {
 		display: flex;
 		align-items: center;
 		background: none;
 		border: none;
-		border-bottom: 2px solid #fff;
 		box-shadow: none;
 		cursor: pointer;
-		font-size: 16px;
-		font-family: "Roboto";
-		font-weight: 500;
-		margin: 0 10px;
-
-		&:hover {
-			border-bottom: 2px solid #68a0b9;
-		}
+    margin: 0 10px;
 
 		&:focus {
 			border: none;
 			outline: none;
-		}
+    }
 
 		svg {
 			margin-right: 5px;

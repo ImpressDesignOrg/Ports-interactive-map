@@ -39,7 +39,7 @@ export default function LocationButtons() {
       <StyledContent>
         {BUTTONS.map((button) => (
           <button key={button.id} onClick={() => handleClick(button.id)}>
-            <img src={button.icon} alt='marker-symbol' />
+            <img src={button.icon} alt="marker-symbol" />
           </button>
         ))}
       </StyledContent>

@@ -4,21 +4,21 @@ import { loadModules } from "esri-loader";
 import { useTrackedState } from "../store";
 
 // ##### IMPORT ALL INDIVIDUAL LAYER SETTINGS
-import { botanyLayer, kemblaLayer, cooksLayer, enfieldLayer } from "../data/layers/PortsData/allLocations";
-import localGovLayer from "../data/layers/PublicData/localGov";
-import seaportsLayer from "../data/layers/PublicData/seaports";
-import keyRoadsLayer from "../data/layers/PublicData/keyRoads";
-import intermodalTerminalsLayer from "../data/layers/PublicData/intermodalTerminals";
-import secondaryRoadsLayer from "../data/layers/PublicData/secondaryRoads";
-import PB_berthLayer from "../data/layers/PortsData/PB_berths";
-import PB_gatesLayer from "../data/layers/PortsData/PB_gates";
-import PK_berthsLayer from "../data/layers/PortsData/PK_berths";
-import tenancyLeaseAreasLayer from "../data/layers/PortsData/tenancyLeaseAreas";
-import tenancyUnitsLayer from "../data/layers/PortsData/tenancyUnits";
-import buildingsLayer from "../data/layers/PortsData/buildings";
-import heritageLayer from "../data/layers/PortsData/heritage";
-import railNetworkLayer from "../data/layers/PortsData/railNetwork";
-import roadNetworkLayer from "../data/layers/PortsData/roadNetwork";
+import { botanyLayer, kemblaLayer, cooksLayer, enfieldLayer } from "../data/PortsData/allLocations";
+import localGovLayer from "../data/PublicData/localGov";
+import seaportsLayer from "../data/PublicData/seaports";
+import keyRoadsLayer from "../data/PublicData/keyRoads";
+import intermodalTerminalsLayer from "../data/PublicData/intermodalTerminals";
+import secondaryRoadsLayer from "../data/PublicData/secondaryRoads";
+import PB_berthLayer from "../data/PortsData/PB_berths";
+import PB_gatesLayer from "../data/PortsData/PB_gates";
+import PK_berthsLayer from "../data/PortsData/PK_berths";
+import tenancyLeaseAreasLayer from "../data/PortsData/tenancyLeaseAreas";
+import tenancyUnitsLayer from "../data/PortsData/tenancyUnits";
+import buildingsLayer from "../data/PortsData/buildings";
+import heritageLayer from "../data/PortsData/heritage";
+import railNetworkLayer from "../data/PortsData/railNetwork";
+import roadNetworkLayer from "../data/PortsData/roadNetwork";
 
 import { viewports } from "../data/viewports";
 
@@ -58,6 +58,9 @@ export default function Map() {
           color: [0, 38, 80, 1],
           haloOpacity: 0.9,
           fillOpacity: 0.2,
+        },
+        navigation: {
+          mouseWheelZoomEnabled: false,
         },
       });
 

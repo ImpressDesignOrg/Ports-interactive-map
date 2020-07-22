@@ -22,6 +22,45 @@ export const deactiveLayers = {
   keyRail: false,
 };
 
-const useValue = () => useState({ viewing: "ALL", siderLevel: 1, ...deactiveLayers });
+/**
+ * Customise the default viewport depending on which page the user is viewing
+ */
+const handleViewportOnUrl = () => {
+  switch (window.location.pathname) {
+    case "/port-botany":
+      return "PB";
+    case "/port-kembla":
+      return "PK";
+    case "/cooks-river-intermodal-terminal":
+      return "CR";
+    case "/enfield-intermodal-logistics-centre":
+      return "EN";
+    default:
+      return "ALL";
+  }
+};
 
-export const { Provider, useTrackedState, useUpdate: useSetState } = createContainer(useValue);
+const handleSiderLevelOnUrl = () => {
+  switch (window.location.pathname) {
+    case "/port-botany":
+    case "/port-kembla":
+    case "/cooks-river-intermodal-terminal":
+    case "/enfield-intermodal-logistics-centre":
+      return 2;
+    default:
+      return 1;
+  }
+};
+
+const useValue = () =>
+  useState({
+    viewing: handleViewportOnUrl(),
+    siderLevel: handleSiderLevelOnUrl(),
+    ...deactiveLayers,
+  });
+
+export const {
+  Provider,
+  useTrackedState,
+  useUpdate: useSetState,
+} = createContainer(useValue);
