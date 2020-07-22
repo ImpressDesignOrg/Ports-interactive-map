@@ -13,35 +13,35 @@ export default function Sidebar() {
   const [btnHovered, setBtnHovered] = useState(false);
   const state = useTrackedState();
 
-  let body, url;
+  /*   let body, url;
 
   (() => {
     switch (state.viewing) {
       case "AUS":
       case "ALL":
         body = "Interested in learning more about NSW Ports and our operations?";
-        url = "/";
+        url = "/about-nsw-ports";
         break;
       case "PB":
         body = "Interested in learning more about Port Botany?";
-        url = "/";
+        url = "/port-botany";
         break;
       case "PK":
         body = "Interested in learning more about Port Kembla?";
-        url = "/";
+        url = "/port-kembla";
         break;
       case "EN":
         body = "Interested in learning more about Cooks River?";
-        url = "/";
+        url = "/enfield-intermodal-logistics-centre";
         break;
       case "CR":
         body = "Interested in learning more about Enfield?";
-        url = "/";
+        url = "/cooks-river-intermodal-terminal";
         break;
       default:
         break;
     }
-  })();
+  })(); */
 
   return (
     <div>
@@ -68,19 +68,16 @@ export default function Sidebar() {
           </MobileCloseBtn>
         </StyledHeader>
         <ButtonsWrapper>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</ButtonsWrapper>
-        {window.location.pathname === "/map" && (
+        {/*         {window.location.pathname === "/map-test-page" && (
           <InfoWrapper>
             <div>
               <h5>Want to find out more?</h5>
               <p>
-                {body}{" "}
-                <a href={url} target='_blank' rel='noopener noreferrer'>
-                  Find out more information here
-                </a>
+                {body} <a href={url}>Find out more information here</a>
               </p>
             </div>
           </InfoWrapper>
-        )}
+        )} */}
       </StyledContent>
     </div>
   );
@@ -208,7 +205,6 @@ const MobileCloseBtn = styled.button`
 
 const ButtonsWrapper = styled.div`
   padding: 0 20px;
-  height: 500px;
 
   @media (max-width: 500px) {
     flex: 1;

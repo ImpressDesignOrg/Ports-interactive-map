@@ -7,8 +7,6 @@ import HeritageIcon from "../images/marker--heritage.svg";
 import BerthIcon from "../images/marker--berth.svg";
 import SeaportIcon from "../images/marker--seaport.svg";
 import IntermodalTerminalIcon from "../images/marker--imt.svg";
-import TenancyIcon from "../images/marker--tenancy.svg";
-import LeaseIcon from "../images/marker--lease.svg";
 
 const ICON_SIZE = "30px";
 
@@ -40,12 +38,12 @@ const ALL = {
   },
   tenancyLeaseArea: {
     label: "Tenancy Lease Areas",
-    icon: LeaseIcon,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#e69800' />,
     key: "tenancyLeaseAreas",
   },
   tenancyUnits: {
     label: "Tenancy Units",
-    icon: TenancyIcon,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#3333cc' />,
     key: "tenancyUnits",
   },
   buildings: {

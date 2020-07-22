@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { RiArrowGoBackLine } from "react-icons/ri";
 
 import { deactiveLayers, useSetState, useTrackedState } from "../../store";
 
@@ -54,7 +53,6 @@ export default function ActiveLayersForm() {
               setState((prev) => ({ ...prev, siderLevel: 1 }));
             }}
           >
-            <RiArrowGoBackLine size={20} />
             Go back
           </button>
           <button type='reset' onClick={() => handleReset()}>
@@ -72,7 +70,7 @@ export default function ActiveLayersForm() {
 }
 
 const StyledWrapper = styled.div`
-  margin: 20px 0;
+  margin: 0 0 20px 0;
   font-family: "Roboto";
 
   .heading-wrapper {
@@ -89,16 +87,16 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-height: 435px;
-  margin-top: 30px;
+  margin-top: 0;
 `;
 
 const MenuBtnsWrapper = styled.div`
-	margin: 0 0 15px 0;
+	margin: 0;
 	display: flex;
 	justify-content: flex-end;
   text-align: right;
-  height: 35px;
+  height: 70px;
+  font-family: "Roboto Condensed";
 
 	button {
 		display: flex;
@@ -112,6 +110,10 @@ const MenuBtnsWrapper = styled.div`
 		&:focus {
 			border: none;
 			outline: none;
+    }
+
+    &:hover {
+      color: #68a0b9;
     }
 
 		svg {
