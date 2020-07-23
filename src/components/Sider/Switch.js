@@ -43,7 +43,7 @@ const StyledSwitch = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 16px 0;
+  margin: 13px 0;
   width: 100%;
 
   label {
@@ -73,8 +73,7 @@ const StyledSwitch = styled.div`
     }
 
     p {
-      margin: 0 0 0 20px;
-      margin-left: 22px;
+      margin: 0 0 0 15px;
       color: #000;
       font-size: 18px;
       font-weight: 500;

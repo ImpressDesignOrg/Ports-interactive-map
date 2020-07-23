@@ -53,10 +53,10 @@ export default function ActiveLayersForm() {
               setState((prev) => ({ ...prev, siderLevel: 1 }));
             }}
           >
-            Go back
+            Back to all views
           </button>
           <button type='reset' onClick={() => handleReset()}>
-            Clear
+            Clear all selections
           </button>
         </MenuBtnsWrapper>
         <TogglesWrapper>
@@ -94,24 +94,16 @@ const MenuBtnsWrapper = styled.div`
   margin: 0;
   display: flex;
   justify-content: flex-end;
-  text-align: right;
-  height: 70px;
+  padding: 30px 0;
   font-family: "Roboto Condensed";
 
   button {
-    display: flex;
-    align-items: center;
     background: none;
     border: none;
     box-shadow: none;
     cursor: pointer;
-    margin: 0 10px;
-    font-size: 16px;
-
-    &:focus {
-      border: none;
-      outline: none;
-    }
+    margin: 0 5px;
+    font-size: 15px;
 
     &:hover {
       color: #68a0b9;
@@ -124,7 +116,6 @@ const MenuBtnsWrapper = styled.div`
 `;
 
 const TogglesWrapper = styled.div`
-  width: 95%;
   height: 100%;
   padding-right: 10px;
   overflow: scroll;
