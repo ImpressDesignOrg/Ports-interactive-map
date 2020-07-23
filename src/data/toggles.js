@@ -21,6 +21,11 @@ const ALL = {
     iconUrl: IntermodalTerminalIcon,
     key: "intermodalTerminals",
   },
+  keyRail: {
+    label: "Key Rail",
+    icon: <AiOutlineLine size={ICON_SIZE} color='#002673' />,
+    key: "keyRail",
+  },
   keyRoads: {
     label: "Key Roads",
     icon: <AiOutlineLine size={ICON_SIZE} color='#002673' />,
@@ -58,7 +63,7 @@ const ALL = {
   },
   railNetwork: {
     label: "Rail Network",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#e69800' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color='#8B0000' />,
     key: "railNetwork",
   },
   roadNetwork: {
@@ -68,9 +73,16 @@ const ALL = {
   },
 };
 
-export const AUS_SWITCHES = [ALL.seaports, ALL.intermodalTerminals, ALL.keyRoads, ALL.secondaryRoads];
+export const AUS_SWITCHES = [ALL.seaports, ALL.intermodalTerminals, ALL.keyRail, ALL.keyRoads, ALL.secondaryRoads];
 
-export const ALL_SWITCHES = [ALL.seaports, ALL.intermodalTerminals, ALL.localGov, ALL.keyRoads, ALL.secondaryRoads];
+export const ALL_SWITCHES = [
+  ALL.seaports,
+  ALL.intermodalTerminals,
+  ALL.localGov,
+  ALL.keyRail,
+  ALL.keyRoads,
+  ALL.secondaryRoads,
+];
 
 export const PB_SWITCHES = [
   {

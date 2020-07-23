@@ -8,6 +8,7 @@ import { botanyLayer, kemblaLayer, cooksLayer, enfieldLayer } from "../data/Port
 import localGovLayer from "../data/PublicData/localGov";
 import seaportsLayer from "../data/PublicData/seaports";
 import keyRoadsLayer from "../data/PublicData/keyRoads";
+import keyRailLayer from "../data/PublicData/keyRail";
 import intermodalTerminalsLayer from "../data/PublicData/intermodalTerminals";
 import secondaryRoadsLayer from "../data/PublicData/secondaryRoads";
 import PB_berthLayer from "../data/PortsData/PB_berths";
@@ -97,6 +98,7 @@ export default function Map() {
       // Lines
       if (state.railNetwork) map.add(new GeoJSONLayer(railNetworkLayer), 0);
       if (state.roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer), 0);
+      if (state.keyRail) map.add(new FeatureLayer(keyRailLayer), 0);
       if (state.keyRoads) map.add(new GeoJSONLayer(keyRoadsLayer), 0);
       if (state.secondaryRoads) map.add(new GeoJSONLayer(secondaryRoadsLayer), 0);
 

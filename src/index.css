@@ -28,11 +28,12 @@
 .esri-popup__main-container {
   position: absolute !important;
   bottom: 0 !important;
-  background: #68a0b9 !important;
+  background: #efefef !important;
   border-radius: 10px;
+  width: 440px;
 }
 .esri-popup__main-container .esri-popup__header {
-  background: #1d384b !important;
+  background: #002650 !important;
   height: 70px;
   align-items: center;
   display: flex;
@@ -63,20 +64,20 @@
   -ms-overflow-style: none;
 
   scrollbar-width: thin;
-  scrollbar-color: orange #1d384b;
+  scrollbar-color: orange #002650;
 }
 .esri-popup__main-container .esri-popup__content::-webkit-scrollbar {
   width: 5px;
 }
 .esri-popup__main-container .esri-popup__content::-webkit-scrollbar-thumb {
-  background-color: #1d384b;
+  background-color: #002650;
   border-radius: 20px;
 }
 .esri-popup__main-container .esri-popup__content .esri-feature__main-container {
-  background: #1d384b;
+  background: #002650;
 }
 .esri-popup__main-container .esri-popup__content table td {
-  font-family: "Roboto";
+  font-family: "Open Sans";
   font-size: 16px;
   font-weight: 300;
   color: #000;
@@ -87,17 +88,20 @@
 .esri-popup__main-container .esri-popup__content table tr td:first-child {
   font-weight: 400;
 }
-.esri-popup__main-container .esri-popup__content table tr:nth-child(even) {
-  background: rgba(104, 160, 185, 1);
+.esri-popup__main-container .esri-popup__content table tr {
+  background: #efefef;
 }
-.esri-popup__main-container .esri-popup__content table tr:nth-child(odd) {
-  background: rgba(104, 160, 185, 0.7);
+.esri-popup__main-container .esri-popup__content table tr:hover {
+  background: #dbdbdb;
 }
 .esri-popup__button:hover {
-  background: #1d384b !important;
+  background: #002650 !important;
 }
 .esri-popup__button .esri-icon-close {
   color: #fff;
+}
+.esri-popup__button .esri-icon-close:hover {
+  color: #68a0b9;
 }
 .esri-popup__button--dock {
   display: none !important;
@@ -121,7 +125,7 @@
   width: 50px !important;
 }
 .esri-popup__footer .esri-popup__button {
-  color: #fff;
+  color: #000;
   font-size: 16px !important;
   width: 100% !important;
   max-width: 100% !important;
@@ -132,7 +136,7 @@
 }
 .esri-popup__footer .esri-popup__button:hover {
   background: inherit !important;
-  color: #1d384b !important;
+  color: #002650 !important;
 }
 .esri-popup__footer .esri-popup__button .esri-zoom-in-magnifying-glass {
   margin-right: 10px;

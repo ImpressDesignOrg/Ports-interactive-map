@@ -91,34 +91,36 @@ const StyledForm = styled.form`
 `;
 
 const MenuBtnsWrapper = styled.div`
-	margin: 0;
-	display: flex;
-	justify-content: flex-end;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
   text-align: right;
   height: 70px;
   font-family: "Roboto Condensed";
 
-	button {
-		display: flex;
-		align-items: center;
-		background: none;
-		border: none;
-		box-shadow: none;
-		cursor: pointer;
+  button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
     margin: 0 10px;
+    font-size: 16px;
 
-		&:focus {
-			border: none;
-			outline: none;
+    &:focus {
+      border: none;
+      outline: none;
     }
 
     &:hover {
       color: #68a0b9;
     }
 
-		svg {
-			margin-right: 5px;
-		}
+    svg {
+      margin-right: 5px;
+    }
+  }
 `;
 
 const TogglesWrapper = styled.div`

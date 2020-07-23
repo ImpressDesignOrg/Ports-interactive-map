@@ -17,9 +17,9 @@ export const deactiveLayers = {
   localGov: false,
   seaports: false,
   intermodalTerminals: false,
+  keyRail: false,
   keyRoads: false,
   secondaryRoads: false,
-  keyRail: false,
 };
 
 /**
@@ -59,8 +59,4 @@ const useValue = () =>
     ...deactiveLayers,
   });
 
-export const {
-  Provider,
-  useTrackedState,
-  useUpdate: useSetState,
-} = createContainer(useValue);
+export const { Provider, useTrackedState, useUpdate: useSetState } = createContainer(useValue);
