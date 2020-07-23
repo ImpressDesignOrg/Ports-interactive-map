@@ -13,36 +13,6 @@ export default function Sidebar() {
   const [btnHovered, setBtnHovered] = useState(false);
   const state = useTrackedState();
 
-  /*   let body, url;
-
-  (() => {
-    switch (state.viewing) {
-      case "AUS":
-      case "ALL":
-        body = "Interested in learning more about NSW Ports and our operations?";
-        url = "/about-nsw-ports";
-        break;
-      case "PB":
-        body = "Interested in learning more about Port Botany?";
-        url = "/port-botany";
-        break;
-      case "PK":
-        body = "Interested in learning more about Port Kembla?";
-        url = "/port-kembla";
-        break;
-      case "EN":
-        body = "Interested in learning more about Cooks River?";
-        url = "/enfield-intermodal-logistics-centre";
-        break;
-      case "CR":
-        body = "Interested in learning more about Enfield?";
-        url = "/cooks-river-intermodal-terminal";
-        break;
-      default:
-        break;
-    }
-  })(); */
-
   return (
     <div>
       <StyledToggle
@@ -68,16 +38,6 @@ export default function Sidebar() {
           </MobileCloseBtn>
         </StyledHeader>
         <ButtonsWrapper>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</ButtonsWrapper>
-        {/*         {window.location.pathname === "/map-test-page" && (
-          <InfoWrapper>
-            <div>
-              <h5>Want to find out more?</h5>
-              <p>
-                {body} <a href={url}>Find out more information here</a>
-              </p>
-            </div>
-          </InfoWrapper>
-        )} */}
       </StyledContent>
     </div>
   );
@@ -208,34 +168,5 @@ const ButtonsWrapper = styled.div`
 
   @media (max-width: 500px) {
     flex: 1;
-  }
-`;
-
-const InfoWrapper = styled.div`
-  height: 165px;
-  width: 100%;
-  background: #fff;
-  border-top: 2px solid #002650;
-
-  div {
-    padding: 20px;
-
-    h5 {
-      margin-top: 0;
-    }
-
-    p {
-      a {
-        text-decoration: none;
-        cursor: pointer;
-        color: #002650;
-        font-weight: 600;
-        border-bottom: 2px solid #fff;
-
-        &:hover {
-          border-bottom: 2px solid #002650;
-        }
-      }
-    }
   }
 `;

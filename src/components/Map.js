@@ -107,6 +107,12 @@ export default function Map() {
       if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer), 0);
       if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer), 0);
 
+      const road = new FeatureLayer(keyRoadsLayer);
+      console.log("road", road);
+
+      const rail = new FeatureLayer(keyRailLayer);
+      console.log("rail", rail);
+
       // destroy the map view
       return () => {
         if (view) view.container = null;

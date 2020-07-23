@@ -8,10 +8,10 @@ const keyRailLayer = {
     type: "simple",
     symbol: {
       type: "simple-fill",
-      color: [0, 38, 115, 1],
+      color: [255, 20, 147, 1],
       style: "simple",
       outline: {
-        color: [0, 38, 115, 1],
+        color: [255, 20, 147, 1],
         width: "1px",
       },
     },

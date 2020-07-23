@@ -22,12 +22,12 @@ const ALL = {
     key: "intermodalTerminals",
   },
   keyRail: {
-    label: "Key Rail",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#002673' />,
+    label: "Key National Rail",
+    icon: <AiOutlineLine size={ICON_SIZE} color='#FF1493' />,
     key: "keyRail",
   },
   keyRoads: {
-    label: "Key Roads",
+    label: "Key National Roads",
     icon: <AiOutlineLine size={ICON_SIZE} color='#002673' />,
     key: "keyRoads",
   },
@@ -100,6 +100,7 @@ export const PB_SWITCHES = [
   ALL.tenancyLeaseArea,
   ALL.tenancyUnits,
   ALL.roadNetwork,
+  ALL.keyRail,
   ALL.localGov,
 ];
 
@@ -115,10 +116,18 @@ export const PK_SWITCHES = [
   ALL.tenancyUnits,
   ALL.roadNetwork,
   ALL.railNetwork,
+  ALL.keyRail,
   ALL.localGov,
 ];
 
-export const CR_SWITCHES = [ALL.buildings, ALL.heritage, ALL.tenancyLeaseArea, ALL.tenancyUnits, ALL.localGov];
+export const CR_SWITCHES = [
+  ALL.buildings,
+  ALL.heritage,
+  ALL.tenancyLeaseArea,
+  ALL.tenancyUnits,
+  ALL.keyRail,
+  ALL.localGov,
+];
 
 export const EN_SWITCHES = [
   ALL.heritage,
@@ -127,5 +136,6 @@ export const EN_SWITCHES = [
   ALL.tenancyUnits,
   ALL.roadNetwork,
   ALL.railNetwork,
+  ALL.keyRail,
   ALL.localGov,
 ];
