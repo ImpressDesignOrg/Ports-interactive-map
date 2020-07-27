@@ -35,19 +35,29 @@ export default function Map() {
         "esri/layers/GeoJSONLayer",
         "esri/widgets/BasemapToggle",
         "esri/widgets/LayerList",
+        "esri/renderers/UniqueValueRenderer",
       ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle, LayerList]) => {
-      const seaports = new GeoJSONLayer(seaportsLayer);
-      const buildings = new GeoJSONLayer(buildingsLayer);
+    ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle, LayerList, UniqueValueRenderer]) => {
+      /*       let layers = [];
+
+      if (state.viewing === "PB") {
+        layers = [
+          new GeoJSONLayer(PB_berthLayer),
+          new GeoJSONLayer(PB_gatesLayer),
+          new GeoJSONLayer(buildingsLayer),
+          new GeoJSONLayer(tenancyUnitsLayer),
+          new GeoJSONLayer(tenancyLeaseAreasLayer),
+          new GeoJSONLayer(roadNetworkLayer),
+          new GeoJSONLayer(railNetworkLayer),
+        ];
+      } else {
+        layers = [new GeoJSONLayer(PB_berthLayer), new GeoJSONLayer(intermodalTerminalsLayer)];
+      } */
 
       const map = new ArcGISMap({
         basemap: state.basemap,
-        layers: [seaports, buildings],
       });
-
-      seaports.visible = false;
-      buildings.visible = false;
 
       // load the map view at the ref's DOM node
       const view = new MapView({
@@ -72,31 +82,21 @@ export default function Map() {
 
       const basemapToggle = new BasemapToggle({
         view,
-        nextBasemap: "satellite",
+        nextBasemap: state.basemap === "gray" ? "satellite" : "gray",
       });
 
       // add event listener to map toggle to update state
       // TODO check whether required after we remove layer state (and replace with visibility)
-      basemapToggle.on("toggle", (e) => {
-        let newBasemap = state.basemap === "gray" ? "satellite" : "gray";
-
-        buildings.visible = true;
-
+      basemapToggle.on("toggle", () => {
         setState((prev) => ({
           ...prev,
-          basemap: newBasemap,
+          basemap: state.basemap === "gray" ? "satellite" : "gray",
         }));
       });
 
       view.ui.add(basemapToggle, {
         position: "top-left",
       });
-
-      const layerList = new LayerList({
-        view: view,
-      });
-
-      view.ui.add(layerList, "bottom-left");
 
       // if they're viewing all locations, show the locations marker
       if (state.viewing === "ALL") {
@@ -106,14 +106,34 @@ export default function Map() {
         map.add(new GeoJSONLayer(enfieldLayer));
       }
 
+      /*       if (state.siderLevel === 2) {
+        view.when(function () {
+          const layerList = new LayerList({
+            view,
+            listItemCreatedFunction: (e) => {
+              const { item } = e;
+
+              item.panel = {
+                content: document.getElementById("myDiv"),
+                className: "esri-icon-toggle",
+                open: item.visible,
+              };
+            },
+          });
+
+          // Add widget to the top right corner of the view
+          view.ui.add(layerList, "bottom-right");
+        });
+      } */
+
       // The layers are added in the appropriate order: polygons, lines, points
 
       // Points
       if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer), 0);
       if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer), 0);
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
-      /// if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
-      /// if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
+      if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
+      if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
       if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer), 0);
 
       // Lines
@@ -133,5 +153,9 @@ export default function Map() {
     });
   });
 
-  return <div className='map-wrapper' ref={mapRef}></div>;
+  return (
+    <>
+      <div className='map-wrapper' ref={mapRef}></div>
+    </>
+  );
 }

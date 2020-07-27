@@ -7,6 +7,8 @@
 export const handlePopupContent = (feature) => {
   const dataObj = feature.graphic.attributes;
 
+  // TODO why are some metadata columns not pulling through?
+
   let htmlString = "";
 
   // iterate over the metadata object and add all non-null values to as a new table in a row

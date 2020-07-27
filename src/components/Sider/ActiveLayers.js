@@ -118,20 +118,4 @@ const MenuBtnsWrapper = styled.div`
 const TogglesWrapper = styled.div`
   height: 100%;
   padding-right: 10px;
-  overflow: scroll;
-  overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  scrollbar-width: thin;
-  scrollbar-color: orange #68a0b9;
-
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #68a0b9;
-    border-radius: 20px;
-  }
 `;
