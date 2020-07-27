@@ -23,32 +23,32 @@ const ALL = {
   },
   keyRail: {
     label: "Key National Rail",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#FF1493' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color="#FF1493" />,
     key: "keyRail",
   },
   keyRoads: {
     label: "Key National Roads",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#002673' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color="#002673" />,
     key: "keyRoads",
   },
   secondaryRoads: {
     label: "Secondary Roads",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#004de8' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color="#004de8" />,
     key: "secondaryRoads",
   },
   localGov: {
     label: "Local Government",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#aaff00' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color="#aaff00" />,
     key: "localGov",
   },
   tenancyLeaseArea: {
-    label: "Tenancy Lease Areas",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#e69800' />,
+    label: "Tenancy Lease Area",
+    icon: <AiOutlineLine size={ICON_SIZE} color="#e69800" />,
     key: "tenancyLeaseAreas",
   },
   tenancyUnits: {
     label: "NSW Ports Lease Area",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#3333cc' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color="#3333cc" />,
     key: "tenancyUnits",
   },
   buildings: {
@@ -63,12 +63,12 @@ const ALL = {
   },
   railNetwork: {
     label: "Rail Network",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#8B0000' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color="#8B0000" />,
     key: "railNetwork",
   },
   roadNetwork: {
     label: "NSW Ports road network",
-    icon: <AiOutlineLine size={ICON_SIZE} color='#a800e6' />,
+    icon: <AiOutlineLine size={ICON_SIZE} color="#a800e6" />,
     key: "roadNetwork",
   },
 };
@@ -76,7 +76,7 @@ const ALL = {
 export const AUS_SWITCHES = [
   ALL.seaports,
   ALL.intermodalTerminals,
-  /* ALL.keyRail, */ ALL.keyRoads,
+  ALL.keyRoads,
   ALL.secondaryRoads,
 ];
 
@@ -84,7 +84,6 @@ export const ALL_SWITCHES = [
   ALL.seaports,
   ALL.intermodalTerminals,
   ALL.localGov,
-  /* ALL.keyRail, */
   ALL.keyRoads,
   ALL.secondaryRoads,
 ];
@@ -106,7 +105,6 @@ export const PB_SWITCHES = [
   ALL.tenancyLeaseArea,
   ALL.roadNetwork,
   ALL.railNetwork,
-  /* ALL.keyRail, */
   ALL.localGov,
 ];
 
@@ -122,7 +120,6 @@ export const PK_SWITCHES = [
   ALL.tenancyLeaseArea,
   ALL.roadNetwork,
   ALL.railNetwork,
-  /*   ALL.keyRail, */
   ALL.localGov,
 ];
 
@@ -131,7 +128,6 @@ export const CR_SWITCHES = [
   ALL.heritage,
   ALL.tenancyUnits,
   ALL.tenancyLeaseArea,
-  ALL.keyRail,
   ALL.localGov,
 ];
 
@@ -142,6 +138,5 @@ export const EN_SWITCHES = [
   ALL.tenancyLeaseArea,
   ALL.roadNetwork,
   ALL.railNetwork,
-  /* ALL.keyRail, */
   ALL.localGov,
 ];
