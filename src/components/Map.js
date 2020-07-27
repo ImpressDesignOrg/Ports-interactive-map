@@ -32,15 +32,22 @@ export default function Map() {
         "esri/config",
         "esri/Map",
         "esri/views/MapView",
-        "esri/layers/FeatureLayer",
         "esri/layers/GeoJSONLayer",
         "esri/widgets/BasemapToggle",
+        "esri/widgets/LayerList",
       ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
+    ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle, LayerList]) => {
+      const seaports = new GeoJSONLayer(seaportsLayer);
+      const buildings = new GeoJSONLayer(buildingsLayer);
+
       const map = new ArcGISMap({
         basemap: state.basemap,
+        layers: [seaports, buildings],
       });
+
+      seaports.visible = false;
+      buildings.visible = false;
 
       // load the map view at the ref's DOM node
       const view = new MapView({
@@ -73,6 +80,8 @@ export default function Map() {
       basemapToggle.on("toggle", (e) => {
         let newBasemap = state.basemap === "gray" ? "satellite" : "gray";
 
+        buildings.visible = true;
+
         setState((prev) => ({
           ...prev,
           basemap: newBasemap,
@@ -82,6 +91,12 @@ export default function Map() {
       view.ui.add(basemapToggle, {
         position: "top-left",
       });
+
+      const layerList = new LayerList({
+        view: view,
+      });
+
+      view.ui.add(layerList, "bottom-left");
 
       // if they're viewing all locations, show the locations marker
       if (state.viewing === "ALL") {
@@ -97,8 +112,8 @@ export default function Map() {
       if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer), 0);
       if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer), 0);
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
-      if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
-      if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
+      /// if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
+      /// if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
       if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer), 0);
 
       // Lines

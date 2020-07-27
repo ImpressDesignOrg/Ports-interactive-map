@@ -3,7 +3,6 @@ import { AiOutlineLine } from "react-icons/ai";
 
 import BuildingIcon from "../images/marker--building.svg";
 import GateIcon from "../images/marker--gate.svg";
-import HeritageIcon from "../images/marker--heritage.svg";
 import BerthIcon from "../images/marker--berth.svg";
 import SeaportIcon from "../images/marker--seaport.svg";
 import IntermodalTerminalIcon from "../images/marker--imt.svg";
@@ -56,11 +55,6 @@ const ALL = {
     iconUrl: BuildingIcon,
     key: "buildings",
   },
-  heritage: {
-    label: "Heritage",
-    iconUrl: HeritageIcon,
-    key: "heritage",
-  },
   railNetwork: {
     label: "Rail Network",
     portBotanyLabel: "NSW Ports On-dock Rail",
@@ -68,13 +62,11 @@ const ALL = {
     key: "railNetwork",
   },
   roadNetwork: {
-    label: "NSW Ports road network",
+    label: "NSW Ports Road Network",
     icon: <AiOutlineLine size={ICON_SIZE} color='#a800e6' />,
     key: "roadNetwork",
   },
 };
-
-export const AUS_SWITCHES = [ALL.seaports, ALL.intermodalTerminals, ALL.keyRoads, ALL.secondaryRoads];
 
 export const ALL_SWITCHES = [ALL.seaports, ALL.intermodalTerminals, ALL.keyRoads, ALL.secondaryRoads];
 

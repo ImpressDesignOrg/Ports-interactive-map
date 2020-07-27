@@ -17,7 +17,7 @@ export default function SwitchComp({ item, label }) {
   const { icon, iconUrl, key } = item;
 
   return (
-    <StyledSwitch name={`switch-${label}`} key={label}>
+    <StyledSwitch id={`switch-${key}`} name={`switch-${label}`} key={label}>
       <label>
         <span>
           {icon ? icon : <img src={iconUrl} alt={key} />}

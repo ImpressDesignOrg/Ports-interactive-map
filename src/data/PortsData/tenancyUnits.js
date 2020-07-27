@@ -13,11 +13,11 @@ const tenancyUnitsLayer = {
     type: "simple",
     symbol: {
       type: "simple-fill",
-      color: [51, 51, 204, 0.9],
+      color: "inherit",
       style: "solid",
       outline: {
-        color: "white",
-        width: 1,
+        color: [51, 51, 204, 0.9],
+        width: 2,
       },
     },
   },
