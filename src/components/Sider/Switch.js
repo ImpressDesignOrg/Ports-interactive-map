@@ -5,7 +5,7 @@ import Switch from "react-switch";
 
 import { useTrackedState, useSetState } from "../../store";
 
-export default function SwitchComp({ item }) {
+export default function SwitchComp({ item, label }) {
   const state = useTrackedState();
   const setState = useSetState();
   const { register } = useForm();
@@ -14,7 +14,7 @@ export default function SwitchComp({ item }) {
     setState((prev) => ({ ...prev, [key]: e }));
   };
 
-  const { label, icon, iconUrl, key } = item;
+  const { icon, iconUrl, key } = item;
 
   return (
     <StyledSwitch name={`switch-${label}`} key={label}>

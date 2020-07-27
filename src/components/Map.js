@@ -1,14 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { loadModules } from "esri-loader";
 
-import { useTrackedState } from "../store";
+import { useTrackedState, useSetState } from "../store";
 
 // ##### IMPORT ALL INDIVIDUAL LAYER SETTINGS
 import { botanyLayer, kemblaLayer, cooksLayer, enfieldLayer } from "../data/PortsData/allLocations";
-import localGovLayer from "../data/PublicData/localGov";
 import seaportsLayer from "../data/PublicData/seaports";
 import keyRoadsLayer from "../data/PublicData/keyRoads";
-import keyRailLayer from "../data/PublicData/keyRail";
 import intermodalTerminalsLayer from "../data/PublicData/intermodalTerminals";
 import secondaryRoadsLayer from "../data/PublicData/secondaryRoads";
 import PB_berthLayer from "../data/PortsData/PB_berths";
@@ -17,7 +15,6 @@ import PK_berthsLayer from "../data/PortsData/PK_berths";
 import tenancyLeaseAreasLayer from "../data/PortsData/tenancyLeaseAreas";
 import tenancyUnitsLayer from "../data/PortsData/tenancyUnits";
 import buildingsLayer from "../data/PortsData/buildings";
-import heritageLayer from "../data/PortsData/heritage";
 import railNetworkLayer from "../data/PortsData/railNetwork";
 import roadNetworkLayer from "../data/PortsData/roadNetwork";
 
@@ -26,6 +23,7 @@ import { viewports } from "../data/viewports";
 export default function Map() {
   const mapRef = useRef();
   const state = useTrackedState();
+  const setState = useSetState();
 
   useEffect(() => {
     // lazy load the required ArcGIS API
@@ -41,7 +39,7 @@ export default function Map() {
       { css: true }
     ).then(([esriConfig, ArcGISMap, MapView, FeatureLayer, GeoJSONLayer, BasemapToggle]) => {
       const map = new ArcGISMap({
-        basemap: "gray",
+        basemap: state.basemap,
       });
 
       // load the map view at the ref's DOM node
@@ -65,16 +63,25 @@ export default function Map() {
         },
       });
 
-      // add the map the toggle
-      view.ui.add(
-        new BasemapToggle({
-          view,
-          nextBasemap: "satellite",
-        }),
-        {
-          position: "top-left",
-        }
-      );
+      const basemapToggle = new BasemapToggle({
+        view,
+        nextBasemap: "satellite",
+      });
+
+      // add event listener to map toggle to update state
+      // TODO check whether required after we remove layer state (and replace with visibility)
+      basemapToggle.on("toggle", (e) => {
+        let newBasemap = state.basemap === "gray" ? "satellite" : "gray";
+
+        setState((prev) => ({
+          ...prev,
+          basemap: newBasemap,
+        }));
+      });
+
+      view.ui.add(basemapToggle, {
+        position: "top-left",
+      });
 
       // if they're viewing all locations, show the locations marker
       if (state.viewing === "ALL") {
@@ -91,27 +98,18 @@ export default function Map() {
       if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer), 0);
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
       if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
-      if (state.heritage) map.add(new GeoJSONLayer(heritageLayer), 0);
       if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
       if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer), 0);
 
       // Lines
       if (state.railNetwork) map.add(new GeoJSONLayer(railNetworkLayer), 0);
       if (state.roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer), 0);
-      if (state.keyRail) map.add(new FeatureLayer(keyRailLayer), 0);
       if (state.keyRoads) map.add(new GeoJSONLayer(keyRoadsLayer), 0);
       if (state.secondaryRoads) map.add(new GeoJSONLayer(secondaryRoadsLayer), 0);
 
       // Polygons
-      if (state.localGov) map.add(new FeatureLayer(localGovLayer), 0);
       if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer), 0);
-      if (state.tenancyUnits) map.add(new GeoJSONLayer(tenancyUnitsLayer), 0);
-
-      const road = new FeatureLayer(keyRoadsLayer);
-      console.log("road", road);
-
-      const rail = new FeatureLayer(keyRailLayer);
-      console.log("rail", rail);
+      if (state.nswPortsLeaseArea) map.add(new GeoJSONLayer(tenancyUnitsLayer), 0);
 
       // destroy the map view
       return () => {
