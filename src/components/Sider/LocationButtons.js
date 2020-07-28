@@ -8,23 +8,19 @@ import KemblaIcon from "../../images/marker--kembla.svg";
 import CooksIcon from "../../images/marker--cooks.svg";
 import EnfieldIcon from "../../images/marker--enfield.svg";
 import NSWPortsIcon from "../../images/marker--nsw-ports.svg";
-import AustraliaIcon from "../../images/marker--australia.svg";
 
 const BUTTONS = [
-  { label: "Port Botany", id: "PB", icon: BotanyIcon },
-  { label: "Port Kembla", id: "PK", icon: KemblaIcon },
+  { id: "PB", icon: BotanyIcon },
+  { id: "PK", icon: KemblaIcon },
   {
-    label: "Cooks River Intermodal",
     id: "CR",
     icon: CooksIcon,
   },
-  { label: "Enfield Intermodal", id: "EN", icon: EnfieldIcon },
+  { id: "EN", icon: EnfieldIcon },
   {
-    label: "NSW Ports Locations",
     id: "ALL",
     icon: NSWPortsIcon,
   },
-  { label: "National", id: "AUS", icon: AustraliaIcon },
 ];
 
 export default function LocationButtons() {

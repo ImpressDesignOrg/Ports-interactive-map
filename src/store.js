@@ -1,10 +1,31 @@
 import { useState } from "react";
 import { createContainer } from "react-tracked";
 
-export const deactiveLayers = {
+export const clearActive = {
   leaseBoundaries: false,
   tenancyLeaseAreas: false,
-  tenancyUnits: false,
+  nswPortsLeaseArea: false,
+  pbBerths: false,
+  pbGates: false,
+  pkBerths: false,
+  buildings: false,
+  heritage: false,
+  railNetwork: false,
+  roadNetwork: false,
+  pbLabels: false,
+  pkLabels: false,
+  localGov: false,
+  seaports: false,
+  intermodalTerminals: false,
+  keyRail: false,
+  keyRoads: false,
+  secondaryRoads: false,
+};
+
+const defaultActive = {
+  leaseBoundaries: false,
+  tenancyLeaseAreas: false,
+  nswPortsLeaseArea: true,
   pbBerths: false,
   pbGates: false,
   pkBerths: false,
@@ -56,7 +77,8 @@ const useValue = () =>
   useState({
     viewing: handleViewportOnUrl(),
     siderLevel: handleSiderLevelOnUrl(),
-    ...deactiveLayers,
+    basemap: "gray",
+    ...defaultActive,
   });
 
 export const { Provider, useTrackedState, useUpdate: useSetState } = createContainer(useValue);

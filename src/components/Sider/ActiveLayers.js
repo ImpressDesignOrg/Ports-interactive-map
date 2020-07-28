@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { deactiveLayers, useSetState, useTrackedState } from "../../store";
+import { clearActive, useSetState, useTrackedState } from "../../store";
 
-import { AUS_SWITCHES, ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from "../../data/toggles";
+import { ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from "../../data/toggles";
 
 import Switch from "./Switch";
 
@@ -13,22 +13,16 @@ export default function ActiveLayersForm() {
 
   const handleReset = () => {
     // reset to layers to initial state (all false)
-    setState(() => ({
+    setState((prev) => ({
+      ...prev,
       viewing: state.viewing,
       siderLevel: state.siderLevel,
-      ...deactiveLayers,
+      ...clearActive,
     }));
   };
 
-  /**
-   * Function to reorder the toggles so that the 'active' toggles are first in the order
-   */
   const handleToggles = () => {
     switch (state.viewing) {
-      case "AUS":
-        return AUS_SWITCHES;
-      case "ALL":
-        return ALL_SWITCHES;
       case "PB":
         return PB_SWITCHES;
       case "PK":
@@ -37,8 +31,9 @@ export default function ActiveLayersForm() {
         return CR_SWITCHES;
       case "EN":
         return EN_SWITCHES;
+      case "ALL":
       default:
-        return undefined;
+        return ALL_SWITCHES;
     }
   };
 
@@ -60,9 +55,14 @@ export default function ActiveLayersForm() {
           </button>
         </MenuBtnsWrapper>
         <TogglesWrapper>
-          {togglesArr.map((v) => (
-            <Switch key={v.label} item={v} />
-          ))}
+          {togglesArr.map((v) => {
+            // display a different label for PB railNetwork
+            if (v.key === "railNetwork" && state.viewing === "PB") {
+              return <Switch key={v.label} item={v} label={v.portBotanyLabel} />;
+            } else {
+              return <Switch key={v.label} item={v} label={v.label} />;
+            }
+          })}
         </TogglesWrapper>
       </StyledForm>
     </StyledWrapper>
@@ -118,20 +118,4 @@ const MenuBtnsWrapper = styled.div`
 const TogglesWrapper = styled.div`
   height: 100%;
   padding-right: 10px;
-  overflow: scroll;
-  overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  scrollbar-width: thin;
-  scrollbar-color: orange #68a0b9;
-
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #68a0b9;
-    border-radius: 20px;
-  }
 `;
