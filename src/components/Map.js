@@ -26,38 +26,12 @@ export default function Map() {
   const state = useTrackedState();
   const setState = useSetState();
 
-  console.log("state", state);
-
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
-      [
-        "esri/config",
-        "esri/Map",
-        "esri/views/MapView",
-        "esri/layers/GeoJSONLayer",
-        "esri/widgets/BasemapToggle",
-        "esri/widgets/LayerList",
-        "esri/renderers/UniqueValueRenderer",
-      ],
+      ["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/GeoJSONLayer", "esri/widgets/BasemapToggle"],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle, LayerList, UniqueValueRenderer]) => {
-      /*       let layers = [];
-
-      if (state.viewing === "PB") {
-        layers = [
-          new GeoJSONLayer(PB_berthLayer),
-          new GeoJSONLayer(PB_gatesLayer),
-          new GeoJSONLayer(buildingsLayer),
-          new GeoJSONLayer(tenancyUnitsLayer),
-          new GeoJSONLayer(tenancyLeaseAreasLayer),
-          new GeoJSONLayer(roadNetworkLayer),
-          new GeoJSONLayer(railNetworkLayer),
-        ];
-      } else {
-        layers = [new GeoJSONLayer(PB_berthLayer), new GeoJSONLayer(intermodalTerminalsLayer)];
-      } */
-
+    ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle]) => {
       const map = new ArcGISMap({
         basemap: state.basemap,
       });

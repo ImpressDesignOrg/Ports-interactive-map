@@ -20,7 +20,7 @@ export const clearActive = {
   keyRail: false,
   keyRoads: false,
   secondaryRoads: false,
-  parking: false,
+  carparks: false,
 };
 
 const defaultActive = {
