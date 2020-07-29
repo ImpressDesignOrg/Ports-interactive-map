@@ -20,27 +20,12 @@ export const clearActive = {
   keyRail: false,
   keyRoads: false,
   secondaryRoads: false,
+  parking: false,
 };
 
 const defaultActive = {
-  leaseBoundaries: false,
-  tenancyLeaseAreas: false,
+  ...clearActive,
   nswPortsLeaseArea: true,
-  pbBerths: false,
-  pbGates: false,
-  pkBerths: false,
-  buildings: false,
-  heritage: false,
-  railNetwork: false,
-  roadNetwork: false,
-  pbLabels: false,
-  pkLabels: false,
-  localGov: false,
-  seaports: false,
-  intermodalTerminals: false,
-  keyRail: false,
-  keyRoads: false,
-  secondaryRoads: false,
 };
 
 /**

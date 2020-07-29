@@ -17,6 +17,7 @@ import tenancyUnitsLayer from "../data/PortsData/tenancyUnits";
 import buildingsLayer from "../data/PortsData/buildings";
 import railNetworkLayer from "../data/PortsData/railNetwork";
 import roadNetworkLayer from "../data/PortsData/roadNetwork";
+import { carparksLayer } from "../data/PortsData/carparks";
 
 import { viewports } from "../data/viewports";
 
@@ -24,6 +25,8 @@ export default function Map() {
   const mapRef = useRef();
   const state = useTrackedState();
   const setState = useSetState();
+
+  console.log("state", state);
 
   useEffect(() => {
     // lazy load the required ArcGIS API
@@ -133,6 +136,7 @@ export default function Map() {
       if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer), 0);
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
       if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
+      if (state.carparks) map.add(new GeoJSONLayer(carparksLayer), 0);
       if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
       if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer), 0);
 

@@ -6,6 +6,7 @@ import GateIcon from "../images/marker--gate.svg";
 import BerthIcon from "../images/marker--berth.svg";
 import SeaportIcon from "../images/marker--seaport.svg";
 import IntermodalTerminalIcon from "../images/marker--imt.svg";
+import CarparkIcon from "../images/marker--carpark.svg";
 
 const ICON_SIZE = "30px";
 
@@ -66,6 +67,11 @@ const ALL = {
     icon: <AiOutlineLine size={ICON_SIZE} color='#a800e6' />,
     key: "roadNetwork",
   },
+  carparks: {
+    label: "Parking",
+    iconUrl: CarparkIcon,
+    key: "carparks",
+  },
 };
 
 export const ALL_SWITCHES = [ALL.seaports, ALL.intermodalTerminals, ALL.keyRoads, ALL.secondaryRoads];
@@ -82,6 +88,7 @@ export const PB_SWITCHES = [
     key: "pbGates",
   },
   ALL.buildings,
+  ALL.carparks,
   ALL.tenancyUnits,
   ALL.tenancyLeaseArea,
   ALL.roadNetwork,
@@ -95,6 +102,7 @@ export const PK_SWITCHES = [
     key: "pkBerths",
   },
   ALL.buildings,
+  ALL.carparks,
   ALL.tenancyUnits,
   ALL.tenancyLeaseArea,
   ALL.roadNetwork,
@@ -103,4 +111,11 @@ export const PK_SWITCHES = [
 
 export const CR_SWITCHES = [ALL.buildings, ALL.tenancyUnits, ALL.tenancyLeaseArea];
 
-export const EN_SWITCHES = [ALL.buildings, ALL.tenancyUnits, ALL.tenancyLeaseArea, ALL.roadNetwork, ALL.railNetwork];
+export const EN_SWITCHES = [
+  ALL.buildings,
+  ALL.carparks,
+  ALL.tenancyUnits,
+  ALL.tenancyLeaseArea,
+  ALL.roadNetwork,
+  ALL.railNetwork,
+];
