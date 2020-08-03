@@ -57,7 +57,7 @@ export default function ActiveLayersForm() {
         <TogglesWrapper>
           {togglesArr.map((v) => {
             // display a different label for PB railNetwork
-            if (v.key === "railNetwork" && state.viewing === "PB") {
+            if (v.key === "railNetwork" && (state.viewing === "PB" || state.viewing === "PK")) {
               return <Switch key={v.label} item={v} label={v.portBotanyLabel} />;
             } else {
               return <Switch key={v.label} item={v} label={v.label} />;

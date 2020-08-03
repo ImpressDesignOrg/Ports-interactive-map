@@ -1,14 +1,7 @@
-import { handlePopupContent } from "../../utils/popup/content-fields";
-
 const tenancyUnitsLayer = {
-  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/tenancydata/json/TENANCY_UNITS.geojson",
-  outFields: ["*"],
+  url:
+    "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/leaseboundary/json/LEASEBOUNDARY.geojson",
   objectIdField: "ObjectID",
-  popupTemplate: {
-    title: "NSW Ports Lease Area",
-    outfields: ["*"],
-    content: handlePopupContent,
-  },
   renderer: {
     type: "simple",
     symbol: {

@@ -10,6 +10,18 @@ const tenancyLeaseAreasLayer = {
     outfields: ["*"],
     content: handlePopupContent,
   },
+  renderer: {
+    type: "simple",
+    symbol: {
+      type: "simple-fill",
+      color: [230, 152, 0, 1],
+      style: "solid",
+      outline: {
+        color: [56, 45, 25, 1],
+        width: 1,
+      },
+    },
+  },
 };
 
 export default tenancyLeaseAreasLayer;

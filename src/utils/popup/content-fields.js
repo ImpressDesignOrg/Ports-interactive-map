@@ -15,9 +15,11 @@ export const handlePopupContent = (feature) => {
   Object.keys(dataObj).forEach((key) => {
     const value = dataObj[key];
 
+    console.log("key", key);
+
     // we don't need these keys in the popup
     if (key === "Angle" || key === "ObjectID" || key === "TextString") {
-      // do nothing (not a placeholder; really do nothing!)
+      // ! do nothing (not a placeholder; really do nothing!)
     } else {
       // the returned string only contains non-null values
       if (value !== null) {

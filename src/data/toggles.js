@@ -47,7 +47,7 @@ const ALL = {
     key: "tenancyLeaseAreas",
   },
   tenancyUnits: {
-    label: "NSW Ports Lease Area",
+    label: "NSW Ports Lease Boundary",
     icon: <AiOutlineLine size={ICON_SIZE} color='#3333cc' />,
     key: "nswPortsLeaseArea",
   },
@@ -57,7 +57,7 @@ const ALL = {
     key: "buildings",
   },
   railNetwork: {
-    label: "Rail Network",
+    label: "NSW Ports Rail Network",
     portBotanyLabel: "NSW Ports On-dock Rail",
     icon: <AiOutlineLine size={ICON_SIZE} color='#8B0000' />,
     key: "railNetwork",
@@ -81,11 +81,6 @@ export const PB_SWITCHES = [
     label: "Berths",
     iconUrl: BerthIcon,
     key: "pbBerths",
-  },
-  {
-    label: "Gates",
-    iconUrl: GateIcon,
-    key: "pbGates",
   },
   ALL.buildings,
   ALL.carparks,

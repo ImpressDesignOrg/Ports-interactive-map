@@ -10,7 +10,6 @@ import keyRoadsLayer from "../data/PublicData/keyRoads";
 import intermodalTerminalsLayer from "../data/PublicData/intermodalTerminals";
 import secondaryRoadsLayer from "../data/PublicData/secondaryRoads";
 import PB_berthLayer from "../data/PortsData/PB_berths";
-import PB_gatesLayer from "../data/PortsData/PB_gates";
 import PK_berthsLayer from "../data/PortsData/PK_berths";
 import tenancyLeaseAreasLayer from "../data/PortsData/tenancyLeaseAreas";
 import tenancyUnitsLayer from "../data/PortsData/tenancyUnits";
@@ -83,31 +82,10 @@ export default function Map() {
         map.add(new GeoJSONLayer(enfieldLayer));
       }
 
-      /*       if (state.siderLevel === 2) {
-        view.when(function () {
-          const layerList = new LayerList({
-            view,
-            listItemCreatedFunction: (e) => {
-              const { item } = e;
-
-              item.panel = {
-                content: document.getElementById("myDiv"),
-                className: "esri-icon-toggle",
-                open: item.visible,
-              };
-            },
-          });
-
-          // Add widget to the top right corner of the view
-          view.ui.add(layerList, "bottom-right");
-        });
-      } */
-
-      // The layers are added in the appropriate order: polygons, lines, points
+      // ! Layers are added in the appropriate order: polygons, lines, points
 
       // Points
       if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer), 0);
-      if (state.pbGates) map.add(new GeoJSONLayer(PB_gatesLayer), 0);
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
       if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
       if (state.carparks) map.add(new GeoJSONLayer(carparksLayer), 0);
