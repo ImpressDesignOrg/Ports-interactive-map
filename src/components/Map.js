@@ -62,7 +62,6 @@ export default function Map() {
       });
 
       // add event listener to map toggle to update state
-      // TODO check whether required after we remove layer state (and replace with visibility)
       basemapToggle.on("toggle", () => {
         setState((prev) => ({
           ...prev,
@@ -109,9 +108,5 @@ export default function Map() {
     });
   });
 
-  return (
-    <>
-      <div className='map-wrapper' ref={mapRef}></div>
-    </>
-  );
+  return <div className='map-wrapper' ref={mapRef}></div>;
 }

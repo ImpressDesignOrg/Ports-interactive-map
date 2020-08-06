@@ -1,14 +1,10 @@
 import { clusterConfig } from "../../utils/popup/cluster";
-import { handlePopupContent } from "../../utils/popup/content-fields";
 
 export const carparksLayer = {
   url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/PortsData/carparks/carparks.geojson",
-  outFields: ["*"],
   objectIdField: "ObjectID",
   popupTemplate: {
-    title: "Parking",
-    outfields: ["*"],
-    content: handlePopupContent,
+    title: "{Asset name}",
   },
   featureReduction: clusterConfig,
   renderer: {

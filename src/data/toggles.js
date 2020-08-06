@@ -2,7 +2,6 @@ import React from "react";
 import { AiOutlineLine } from "react-icons/ai";
 
 import BuildingIcon from "../images/marker--building.svg";
-import GateIcon from "../images/marker--gate.svg";
 import BerthIcon from "../images/marker--berth.svg";
 import SeaportIcon from "../images/marker--seaport.svg";
 import IntermodalTerminalIcon from "../images/marker--imt.svg";
@@ -68,7 +67,7 @@ const ALL = {
     key: "roadNetwork",
   },
   carparks: {
-    label: "Parking",
+    label: "Carpark",
     iconUrl: CarparkIcon,
     key: "carparks",
   },
@@ -85,7 +84,6 @@ export const PB_SWITCHES = [
   ALL.buildings,
   ALL.carparks,
   ALL.tenancyUnits,
-  ALL.tenancyLeaseArea,
   ALL.roadNetwork,
   ALL.railNetwork,
 ];
@@ -99,18 +97,10 @@ export const PK_SWITCHES = [
   ALL.buildings,
   ALL.carparks,
   ALL.tenancyUnits,
-  ALL.tenancyLeaseArea,
   ALL.roadNetwork,
   ALL.railNetwork,
 ];
 
-export const CR_SWITCHES = [ALL.buildings, ALL.tenancyUnits, ALL.tenancyLeaseArea];
+export const CR_SWITCHES = [ALL.buildings, ALL.tenancyUnits];
 
-export const EN_SWITCHES = [
-  ALL.buildings,
-  ALL.carparks,
-  ALL.tenancyUnits,
-  ALL.tenancyLeaseArea,
-  ALL.roadNetwork,
-  ALL.railNetwork,
-];
+export const EN_SWITCHES = [ALL.buildings, ALL.carparks, ALL.tenancyUnits, ALL.roadNetwork, ALL.railNetwork];

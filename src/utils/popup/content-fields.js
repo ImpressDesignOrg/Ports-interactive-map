@@ -7,15 +7,11 @@
 export const handlePopupContent = (feature) => {
   const dataObj = feature.graphic.attributes;
 
-  // TODO why are some metadata columns not pulling through?
-
   let htmlString = "";
 
   // iterate over the metadata object and add all non-null values to as a new table in a row
   Object.keys(dataObj).forEach((key) => {
     const value = dataObj[key];
-
-    console.log("key", key);
 
     // we don't need these keys in the popup
     if (key === "Angle" || key === "ObjectID" || key === "TextString") {
