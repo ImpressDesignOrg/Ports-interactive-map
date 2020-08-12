@@ -17,6 +17,8 @@ import buildingsLayer from "../data/PortsData/buildings";
 import railNetworkLayer from "../data/PortsData/railNetwork";
 import roadNetworkLayer from "../data/PortsData/roadNetwork";
 import { carparksLayer } from "../data/PortsData/carparks";
+import { PK_innerHabourLayer } from "../data/PortsData/PK_innerHarbour";
+import { PK_outerHabourLayer } from "../data/PortsData/PK_outerHarbour";
 
 import { viewports } from "../data/viewports";
 
@@ -28,9 +30,16 @@ export default function Map() {
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
-      ["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/GeoJSONLayer", "esri/widgets/BasemapToggle"],
+      [
+        "esri/config",
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/GeoJSONLayer",
+        "esri/widgets/BasemapToggle",
+        "esri/layers/FeatureLayer",
+      ],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle]) => {
+    ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle, FeatureLayer]) => {
       const map = new ArcGISMap({
         basemap: state.basemap,
       });
@@ -73,17 +82,27 @@ export default function Map() {
         position: "top-left",
       });
 
+      // ! Layers are added in the appropriate order: polygons, lines, points
+
+      // Points
       // if they're viewing all locations, show the locations marker
-      if (state.viewing === "ALL") {
+      /* if (state.viewing === "ALL") {
         map.add(new GeoJSONLayer(botanyLayer));
         map.add(new GeoJSONLayer(kemblaLayer));
         map.add(new GeoJSONLayer(cooksLayer));
         map.add(new GeoJSONLayer(enfieldLayer));
+			} */
+
+      if (state.viewing === "ALL") {
+        if (state.nswPortsSeaports) {
+          map.add(new GeoJSONLayer(botanyLayer), 0);
+          map.add(new GeoJSONLayer(kemblaLayer), 0);
+        }
+        if (state.nswPortsIntermodalTerminals) {
+          map.add(new GeoJSONLayer(cooksLayer), 0);
+          map.add(new GeoJSONLayer(enfieldLayer), 0);
+        }
       }
-
-      // ! Layers are added in the appropriate order: polygons, lines, points
-
-      // Points
       if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer), 0);
       if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
       if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
@@ -100,6 +119,9 @@ export default function Map() {
       // Polygons
       if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer), 0);
       if (state.nswPortsLeaseArea) map.add(new GeoJSONLayer(tenancyUnitsLayer), 0);
+
+      map.add(new GeoJSONLayer(PK_innerHabourLayer), 0);
+      map.add(new GeoJSONLayer(PK_outerHabourLayer), 0);
 
       // destroy the map view
       return () => {

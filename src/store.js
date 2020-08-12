@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createContainer } from "react-tracked";
 
 export const clearActive = {
+  nswPortsSeaports: false,
+  nswPortsIntermodalTerminals: false,
   leaseBoundaries: false,
   tenancyLeaseAreas: false,
   nswPortsLeaseArea: false,
@@ -21,6 +23,8 @@ export const clearActive = {
 
 const defaultActive = {
   ...clearActive,
+  nswPortsSeaports: true,
+  nswPortsIntermodalTerminals: true,
   nswPortsLeaseArea: true,
 };
 

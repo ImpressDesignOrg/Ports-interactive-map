@@ -42,19 +42,19 @@
 .esri-attribution {
   display: none !important;
 }
-.esri-popup {
+/* .esri-popup {
   position: absolute !important;
   bottom: 30px !important;
   left: 30px !important;
   box-shadow: none !important;
-}
+} 
 .esri-popup__main-container {
   position: absolute !important;
   bottom: 0 !important;
   background: #fff !important;
   border-radius: 10px;
   width: 500px !important;
-}
+}*/
 .esri-popup__main-container .esri-popup__header {
   background: #002650 !important;
   height: 70px;
@@ -130,9 +130,9 @@
 .esri-popup__button--dock {
   display: none !important;
 }
-.esri-popup__pointer {
+/* .esri-popup__pointer {
   display: none !important;
-}
+} */
 .esri-popup__footer {
   margin: 0 0 3px 20px;
 }

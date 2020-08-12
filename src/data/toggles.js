@@ -10,11 +10,21 @@ import CarparkIcon from "../images/marker--carpark.svg";
 const ICON_SIZE = "30px";
 
 const ALL = {
-  seaports: {
+  nswPortsSeaports: {
+    label: "NSW Ports Seaports",
+    iconUrl: SeaportIcon,
+    key: "nswPortsSeaports",
+  },
+  nswPortsIntermodalTerminals: {
+    label: "NSW Ports Intermodal Terminals",
+    iconUrl: IntermodalTerminalIcon,
+    key: "nswPortsIntermodalTerminals",
+  },
+  /* seaports: {
     label: "Seaports",
     iconUrl: SeaportIcon,
     key: "seaports",
-  },
+  }, */
   intermodalTerminals: {
     label: "Intermodal Terminals",
     iconUrl: IntermodalTerminalIcon,
@@ -73,7 +83,13 @@ const ALL = {
   },
 };
 
-export const ALL_SWITCHES = [ALL.seaports, ALL.intermodalTerminals, ALL.keyRoads, ALL.secondaryRoads];
+export const ALL_SWITCHES = [
+  ALL.nswPortsSeaports,
+  ALL.nswPortsIntermodalTerminals,
+  ALL.intermodalTerminals,
+  ALL.keyRoads,
+  ALL.secondaryRoads,
+];
 
 export const PB_SWITCHES = [
   {
