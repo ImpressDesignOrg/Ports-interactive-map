@@ -49,8 +49,8 @@ const StyledToggle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  right: ${(props) => (props.visible ? "380px" : "0")};
-  top: 17%;
+  right: ${(props) => (props.visible ? "350px" : "0")};
+  top: 4%;
   height: 60px;
   width: 30px;
   border: none;
@@ -75,8 +75,8 @@ const StyledContent = styled.div`
   position: absolute;
   width: 350px;
   z-index: 2;
-  right: 30px;
-  top: 4px;
+  right: 0px;
+  top: 0px;
   border-radius: 10px;
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
   opacity: ${(props) => (props.visible ? "1" : "0")};

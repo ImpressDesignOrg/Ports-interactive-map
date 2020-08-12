@@ -120,8 +120,10 @@ export default function Map() {
       if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer), 0);
       if (state.nswPortsLeaseArea) map.add(new GeoJSONLayer(tenancyUnitsLayer), 0);
 
-      map.add(new GeoJSONLayer(PK_innerHabourLayer), 0);
-      map.add(new GeoJSONLayer(PK_outerHabourLayer), 0);
+      if (state.viewing !== "ALL") {
+        map.add(new GeoJSONLayer(PK_innerHabourLayer), 0);
+        map.add(new GeoJSONLayer(PK_outerHabourLayer), 0);
+      }
 
       // destroy the map view
       return () => {

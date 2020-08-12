@@ -4,7 +4,9 @@ import { AiOutlineLine } from "react-icons/ai";
 import BuildingIcon from "../images/marker--building.svg";
 import BerthIcon from "../images/marker--berth.svg";
 import SeaportIcon from "../images/marker--seaport.svg";
+import SeaportBlueIcon from "../images/marker--seaport--blue.svg";
 import IntermodalTerminalIcon from "../images/marker--imt.svg";
+import IntermodalTerminalBlueIcon from "../images/marker--imt--blue.svg";
 import CarparkIcon from "../images/marker--carpark.svg";
 
 const ICON_SIZE = "30px";
@@ -12,12 +14,12 @@ const ICON_SIZE = "30px";
 const ALL = {
   nswPortsSeaports: {
     label: "NSW Ports Seaports",
-    iconUrl: SeaportIcon,
+    iconUrl: SeaportBlueIcon,
     key: "nswPortsSeaports",
   },
   nswPortsIntermodalTerminals: {
     label: "NSW Ports Intermodal Terminals",
-    iconUrl: IntermodalTerminalIcon,
+    iconUrl: IntermodalTerminalBlueIcon,
     key: "nswPortsIntermodalTerminals",
   },
   /* seaports: {

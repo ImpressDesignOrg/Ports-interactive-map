@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .map-wrapper {
   height: 100vh;
   max-height: 800px;
@@ -60,8 +63,8 @@
   height: 70px;
   align-items: center;
   display: flex;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  /*   border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
 }
 .esri-popup__main-container .esri-popup__header-container {
   margin-left: 20px;
