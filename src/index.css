@@ -1,6 +1,7 @@
 body {
   margin: 0;
 }
+
 .map-wrapper {
   height: 100vh;
   max-height: 800px;

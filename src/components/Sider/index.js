@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose } from "react-icons/ai";
 
@@ -7,11 +7,32 @@ import { useTrackedState } from "../../store";
 import LocationButtons from "./LocationButtons";
 import ActiveLayers from "./ActiveLayers";
 
+const getWindowDimensions = () => {
+  return {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
+};
+
 export default function Sidebar() {
-  const [visible, setVisible] = useState(true);
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+  const [visible, setVisible] = useState(windowDimensions.width > 900 ? true : false);
   // to adjust icon color when hovered
   const [btnHovered, setBtnHovered] = useState(false);
+  const [crossHovered, setCrossHovered] = useState(false);
   const state = useTrackedState();
+
+  /* console.log("windowDimensions", windowDimensions);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); */
 
   return (
     <div>
@@ -33,8 +54,16 @@ export default function Sidebar() {
       <StyledContent visible={visible}>
         <StyledHeader viewing={state.viewing}>
           <div className='icon-wrapper'></div>
-          <MobileCloseBtn onClick={() => setVisible(false)}>
-            <AiOutlineClose size='30px' color='#fff' />
+          <MobileCloseBtn
+            onClick={() => setVisible(false)}
+            onMouseEnter={() => setCrossHovered(true)}
+            onMouseLeave={() => setCrossHovered(false)}
+          >
+            {crossHovered ? (
+              <AiOutlineClose size='40px' color='#fff' />
+            ) : (
+              <AiOutlineClose size='40px' color='#68a0b9' />
+            )}
           </MobileCloseBtn>
         </StyledHeader>
         <ButtonsWrapper>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</ButtonsWrapper>
@@ -51,8 +80,8 @@ const StyledToggle = styled.button`
   align-items: center;
   right: ${(props) => (props.visible ? "350px" : "0")};
   top: 4%;
-  height: 60px;
-  width: 30px;
+  height: 80px;
+  width: 40px;
   border: none;
   cursor: pointer;
   background: #002650;
@@ -152,15 +181,14 @@ const MobileCloseBtn = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;
-
-  @media (min-width: 500px) {
-    display: none;
-  }
-
   background: none;
   border: none;
   cursor: pointer;
   margin: 10px 10px 0 auto;
+
+  @media (min-width: 500px) {
+    display: none;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
