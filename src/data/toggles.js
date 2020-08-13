@@ -89,6 +89,7 @@ export const ALL_SWITCHES = [
   ALL.nswPortsSeaports,
   ALL.nswPortsIntermodalTerminals,
   ALL.intermodalTerminals,
+  ALL.keyRail,
   ALL.keyRoads,
   ALL.secondaryRoads,
 ];
