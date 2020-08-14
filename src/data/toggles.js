@@ -79,7 +79,7 @@ const ALL = {
     key: "roadNetwork",
   },
   carparks: {
-    label: "Carpark",
+    label: "Parking",
     iconUrl: CarparkIcon,
     key: "carparks",
   },

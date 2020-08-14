@@ -59,6 +59,10 @@ body {
   border-radius: 10px;
   width: 500px !important;
 }*/
+.esri-popup__main-container {
+  width: auto !important;
+  max-width: 460px;
+}
 .esri-popup__main-container .esri-popup__header {
   background: #002650 !important;
   height: 70px;
