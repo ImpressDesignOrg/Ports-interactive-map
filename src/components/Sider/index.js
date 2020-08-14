@@ -54,17 +54,6 @@ export default function Sidebar() {
       <StyledContent visible={visible}>
         <StyledHeader viewing={state.viewing}>
           <div className='icon-wrapper'></div>
-          <MobileCloseBtn
-            onClick={() => setVisible(false)}
-            onMouseEnter={() => setCrossHovered(true)}
-            onMouseLeave={() => setCrossHovered(false)}
-          >
-            {crossHovered ? (
-              <AiOutlineClose size='40px' color='#fff' />
-            ) : (
-              <AiOutlineClose size='40px' color='#68a0b9' />
-            )}
-          </MobileCloseBtn>
         </StyledHeader>
         <ButtonsWrapper>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</ButtonsWrapper>
       </StyledContent>
@@ -91,10 +80,6 @@ const StyledToggle = styled.button`
   &:hover {
     background: #f5a91c;
   }
-
-  @media (max-width: 500px) {
-    display: ${(props) => (props.visible ? "none" : "flex")};
-  }
 `;
 
 const StyledContent = styled.div`
@@ -110,14 +95,6 @@ const StyledContent = styled.div`
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
   opacity: ${(props) => (props.visible ? "1" : "0")};
   transition: visibility 0.5s, opacity 0.1s linear;
-
-  @media (max-width: 500px) {
-    width: 100vw;
-    height: 800px;
-    left: 0;
-    top: 0;
-    right: 0;
-  }
 `;
 
 const handleBannerImage = (viewing) => {
@@ -173,21 +150,6 @@ const StyledHeader = styled.div`
     background-position: center center;
     left: 33%;
     top: 7%;
-  }
-`;
-
-const MobileCloseBtn = styled.button`
-  z-index: 4;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 10px 10px 0 auto;
-
-  @media (min-width: 500px) {
-    display: none;
   }
 `;
 
