@@ -19,7 +19,6 @@ export default function Sidebar() {
   const [visible, setVisible] = useState(windowDimensions.width > 900 ? true : false);
   // to adjust icon color when hovered
   const [btnHovered, setBtnHovered] = useState(false);
-  const [crossHovered, setCrossHovered] = useState(false);
   const state = useTrackedState();
 
   /* console.log("windowDimensions", windowDimensions);
@@ -35,7 +34,7 @@ export default function Sidebar() {
   }, []); */
 
   return (
-    <div>
+    <StyledContainer>
       <StyledToggle
         visible={visible}
         onClick={() => {
@@ -57,9 +56,11 @@ export default function Sidebar() {
         </StyledHeader>
         <ButtonsWrapper>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</ButtonsWrapper>
       </StyledContent>
-    </div>
+    </StyledContainer>
   );
 }
+
+const StyledContainer = styled.div``;
 
 const StyledToggle = styled.button`
   z-index: 3;
@@ -68,7 +69,7 @@ const StyledToggle = styled.button`
   justify-content: center;
   align-items: center;
   right: ${(props) => (props.visible ? "350px" : "0")};
-  top: 4%;
+  top: 3%;
   height: 80px;
   width: 40px;
   border: none;
@@ -79,6 +80,10 @@ const StyledToggle = styled.button`
 
   &:hover {
     background: #f5a91c;
+  }
+
+  @media (max-width: 500px) {
+    right: ${(props) => (props.visible ? "250px" : "0")};
   }
 `;
 
@@ -95,6 +100,10 @@ const StyledContent = styled.div`
   visibility: ${(props) => (props.visible ? "visible" : "hidden")};
   opacity: ${(props) => (props.visible ? "1" : "0")};
   transition: visibility 0.5s, opacity 0.1s linear;
+
+  @media (max-width: 500px) {
+    width: 250px;
+  }
 `;
 
 const handleBannerImage = (viewing) => {

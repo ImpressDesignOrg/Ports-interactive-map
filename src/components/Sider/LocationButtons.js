@@ -53,10 +53,6 @@ const StyledContent = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 
-  @media (max-width: 500px) {
-    justify-content: center;
-  }
-
   button {
     display: flex;
     align-items: center;

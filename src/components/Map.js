@@ -31,16 +31,9 @@ export default function Map() {
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
-      [
-        "esri/config",
-        "esri/Map",
-        "esri/views/MapView",
-        "esri/layers/GeoJSONLayer",
-        "esri/widgets/BasemapToggle",
-        "esri/layers/FeatureLayer",
-      ],
+      ["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/GeoJSONLayer", "esri/widgets/BasemapToggle"],
       { css: true }
-    ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle, FeatureLayer]) => {
+    ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle]) => {
       const map = new ArcGISMap({
         basemap: state.basemap,
       });
