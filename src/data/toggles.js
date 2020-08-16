@@ -1,26 +1,26 @@
-import React from "react";
-import { AiOutlineLine } from "react-icons/ai";
+import React from 'react';
+import { AiOutlineLine } from 'react-icons/ai';
 
-import BuildingIcon from "../images/marker--building.svg";
-import BerthIcon from "../images/marker--berth.svg";
-import SeaportIcon from "../images/marker--seaport.svg";
-import SeaportBlueIcon from "../images/marker--seaport--blue.svg";
-import IntermodalTerminalIcon from "../images/marker--imt.svg";
-import IntermodalTerminalBlueIcon from "../images/marker--imt--blue.svg";
-import CarparkIcon from "../images/marker--carpark.svg";
+import BuildingIcon from '../images/marker--building.svg';
+import BerthIcon from '../images/marker--berth.svg';
+import SeaportIcon from '../images/marker--seaport.svg';
+import SeaportBlueIcon from '../images/marker--seaport--blue.svg';
+import IntermodalTerminalIcon from '../images/marker--imt.svg';
+import IntermodalTerminalBlueIcon from '../images/marker--imt--blue.svg';
+import CarparkIcon from '../images/marker--carpark.svg';
 
-const ICON_SIZE = "30px";
+const ICON_SIZE = '30px';
 
 const ALL = {
   nswPortsSeaports: {
-    label: "NSW Ports Seaports",
+    label: 'NSW Ports Seaports',
     iconUrl: SeaportBlueIcon,
-    key: "nswPortsSeaports",
+    key: 'nswPortsSeaports',
   },
   nswPortsIntermodalTerminals: {
-    label: "NSW Ports Intermodal Terminals",
+    label: 'NSW Ports Intermodal Terminals',
     iconUrl: IntermodalTerminalBlueIcon,
-    key: "nswPortsIntermodalTerminals",
+    key: 'nswPortsIntermodalTerminals',
   },
   /* seaports: {
     label: "Seaports",
@@ -28,60 +28,60 @@ const ALL = {
     key: "seaports",
   }, */
   intermodalTerminals: {
-    label: "Intermodal Terminals",
+    label: 'Intermodal Terminals',
     iconUrl: IntermodalTerminalIcon,
-    key: "intermodalTerminals",
+    key: 'intermodalTerminals',
   },
   keyRail: {
-    label: "Key National Rail",
+    label: 'Key National Rail',
     icon: <AiOutlineLine size={ICON_SIZE} color='#FF1493' />,
-    key: "keyRail",
+    key: 'keyRail',
   },
   keyRoads: {
-    label: "Key National Roads",
+    label: 'Key National Roads',
     icon: <AiOutlineLine size={ICON_SIZE} color='#002673' />,
-    key: "keyRoads",
+    key: 'keyRoads',
   },
   secondaryRoads: {
-    label: "Secondary Roads",
+    label: 'Secondary Roads',
     icon: <AiOutlineLine size={ICON_SIZE} color='#004de8' />,
-    key: "secondaryRoads",
+    key: 'secondaryRoads',
   },
   localGov: {
-    label: "Local Government",
+    label: 'Local Government',
     icon: <AiOutlineLine size={ICON_SIZE} color='#aaff00' />,
-    key: "localGov",
+    key: 'localGov',
   },
   tenancyLeaseArea: {
-    label: "Tenancy Lease Area",
+    label: 'Tenancy Lease Area',
     icon: <AiOutlineLine size={ICON_SIZE} color='#e69800' />,
-    key: "tenancyLeaseAreas",
+    key: 'tenancyLeaseAreas',
   },
   tenancyUnits: {
-    label: "NSW Ports Lease Boundary",
+    label: 'NSW Ports Lease Boundary',
     icon: <AiOutlineLine size={ICON_SIZE} color='#3333cc' />,
-    key: "nswPortsLeaseArea",
+    key: 'nswPortsLeaseArea',
   },
   buildings: {
-    label: "Buildings",
+    label: 'Buildings',
     iconUrl: BuildingIcon,
-    key: "buildings",
+    key: 'buildings',
   },
   railNetwork: {
-    label: "NSW Ports Rail Network",
-    portBotanyLabel: "NSW Ports On-dock Rail",
+    label: 'NSW Ports Rail Network',
+    portBotanyLabel: 'NSW Ports On-dock Rail',
     icon: <AiOutlineLine size={ICON_SIZE} color='#8B0000' />,
-    key: "railNetwork",
+    key: 'railNetwork',
   },
   roadNetwork: {
-    label: "NSW Ports Road Network",
+    label: 'NSW Ports Road Network',
     icon: <AiOutlineLine size={ICON_SIZE} color='#a800e6' />,
-    key: "roadNetwork",
+    key: 'roadNetwork',
   },
   carparks: {
-    label: "Parking",
+    label: 'Parking',
     iconUrl: CarparkIcon,
-    key: "carparks",
+    key: 'carparks',
   },
 };
 
@@ -89,16 +89,15 @@ export const ALL_SWITCHES = [
   ALL.nswPortsSeaports,
   ALL.nswPortsIntermodalTerminals,
   ALL.intermodalTerminals,
-  ALL.keyRail,
   ALL.keyRoads,
   ALL.secondaryRoads,
 ];
 
 export const PB_SWITCHES = [
   {
-    label: "Berths",
+    label: 'Berths',
     iconUrl: BerthIcon,
-    key: "pbBerths",
+    key: 'pbBerths',
   },
   ALL.buildings,
   ALL.carparks,
@@ -110,9 +109,9 @@ export const PB_SWITCHES = [
 
 export const PK_SWITCHES = [
   {
-    label: "Berths",
+    label: 'Berths',
     iconUrl: BerthIcon,
-    key: "pkBerths",
+    key: 'pkBerths',
   },
   ALL.buildings,
   ALL.carparks,
