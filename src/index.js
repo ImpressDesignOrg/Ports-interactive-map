@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import styled from "styled-components";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 
-import { Provider } from "./store";
+import { Provider } from './store';
 
-import Sidebar from "./components/Sider";
-import Map from "./components/Map";
+import Sidebar from './components/Sider';
+import Map from './components/Map';
 
-import "./index.css";
+import './index.css';
 
 const App = () => (
   <Provider>
@@ -23,5 +23,5 @@ const StyledWrapper = styled.div`
 `;
 
 window.onload = () => {
-  ReactDOM.render(<App />, document.getElementById("react-interactive-map"));
+  ReactDOM.render(<App />, document.getElementById('react-interactive-map'));
 };

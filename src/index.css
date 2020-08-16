@@ -19,6 +19,7 @@ body {
   left: 20px;
   border-radius: 5px;
 }
+
 .esri-ui-top-left .esri-zoom .esri-widget--button {
   width: 60px;
   height: 60px;
@@ -73,7 +74,7 @@ body {
   margin-left: 20px;
 }
 .esri-popup__main-container .esri-popup__header h2 {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-size: 20px;
   font-weight: 700;
   color: #fff !important;
@@ -107,7 +108,7 @@ body {
   background: #002650;
 }
 .esri-popup__main-container .esri-popup__content table td {
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   font-size: 18px;
   font-weight: 300;
   color: #000;
@@ -202,5 +203,11 @@ body {
 @media (max-width: 500px) {
   .esri-popup__main-container {
     width: 95% !important;
+  }
+  .esri-ui-top-left .esri-basemap-toggle {
+    top: 700px;
+  }
+  .esri-ui-top-left .esri-zoom {
+    top: 570px;
   }
 }

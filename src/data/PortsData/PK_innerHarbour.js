@@ -1,16 +1,15 @@
+import { ASSET_URL, DATA_URL } from '../../constants';
+
 export const PK_innerHabourLayer = {
-  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/PortsData/harbour/innerHarbour.geojson",
-  objectIdField: "ObjectID",
-  popupTemplate: {
-    title: "{Asset name}",
-  },
+  url: `${DATA_URL}PortsData/harbour/innerHarbour.geojson`,
+  objectIdField: 'ObjectID',
   renderer: {
-    type: "simple",
+    type: 'simple',
     symbol: {
-      type: "picture-marker",
-      url: "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--imt	.svg",
-      width: "30px",
-      height: "30px",
+      type: 'picture-marker',
+      url: `${ASSET_URL}marker--imt.svg`,
+      width: '30px',
+      height: '30px',
     },
   },
 };

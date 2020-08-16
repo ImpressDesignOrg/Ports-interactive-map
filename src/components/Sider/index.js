@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose } from "react-icons/ai";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
-import { useTrackedState } from "../../store";
+import { useTrackedState } from '../../store';
 
-import LocationButtons from "./LocationButtons";
-import ActiveLayers from "./ActiveLayers";
+import LocationButtons from './LocationButtons';
+import ActiveLayers from './ActiveLayers';
 
 const getWindowDimensions = () => {
   return {
@@ -21,7 +21,7 @@ export default function Sidebar() {
   const [btnHovered, setBtnHovered] = useState(false);
   const state = useTrackedState();
 
-  /* console.log("windowDimensions", windowDimensions);
+  /* 
 
   useEffect(() => {
     function handleResize() {
@@ -45,12 +45,12 @@ export default function Sidebar() {
         onMouseLeave={() => setBtnHovered(false)}
       >
         {visible ? (
-          <AiOutlineArrowRight size='20px' color={btnHovered ? "#002650" : "#68a0b9"} />
+          <AiOutlineArrowRight size='20px' color={btnHovered ? '#002650' : '#68a0b9'} />
         ) : (
-          <AiOutlineArrowLeft size='20px' color={btnHovered ? "#002650" : "#68a0b9"} />
+          <AiOutlineArrowLeft size='20px' color={btnHovered ? '#002650' : '#68a0b9'} />
         )}
       </StyledToggle>
-      <StyledContent visible={visible}>
+      <StyledContent id={visible ? 'active' : ''} visible={visible}>
         <StyledHeader viewing={state.viewing}>
           <div className='icon-wrapper'></div>
         </StyledHeader>
@@ -68,7 +68,7 @@ const StyledToggle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  right: ${(props) => (props.visible ? "350px" : "0")};
+  right: ${(props) => (props.visible ? '350px' : '0')};
   top: 3%;
   height: 80px;
   width: 40px;
@@ -83,7 +83,7 @@ const StyledToggle = styled.button`
   }
 
   @media (max-width: 500px) {
-    right: ${(props) => (props.visible ? "250px" : "0")};
+    right: ${(props) => (props.visible ? '85%' : '0')};
   }
 `;
 
@@ -97,28 +97,28 @@ const StyledContent = styled.div`
   right: 0px;
   top: 0px;
   border-radius: 10px;
-  visibility: ${(props) => (props.visible ? "visible" : "hidden")};
-  opacity: ${(props) => (props.visible ? "1" : "0")};
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.visible ? '1' : '0')};
   transition: visibility 0.5s, opacity 0.1s linear;
 
   @media (max-width: 500px) {
-    width: 250px;
+    width: 85%;
   }
 `;
 
 const handleBannerImage = (viewing) => {
   switch (viewing) {
-    case "AUS":
-    case "ALL":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--nsw-ports.jpg";
-    case "PB":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--botany.jpg";
-    case "PK":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--kembla.jpg";
-    case "EN":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--enfield.jpg";
-    case "CR":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--cooks.jpg";
+    case 'AUS':
+    case 'ALL':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--nsw-ports.jpg';
+    case 'PB':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--botany.jpg';
+    case 'PK':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--kembla.jpg';
+    case 'EN':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--enfield.jpg';
+    case 'CR':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/header--cooks.jpg';
     default:
       break;
   }
@@ -126,17 +126,17 @@ const handleBannerImage = (viewing) => {
 
 const handleBannerIcon = (viewing) => {
   switch (viewing) {
-    case "AUS":
-    case "ALL":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--nsw-ports.svg";
-    case "PB":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--botany.svg";
-    case "PK":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--kembla.svg";
-    case "EN":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--enfield.svg";
-    case "CR":
-      return "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--cooks.svg";
+    case 'AUS':
+    case 'ALL':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--nsw-ports.svg';
+    case 'PB':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--botany.svg';
+    case 'PK':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--kembla.svg';
+    case 'EN':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--enfield.svg';
+    case 'CR':
+      return 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--cooks.svg';
     default:
       break;
   }

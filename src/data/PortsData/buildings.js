@@ -1,10 +1,11 @@
-import { clusterConfig } from "../../utils/popup/cluster";
+import { clusterConfig } from '../../utils/popup/cluster';
+import { ASSET_URL, DATA_URL } from '../../constants';
 // import { handlePopupContent } from "../../utils/popup/content-fields";
 
 const handlePopupContent = (feature) => {
   const dataObj = feature.graphic.attributes;
 
-  let htmlString = "";
+  let htmlString = '';
 
   // iterate over the metadata object and add all non-null values to as a new table in a row
   Object.keys(dataObj).forEach((key) => {
@@ -12,7 +13,7 @@ const handlePopupContent = (feature) => {
 
     // we don't need these keys in the popup
     // the returned string only contains non-null values
-    if (value !== null && key !== "Angle" && key !== "ObjectID" && key !== "TextString" && key !== "Asset Name") {
+    if (value !== null && key !== 'Angle' && key !== 'ObjectID' && key !== 'TextString' && key !== 'Asset Name') {
       htmlString = htmlString + `<tr><td>${key}</td><td>${value}</td></tr>`;
     }
   });
@@ -21,22 +22,22 @@ const handlePopupContent = (feature) => {
 };
 
 const buildingsLayer = {
-  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/assets/json/BUILDINGS.geojson",
-  outFields: ["*"],
-  objectIdField: "ObjectID",
+  url: `${DATA_URL}assets/json/BUILDINGS.geojson`,
+  outFields: ['*'],
+  objectIdField: 'ObjectID',
   popupTemplate: {
-    title: "{Asset Name}",
-    outfields: ["*"],
+    title: '{Asset Name}',
+    outfields: ['*'],
     content: handlePopupContent,
   },
   featureReduction: clusterConfig,
   renderer: {
-    type: "simple",
+    type: 'simple',
     symbol: {
-      type: "picture-marker",
-      url: "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--building.svg",
-      width: "50px",
-      height: "50px",
+      type: 'picture-marker',
+      url: `${ASSET_URL}marker--building.svg`,
+      width: '50px',
+      height: '50px',
     },
   },
 };
