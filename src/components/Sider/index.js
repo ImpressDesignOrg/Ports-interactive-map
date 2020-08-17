@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
-import { useTrackedState } from '../../store';
+// import { useTrackedState } from '../../store';
+import Context, { Provider } from '../../context';
 
 import LocationButtons from './LocationButtons';
 import ActiveLayers from './ActiveLayers';
@@ -15,23 +16,11 @@ const getWindowDimensions = () => {
 };
 
 export default function Sidebar() {
+  const [data, setData] = React.useContext(Context);
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   const [visible, setVisible] = useState(windowDimensions.width > 900 ? true : false);
   // to adjust icon color when hovered
   const [btnHovered, setBtnHovered] = useState(false);
-  const state = useTrackedState();
-
-  /* 
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []); */
 
   return (
     <StyledContainer>
@@ -51,10 +40,10 @@ export default function Sidebar() {
         )}
       </StyledToggle>
       <StyledContent id={visible ? 'active' : ''} visible={visible}>
-        <StyledHeader viewing={state.viewing}>
+        <StyledHeader viewing={data.viewing}>
           <div className='icon-wrapper'></div>
         </StyledHeader>
-        <ButtonsWrapper>{state.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</ButtonsWrapper>
+        <ButtonsWrapper>{data.siderLevel === 1 ? <LocationButtons /> : <ActiveLayers />}</ButtonsWrapper>
       </StyledContent>
     </StyledContainer>
   );

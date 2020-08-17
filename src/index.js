@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-import { Provider } from './store';
+import { Provider } from './context';
 
 import Sidebar from './components/Sider';
 import Map from './components/Map';

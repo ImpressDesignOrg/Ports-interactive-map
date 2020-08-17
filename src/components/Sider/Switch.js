@@ -1,17 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import { useForm } from "react-hook-form";
-import Switch from "react-switch";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
+import Switch from 'react-switch';
 
-import { useTrackedState, useSetState } from "../../store";
+import Context from '../../context';
 
 export default function SwitchComp({ item, label }) {
-  const state = useTrackedState();
-  const setState = useSetState();
+  const [data, setData] = useContext(Context);
   const { register } = useForm();
 
   const handleToggle = (e, key) => {
-    setState((prev) => ({ ...prev, [key]: e }));
+    setData((prev) => ({ ...prev, [key]: e }));
   };
 
   const { icon, iconUrl, key } = item;
@@ -26,7 +25,7 @@ export default function SwitchComp({ item, label }) {
         <Switch
           ref={register}
           onChange={(e) => handleToggle(e, key)}
-          checked={state[key]}
+          checked={data[key]}
           checkedIcon={false}
           uncheckedIcon={false}
           onColor='#68a0b9'
@@ -77,7 +76,7 @@ const StyledSwitch = styled.div`
       color: #000;
       font-size: 18px;
       font-weight: 500;
-      font-family: "Roboto Condensed";
+      font-family: 'Roboto Condensed';
       border-bottom: 1px solid #fff;
 
       &:hover {

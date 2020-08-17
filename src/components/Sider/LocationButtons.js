@@ -1,33 +1,33 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 
-import { useSetState } from "../../store";
+import Context, { Provider } from '../../context';
 
-import BotanyIcon from "../../images/marker--botany.svg";
-import KemblaIcon from "../../images/marker--kembla.svg";
-import CooksIcon from "../../images/marker--cooks.svg";
-import EnfieldIcon from "../../images/marker--enfield.svg";
-import NSWPortsIcon from "../../images/marker--nsw-ports.svg";
+import BotanyIcon from '../../images/marker--botany.svg';
+import KemblaIcon from '../../images/marker--kembla.svg';
+import CooksIcon from '../../images/marker--cooks.svg';
+import EnfieldIcon from '../../images/marker--enfield.svg';
+import NSWPortsIcon from '../../images/marker--nsw-ports.svg';
 
 const BUTTONS = [
-  { id: "PB", icon: BotanyIcon },
-  { id: "PK", icon: KemblaIcon },
+  { id: 'PB', icon: BotanyIcon },
+  { id: 'PK', icon: KemblaIcon },
   {
-    id: "CR",
+    id: 'CR',
     icon: CooksIcon,
   },
-  { id: "EN", icon: EnfieldIcon },
+  { id: 'EN', icon: EnfieldIcon },
   {
-    id: "ALL",
+    id: 'ALL',
     icon: NSWPortsIcon,
   },
 ];
 
 export default function LocationButtons() {
-  const setState = useSetState();
+  const [data, setData] = useContext(Context);
 
   const handleClick = (location) => {
-    setState((prev) => ({ ...prev, siderLevel: 2, viewing: location }));
+    setData((prev) => ({ ...prev, siderLevel: 2, viewing: location }));
   };
 
   return (
@@ -45,7 +45,7 @@ export default function LocationButtons() {
 
 const StyledContainer = styled.div`
   margin: 20px 0;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 `;
 
 const StyledContent = styled.div`

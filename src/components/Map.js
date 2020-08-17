@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import { loadModules } from 'esri-loader';
 
-import { useTrackedState, useSetState } from '../store';
+import Context from '../context';
 
 // ##### IMPORT ALL INDIVIDUAL LAYER SETTINGS
 import { botanyLayer, kemblaLayer, cooksLayer, enfieldLayer } from '../data/PortsData/allLocations';
@@ -18,15 +18,12 @@ import buildingsLayer from '../data/PortsData/buildings';
 import railNetworkLayer from '../data/PortsData/railNetwork';
 import roadNetworkLayer from '../data/PortsData/roadNetwork';
 import { carparksLayer } from '../data/PortsData/carparks';
-import { PK_innerHabourLayer } from '../data/PortsData/PK_innerHarbour';
-import { PK_outerHabourLayer } from '../data/PortsData/PK_outerHarbour';
 
 import { viewports } from '../data/viewports';
 
 export default function Map() {
   const mapRef = useRef();
-  const state = useTrackedState();
-  const setState = useSetState();
+  const [data, setData] = useContext(Context);
 
   useEffect(() => {
     // lazy load the required ArcGIS API
@@ -35,15 +32,15 @@ export default function Map() {
       { css: true }
     ).then(([esriConfig, ArcGISMap, MapView, GeoJSONLayer, BasemapToggle]) => {
       const map = new ArcGISMap({
-        basemap: state.basemap,
+        basemap: data.basemap,
       });
 
       // load the map view at the ref's DOM node
       const view = new MapView({
         container: mapRef.current,
         map,
-        center: viewports[state.viewing].center,
-        zoom: viewports[state.viewing].zoom,
+        center: viewports[data.viewing].center,
+        zoom: viewports[data.viewing].zoom,
         popup: {
           collapseEnabled: false,
           dockEnabled: false,
@@ -61,14 +58,14 @@ export default function Map() {
 
       const basemapToggle = new BasemapToggle({
         view,
-        nextBasemap: state.basemap === 'gray' ? 'satellite' : 'gray',
+        nextBasemap: data.basemap === 'gray' ? 'satellite' : 'gray',
       });
 
       // add event listener to map toggle to update state
       basemapToggle.on('toggle', () => {
-        setState((prev) => ({
+        setData((prev) => ({
           ...prev,
-          basemap: state.basemap === 'gray' ? 'satellite' : 'gray',
+          basemap: data.basemap === 'gray' ? 'satellite' : 'gray',
         }));
       });
 
@@ -77,48 +74,34 @@ export default function Map() {
       });
 
       // ! Layers are added in the appropriate order: polygons, lines, points
-
       // Points
-      // if they're viewing all locations, show the locations marker
-      /* if (state.viewing === "ALL") {
-        map.add(new GeoJSONLayer(botanyLayer));
-        map.add(new GeoJSONLayer(kemblaLayer));
-        map.add(new GeoJSONLayer(cooksLayer));
-        map.add(new GeoJSONLayer(enfieldLayer));
-			} */
-
-      if (state.viewing === 'ALL') {
-        if (state.nswPortsSeaports) {
+      if (data.viewing === 'ALL') {
+        if (data.nswPortsSeaports) {
           map.add(new GeoJSONLayer(botanyLayer), 0);
           map.add(new GeoJSONLayer(kemblaLayer), 0);
         }
-        if (state.nswPortsIntermodalTerminals) {
+        if (data.nswPortsIntermodalTerminals) {
           map.add(new GeoJSONLayer(cooksLayer), 0);
           map.add(new GeoJSONLayer(enfieldLayer), 0);
         }
       }
-      if (state.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer), 0);
-      if (state.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
-      if (state.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
-      if (state.carparks) map.add(new GeoJSONLayer(carparksLayer), 0);
-      if (state.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
-      if (state.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer), 0);
+      if (data.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer), 0);
+      if (data.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
+      if (data.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
+      if (data.carparks) map.add(new GeoJSONLayer(carparksLayer), 0);
+      if (data.seaports) map.add(new GeoJSONLayer(seaportsLayer), 0);
+      if (data.intermodalTerminals) map.add(new GeoJSONLayer(intermodalTerminalsLayer), 0);
 
       // Lines
-      if (state.railNetwork) map.add(new GeoJSONLayer(railNetworkLayer), 0);
-      if (state.roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer), 0);
-      if (state.keyRail) map.add(new GeoJSONLayer(keyRailLayer), 0);
-      if (state.keyRoads) map.add(new GeoJSONLayer(keyRoadsLayer), 0);
-      if (state.secondaryRoads) map.add(new GeoJSONLayer(secondaryRoadsLayer), 0);
+      if (data.railNetwork) map.add(new GeoJSONLayer(railNetworkLayer), 0);
+      if (data.roadNetwork) map.add(new GeoJSONLayer(roadNetworkLayer), 0);
+      if (data.keyRail) map.add(new GeoJSONLayer(keyRailLayer), 0);
+      if (data.keyRoads) map.add(new GeoJSONLayer(keyRoadsLayer), 0);
+      if (data.secondaryRoads) map.add(new GeoJSONLayer(secondaryRoadsLayer), 0);
 
       // Polygons
-      if (state.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer), 0);
-      if (state.nswPortsLeaseArea) map.add(new GeoJSONLayer(tenancyUnitsLayer), 0);
-
-      if (state.viewing !== 'ALL') {
-        map.add(new GeoJSONLayer(PK_innerHabourLayer), 0);
-        map.add(new GeoJSONLayer(PK_outerHabourLayer), 0);
-      }
+      if (data.tenancyLeaseAreas) map.add(new GeoJSONLayer(tenancyLeaseAreasLayer), 0);
+      if (data.nswPortsLeaseArea) map.add(new GeoJSONLayer(tenancyUnitsLayer), 0);
 
       // destroy the map view
       return () => {

@@ -1,37 +1,36 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { clearActive, useSetState, useTrackedState } from "../../store";
+import Context, { clearActive } from '../../context';
 
-import { ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from "../../data/toggles";
+import { ALL_SWITCHES, PB_SWITCHES, PK_SWITCHES, CR_SWITCHES, EN_SWITCHES } from '../../data/toggles';
 
-import Switch from "./Switch";
+import Switch from './Switch';
 
 export default function ActiveLayersForm() {
-  const state = useTrackedState();
-  const setState = useSetState();
+  const [data, setData] = React.useContext(Context);
 
   const handleReset = () => {
     // reset to layers to initial state (all false)
-    setState((prev) => ({
+    setData((prev) => ({
       ...prev,
-      viewing: state.viewing,
-      siderLevel: state.siderLevel,
+      viewing: data.viewing,
+      siderLevel: data.siderLevel,
       ...clearActive,
     }));
   };
 
   const handleToggles = () => {
-    switch (state.viewing) {
-      case "PB":
+    switch (data.viewing) {
+      case 'PB':
         return PB_SWITCHES;
-      case "PK":
+      case 'PK':
         return PK_SWITCHES;
-      case "CR":
+      case 'CR':
         return CR_SWITCHES;
-      case "EN":
+      case 'EN':
         return EN_SWITCHES;
-      case "ALL":
+      case 'ALL':
       default:
         return ALL_SWITCHES;
     }
@@ -45,7 +44,7 @@ export default function ActiveLayersForm() {
         <MenuBtnsWrapper>
           <button
             onClick={() => {
-              setState((prev) => ({ ...prev, siderLevel: 1 }));
+              setData((prev) => ({ ...prev, siderLevel: 1 }));
             }}
           >
             Back to all views
@@ -57,7 +56,7 @@ export default function ActiveLayersForm() {
         <TogglesWrapper>
           {togglesArr.map((v) => {
             // display a different label for PB railNetwork
-            if (v.key === "railNetwork" && (state.viewing === "PB" || state.viewing === "PK")) {
+            if (v.key === 'railNetwork' && (data.viewing === 'PB' || data.viewing === 'PK')) {
               return <Switch key={v.label} item={v} label={v.portBotanyLabel} />;
             } else {
               return <Switch key={v.label} item={v} label={v.label} />;
@@ -71,7 +70,7 @@ export default function ActiveLayersForm() {
 
 const StyledWrapper = styled.div`
   margin: 0 0 20px 0;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 
   .heading-wrapper {
     display: flex;
@@ -95,7 +94,7 @@ const MenuBtnsWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 30px 0;
-  font-family: "Roboto Condensed";
+  font-family: 'Roboto Condensed';
 
   button {
     background: none;
