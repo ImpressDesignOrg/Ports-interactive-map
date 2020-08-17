@@ -25,6 +25,8 @@ export default function Map() {
   const mapRef = useRef();
   const [data, setData] = useContext(Context);
 
+  const { viewing, basemap } = data;
+
   useEffect(() => {
     // lazy load the required ArcGIS API
     loadModules(
@@ -39,8 +41,8 @@ export default function Map() {
       const view = new MapView({
         container: mapRef.current,
         map,
-        center: viewports[data.viewing].center,
-        zoom: viewports[data.viewing].zoom,
+        center: viewports[viewing].center,
+        zoom: viewports[viewing].zoom,
         popup: {
           collapseEnabled: false,
           dockEnabled: false,
@@ -58,14 +60,14 @@ export default function Map() {
 
       const basemapToggle = new BasemapToggle({
         view,
-        nextBasemap: data.basemap === 'gray' ? 'satellite' : 'gray',
+        nextBasemap: basemap === 'gray' ? 'satellite' : 'gray',
       });
 
       // add event listener to map toggle to update state
       basemapToggle.on('toggle', () => {
         setData((prev) => ({
           ...prev,
-          basemap: data.basemap === 'gray' ? 'satellite' : 'gray',
+          basemap: basemap === 'gray' ? 'satellite' : 'gray',
         }));
       });
 
@@ -75,7 +77,7 @@ export default function Map() {
 
       // ! Layers are added in the appropriate order: polygons, lines, points
       // Points
-      if (data.viewing === 'ALL') {
+      if (viewing === 'ALL') {
         if (data.nswPortsSeaports) {
           map.add(new GeoJSONLayer(botanyLayer), 0);
           map.add(new GeoJSONLayer(kemblaLayer), 0);

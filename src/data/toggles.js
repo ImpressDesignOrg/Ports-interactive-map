@@ -3,7 +3,6 @@ import { AiOutlineLine } from 'react-icons/ai';
 
 import BuildingIcon from '../images/marker--building.svg';
 import BerthIcon from '../images/marker--berth.svg';
-import SeaportIcon from '../images/marker--seaport.svg';
 import SeaportBlueIcon from '../images/marker--seaport--blue.svg';
 import IntermodalTerminalIcon from '../images/marker--imt.svg';
 import IntermodalTerminalBlueIcon from '../images/marker--imt--blue.svg';

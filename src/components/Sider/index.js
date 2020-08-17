@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 // import { useTrackedState } from '../../store';
-import Context, { Provider } from '../../context';
+import Context from '../../context';
 
 import LocationButtons from './LocationButtons';
 import ActiveLayers from './ActiveLayers';

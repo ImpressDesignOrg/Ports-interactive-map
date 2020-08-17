@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import Context, { Provider } from '../../context';
+import Context from '../../context';
 
 import BotanyIcon from '../../images/marker--botany.svg';
 import KemblaIcon from '../../images/marker--kembla.svg';
