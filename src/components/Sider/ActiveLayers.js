@@ -96,6 +96,10 @@ const MenuBtnsWrapper = styled.div`
   padding: 30px 0;
   font-family: 'Roboto Condensed';
 
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
+
   button {
     background: none;
     border: none;
@@ -103,6 +107,11 @@ const MenuBtnsWrapper = styled.div`
     cursor: pointer;
     margin: 0 5px;
     font-size: 15px;
+
+    @media (max-width: 400px) {
+      text-align: right;
+      margin: 5px 0;
+    }
 
     &:hover {
       color: #68a0b9;

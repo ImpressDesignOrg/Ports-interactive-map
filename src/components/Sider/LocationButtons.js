@@ -56,7 +56,7 @@ const StyledContent = styled.div`
   button {
     display: flex;
     align-items: center;
-    flex: 0 0 32%;
+    flex: 0 0 120px;
     margin: 15px;
     padding: 0;
     box-shadow: none;
@@ -75,8 +75,8 @@ const StyledContent = styled.div`
     }
 
     @media (max-width: 500px) {
-      flex: 0 0 48%;
-      margin: 10px 0;
+      flex: 0 0 100px;
+      margin: 0;
       justify-content: center;
     }
 
