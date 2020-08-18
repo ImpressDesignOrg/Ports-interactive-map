@@ -12,6 +12,7 @@ export default function ActiveLayersForm() {
 
   const handleReset = () => {
     // reset to layers to initial state (all false)
+
     setData((prev) => ({
       ...prev,
       viewing: data.viewing,
@@ -44,7 +45,11 @@ export default function ActiveLayersForm() {
         <MenuBtnsWrapper>
           <button
             onClick={() => {
-              setData((prev) => ({ ...prev, siderLevel: 1 }));
+              setData((prev) => {
+                console.log('prev', prev);
+
+                return { ...prev, siderLevel: 1 };
+              });
             }}
           >
             Back to all views

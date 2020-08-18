@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { useForm } from 'react-hook-form';
 import Switch from 'react-switch';
 
 import Context from '../../context';
 
 export default function SwitchComp({ item, label }) {
   const [data, setData] = useContext(Context);
-  const { register } = useForm();
 
   const handleToggle = (e, key) => {
     setData((prev) => ({ ...prev, [key]: e }));
@@ -23,7 +21,6 @@ export default function SwitchComp({ item, label }) {
           <p>{label}</p>
         </span>
         <Switch
-          ref={register}
           onChange={(e) => handleToggle(e, key)}
           checked={data[key]}
           checkedIcon={false}
