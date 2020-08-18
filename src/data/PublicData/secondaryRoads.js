@@ -1,18 +1,20 @@
+import { DATA_URL } from '../../constants';
+
 const secondaryRoadsLayer = {
-  url: "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/secondaryRoad.geojson",
-  objectIdField: "ObjectID",
+  url: `${DATA_URL}/keyFreightRoutes/secondaryRoad.geojson`,
+  objectIdField: 'ObjectID',
   popupTemplate: {
-    title: "{Name}",
+    title: '{Name}',
   },
   renderer: {
-    type: "simple",
+    type: 'simple',
     symbol: {
-      type: "simple-fill",
+      type: 'simple-fill',
       color: [0, 77, 232, 1],
-      style: "simple",
+      style: 'simple',
       outline: {
         color: [0, 77, 232, 1],
-        width: "1px",
+        width: '1px',
       },
     },
   },

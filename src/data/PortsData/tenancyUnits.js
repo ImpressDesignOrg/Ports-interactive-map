@@ -1,13 +1,14 @@
-const tenancyUnitsLayer = {
-  url:
-    "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/leaseboundary/json/LEASEBOUNDARY.geojson",
-  objectIdField: "ObjectID",
+import { DATA_URL } from '../../constants';
+
+export const tenancyUnitsLayer = {
+  url: `${DATA_URL}/leaseboundary/json/LEASEBOUNDARY.geojson`,
+  objectIdField: 'ObjectID',
   renderer: {
-    type: "simple",
+    type: 'simple',
     symbol: {
-      type: "simple-fill",
+      type: 'simple-fill',
       color: [51, 51, 204, 0],
-      style: "solid",
+      style: 'solid',
       outline: {
         color: [51, 51, 204, 0.9],
         width: 2,
@@ -15,5 +16,3 @@ const tenancyUnitsLayer = {
     },
   },
 };
-
-export default tenancyUnitsLayer;

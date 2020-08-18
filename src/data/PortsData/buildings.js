@@ -1,6 +1,5 @@
 import { clusterConfig } from '../../utils/popup/cluster';
 import { ASSET_URL, DATA_URL } from '../../constants';
-// import { handlePopupContent } from "../../utils/popup/content-fields";
 
 const handlePopupContent = (feature) => {
   const dataObj = feature.graphic.attributes;
@@ -21,7 +20,7 @@ const handlePopupContent = (feature) => {
   return `<table style="width:100%" class="esri-widget__table">${htmlString}</table>`;
 };
 
-const buildingsLayer = {
+export const buildingsLayer = {
   url: `${DATA_URL}assets/json/BUILDINGS.geojson`,
   outFields: ['*'],
   objectIdField: 'ObjectID',
@@ -41,5 +40,3 @@ const buildingsLayer = {
     },
   },
 };
-
-export default buildingsLayer;

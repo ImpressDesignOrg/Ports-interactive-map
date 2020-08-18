@@ -21,11 +21,6 @@ const ALL = {
     iconUrl: IntermodalTerminalBlueIcon,
     key: 'nswPortsIntermodalTerminals',
   },
-  /* seaports: {
-    label: "Seaports",
-    iconUrl: SeaportIcon,
-    key: "seaports",
-  }, */
   intermodalTerminals: {
     label: 'Intermodal Terminals',
     iconUrl: IntermodalTerminalIcon,

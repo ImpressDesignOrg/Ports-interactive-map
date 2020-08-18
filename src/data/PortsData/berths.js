@@ -1,25 +1,33 @@
 import { clusterConfig } from '../../utils/popup/cluster';
 import { handlePopupContent } from '../../utils/popup/content-fields';
+import { ASSET_URL, DATA_URL } from '../../constants';
 
-const PB_berthLayer = {
+const settings = {
   title: 'Berths',
-  url: 'https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/gatenumbers/json/PB_BERTH.geojson',
   outFields: ['*'],
   objectIdField: 'ObjectID',
+  featureReduction: clusterConfig,
   popupTemplate: {
     title: '{TextString}',
     content: handlePopupContent,
   },
-  featureReduction: clusterConfig,
   renderer: {
     type: 'simple',
     symbol: {
       type: 'picture-marker',
-      url: 'https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--berth.svg',
+      url: `${ASSET_URL}marker--building.svg`,
       width: '50px',
       height: '50px',
     },
   },
 };
 
-export default PB_berthLayer;
+export const PB_berthsLayer = {
+  url: `${DATA_URL}/gatenumbers/json/PB_BERTH.geojson`,
+  ...settings,
+};
+
+export const PK_berthsLayer = {
+  url: `${DATA_URL}/gatenumbers/json/PK_BERTH.geojson`,
+  ...settings,
+};

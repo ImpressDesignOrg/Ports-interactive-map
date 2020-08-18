@@ -10,16 +10,15 @@ import keyRoadsLayer from '../data/PublicData/keyRoads';
 import { keyRailLayer } from '../data/PublicData/keyRail';
 import intermodalTerminalsLayer from '../data/PublicData/intermodalTerminals';
 import secondaryRoadsLayer from '../data/PublicData/secondaryRoads';
-import PB_berthLayer from '../data/PortsData/PB_berths';
-import PK_berthsLayer from '../data/PortsData/PK_berths';
-import tenancyLeaseAreasLayer from '../data/PortsData/tenancyLeaseAreas';
-import tenancyUnitsLayer from '../data/PortsData/tenancyUnits';
-import buildingsLayer from '../data/PortsData/buildings';
-import railNetworkLayer from '../data/PortsData/railNetwork';
-import roadNetworkLayer from '../data/PortsData/roadNetwork';
+import { PB_berthsLayer, PK_berthsLayer } from '../data/PortsData/berths';
+import { tenancyLeaseAreasLayer } from '../data/PortsData/tenancyLeaseAreas';
+import { tenancyUnitsLayer } from '../data/PortsData/tenancyUnits';
+import { buildingsLayer } from '../data/PortsData/buildings';
+import { railNetworkLayer } from '../data/PortsData/railNetwork';
+import { roadNetworkLayer } from '../data/PortsData/roadNetwork';
 import { carparksLayer } from '../data/PortsData/carparks';
 
-import { viewports } from '../data/viewports';
+import { viewports } from '../constants';
 
 export default function Map() {
   const mapRef = useRef();
@@ -87,7 +86,7 @@ export default function Map() {
           map.add(new GeoJSONLayer(enfieldLayer), 0);
         }
       }
-      if (data.pbBerths) map.add(new GeoJSONLayer(PB_berthLayer), 0);
+      if (data.pbBerths) map.add(new GeoJSONLayer(PB_berthsLayer), 0);
       if (data.pkBerths) map.add(new GeoJSONLayer(PK_berthsLayer), 0);
       if (data.buildings) map.add(new GeoJSONLayer(buildingsLayer), 0);
       if (data.carparks) map.add(new GeoJSONLayer(carparksLayer), 0);

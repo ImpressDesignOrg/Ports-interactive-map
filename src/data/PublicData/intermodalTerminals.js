@@ -1,18 +1,18 @@
+import { ASSET_URL, DATA_URL } from '../../constants';
+
 const intermodalTerminalsLayer = {
-  url:
-    "https://raw.githubusercontent.com/darcydev/StaticMedia/master/api/Ports/keyFreightRoutes/intermodalTerminals.geojson",
-  objectIdField: "ObjectID",
+  url: `${DATA_URL}/keyFreightRoutes/intermodalTerminals.geojson`,
+  objectIdField: 'ObjectID',
   popupTemplate: {
-    title: "{Name}",
+    title: '{Name}',
   },
   renderer: {
-    type: "simple",
+    type: 'simple',
     symbol: {
-      type: "picture-marker",
-      url:
-        "https://dev-nsw-ports.pantheonsite.io/themes/nswports/js/src/images/marker--imt.svg",
-      width: "50px",
-      height: "50px",
+      type: 'picture-marker',
+      url: `${ASSET_URL}marker--imt.svg`,
+      width: '50px',
+      height: '50px',
     },
   },
 };
