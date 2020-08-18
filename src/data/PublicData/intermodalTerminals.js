@@ -1,6 +1,6 @@
 import { ASSET_URL, DATA_URL } from '../../constants';
 
-const intermodalTerminalsLayer = {
+export const intermodalTerminalsLayer = {
   url: `${DATA_URL}/keyFreightRoutes/intermodalTerminals.geojson`,
   objectIdField: 'ObjectID',
   popupTemplate: {
@@ -16,5 +16,3 @@ const intermodalTerminalsLayer = {
     },
   },
 };
-
-export default intermodalTerminalsLayer;

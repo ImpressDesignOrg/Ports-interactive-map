@@ -5,17 +5,15 @@ import Context from '../context';
 
 // ##### IMPORT ALL INDIVIDUAL LAYER SETTINGS
 import { botanyLayer, kemblaLayer, cooksLayer, enfieldLayer } from '../data/PortsData/allLocations';
-import seaportsLayer from '../data/PublicData/seaports';
-import keyRoadsLayer from '../data/PublicData/keyRoads';
+import { seaportsLayer } from '../data/PublicData/seaports';
+import { keyRoadsLayer, secondaryRoadsLayer } from '../data/PublicData/roads';
 import { keyRailLayer } from '../data/PublicData/keyRail';
-import intermodalTerminalsLayer from '../data/PublicData/intermodalTerminals';
-import secondaryRoadsLayer from '../data/PublicData/secondaryRoads';
+import { intermodalTerminalsLayer } from '../data/PublicData/intermodalTerminals';
 import { PB_berthsLayer, PK_berthsLayer } from '../data/PortsData/berths';
 import { tenancyLeaseAreasLayer } from '../data/PortsData/tenancyLeaseAreas';
 import { tenancyUnitsLayer } from '../data/PortsData/tenancyUnits';
 import { buildingsLayer } from '../data/PortsData/buildings';
-import { railNetworkLayer } from '../data/PortsData/railNetwork';
-import { roadNetworkLayer } from '../data/PortsData/roadNetwork';
+import { roadNetworkLayer, railNetworkLayer } from '../data/PortsData/networks';
 import { carparksLayer } from '../data/PortsData/carparks';
 
 import { viewports } from '../constants';

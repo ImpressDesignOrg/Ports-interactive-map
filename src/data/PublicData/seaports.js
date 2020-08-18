@@ -1,7 +1,7 @@
 import { clusterConfig } from '../../utils/popup/cluster';
 import { ASSET_URL, DATA_URL } from '../../constants';
 
-const seaportsLayer = {
+export const seaportsLayer = {
   url: `${DATA_URL}/keyFreightRoutes/majorSeaports.geojson`,
   objectIdField: 'ObjectID',
   popupTemplate: {
@@ -18,5 +18,3 @@ const seaportsLayer = {
     },
   },
 };
-
-export default seaportsLayer;
