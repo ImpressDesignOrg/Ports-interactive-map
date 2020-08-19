@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
-// import { useTrackedState } from '../../store';
 import Context from '../../context';
 
 import LocationButtons from './LocationButtons';
