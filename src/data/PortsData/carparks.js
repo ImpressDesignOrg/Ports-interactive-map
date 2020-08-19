@@ -1,11 +1,13 @@
 import { clusterConfig } from '../../utils/popup/cluster';
+import { handlePopupContent } from '../../utils/popup/content-fields';
 import { ASSET_URL, DATA_URL } from '../../constants';
 
 export const carparksLayer = {
   url: `${DATA_URL}PortsData/carparks/carparks.geojson`,
   objectIdField: 'ObjectID',
   popupTemplate: {
-    title: '{Asset name}',
+    title: '{TextString}',
+    content: handlePopupContent,
   },
   featureReduction: clusterConfig,
   renderer: {
