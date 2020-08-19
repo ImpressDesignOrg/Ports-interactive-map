@@ -4,6 +4,7 @@ import { ASSET_URL, DATA_URL } from '../../constants';
 
 export const carparksLayer = {
   url: `${DATA_URL}PortsData/carparks/carparks.geojson`,
+  outFields: ['*'],
   objectIdField: 'ObjectID',
   popupTemplate: {
     title: '{TextString}',

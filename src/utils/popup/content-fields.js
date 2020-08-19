@@ -7,14 +7,16 @@
 export const handlePopupContent = (feature) => {
   const dataObj = feature.graphic.attributes;
 
-  let htmlString = "";
+  console.log('dataObj :>> ', dataObj);
+
+  let htmlString = '';
 
   // iterate over the metadata object and add all non-null values to as a new table in a row
   Object.keys(dataObj).forEach((key) => {
     const value = dataObj[key];
 
     // we don't need these keys in the popup
-    if (key === "Angle" || key === "ObjectID" || key === "TextString") {
+    if (key === 'Angle' || key === 'ObjectID' || key === 'TextString') {
       // ! do nothing (not a placeholder; really do nothing!)
     } else {
       // the returned string only contains non-null values
