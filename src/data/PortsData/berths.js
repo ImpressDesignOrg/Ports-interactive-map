@@ -15,7 +15,7 @@ const settings = {
     type: 'simple',
     symbol: {
       type: 'picture-marker',
-      url: `${ASSET_URL}marker--building.svg`,
+      url: `${ASSET_URL}marker--berth.svg`,
       width: '50px',
       height: '50px',
     },
